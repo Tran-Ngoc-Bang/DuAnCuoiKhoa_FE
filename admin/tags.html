@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Tags - EduShare Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="admin-header-content">
+            <div class="admin-logo">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">E</div>
+                    <div class="logo-text">EduShare</div>
+                </a>
+            </div>
+            
+            <div class="admin-header-actions">
+                <div class="admin-search">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="dark-mode-toggle" id="darkModeToggle"></div>
+                
+                <div class="admin-notifications">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">5</span>
+                    </button>
+                </div>
+                
+                <div class="admin-profile">
+                    <div class="admin-avatar">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Admin">
+                    </div>
+                    <div class="admin-info">
+                        <span class="admin-name">Nguyễn Văn A</span>
+                        <span class="admin-role">Quản trị viên</span>
+                    </div>
+                    <div class="admin-dropdown">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Admin Container -->
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <nav class="admin-nav">
+                <ul class="admin-menu">
+                    <li class="admin-menu-item">
+                        <a href="index.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Bảng điều khiển</span>
+                        </a>
+                    </li>
+                    <li class="admin-menu-item">
+                        <a href="users.html">
+                            <i class="fas fa-users"></i>
+                            <span>Quản lý người dùng</span>
+                        </a>
+                    </li>
+                    <li class="admin-menu-item">
+                        <a href="documents.html">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Quản lý tài liệu</span>
+                        </a>
+                    </li>
+                    <li class="admin-menu-item">
+                        <a href="categories.html">
+                            <i class="fas fa-folder"></i>
+                            <span>Quản lý danh mục</span>
+                        </a>
+                    </li>
+                    <li class="admin-menu-item active">
+                        <a href="tags.html">
+                            <i class="fas fa-tags"></i>
+                            <span>Quản lý tags</span>
+                        </a>
+                    </li>
+                    <li class="admin-menu-item">
+                        <a href="comments.html">
+                            <i class="fas fa-comments"></i>
+                            <span>Quản lý bình luận</span>
+                        </a>
+                    </li>
+                    <li class="admin-menu-item">
+                        <a href="reports.html">
+                            <i class="fas fa-flag"></i>
+                            <span>Báo cáo vi phạm</span>
+                        </a>
+                    </li>
+                    <li class="admin-menu-item">
+                        <a href="statistics.html">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Thống kê</span>
+                        </a>
+                    </li>
+                    <li class="admin-menu-item">
+                        <a href="settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span>Cài đặt</span>
+                        </a>
+                    </li>
+                    <li class="admin-menu-item">
+                        <a href="../index.html">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Đăng xuất</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="admin-content">
+            <div class="admin-content-header">
+                <h1 class="admin-page-title">Quản lý Tags</h1>
+                <div class="admin-breadcrumbs">
+                    <a href="index.html">Admin</a>
+                    <span>/</span>
+                    <span>Quản lý Tags</span>
+                </div>
+            </div>
+            
+            <!-- Tag Management Tools -->
+            <div class="management-tools">
+                <div class="search-filters">
+                    <div class="tool-item">
+                        <input type="text" placeholder="Tìm kiếm tag..." class="search-input">
+                    </div>
+                    <div class="tool-item">
+                        <select class="filter-select">
+                            <option value="all">Tất cả danh mục</option>
+                            <option value="1">Công nghệ thông tin</option>
+                            <option value="2">Kinh tế - Quản trị</option>
+                            <option value="3">Ngoại ngữ</option>
+                            <option value="4">Kỹ thuật - Công nghệ</option>
+                            <option value="5">Khoa học xã hội</option>
+                            <option value="6">Khoa học tự nhiên</option>
+                        </select>
+                    </div>
+                    <div class="tool-item">
+                        <select class="filter-select">
+                            <option value="none">Sắp xếp theo</option>
+                            <option value="name_asc">Tên (A-Z)</option>
+                            <option value="name_desc">Tên (Z-A)</option>
+                            <option value="popular">Phổ biến nhất</option>
+                            <option value="recent">Gần đây nhất</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="add-new-btn" id="addTagBtn">
+                        <i class="fas fa-plus"></i> Thêm tag mới
+                    </button>
+                    <button class="export-btn">
+                        <i class="fas fa-download"></i> Xuất dữ liệu
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Tags Overview Cards -->
+            <div class="tags-overview">
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="overview-info">
+                        <h3>Tổng số tags</h3>
+                        <div class="overview-number">1,245</div>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="overview-info">
+                        <h3>Tài liệu có gắn tag</h3>
+                        <div class="overview-number">8,765</div>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="overview-info">
+                        <h3>Lượt tìm kiếm theo tag</h3>
+                        <div class="overview-number">32.5K</div>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div class="overview-info">
+                        <h3>Tags mới trong tháng</h3>
+                        <div class="overview-number">78</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tag Cloud -->
+            <div class="tag-cloud-container">
+                <div class="section-header">
+                    <h3>Tag Cloud</h3>
+                    <div class="section-actions">
+                        <select class="time-filter">
+                            <option value="all">Mọi thời điểm</option>
+                            <option value="week">Tuần này</option>
+                            <option value="month" selected>Tháng này</option>
+                            <option value="quarter">Quý này</option>
+                            <option value="year">Năm nay</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="tag-cloud">
+                    <a href="#" class="tag-item" style="--tag-size: 2.2em; --tag-color: var(--primary);">React</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.8em; --tag-color: var(--secondary);">JavaScript</a>
+                    <a href="#" class="tag-item" style="--tag-size: 2.5em; --tag-color: var(--accent);">Python</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.5em; --tag-color: var(--success);">SQL</a>
+                    <a href="#" class="tag-item" style="--tag-size: 2.0em; --tag-color: var(--warning);">Data Science</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.3em; --tag-color: var(--error);">Machine Learning</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.7em; --tag-color: #8b5cf6;">Web Development</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.9em; --tag-color: var(--primary);">Node.js</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.2em; --tag-color: var(--secondary);">IELTS</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.6em; --tag-color: var(--accent);">Marketing</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.4em; --tag-color: var(--success);">Finance</a>
+                    <a href="#" class="tag-item" style="--tag-size: 2.1em; --tag-color: var(--warning);">Economics</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.7em; --tag-color: var(--error);">UI/UX</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.5em; --tag-color: #8b5cf6;">Flutter</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.8em; --tag-color: var(--primary);">CSS</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.3em; --tag-color: var(--secondary);">HTML</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.2em; --tag-color: var(--accent);">Java</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.6em; --tag-color: var(--success);">C++</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.4em; --tag-color: var(--warning);">PHP</a>
+                    <a href="#" class="tag-item" style="--tag-size: 1.9em; --tag-color: var(--error);">Android</a>
+                </div>
+            </div>
+            
+            <!-- Tags Table -->
+            <div class="data-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="selectAll">
+                                    <label for="selectAll"></label>
+                                </div>
+                            </th>
+                            <th>Tag</th>
+                            <th>Danh mục</th>
+                            <th>Số tài liệu</th>
+                            <th>Lượt tìm kiếm</th>
+                            <th>Ngày tạo</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="tag1">
+                                    <label for="tag1"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tag-preview">
+                                    <span class="tag-label" style="background-color: rgba(67, 97, 238, 0.1); color: var(--primary);">React</span>
+                                </div>
+                            </td>
+                            <td>Công nghệ thông tin</td>
+                            <td>352</td>
+                            <td>4.2K</td>
+                            <td>15/03/2023</td>
+                            <td><span class="status-badge approved">Hoạt động</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn" title="Xem tài liệu"><i class="fas fa-file-alt"></i></button>
+                                    <button class="action-btn" title="Vô hiệu hóa"><i class="fas fa-ban"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="tag2">
+                                    <label for="tag2"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tag-preview">
+                                    <span class="tag-label" style="background-color: rgba(247, 37, 133, 0.1); color: var(--accent);">Python</span>
+                                </div>
+                            </td>
+                            <td>Công nghệ thông tin</td>
+                            <td>420</td>
+                            <td>5.8K</td>
+                            <td>12/03/2023</td>
+                            <td><span class="status-badge approved">Hoạt động</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn" title="Xem tài liệu"><i class="fas fa-file-alt"></i></button>
+                                    <button class="action-btn" title="Vô hiệu hóa"><i class="fas fa-ban"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="tag3">
+                                    <label for="tag3"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tag-preview">
+                                    <span class="tag-label" style="background-color: rgba(16, 185, 129, 0.1); color: var(--success);">JavaScript</span>
+                                </div>
+                            </td>
+                            <td>Công nghệ thông tin</td>
+                            <td>385</td>
+                            <td>4.5K</td>
+                            <td>18/03/2023</td>
+                            <td><span class="status-badge approved">Hoạt động</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn" title="Xem tài liệu"><i class="fas fa-file-alt"></i></button>
+                                    <button class="action-btn" title="Vô hiệu hóa"><i class="fas fa-ban"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="tag4">
+                                    <label for="tag4"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tag-preview">
+                                    <span class="tag-label" style="background-color: rgba(245, 158, 11, 0.1); color: var(--warning);">Data Science</span>
+                                </div>
+                            </td>
+                            <td>Công nghệ thông tin</td>
+                            <td>310</td>
+                            <td>3.9K</td>
+                            <td>20/03/2023</td>
+                            <td><span class="status-badge approved">Hoạt động</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn" title="Xem tài liệu"><i class="fas fa-file-alt"></i></button>
+                                    <button class="action-btn" title="Vô hiệu hóa"><i class="fas fa-ban"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="tag5">
+                                    <label for="tag5"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tag-preview">
+                                    <span class="tag-label" style="background-color: rgba(139, 92, 246, 0.1); color: #8b5cf6;">Economics</span>
+                                </div>
+                            </td>
+                            <td>Kinh tế - Quản trị</td>
+                            <td>287</td>
+                            <td>3.1K</td>
+                            <td>22/03/2023</td>
+                            <td><span class="status-badge approved">Hoạt động</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn" title="Xem tài liệu"><i class="fas fa-file-alt"></i></button>
+                                    <button class="action-btn" title="Vô hiệu hóa"><i class="fas fa-ban"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="tag6">
+                                    <label for="tag6"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tag-preview">
+                                    <span class="tag-label" style="background-color: rgba(239, 68, 68, 0.1); color: var(--error);">Marketing</span>
+                                </div>
+                            </td>
+                            <td>Kinh tế - Quản trị</td>
+                            <td>265</td>
+                            <td>2.8K</td>
+                            <td>25/03/2023</td>
+                            <td><span class="status-badge rejected">Vô hiệu hóa</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn" title="Xem tài liệu"><i class="fas fa-file-alt"></i></button>
+                                    <button class="action-btn" title="Kích hoạt"><i class="fas fa-check"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="tag7">
+                                    <label for="tag7"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tag-preview">
+                                    <span class="tag-label" style="background-color: rgba(67, 97, 238, 0.1); color: var(--primary);">IELTS</span>
+                                </div>
+                            </td>
+                            <td>Ngoại ngữ</td>
+                            <td>248</td>
+                            <td>4.7K</td>
+                            <td>28/03/2023</td>
+                            <td><span class="status-badge approved">Hoạt động</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn" title="Xem tài liệu"><i class="fas fa-file-alt"></i></button>
+                                    <button class="action-btn" title="Vô hiệu hóa"><i class="fas fa-ban"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="tag8">
+                                    <label for="tag8"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tag-preview">
+                                    <span class="tag-label" style="background-color: rgba(247, 37, 133, 0.1); color: var(--accent);">Finance</span>
+                                </div>
+                            </td>
+                            <td>Kinh tế - Quản trị</td>
+                            <td>210</td>
+                            <td>2.5K</td>
+                            <td>30/03/2023</td>
+                            <td><span class="status-badge approved">Hoạt động</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="action-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn" title="Xem tài liệu"><i class="fas fa-file-alt"></i></button>
+                                    <button class="action-btn" title="Vô hiệu hóa"><i class="fas fa-ban"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-btn prev-btn" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="pagination-pages">
+                    <button class="pagination-btn page-btn active">1</button>
+                    <button class="pagination-btn page-btn">2</button>
+                    <button class="pagination-btn page-btn">3</button>
+                    <span class="pagination-ellipsis">...</span>
+                    <button class="pagination-btn page-btn">20</button>
+                </div>
+                <button class="pagination-btn next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Add Tag Modal -->
+            <div class="modal" id="addTagModal">
+                <div class="modal-overlay"></div>
+                <div class="modal-container">
+                    <div class="modal-header">
+                        <h3>Thêm tag mới</h3>
+                        <button class="modal-close"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-grid">
+                            <div class="form-group">
+                                <label for="tagName">Tên tag</label>
+                                <input type="text" id="tagName" placeholder="Nhập tên tag">
+                            </div>
+                            <div class="form-group">
+                                <label for="tagSlug">Slug</label>
+                                <input type="text" id="tagSlug" placeholder="Tự động tạo từ tên tag">
+                            </div>
+                            <div class="form-group">
+                                <label for="tagCategory">Danh mục</label>
+                                <select id="tagCategory">
+                                    <option value="1">Công nghệ thông tin</option>
+                                    <option value="2">Kinh tế - Quản trị</option>
+                                    <option value="3">Ngoại ngữ</option>
+                                    <option value="4">Kỹ thuật - Công nghệ</option>
+                                    <option value="5">Khoa học xã hội</option>
+                                    <option value="6">Khoa học tự nhiên</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tagStatus">Trạng thái</label>
+                                <select id="tagStatus">
+                                    <option value="active">Hoạt động</option>
+                                    <option value="inactive">Vô hiệu hóa</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="tagDescription">Mô tả</label>
+                                <textarea id="tagDescription" rows="4" placeholder="Nhập mô tả cho tag (không bắt buộc)"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="tagColor">Màu sắc</label>
+                                <div class="color-picker">
+                                    <input type="color" id="tagColor" value="#4361ee">
+                                    <div class="color-preview">
+                                        <div class="color-square" style="background-color: #4361ee;"></div>
+                                        <span class="color-hex">#4361ee</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Tag Preview</label>
+                                <div class="tag-preview-container">
+                                    <div class="tag-preview-item">
+                                        <span class="tag-preview-label" style="background-color: rgba(67, 97, 238, 0.1); color: #4361ee;">Tag Name</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="cancel-btn">Hủy bỏ</button>
+                        <button class="save-btn">Lưu</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="../js/main.js"></script>
+    
+    <!-- Admin specific scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Admin dropdown toggle
+            const adminProfile = document.querySelector('.admin-profile');
+            if(adminProfile) {
+                adminProfile.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            }
+            
+            // Select all checkboxes
+            const selectAll = document.getElementById('selectAll');
+            const checkboxes = document.querySelectorAll('.checkbox-wrapper input[type="checkbox"]:not(#selectAll)');
+            
+            if(selectAll) {
+                selectAll.addEventListener('change', function() {
+                    checkboxes.forEach(checkbox => {
+                        checkbox.checked = this.checked;
+                    });
+                });
+                
+                checkboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                        const allChecked = [...checkboxes].every(c => c.checked);
+                        const someChecked = [...checkboxes].some(c => c.checked);
+                        
+                        selectAll.checked = allChecked;
+                        selectAll.indeterminate = someChecked && !allChecked;
+                    });
+                });
+            }
+            
+            // Modal functionality
+            const addTagBtn = document.getElementById('addTagBtn');
+            const addTagModal = document.getElementById('addTagModal');
+            const modalOverlay = document.querySelector('.modal-overlay');
+            const modalCloseBtn = document.querySelector('.modal-close');
+            const cancelBtn = document.querySelector('.cancel-btn');
+            
+            function openModal() {
+                if(addTagModal) {
+                    addTagModal.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            function closeModal() {
+                if(addTagModal) {
+                    addTagModal.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            if(addTagBtn) {
+                addTagBtn.addEventListener('click', openModal);
+            }
+            
+            if(modalOverlay) {
+                modalOverlay.addEventListener('click', closeModal);
+            }
+            
+            if(modalCloseBtn) {
+                modalCloseBtn.addEventListener('click', closeModal);
+            }
+            
+            if(cancelBtn) {
+                cancelBtn.addEventListener('click', closeModal);
+            }
+            
+            // Tag color picker
+            const tagColor = document.getElementById('tagColor');
+            const colorSquare = document.querySelector('.color-square');
+            const colorHex = document.querySelector('.color-hex');
+            const tagPreviewLabel = document.querySelector('.tag-preview-label');
+            const tagNameInput = document.getElementById('tagName');
+            
+            if(tagColor && colorSquare && colorHex && tagPreviewLabel) {
+                tagColor.addEventListener('input', function() {
+                    const selectedColor = this.value;
+                    colorSquare.style.backgroundColor = selectedColor;
+                    colorHex.textContent = selectedColor;
+                    
+                    // Update tag preview
+                    tagPreviewLabel.style.backgroundColor = hexToRgba(selectedColor, 0.1);
+                    tagPreviewLabel.style.color = selectedColor;
+                });
+            }
+            
+            if(tagNameInput && tagPreviewLabel) {
+                tagNameInput.addEventListener('input', function() {
+                    const tagName = this.value.trim() || 'Tag Name';
+                    tagPreviewLabel.textContent = tagName;
+                    
+                    // Auto-generate slug
+                    const tagSlug = document.getElementById('tagSlug');
+                    if(tagSlug) {
+                        tagSlug.value = generateSlug(tagName);
+                    }
+                });
+            }
+            
+            // Helper functions
+            function generateSlug(text) {
+                return text.toString().toLowerCase()
+                    .replace(/\s+/g, '-')           // Replace spaces with -
+                    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+                    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+                    .replace(/^-+/, '')             // Trim - from start of text
+                    .replace(/-+$/, '');            // Trim - from end of text
+            }
+            
+            function hexToRgba(hex, alpha = 1) {
+                const [r, g, b] = hex.match(/\w\w/g).map(x => parseInt(x, 16));
+                return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+            }
+            
+            // Pagination
+            const pageButtons = document.querySelectorAll('.page-btn');
+            const prevButton = document.querySelector('.prev-btn');
+            const nextButton = document.querySelector('.next-btn');
+            
+            pageButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    pageButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update prev/next button states
+                    if(this.textContent === '1') {
+                        prevButton.disabled = true;
+                    } else {
+                        prevButton.disabled = false;
+                    }
+                    
+                    if(this.textContent === '20') {
+                        nextButton.disabled = true;
+                    } else {
+                        nextButton.disabled = false;
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <style>
+        /* Additional styles specific to tag management */
+        .tags-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .overview-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .overview-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: var(--radius);
+            background-color: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        
+        .overview-info h3 {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-500);
+            margin-bottom: 0.25rem;
+        }
+        
+        .overview-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+        
+        .tag-cloud-container {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-header h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin: 0;
+        }
+        
+        .time-filter {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            background-color: var(--white);
+            color: var(--gray-700);
+        }
+        
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: var(--gray-50);
+            border-radius: var(--radius);
+        }
+        
+        .tag-item {
+            font-size: var(--tag-size, 1em);
+            color: var(--tag-color, var(--primary));
+            background-color: rgba(var(--tag-color-rgb, 67, 97, 238), 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            transition: var(--transition-normal);
+            white-space: nowrap;
+        }
+        
+        .tag-item:hover {
+            transform: scale(1.05);
+            background-color: rgba(var(--tag-color-rgb, 67, 97, 238), 0.2);
+        }
+        
+        .tag-preview {
+            display: flex;
+            align-items: center;
+        }
+        
+        .tag-label {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: var(--transition-normal);
+        }
+        
+        /* Add Tag Modal Styles */
+        .color-picker {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .color-picker input[type="color"] {
+            width: 3rem;
+            height: 3rem;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+        }
+        
+        .color-preview {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .color-square {
+            width: 2rem;
+            height: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .color-hex {
+            font-family: monospace;
+            font-size: 0.875rem;
+            color: var(--gray-700);
+        }
+        
+        .tag-preview-container {
+            background-color: var(--gray-50);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .tag-preview-item {
+            text-align: center;
+        }
+        
+        .tag-preview-label {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--radius-full);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        /* Dark Mode Styles */
+        body.dark-mode .overview-card,
+        body.dark-mode .tag-cloud-container {
+            background-color: var(--gray-800);
+        }
+        
+        body.dark-mode .overview-number {
+            color: var(--gray-200);
+        }
+        
+        body.dark-mode .section-header h3 {
+            color: var(--gray-200);
+        }
+        
+        body.dark-mode .time-filter {
+            background-color: var(--gray-700);
+            border-color: var(--gray-600);
+            color: var(--gray-300);
+        }
+        
+        body.dark-mode .tag-cloud {
+            background-color: var(--gray-700);
+        }
+        
+        body.dark-mode .tag-item {
+            color: var(--tag-color, var(--primary));
+        }
+        
+        body.dark-mode .tag-preview-container {
+            background-color: var(--gray-700);
+        }
+        
+        body.dark-mode .color-square {
+            border-color: var(--gray-600);
+        }
+        
+        body.dark-mode .color-hex {
+            color: var(--gray-300);
+        }
+                /* Additional styles specific to user management */
+                .management-tools {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            flex: 1;
+        }
+        
+        .tool-item {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 0.625rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+        }
+        
+        .filter-select {
+            width: 100%;
+            padding: 0.625rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            background-color: var(--white);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .add-new-btn, .export-btn {
+            padding: 0.625rem 1rem;
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+        
+        .add-new-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+        }
+        
+        .add-new-btn:hover {
+            background-color: var(--secondary);
+        }
+        
+        .export-btn {
+            background-color: var(--white);
+            color: var(--gray-700);
+            border: 1px solid var(--gray-300);
+        }
+        
+        .export-btn:hover {
+            background-color: var(--gray-100);
+        }
+        
+        .data-container {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        
+        .checkbox-wrapper {
+            position: relative;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .checkbox-wrapper input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        .checkbox-wrapper label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: var(--white);
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+        }
+        
+        .checkbox-wrapper input:checked ~ label {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .checkbox-wrapper label:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 7px;
+            top: 3px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .checkbox-wrapper input:checked ~ label:after {
+            display: block;
+        }
+        
+        .users-table .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .user-avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: var(--radius-full);
+            object-fit: cover;
+            border: 2px solid var(--gray-100);
+        }
+        
+        .user-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            font-weight: 500;
+            color: var(--gray-800);
+        }
+        
+        .user-username {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+        
+        .role-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .role-badge.admin {
+            background-color: rgba(139, 92, 246, 0.1);
+            color: #8b5cf6;
+        }
+        
+        .role-badge.contributor {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--status-pending);
+        }
+        
+        .role-badge.user {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--status-approved);
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pagination-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2rem;
+            height: 2rem;
+            padding: 0 0.5rem;
+            margin: 0 0.25rem;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            background-color: var(--white);
+            color: var(--gray-700);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+        
+        .pagination-btn:hover:not(:disabled) {
+            background-color: var(--gray-100);
+            border-color: var(--gray-300);
+        }
+        
+        .pagination-btn.active {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .pagination-pages {
+            display: flex;
+            align-items: center;
+        }
+        
+        .pagination-ellipsis {
+            margin: 0 0.25rem;
+            color: var(--gray-500);
+        }
+        
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s linear 0.25s, opacity 0.25s 0s;
+        }
+        
+        .modal.open {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+        
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-container {
+            position: relative;
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            z-index: 1;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .modal-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin: 0;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--gray-500);
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: var(--transition-normal);
+        }
+        
+        .modal-close:hover {
+            color: var(--gray-800);
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .cancel-btn, .save-btn {
+            padding: 0.625rem 1.25rem;
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+        
+        .cancel-btn {
+            background-color: var(--white);
+            color: var(--gray-700);
+            border: 1px solid var(--gray-300);
+        }
+        
+        .cancel-btn:hover {
+            background-color: var(--gray-100);
+        }
+        
+        .save-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+        }
+        
+        .save-btn:hover {
+            background-color: var(--secondary);
+        }
+        
+        /* Form */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        .form-group label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+        
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            padding: 0.625rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            transition: var(--transition-normal);
+        }
+        
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+            outline: none;
+        }
+        
+        .avatar-upload {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+        
+        .avatar-preview {
+            width: 100px;
+            height: 100px;
+            border-radius: var(--radius-full);
+            border: 2px solid var(--gray-200);
+            overflow: hidden;
+            background-color: var(--gray-100);
+        }
+        
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+            font-size: 3rem;
+        }
+        
+        .preview-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .avatar-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .avatar-upload-btn, .avatar-remove-btn {
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+        
+        .avatar-upload-btn {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .avatar-upload-btn:hover {
+            background-color: rgba(67, 97, 238, 0.2);
+        }
+        
+        .avatar-remove-btn {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+            border: 1px solid var(--error);
+        }
+        
+        .avatar-remove-btn:hover {
+            background-color: rgba(239, 68, 68, 0.2);
+        }
+        
+        /* Dark Mode */
+        body.dark-mode .search-input,
+        body.dark-mode .filter-select,
+        body.dark-mode .form-group input, 
+        body.dark-mode .form-group select, 
+        body.dark-mode .form-group textarea {
+            background-color: var(--gray-700);
+            border-color: var(--gray-600);
+            color: var(--gray-200);
+        }
+        
+        body.dark-mode .filter-select {
+            background-color: var(--gray-700);
+        }
+        
+        body.dark-mode .export-btn {
+            background-color: var(--gray-700);
+            color: var(--gray-300);
+            border-color: var(--gray-600);
+        }
+        
+        body.dark-mode .export-btn:hover {
+            background-color: var(--gray-600);
+        }
+        
+        body.dark-mode .data-container {
+            background-color: var(--gray-800);
+        }
+        
+        body.dark-mode .checkbox-wrapper label {
+            background-color: var(--gray-700);
+            border-color: var(--gray-600);
+        }
+        
+        body.dark-mode .user-name {
+            color: var(--gray-200);
+        }
+        
+        body.dark-mode .user-username {
+            color: var(--gray-400);
+        }
+        
+        body.dark-mode .pagination-btn {
+            background-color: var(--gray-700);
+            border-color: var(--gray-600);
+            color: var(--gray-300);
+        }
+        
+        body.dark-mode .pagination-btn:hover:not(:disabled) {
+            background-color: var(--gray-600);
+            border-color: var(--gray-500);
+        }
+        
+        body.dark-mode .modal-container {
+            background-color: var(--gray-800);
+        }
+        
+        body.dark-mode .modal-header {
+            border-color: var(--gray-700);
+        }
+        
+        body.dark-mode .modal-header h3 {
+            color: var(--gray-200);
+        }
+        
+        body.dark-mode .modal-footer {
+            border-color: var(--gray-700);
+        }
+        
+        body.dark-mode .cancel-btn {
+            background-color: var(--gray-700);
+            color: var(--gray-300);
+            border-color: var(--gray-600);
+        }
+        
+        body.dark-mode .cancel-btn:hover {
+            background-color: var(--gray-600);
+        }
+        
+        body.dark-mode .form-group label {
+            color: var(--gray-300);
+        }
+        
+        body.dark-mode .avatar-preview {
+            border-color: var(--gray-600);
+            background-color: var(--gray-700);
+        }
+        
+        body.dark-mode .avatar-placeholder {
+            color: var(--gray-500);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</body>
+</html>
