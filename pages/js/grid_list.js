@@ -1,13 +1,16 @@
 
-
 function setGridView() {
-
     const container = document.getElementById("docContainer");
     container.classList.add("grid-view");
     container.classList.remove("list-view");
     showToast("Đã chuyển sang chế độ dạng lưới");
 
-    document.getElementById('docContainer').className = 'doc-card-container grid-view';
+    const items = container.querySelectorAll('.doc-card-item');
+    items.forEach(item => {
+        item.classList.remove('list-view');
+        item.classList.add('grid-view');
+    });
+
     setActiveButton('gridBtn');
 }
 
@@ -17,18 +20,14 @@ function setListView() {
     container.classList.remove("grid-view");
     showToast("Đã chuyển sang chế độ danh sách");
 
+    const items = container.querySelectorAll('.doc-card-item');
+    items.forEach(item => {
+        item.classList.remove('grid-view');
+        item.classList.add('list-view');
+    });
 
-    document.getElementById('docContainer').className = 'doc-card-container list-view';
     setActiveButton('listBtn');
 }
-
-function setActiveButton(activeId) {
-    document.getElementById('gridBtn').classList.remove('active');
-    document.getElementById('listBtn').classList.remove('active');
-    document.getElementById(activeId).classList.add('active');
-}
-
-
 
 
 

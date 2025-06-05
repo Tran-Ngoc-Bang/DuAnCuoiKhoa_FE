@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    const itemsPerPage = 6;
+    const itemsPerPage = 4;
     const container = document.getElementById("docContainer");
     const items = Array.from(container.getElementsByClassName("doc-card-item"));
     const pagination = document.getElementById("pagination");
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const start = (page - 1) * itemsPerPage;
         const end = start + itemsPerPage;
         items.slice(start, end).forEach(item => {
-            item.style.display = "block";
+            item.style.display = ""; // hoặc item.style.removeProperty("display");
         });
 
         updatePagination(page);
