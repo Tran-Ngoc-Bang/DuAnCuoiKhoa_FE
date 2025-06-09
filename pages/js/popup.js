@@ -346,6 +346,7 @@ changePasswordBtn.addEventListener('click', () => {
 const newEmailInput = document.getElementById('newEmail');
 const emailStatusDiv = document.getElementById('emailStatus');
 
+const oldEmailInput = document.querySelector('.dashboard-section input[type="email"]:first-of-type');
 newEmailInput.addEventListener('input', () => {
     const email = newEmailInput.value;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -365,16 +366,33 @@ newEmailInput.addEventListener('input', () => {
 // ---- Đổi email ----
 // Lưu ý bạn có 2 phần dashboard-section, button thứ 2 là đổi email
 const changeEmailBtn = document.querySelectorAll('.dashboard-section .sec-section button.sec-button')[1];
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 changeEmailBtn.addEventListener('click', () => {
     const oldEmailInput = document.querySelector('.dashboard-section input[type="email"]:first-of-type');
-    const oldEmail = oldEmailInput.value;
-    const newEmail = newEmailInput.value;
+    const newEmailInput = document.getElementById('newEmail'); // đảm bảo bạn có id này trong HTML
+    const emailStatusDiv = document.getElementById('emailStatus'); // đảm bảo bạn có id này trong HTML
+
+    const oldEmail = oldEmailInput.value.trim();
+    const newEmail = newEmailInput.value.trim();
 
     if (!newEmail) {
         showNotification('Vui lòng nhập email mới.', 'error');
         return;
     }
 
+    if (!oldEmail) {
+        showNotification('Vui lòng nhập email hiện tại.', 'error');
+        return;
+    }
+
+    // ✅ Kiểm tra định dạng email cũ
+    if (!emailRegex.test(oldEmail)) {
+        showNotification('Email hiện tại không hợp lệ.', 'error');
+        return;
+    }
+
+    // Đã có validate email mới bằng emailStatusDiv
     if (emailStatusDiv.textContent !== 'Email hợp lệ') {
         showNotification('Email mới không hợp lệ.', 'error');
         return;
@@ -388,6 +406,7 @@ changeEmailBtn.addEventListener('click', () => {
     showNotification('Đổi email thành công!', 'success');
     addActivityLog('Bạn đã đổi địa chỉ email.');
 });
+
 
 // ---- Xác thực hai bước ----
 const twofaToggle = document.getElementById('twofaToggle');

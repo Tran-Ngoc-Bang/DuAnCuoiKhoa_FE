@@ -1230,10 +1230,14 @@
             <div class="sec-section">
               <h2>Đổi địa chỉ email</h2>
               <label class="sec-label">Email hiện tại<span class="required">*</span></label>
-              <input type="email" class="sec-input" placeholder="example@email.com">
+              <input type="email" class="sec-input" id="oldEmail" placeholder="example@email.com">
+              
         
               <label class="sec-label">Email mới <span class="required">*</span></label>
               <input type="email" class="sec-input" id="newEmail" placeholder="Nhập email mới">
+              <div id="emailStatus" style="font-size: 0.85rem; color: #666; margin-top: 4px;"></div>
+
+              <br>
 
 
         
@@ -1242,7 +1246,7 @@
 
           </div>
 
-          <div class="dashboard-section">
+         
 
             <div class="dashboard-section">
               <div class="sec-section">
@@ -1263,7 +1267,13 @@
               </div>
             </div>
             
-          </div>
+          
+
+
+
+
+
+            
 
 
           <div class="dashboard-section">
@@ -1583,6 +1593,7 @@ z-index: 9999;
 
 
 <div id="notification-container"></div>
+
 
 
 
