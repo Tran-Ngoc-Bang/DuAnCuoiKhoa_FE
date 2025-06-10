@@ -843,7 +843,7 @@
           transaction.refund = 'Đã hoàn 80%';
           transaction.status = 'refunded';
           transaction.statusClass = 'status-refunded';
-          filteredTransactions = transactions; // Cập nhật danh sách đã lọc
+          filteredTransactions = transactions; 
           renderTransactions(filteredTransactions);
           initChart(currentChartMode, filteredTransactions);
           showNotification(`Giao dịch ${transactionId} đã được hoàn tiền thành công!`, 'success');
