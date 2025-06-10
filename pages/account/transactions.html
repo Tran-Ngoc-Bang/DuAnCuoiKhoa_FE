@@ -8,1146 +8,509 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../css/responsive.css">
   <link rel="stylesheet" href="../../css/main-fixes.css">
   <link rel="stylesheet" href="../../css/account.css">
   <link rel="stylesheet" href="../../css/footer-modern.css">
   <style>
-
-:root {
+    :root {
       --primary: #4361ee;
-      --primary-dark: #3a56d4;
-      --primary-light: rgba(67, 97, 238, 0.1);
-      --primary-gradient: linear-gradient(135deg, #4361ee, #3a56d4);
-      --success: #10b981;
-      --success-light: rgba(16, 185, 129, 0.1);
-      --success-gradient: linear-gradient(135deg, #10b981, #0d9668);
-      --warning: #f59e0b;
-      --warning-light: rgba(245, 158, 11, 0.1);
-      --warning-gradient: linear-gradient(135deg, #f59e0b, #d58809);
-      --danger: #ef4444;
-      --danger-light: rgba(239, 68, 68, 0.1);
-      --danger-gradient: linear-gradient(135deg, #ef4444, #d63939);
+      --primary-light: #e0e7ff;
+      --primary-dark: #3f37c9;
+      --success: #28a745;
+      --success-light: #e6f4ea;
+      --warning: #ffc107;
+      --danger: #dc3545;
       --gray-50: #f9fafb;
       --gray-100: #f3f4f6;
       --gray-200: #e5e7eb;
       --gray-300: #d1d5db;
-      --gray-400: #9ca3af;
-      --gray-500: #6b7280;
       --gray-600: #4b5563;
       --gray-700: #374151;
-      --gray-800: #1f2937;
       --gray-900: #111827;
-      --radius: 0.375rem;
-      --radius-lg: 0.5rem;
-      --radius-xl: 0.75rem;
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --transition: all 0.3s ease;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --radius: 0.5rem;
+      --radius-lg: 0.75rem;
     }
 
-    body {
-      background-color: #f5f7fb;
-      min-height: 100vh;
-    }
-    
-    .dashboard-page {
-      padding-top: 2rem;
-      padding-bottom: 3rem;
-    }
-    
-    .dashboard-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-    }
-    
-    .dashboard-header-actions {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    
-    .date-display {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.95rem;
-      color: var(--gray-600);
-      background-color: white;
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--gray-200);
-    }
-    
-    .refresh-button {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--primary);
-      background-color: var(--primary-light);
-      border: none;
-      border-radius: var(--radius-lg);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    
-    .refresh-button:hover {
-      background-color: var(--primary);
-      color: white;
-    }
-    
-    .dashboard-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .dashboard-sidebar {
-      width: 280px;
-      background-color: white;
-      border-radius: var(--radius-xl);
-      padding: 0;
-      box-shadow: var(--shadow-md);
-      position: sticky;
-      top: 2rem;
-      height: fit-content;
-      overflow: hidden;
-    }
-    
-    .sidebar-header {
-      padding: 1.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--gray-200);
-      margin-bottom: 0;
-      position: relative;
-      background-color: var(--primary-light);
-    }
-    
-    .user-profile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding-bottom: 0.5rem;
-    }
-    
-    .user-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid white;
-      box-shadow: var(--shadow-md);
-      margin-bottom: 1rem;
-    }
-    
-    .user-name {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--gray-900);
-      margin-bottom: 0.25rem;
-    }
-    
-    .user-email {
-      font-size: 0.875rem;
-      color: var(--gray-600);
-      margin-bottom: 1rem;
-    }
-    
-    .user-status {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.25rem 0.75rem;
-      background-color: var(--primary-light);
-      color: var(--primary);
-      border-radius: 1rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    
-    .user-status-icon {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: var(--primary);
-      margin-right: 0.5rem;
-    }
-    
-    .sidebar-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--gray-800);
-      margin-bottom: 0.5rem;
-    }
-    
-    .sidebar-menu {
-      list-style: none;
-      padding: 0.75rem 0;
-      margin: 0;
-    }
-    
-    .sidebar-menu-title {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      color: var(--gray-500);
-      margin-top: 1.5rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      padding-left: 0.5rem;
-    }
-    
-    .sidebar-menu-item {
-      margin-bottom: 0.25rem;
-    }
-    
-    .sidebar-menu-link {
-      display: flex;
-      align-items: center;
-      padding: 0.75rem 1.5rem;
-      color: var(--gray-700);
-      text-decoration: none;
-      transition: var(--transition);
-      position: relative;
-      font-size: 0.95rem;
-    }
-    
-    .sidebar-menu-link:hover {
-      color: var(--primary);
-      background-color: var(--primary-light);
-    }
-    
-    .sidebar-menu-link.active {
-      color: var(--primary);
-      font-weight: 600;
-      background-color: var(--primary-light);
-    }
-    
-    .sidebar-menu-link.active::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background-color: var(--primary);
-    }
-    
-    .sidebar-icon {
-      width: 1.25rem;
-      margin-right: 0.75rem;
-      text-align: center;
-    }
-    
-    .sidebar-badge {
-      margin-left: auto;
-      background-color: var(--primary);
-      color: white;
-      font-size: 0.75rem;
-      padding: 0.125rem 0.5rem;
-      border-radius: 1rem;
-    }
-    
-    .dashboard-main {
-      flex: 1;
-      min-width: 0;
-    }
-    
-    /* Stats Grid */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    
-    .stat-card {
-      background-color: white;
-      border-radius: var(--radius-xl);
-      padding: 1.5rem;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      border: 1px solid var(--gray-100);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      justify-content: center;
-    }
-    
-    .stat-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .stat-icon {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      position: relative;
-      margin-bottom: 0.75rem;
-      margin-top: 0.5rem;
-    }
-    
-    .stat-icon.primary {
-      background: var(--primary-gradient);
-      color: white;
-    }
-    
-    .stat-icon.success {
-      background: var(--success-gradient);
-      color: white;
-    }
-    
-    .stat-icon.warning {
-      background: var(--warning-gradient);
-      color: white;
-    }
-    
-    .stat-icon.danger {
-      background: var(--danger-gradient);
-      color: white;
-    }
-    
-    .stat-info {
-      width: 100%;
-    }
-
-    .stat-value {
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--gray-900);
-      margin-bottom: 0.25rem;
-      line-height: 1.2;
-    }
-    
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--gray-600);
-      margin-bottom: 0.25rem;
-      max-width: 100%;
-      display: block;
-      line-height: 1.2;
-      white-space: normal;
-    }
-    
-    .stat-trend {
-      font-size: 0.75rem;
-      display: flex;
-      align-items: center;
-    }
-    
-    .trend-positive {
-      color: var(--success);
-    }
-    
-    .trend-negative {
-      color: var(--danger);
-    }
-    
-    .trend-icon {
-      margin-right: 0.25rem;
-    }
-    
-    .trend-period {
-      color: var(--gray-500);
-      margin-left: 0.25rem;
-    }
-    
-    /* Dashboard Sections */
-    .dashboard-section {
-      background-color: white;
-      border-radius: var(--radius-xl);
-      padding: 2rem;
-      box-shadow: var(--shadow-md);
-      margin-bottom: 2.5rem;
-      border: 1px solid var(--gray-100);
-    }
-    
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.25rem;
-    }
-    
-    .section-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--gray-900);
-      display: flex;
-      align-items: center;
-    }
-    
-    .section-title-icon {
-      margin-right: 0.75rem;
-      color: var(--primary);
-      font-size: 1.125rem;
-    }
-    
-    .section-actions {
-      display: flex;
-      align-items: center;
-    }
-    
-    .action-button {
-      padding: 0.5rem 0.875rem;
-      border-radius: var(--radius);
-      background-color: var(--gray-100);
-      color: var(--gray-800);
-      border: none;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: var(--transition);
-      font-weight: 500;
-    }
-    
-    .time-range-select {
-      padding: 0.375rem 0.75rem;
-      border-radius: var(--radius);
-      border: 1px solid var(--gray-300);
-      background-color: var(--white);
-      font-size: 0.875rem;
-      color: var(--gray-700);
-      cursor: pointer;
-    }
-    
-    /* Activity Chart */
-    .chart-container {
-      width: 100%;
-      height: 300px;
-    }
-    
-    /* Activity List */
-    .activity-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    
-    .activity-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.25rem;
-      padding: 1.25rem;
-      border-radius: var(--radius-lg);
-      transition: var(--transition);
-      border: 1px solid transparent;
-    }
-    
-    .activity-item:hover {
-      background-color: var(--gray-50);
-      border-color: var(--gray-200);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .activity-icon {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.125rem;
-      flex-shrink: 0;
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .activity-content {
-      flex: 1;
-      min-width: 0;
-    }
-    
-    .activity-title {
-      font-weight: 600;
-      color: var(--gray-900);
-      margin-bottom: 0.25rem;
-    }
-    
-    .activity-description {
-      font-size: 0.875rem;
-      color: var(--gray-600);
-      margin-bottom: 0.5rem;
-    }
-    
-    .activity-meta {
-      display: flex;
-      font-size: 0.75rem;
-      color: var(--gray-500);
-      gap: 1rem;
-    }
-    
-    .activity-meta-item {
-      display: flex;
-      align-items: center;
-    }
-    
-    .activity-meta-icon {
-      margin-right: 0.25rem;
-    }
-    
-    /* Document Cards */
-    .documents-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem;
-    }
-    
-    .document-card {
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      background-color: white;
-      border: 1px solid var(--gray-100);
-    }
-    
-    .document-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary-light);
-    }
-    
-    .document-image {
-      height: 180px;
-      overflow: hidden;
-      position: relative;
-    }
-    
-    .document-image::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 50%);
-      z-index: 1;
-    }
-    
-    .document-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .document-content {
-      padding: 1.5rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .document-title {
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      color: var(--gray-900);
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      font-size: 1.1rem;
-      line-height: 1.4;
-    }
-    
-    .document-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      font-size: 0.75rem;
-      color: var(--gray-600);
-      margin-bottom: 0.75rem;
-    }
-    
-    .document-meta-item {
-      display: flex;
-      align-items: center;
-    }
-    
-    .document-meta-icon {
-      margin-right: 0.25rem;
-    }
-    
-    .document-actions {
-      display: flex;
-      justify-content: space-between;
-      margin-top: auto;
-      padding-top: 0.75rem;
-      border-top: 1px solid var(--gray-200);
-    }
-    
-    .action-button {
-      width: 2rem;
-      height: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      border: none;
-      background-color: var(--gray-100);
-      color: var(--gray-700);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    
-    .action-button:hover {
-      background-color: var(--primary-light);
-      color: var(--primary);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .view-all-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.875rem;
-      margin-top: 1.25rem;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      border-radius: var(--radius-lg);
-      transition: var(--transition);
-      background: var(--primary-gradient);
-      box-shadow: var(--shadow-sm);
-    }
-    
-    .view-all-link:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-      filter: brightness(1.05);
-    }
-    
-    .view-all-icon {
-      margin-left: 0.5rem;
-      transition: all 0.2s;
-    }
-    
-    .view-all-link:hover .view-all-icon {
-      transform: translateX(3px);
-    }
-    
-    /* Responsive */
-    @media (max-width: 1200px) {
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .documents-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 992px) {
-      .dashboard-content {
-        flex-direction: column;
-      }
-      
-      .dashboard-sidebar {
-        width: 100%;
-        position: static;
-        margin-bottom: 2rem;
-      }
-      
-      .sidebar-menu {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-      
-      .sidebar-menu-title {
-        width: 100%;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .documents-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .activity-item {
-        flex-direction: column;
-      }
-      
-      .activity-icon {
-        margin-bottom: 0.5rem;
-      }
-    }
-    
-    .dashboard-page {
-      margin-top: 2rem;
-    }
-    /* Styles for transaction history page */
-    .transaction-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-    }
-
-    .transaction-table th, .transaction-table td {
-      padding: 1rem;
-      text-align: left;
-      border-bottom: 1px solid var(--gray-200);
-    }
-
-    .transaction-table th {
-      background: var(--gray-50);
-      font-weight: 600;
-      color: var(--gray-700);
-    }
-
-    .transaction-table tr:hover {
-      background: var(--gray-50);
-    }
-
-    .status-success {
-      color: var(--success);
-      font-weight: 500;
-    }
-
-    .status-pending {
-      color: var(--warning);
-      font-weight: 500;
-    }
-
-    .status-failed {
-      color: var(--danger);
-      font-weight: 500;
-    }
-
-    .action-btn {
-      padding: 0.5rem 1rem;
-      background: var(--gray-100);
-      border: none;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .action-btn:hover {
-      background: var(--primary);
-      color: var(--white);
-    }
-
-    /* Filter section */
-    .filters {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .filters input, .filters select, .filters button {
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--gray-300);
-      border-radius: var(--radius);
-      font-family: var(--font-body);
-    }
-
-    .filters button {
-      background: var(--primary);
-      color: var(--white);
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .filters button:hover {
-      background: var(--primary-dark);
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .modal-content {
-      background: var(--white);
-      padding: 1.5rem;
-      border-radius: var(--radius-lg);
-      width: 500px;
-      max-width: 90%;
-      position: relative;
-    }
-
-    .modal-content h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--gray-900);
-    }
-
-    .modal-content p {
-      margin-bottom: 0.75rem;
-      color: var(--gray-600);
-    }
-
-    .modal-content .close-btn {
-      background: var(--gray-200);
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius);
-      cursor: pointer;
-      margin-top: 1rem;
-    }
-
-    /* Notification */
-    .notification {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--success);
-      color: var(--white);
-      padding: 1rem 1.5rem;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-md);
-      display: none;
-      z-index: 1001;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .notification.error {
-      background: var(--danger);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .filters {
-        flex-direction: column;
-      }
-
-      .filters input, .filters select, .filters button {
-        width: 100%;
-      }
-
-      .transaction-table {
-        display: none;
-      }
-
-      .transaction-cards {
-        display: block;
-      }
-
-      .transaction-card {
-        background: var(--white);
-        padding: 1rem;
-        border-radius: var(--radius);
-        margin-bottom: 1rem;
-        box-shadow: var(--shadow-sm);
-      }
-
-      .transaction-card p {
-        margin-bottom: 0.5rem;
-        color: var(--gray-600);
-      }
-
-      .transaction-card .action-btn {
-        width: 100%;
-        text-align: center;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .transaction-cards {
-        display: none;
-      }
+    .form-group { margin-bottom: 0; }
+    .form-group label { display: block; font-size: 0.875rem; color: var(--gray-700); margin-bottom: 0.25rem; }
+    .transaction-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 2rem; }
+    .transaction-table th, .transaction-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--gray-200); color: var(--gray-700); font-size: 0.9rem; }
+    .transaction-table th { background: var(--primary); color: var(--white); font-weight: 600; }
+    .transaction-table tr:hover { background: var(--gray-50); }
+    .status-success { color: var(--success); font-weight: 500; }
+    .status-pending { color: var(--warning); font-weight: 500; }
+    .status-failed { color: var(--danger); font-weight: 500; }
+    .status-refunded { color: #17a2b8; font-weight: 500; }
+    .action-cell { display: flex; gap: 0.75rem; align-items: center; }
+    .action-btn, .refund-btn { 
+      padding: 0.5rem 1.25rem; 
+      border: none; 
+      border-radius: var(--radius); 
+      cursor: pointer; 
+      transition: all 0.2s ease; 
+      font-size: 0.875rem; 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 0.5rem; 
+    }
+    .action-btn { 
+      background: var(--primary); 
+      color: var(--white); 
+    }
+    .action-btn:hover { 
+      background: var(--primary-dark); 
+      transform: translateY(-1px); 
+      box-shadow: var(--shadow-sm); 
+    }
+    .refund-btn { 
+      background: var(--warning); 
+      color: var(--gray-900); 
+    }
+    .refund-btn:hover { 
+      background: #e0a800; 
+      color: var(--white); 
+      transform: translateY(-1px); 
+      box-shadow: var(--shadow-sm); 
+    }
+    .filters { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+      gap: 1rem; 
+      margin-bottom: 1.5rem; 
+      align-items: end; 
+    }
+    .filters input, .filters select { 
+      width: 100%; 
+      padding: 0.75rem 1rem; 
+      border: 1px solid var(--gray-300); 
+      border-radius: var(--radius); 
+      font-family: 'Nunito', sans-serif; 
+      font-size: 0.9rem; 
+      color: var(--gray-700); 
+    }
+    .filters input:focus, .filters select:focus { 
+      border-color: var(--primary); 
+      box-shadow: 0 0 0 2px var(--primary-light); 
+      outline: none; 
+    }
+    .filters button { 
+      padding: 0.75rem 1rem; 
+      background: var(--primary); 
+      color: var(--white); 
+      border: none; 
+      border-radius: var(--radius); 
+      cursor: pointer; 
+      transition: background 0.3s; 
+      font-size: 0.9rem; 
+      display: flex; 
+      align-items: center; 
+      gap: 0.5rem; 
+    }
+    .filters button:hover { 
+      background: var(--primary-dark); 
+    }
+    .transaction-group { 
+      margin-bottom: 2rem; 
+    }
+    .transaction-group h3 { 
+      font-size: 1.25rem; 
+      color: var(--gray-900); 
+      margin-bottom: 1rem; 
+      padding-bottom: 0.5rem; 
+      border-bottom: 2px solid var(--primary-light); 
+    }
+    .chart-container { 
+      background: var(--white); 
+      padding: 1.5rem; 
+      border-radius: var(--radius-lg); 
+      box-shadow: var(--shadow-md); 
+      margin-bottom: 2rem; 
+    }
+    .chart-container h3 { 
+      font-size: 1.25rem; 
+      color: var(--gray-900); 
+      margin-bottom: 1rem; 
+    }
+    .chart-controls { 
+      display: flex; 
+      gap: 1rem; 
+      margin-bottom: 1rem; 
+    }
+    .time-range-select { 
+      padding: 0.375rem 0.75rem; 
+      border-radius: var(--radius); 
+      border: 1px solid var(--gray-300); 
+      background-color: var(--white); 
+      font-size: 0.875rem; 
+      color: var(--gray-700); 
+      cursor: pointer; 
+    }
+    .modal { 
+      display: none; 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(0,0,0,0.5); 
+      justify-content: center; 
+      align-items: center; 
+      z-index: 1000; 
+    }
+    .modal-content { 
+      background: var(--white); 
+      padding: 2rem; 
+      border-radius: var(--radius-lg); 
+      width: 600px; 
+      max-width: 95%; 
+      position: relative; 
+      box-shadow: var(--shadow-md); 
+    }
+    .modal-content h2 { 
+      font-size: 1.5rem; 
+      margin-bottom: 1.5rem; 
+      color: var(--gray-900); 
+      border-bottom: 2px solid var(--primary-light); 
+      padding-bottom: 0.5rem; 
+    }
+    .modal-content p { 
+      margin-bottom: 1rem; 
+      color: var(--gray-700); 
+      font-size: 0.95rem; 
+      display: flex; 
+      justify-content: space-between; 
+    }
+    .modal-content p strong { 
+      font-weight: 600; 
+      color: var(--gray-900); 
+      flex: 0 0 40%; 
+    }
+    .modal-content p span { 
+      flex: 0 0 55%; 
+      text-align: right; 
+    }
+    .modal-content .close-btn { 
+      background: var(--primary); 
+      color: var(--white); 
+      border: none; 
+      padding: 0.75rem 1.5rem; 
+      border-radius: var(--radius); 
+      cursor: pointer; 
+      margin-top: 1.5rem; 
+      width: 100%; 
+      font-size: 0.95rem; 
+      transition: background 0.2s ease; 
+    }
+    .modal-content .close-btn:hover { 
+      background: var(--primary-dark); 
+    }
+    .notification { 
+      position: fixed; 
+      top: 20px; 
+      right: 20px; 
+      background: var(--success); 
+      color: var(--white); 
+      padding: 1rem 1.5rem; 
+      border-radius: var(--radius); 
+      box-shadow: var(--shadow-md); 
+      display: none; 
+      z-index: 1001; 
+      align-items: center; 
+      gap: 0.5rem; 
+      font-size: 0.9rem; 
+    }
+    .notification.error { 
+      background: var(--danger); 
+    }
+    .load-more-btn { 
+      display: block; 
+      margin: 1.5rem auto; 
+      padding: 0.75rem 1.5rem; 
+      background: var(--primary); 
+      color: var(--white); 
+      border: none; 
+      border-radius: var(--radius); 
+      cursor: pointer; 
+      font-size: 0.95rem; 
+      transition: background 0.2s ease; 
+    }
+    .load-more-btn:hover { 
+      background: var(--primary-dark); 
+    }
+    @media (max-width: 768px) { 
+      .filters { 
+        grid-template-columns: 1fr; 
+      } 
+      .transaction-table { 
+        display: none; 
+      } 
+      .transaction-cards { 
+        display: block; 
+      } 
+      .transaction-card { 
+        background: var(--white); 
+        padding: 1rem; 
+        border-radius: var(--radius); 
+        margin-bottom: 1rem; 
+        box-shadow: var(--shadow-sm); 
+      } 
+      .transaction-card p { 
+        margin-bottom: 0.5rem; 
+        color: var(--gray-600); 
+        font-size: 0.875rem; 
+      } 
+      .transaction-card .action-btn, 
+      .transaction-card .refund-btn { 
+        width: 100%; 
+        justify-content: center; 
+        margin-bottom: 0.75rem; 
+      } 
+      .chart-container { 
+        max-height: 300px; 
+      } 
+    }
+    @media (min-width: 769px) { 
+      .transaction-cards { 
+        display: none; 
+      } 
     }
   </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-      <div class="container">
-          <div class="header-content">
-              <div class="logo">
-                  <a href="../index.html">
-                      <div class="logo-icon">E</div>
-                      <span class="logo-text">EduShare</span>
-                  </a>
-              </div>
-              <nav class="main-nav">
-                  <a href="../index.html" class="nav-link">Trang chủ</a>
-                  <a href="categories.html" class="nav-link">Danh mục</a>
-                  <a href="search.html?sort=newest" class="nav-link">Tài liệu mới</a>
-                  <a href="search.html?filter=premium" class="nav-link">Cao cấp</a>
-                  <a href="about.html" class="nav-link">Giới thiệu</a>
-              </nav>
-              <div class="header-actions">
-                  <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode">
-                      <span class="dark-mode-handle" id="darkModeHandle"></span>
-                  </button>
-                  <a href="login.html" class="login-btn">
-                      <i class="fas fa-sign-in-alt"></i> Đăng nhập
-                  </a>
-                  <a href="register.html" class="register-btn active">
-                      <i class="fas fa-user-plus"></i> Đăng ký
-                  </a>
-              </div>
-              <div class="mobile-menu-toggle" id="mobileMenuBtn">
-                  <i class="fas fa-bars"></i>
-              </div>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <a href="../../index.html">
+            <div class="logo-icon">E</div>
+            <span class="logo-text">EduShare</span>
+          </a>
+        </div>
+        <nav class="main-nav">
+          <a href="../../index.html" class="nav-link">Trang chủ</a>
+          <a href="../categories.html" class="nav-link">Danh mục</a>
+          <a href="../search.html?sort=newest" class="nav-link">Tài liệu mới</a>
+          <a href="../search.html?filter=premium" class="nav-link">Cao cấp</a>
+          <a href="about.html" class="nav-link">Giới thiệu</a>
+        </nav>
+        <div class="header-actions">
+          <div class="search-box">
+            <input type="text" id="searchInputHeader" placeholder="Tìm kiếm tài liệu...">
+            <button id="searchBtnHeader">
+              <i class="fas fa-search"></i>
+            </button>
           </div>
+          <div style="width: 47px; height: 23px; position: relative; background-color: #4361ee; border-radius: 99px; cursor: pointer; margin-right: 1rem;" id="darkModeToggle">
+            <div style="position: absolute; width: 17px; height: 17px; background-color: white; border-radius: 50%; top: 3px; left: 3px; transition: all 0.3s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.1);" id="darkModeHandle"></div>
+          </div>
+          <div class="user-menu">
+            <div class="user-avatar user-menu-toggle">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="User Avatar">
+              <i class="fas fa-chevron-down" style="font-size: 0.75rem; margin-left: 0.5rem;"></i>
+            </div>
+            <div class="user-menu-dropdown">
+              <div class="user-dropdown-header">
+                <div class="user-info">
+                  <div class="user-avatar-lg">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="User Avatar">
+                  </div>
+                  <div class="user-details">
+                    <h4 class="user-name">Nguyễn Thị Hương</h4>
+                    <p class="user-email">huong.nguyen@example.com</p>
+                  </div>
+                </div>
+              </div>
+              <div class="user-dropdown-balance">
+                <div class="balance-amount">
+                  <i class="fas fa-coins"></i> 250 xu
+                </div>
+                <a href="recharge.html" class="balance-recharge-btn">Nạp thêm</a>
+              </div>
+              <div class="user-dropdown-links">
+                <a href="dashboard.html" class="dropdown-link">
+                  <i class="fas fa-tachometer-alt"></i> Tổng quan
+                </a>
+                <a href="profile.html" class="dropdown-link">
+                  <i class="fas fa-user"></i> Thông tin cá nhân
+                </a>
+                <a href="documents.html" class="dropdown-link">
+                  <i class="fas fa-file-alt"></i> Tài liệu của tôi
+                </a>
+                <a href="transactions.html" class="dropdown-link active">
+                  <i class="fas fa-history"></i> Lịch sử giao dịch
+                </a>
+                <a href="security.html" class="dropdown-link">
+                  <i class="fas fa-shield-alt"></i> Bảo mật
+                </a>
+              </div>
+              <div class="user-dropdown-footer">
+                <a href="#" class="dropdown-logout-btn">
+                  <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-menu-toggle" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </div>
       </div>
-      <!-- Mobile menu -->
-      <div id="mobileMenu" class="mobile-menu">
-          <div class="mobile-search">
-              <input type="text" placeholder="Tìm kiếm tài liệu...">
-              <button>
-                  <i class="fas fa-search"></i>
-              </button>
-          </div>
-          <nav class="mobile-nav">
-              <a href="../index.html" class="mobile-nav-link">Trang chủ</a>
-              <a href="categories.html" class="mobile-nav-link">Danh mục</a>
-              <a href="search.html?sort=newest" class="mobile-nav-link">Tài liệu mới</a>
-              <a href="search.html?filter=premium" class="mobile-nav-link">Cao cấp</a>
-              <a href="#" class="mobile-nav-link">Hướng dẫn</a>
-          </nav>
-          <div class="mobile-auth">
-              <a href="login.html" class="mobile-login-btn">Đăng nhập</a>
-              <a href="register.html" class="mobile-register-btn">Đăng ký</a>
-          </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu">
+      <div class="mobile-search">
+        <input type="text" placeholder="Tìm kiếm tài liệu...">
+        <button>
+          <i class="fas fa-search"></i>
+        </button>
       </div>
+      <nav class="mobile-nav">
+        <a href="../../index.html" class="mobile-nav-link">Trang chủ</a>
+        <a href="../categories.html" class="mobile-nav-link">Danh mục</a>
+        <a href="../search.html?sort=newest" class="mobile-nav-link">Tài liệu mới</a>
+        <a href="../search.html?filter=premium" class="mobile-nav-link">Cao cấp</a>
+        <a href="#" class="mobile-nav-link">Hướng dẫn</a>
+      </nav>
+      <div class="mobile-user-info">
+        <div class="mobile-user-avatar">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="User Avatar">
+        </div>
+        <div class="mobile-user-details">
+          <p class="mobile-user-name">Nguyễn Thị Hương</p>
+          <a href="#" class="mobile-account-link">Quản lý tài khoản</a>
+        </div>
+      </div>
+    </div>
   </header>
+
   <main>
     <div class="container">
       <div class="account-container">
-        <!-- <div class="account-header">
+        <div class="account-header">
           <div class="welcome-section">
             <h1 class="welcome-heading">Lịch sử giao dịch</h1>
-            <p class="welcome-text">Xem lại lịch sử giao dịch của bạn trên EduShare. Lọc và tìm kiếm giao dịch dễ dàng để quản lý tài khoản hiệu quả hơn.</p>
+            <p class="welcome-text">Xem lại lịch sử giao dịch của bạn trên EduShare. Lọc, tìm kiếm và xuất báo cáo để quản lý tài khoản hiệu quả hơn.</p>
           </div>
-        </div> -->
+        </div>
 
         <div class="account-content">
-          <div class="dashboard-sidebar">
-            <div class="sidebar-header">
-              <div class="user-profile">
-                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User avatar" class="user-avatar">
-                <div class="user-name">Nguyễn Văn Anh</div>
-                <div class="user-email">nguyenvananh@gmail.com</div>
-                <div class="user-status">
-                  <span class="user-status-icon"></span>
-                  Tài khoản Premium
+          <div class="account-sidebar">
+            <div class="account-menu">
+              <div class="account-menu-section">
+                <h3 class="account-menu-title">Quản lý tài khoản</h3>
+                <div class="account-menu-links">
+                  <a href="dashboard.html" class="account-menu-link">
+                    <i class="fas fa-tachometer-alt"></i> Tổng quan
+                  </a>
+                  <a href="profile.html" class="account-menu-link">
+                    <i class="fas fa-user"></i> Thông tin cá nhân
+                  </a>
+                  <a href="documents.html" class="account-menu-link">
+                    <i class="fas fa-file-alt"></i> Tài liệu của tôi
+                  </a>
+                  <a href="transactions.html" class="account-menu-link active">
+                    <i class="fas fa-history"></i> Lịch sử giao dịch
+                  </a>
                 </div>
               </div>
-              <div class="sidebar-title">Quản lý tài khoản</div>
+              <div class="account-menu-section">
+                <h3 class="account-menu-title">Cài đặt</h3>
+                <div class="account-menu-links">
+                  <a href="security.html" class="account-menu-link">
+                    <i class="fas fa-shield-alt"></i> Bảo mật
+                  </a>
+                  <a href="settings.html" class="account-menu-link">
+                    <i class="fas fa-cog"></i> Tùy chọn
+                  </a>
+                </div>
+              </div>
             </div>
-            
-            <ul class="sidebar-menu">
-              <li class="sidebar-menu-title">Tài liệu</li>
-              
-              <li class="sidebar-menu-item">
-                <a href="dashboard.html" class="sidebar-menu-link active">
-                  <i class="fas fa-tachometer-alt sidebar-icon"></i>
-                  Tổng quan
-                </a>
-              </li>
-              
-              <li class="sidebar-menu-item">
-                <a href="documents.html" class="sidebar-menu-link">
-                  <i class="fas fa-file-alt sidebar-icon"></i>
-                  Tài liệu của tôi
-                  <span class="sidebar-badge">15</span>
-                </a>
-              </li>
-              
-              <li class="sidebar-menu-item">
-                <a href="../search.html" class="sidebar-menu-link">
-                  <i class="fas fa-search sidebar-icon"></i>
-                  Khám phá tài liệu
-                </a>
-              </li>
-              
-              <li class="sidebar-menu-item">
-                <a href="../upload.html" class="sidebar-menu-link">
-                  <i class="fas fa-cloud-upload-alt sidebar-icon"></i>
-                  Tải lên tài liệu
-                </a>
-              </li>
-              
-              <li class="sidebar-menu-item">
-                <a href="favorites.html" class="sidebar-menu-link">
-                  <i class="fas fa-bookmark sidebar-icon"></i>
-                  Tài liệu đã lưu
-                </a>
-              </li>
-              
-              <li class="sidebar-menu-title">Tài khoản</li>
-              
-              <li class="sidebar-menu-item">
-                <a href="profile.html" class="sidebar-menu-link">
-                  <i class="fas fa-user sidebar-icon"></i>
-                  Thông tin cá nhân
-                </a>
-              </li>
-              
-              <li class="sidebar-menu-item">
-                <a href="transactions.html" class="sidebar-menu-link">
-                  <i class="fas fa-history sidebar-icon"></i>
-                  Lịch sử giao dịch
-                </a>
-              </li>
-              
-              <li class="sidebar-menu-item">
-                <a href="recharge.html" class="sidebar-menu-link">
-                  <i class="fas fa-coins sidebar-icon"></i>
-                  Nạp xu
-                  <span class="sidebar-badge">250</span>
-                </a>
-              </li>
-              
-              <li class="sidebar-menu-title">Cài đặt</li>
-              
-              <li class="sidebar-menu-item">
-                <a href="security.html" class="sidebar-menu-link">
-                  <i class="fas fa-shield-alt sidebar-icon"></i>
-                  Bảo mật
-                </a>
-              </li>
-              
-              <li class="sidebar-menu-item">
-                <a href="notifications.html" class="sidebar-menu-link">
-                  <i class="fas fa-bell sidebar-icon"></i>
-                  Thông báo
-                </a>
-              </li>
-              <li class="sidebar-menu-item">
-                <a href="notifications.html" class="sidebar-menu-link">
-                  <i class="fas fa-cog sidebar-icon"></i>
-                  Tùy chọn
-                </a>
-              </li>
-              <li class="sidebar-menu-item">
-                <a href="notifications.html" class="sidebar-menu-link">
-                  <i class="fas fa-question-circle sidebar-icon"></i>
-                  Trợ giúp
-                </a>
-              </li>
-            </ul>
+            <div class="help-card">
+              <h3 class="help-card-title">Cần giúp đỡ?</h3>
+              <p class="help-card-text">Nếu bạn gặp vấn đề về giao dịch hoặc tài khoản, vui lòng liên hệ với đội ngũ hỗ trợ.</p>
+              <a href="#" class="help-card-btn">
+                <i class="fas fa-headset"></i> Liên hệ hỗ trợ
+              </a>
+            </div>
           </div>
 
           <div class="dashboard-panels">
             <div class="main-panel">
               <div class="panel-header">
+                <h2 class="panel-title">Thống kê tiêu tiền</h2>
+              </div>
+              <div class="panel-body">
+                <div class="chart-container">
+                  <div class="chart-controls">
+                    <select class="time-range-select" id="chartTimeRange">
+                      <option value="day">Theo ngày</option>
+                      <option value="week">Theo tuần</option>
+                      <option value="month">Theo tháng</option>
+                    </select>
+                  </div>
+                  <h3 id="chartTitle">Tiêu tiền theo ngày</h3>
+                  <div id="transactionChart"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="main-panel">
+              <div class="panel-header">
                 <h2 class="panel-title">Danh sách giao dịch</h2>
               </div>
-
               <div class="panel-body">
                 <div class="filters">
-                  <input type="text" placeholder="Tìm kiếm theo mã giao dịch hoặc tài liệu">
-                  <select>
-                    <option value="all">Tất cả trạng thái</option>
-                    <option value="success">Thành công</option>
-                    <option value="pending">Đang xử lý</option>
-                    <option value="failed">Thất bại</option>
-                  </select>
-                  <select>
-                    <option value="today">Hôm nay</option>
-                    <option value="7days">7 ngày</option>
-                    <option value="30days">30 ngày</option>
-                    <option value="custom">Tùy chỉnh</option>
-                  </select>
+                  <div class="form-group">
+                    <label>Tìm kiếm</label>
+                    <input type="text" id="searchInput" placeholder="Mã giao dịch hoặc tài liệu">
+                  </div>
+                  <div class="form-group">
+                    <label>Trạng thái</label>
+                    <select id="statusFilter">
+                      <option value="all">Tất cả trạng thái</option>
+                      <option value="success">Thành công</option>
+                      <option value="pending">Đang xử lý</option>
+                      <option value="failed">Thất bại</option>
+                      <option value="refunded">Hoàn tiền</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Loại giao dịch</label>
+                    <select id="typeFilter">
+                      <option value="all">Tất cả loại</option>
+                      <option value="recharge">Nạp xu</option>
+                      <option value="download">Tải tài liệu</option>
+                      <option value="refund">Hoàn tiền</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Từ ngày</label>
+                    <input type="date" id="dateFrom" max="2025-06-05">
+                  </div>
+                  <div class="form-group">
+                    <label>Đến ngày</label>
+                    <input type="date" id="dateTo" max="2025-06-05">
+                  </div>
+                  <div class="form-group">
+                    <label>Số tiền</label>
+                    <select id="amountFilter">
+                      <option value="all">Tất cả</option>
+                      <option value="0-50000">0 - 50.000đ</option>
+                      <option value="50001-100000">50.001 - 100.000đ</option>
+                      <option value="100001-200000">100.001 - 200.000đ</option>
+                      <option value="200001+">Trên 200.000đ</option>
+                    </select>
+                  </div>
                   <button id="filterBtn"><i class="fas fa-filter"></i> Lọc</button>
-                  <button id="exportBtn"><i class="fas fa-download"></i> Xuất báo cáo</button>
+                  <button id="exportBtn"><i class="fas fa-download"></i> Xuất CSV</button>
                 </div>
-
-                <!-- Transaction Table (Desktop) -->
-                <table class="transaction-table">
-                  <thead>
-                    <tr>
-                      <th>Mã giao dịch</th>
-                      <th>Tài liệu</th>
-                      <th>Ngày giao dịch</th>
-                      <th>Số tiền</th>
-                      <th>Trạng thái</th>
-                      <th>Hành động</th>
-                    </tr>
-                  </thead>
-                  <tbody id="transactionTableBody">
-                    <tr data-id="TRX123456789">
-                      <td>TRX123456789</td>
-                      <td>Tài liệu Toán 12</td>
-                      <td>23/05/2025 09:57 PM</td>
-                      <td>35.000đ</td>
-                      <td class="status-success">Thành công</td>
-                      <td><button class="action-btn" onclick="openModal('TRX123456789')">Xem chi tiết</button></td>
-                    </tr>
-                    <tr data-id="TRX987654321">
-                      <td>TRX987654321</td>
-                      <td>Tài liệu Văn 11</td>
-                      <td>22/05/2025 03:15 PM</td>
-                      <td>65.000đ</td>
-                      <td class="status-pending">Đang xử lý</td>
-                      <td><button class="action-btn" onclick="openModal('TRX987654321')">Xem chi tiết</button></td>
-                    </tr>
-                    <tr data-id="TRX456789123">
-                      <td>TRX456789123</td>
-                      <td>Tài liệu Hóa 10</td>
-                      <td>21/05/2025 10:30 AM</td>
-                      <td>20.000đ</td>
-                      <td class="status-failed">Thất bại</td>
-                      <td><button class="action-btn" onclick="openModal('TRX456789123')">Xem chi tiết</button></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <!-- Transaction Cards (Mobile) -->
-                <div class="transaction-cards" id="transactionCards">
-                  <div class="transaction-card" data-id="TRX123456789">
-                    <p><strong>Mã giao dịch:</strong> TRX123456789</p>
-                    <p><strong>Tài liệu:</strong> Tài liệu Toán 12</p>
-                    <p><strong>Ngày:</strong> 23/05/2025 09:57 PM</p>
-                    <p><strong>Số tiền:</strong> 35.000đ</p>
-                    <p><strong>Trạng thái:</strong> <span class="status-success">Thành công</span></p>
-                    <button class="action-btn" onclick="openModal('TRX123456789')">Xem chi tiết</button>
-                  </div>
-                  <div class="transaction-card" data-id="TRX987654321">
-                    <p><strong>Mã giao dịch:</strong> TRX987654321</p>
-                    <p><strong>Tài liệu:</strong> Tài liệu Văn 11</p>
-                    <p><strong>Ngày:</strong> 22/05/2025 03:15 PM</p>
-                    <p><strong>Số tiền:</strong> 65.000đ</p>
-                    <p><strong>Trạng thái:</strong> <span class="status-pending">Đang xử lý</span></p>
-                    <button class="action-btn" onclick="openModal('TRX987654321')">Xem chi tiết</button>
-                  </div>
-                  <div class="transaction-card" data-id="TRX456789123">
-                    <p><strong>Mã giao dịch:</strong> TRX456789123</p>
-                    <p><strong>Tài liệu:</strong> Tài liệu Hóa 10</p>
-                    <p><strong>Ngày:</strong> 21/05/2025 10:30 AM</p>
-                    <p><strong>Số tiền:</strong> 20.000đ</p>
-                    <p><strong>Trạng thái:</strong> <span class="status-failed">Thất bại</span></p>
-                    <button class="action-btn" onclick="openModal('TRX456789123')">Xem chi tiết</button>
-                  </div>
-                </div>
+                <div id="transactionGroups"></div>
+                <button id="loadMoreBtn" class="load-more-btn" style="display: none;">Xem thêm</button>
               </div>
             </div>
           </div>
@@ -1156,27 +519,26 @@
     </div>
   </main>
 
-  <!-- Modal -->
   <div class="modal" id="transactionModal">
     <div class="modal-content">
       <h2>Chi tiết giao dịch</h2>
       <p><strong>Mã giao dịch:</strong> <span id="modalTransactionId"></span></p>
+      <p><strong>Loại giao dịch:</strong> <span id="modalType"></span></p>
       <p><strong>Tài liệu:</strong> <span id="modalDocument"></span></p>
       <p><strong>Ngày giao dịch:</strong> <span id="modalDate"></span></p>
       <p><strong>Số tiền:</strong> <span id="modalAmount"></span></p>
       <p><strong>Trạng thái:</strong> <span id="modalStatus"></span></p>
-      <p><strong>Phương thức thanh toán:</strong> <span id="modalMethod">Thẻ tín dụng (Visa)</span></p>
+      <p><strong>Hoàn tiền:</strong> <span id="modalRefund"></span></p>
+      <p><strong>Phương thức thanh toán:</strong> <span id="modalMethod"></span></p>
       <button class="close-btn" onclick="closeModal()">Đóng</button>
     </div>
   </div>
 
-  <!-- Notification -->
   <div class="notification" id="notification">
     <i class="fas fa-check-circle"></i>
     <span id="notificationMessage"></span>
   </div>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
@@ -1195,7 +557,6 @@
             <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
-        
         <div class="footer-links-section">
           <h3 class="footer-heading">Khám phá</h3>
           <ul class="footer-links">
@@ -1206,150 +567,314 @@
             <li><a href="#">Sự kiện & Tin tức</a></li>
           </ul>
         </div>
-        
         <div class="footer-links-section">
-          <h3 class="footer-heading">Thông tin</h3>
+          <h3 class="footer-heading">Tài khoản</h3>
           <ul class="footer-links">
-            <li><a href="#">Giới thiệu</a></li>
-            <li><a href="#">Chính sách bảo mật</a></li>
-            <li><a href="#">Điều khoản sử dụng</a></li>
-            <li><a href="#">Chương trình tác giả</a></li>
-            <li><a href="#">Hợp tác & Liên kết</a></li>
+            <li><a href="dashboard.html">Tổng quan</a></li>
+            <li><a href="profile.html">Thông tin cá nhân</a></li>
+            <li><a href="documents.html">Tài liệu của tôi</a></li>
+            <li><a href="transactions.html">Lịch sử giao dịch</a></li>
+            <li><a href="security.html">Cài đặt bảo mật</a></li>
           </ul>
         </div>
-        
         <div class="footer-links-section">
-          <h3 class="footer-heading">Liên hệ</h3>
-          <ul class="contact-info">
-            <li><i class="fas fa-map-marker-alt"></i> 123 Đường Cầu Giấy, Hà Nội</li>
-            <li><i class="fas fa-phone"></i> (024) 1234 5678</li>
-            <li><i class="fas fa-envelope"></i> contact@edushare.vn</li>
+          <h3 class="footer-heading">Hỗ trợ</h3>
+          <ul class="footer-links">
+            <li><a href="#">Trung tâm trợ giúp</a></li>
+            <li><a href="#">Câu hỏi thường gặp</a></li>
+            <li><a href="#">Liên hệ</a></li>
+            <li><a href="#">Chính sách</a></li>
+            <li><a href="#">Điều khoản sử dụng</a></li>
           </ul>
         </div>
       </div>
-      
       <div class="footer-bottom">
-        <div class="copyright">
-          &copy; 2023 EduShare. Tất cả quyền được bảo lưu.
-        </div>
+        <div class="copyright">© 2023 EduShare. Tất cả quyền được bảo lưu.</div>
         <div class="footer-bottom-links">
           <a href="#">Chính sách bảo mật</a>
-          <a href="#">Điều khoản sử dụng</a>
-          <a href="#">Liên hệ</a>
-          <a href="#">Trợ giúp</a>
+          <a href="#">Điều khoản dịch vụ</a>
+          <a href="#">Cookies</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"></script>
   <script src="../../js/main.js"></script>
   <script src="../../js/account.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      initAccountDashboard();
-
-      // Sample transaction data (could be fetched from an API)
       const transactions = [
-        {
-          id: 'TRX123456789',
-          document: 'Tài liệu Toán 12',
-          date: '23/05/2025 09:57 PM',
-          amount: '35.000đ',
-          status: 'Thành công',
-          statusClass: 'status-success',
-          method: 'Thẻ tín dụng (Visa)'
-        },
-        {
-          id: 'TRX987654321',
-          document: 'Tài liệu Văn 11',
-          date: '22/05/2025 03:15 PM',
-          amount: '65.000đ',
-          status: 'Đang xử lý',
-          statusClass: 'status-pending',
-          method: 'Chuyển khoản ngân hàng'
-        },
-        {
-          id: 'TRX456789123',
-          document: 'Tài liệu Hóa 10',
-          date: '21/05/2025 10:30 AM',
-          amount: '20.000đ',
-          status: 'Thất bại',
-          statusClass: 'status-failed',
-          method: 'Ví điện tử (MoMo)'
-        }
+        { id: 'TRX123456789', type: 'recharge', document: 'Nạp 100 xu', date: '2025-06-03 19:15:00', amount: 35000, status: 'success', statusClass: 'status-success', method: 'Thẻ tín dụng (Visa)', refund: 'Không' },
+        { id: 'TRX987654321', type: 'download', document: 'Tài liệu Văn 11', date: '2025-05-22 15:15:00', amount: 65000, status: 'pending', statusClass: 'status-pending', method: 'Chuyển khoản ngân hàng', refund: 'Không' },
+        { id: 'TRX456789123', type: 'download', document: 'Tài liệu Hóa 10', date: '2025-05-21 10:30:00', amount: 20000, status: 'failed', statusClass: 'status-failed', method: 'Ví điện tử (MoMo)', refund: 'Không' },
+        { id: 'TRX789123456', type: 'recharge', document: 'Nạp 500 xu', date: '2025-05-20 14:20:00', amount: 150000, status: 'success', statusClass: 'status-success', method: 'Thẻ tín dụng (Mastercard)', refund: 'Không' },
+        { id: 'TRX321654987', type: 'download', document: 'Tài liệu Toán 12', date: '2025-05-19 09:45:00', amount: 35000, status: 'success', statusClass: 'status-success', method: 'Ví điện tử (ZaloPay)', refund: 'Đã hoàn 50%' },
+        { id: 'TRX654987321', type: 'refund', document: 'Hoàn tiền Tài liệu Toán 12', date: '2025-05-18 16:10:00', amount: 17500, status: 'refunded', statusClass: 'status-refunded', method: 'Ví điện tử (ZaloPay)', refund: 'Đã hoàn 50%' },
+        { id: 'TRX147258369', type: 'recharge', document: 'Nạp 200 xu', date: '2025-05-17 11:00:00', amount: 65000, status: 'success', statusClass: 'status-success', method: 'Thẻ tín dụng (JCB)', refund: 'Không' },
+        { id: 'TRX258369147', type: 'download', document: 'Tài liệu Sử 12', date: '2025-04-15 08:30:00', amount: 45000, status: 'success', statusClass: 'status-success', method: 'Ví điện tử (MoMo)', refund: 'Không' },
+        { id: 'TRX369147258', type: 'recharge', document: 'Nạp 1000 xu', date: '2025-04-10 14:00:00', amount: 280000, status: 'success', statusClass: 'status-success', method: 'Thẻ tín dụng (Visa)', refund: 'Không' },
+        { id: 'TRX741852963', type: 'download', document: 'Tài liệu Địa 11', date: '2025-03-25 17:20:00', amount: 30000, status: 'failed', statusClass: 'status-failed', method: 'Chuyển khoản ngân hàng', refund: 'Không' },
+        { id: 'TRX852963741', type: 'recharge', document: 'Nạp 50 xu', date: '2025-03-15 09:00:00', amount: 20000, status: 'success', statusClass: 'status-success', method: 'Ví điện tử (VNPay)', refund: 'Không' },
+        { id: 'TRX963741852', type: 'download', document: 'Tài liệu Lý 10', date: '2025-02-28 13:45:00', amount: 40000, status: 'success', statusClass: 'status-success', method: 'Thẻ tín dụng (Mastercard)', refund: 'Không' },
+        { id: 'TRX159753486', type: 'recharge', document: 'Nạp 300 xu', date: '2025-02-10 10:30:00', amount: 90000, status: 'success', statusClass: 'status-success', method: 'Thẻ tín dụng (Visa)', refund: 'Không' },
+        { id: 'TRX753486159', type: 'download', document: 'Tài liệu Sinh 12', date: '2025-01-20 15:00:00', amount: 55000, status: 'success', statusClass: 'status-success', method: 'Ví điện tử (MoMo)', refund: 'Không' },
+        { id: 'TRX486159753', type: 'recharge', document: 'Nạp 200 xu', date: '2024-12-25 12:00:00', amount: 65000, status: 'success', statusClass: 'status-success', method: 'Thẻ tín dụng (JCB)', refund: 'Không' },
+        { id: 'TRX357951486', type: 'download', document: 'Tài liệu Anh 11', date: '2024-11-30 16:30:00', amount: 50000, status: 'pending', statusClass: 'status-pending', method: 'Chuyển khoản ngân hàng', refund: 'Không' },
+        { id: 'TRX951486357', type: 'recharge', document: 'Nạp 500 xu', date: '2024-11-15 09:15:00', amount: 150000, status: 'success', statusClass: 'status-success', method: 'Ví điện tử (ZaloPay)', refund: 'Không' },
+        { id: 'TRX246813579', type: 'download', document: 'Tài liệu Tin 10', date: '2024-10-20 14:45:00', amount: 35000, status: 'success', statusClass: 'status-success', method: 'Thẻ tín dụng (Visa)', refund: 'Đã hoàn 100%' },
+        { id: 'TRX813579246', type: 'refund', document: 'Hoàn tiền Tài liệu Tin 10', date: '2024-10-21 10:00:00', amount: 35000, status: 'refunded', statusClass: 'status-refunded', method: 'Thẻ tín dụng (Visa)', refund: 'Đã hoàn 100%' },
+        { id: 'TRX579246813', type: 'recharge', document: 'Nạp 100 xu', date: '2024-09-05 11:30:00', amount: 35000, status: 'success', statusClass: 'status-success', method: 'Ví điện tử (MoMo)', refund: 'Không' },
       ];
 
-      // Filter functionality
-      document.getElementById('filterBtn').addEventListener('click', function() {
-        const statusFilter = document.querySelector('select:nth-child(2)').value;
-        const dateFilter = document.querySelector('select:nth-child(3)').value;
+      let transactionChart;
+      let currentChartMode = 'day';
+      const transactionsPerPage = 5;
+      let currentPage = 1;
+      let filteredTransactions = transactions;
 
-        // Simple filter logic (can be expanded)
-        let filteredTransactions = transactions;
-        if (statusFilter !== 'all') {
-          filteredTransactions = transactions.filter(t => t.status.toLowerCase() === statusFilter);
-        }
-
-        // Update table and cards
-        updateTransactionList(filteredTransactions);
-        showNotification('Đã áp dụng bộ lọc thành công!', 'success');
-      });
-
-      // Export functionality
-      document.getElementById('exportBtn').addEventListener('click', function() {
-        // Simulate export (could be a real export to CSV/PDF)
-        showNotification('Báo cáo đã được xuất thành công!', 'success');
-      });
-
-      // Update transaction list
-      function updateTransactionList(transactions) {
-        const tableBody = document.getElementById('transactionTableBody');
-        const cardsContainer = document.getElementById('transactionCards');
-        tableBody.innerHTML = '';
-        cardsContainer.innerHTML = '';
-
-        transactions.forEach(transaction => {
-          // Table row
-          const row = `
-            <tr data-id="${transaction.id}">
-              <td>${transaction.id}</td>
-              <td>${transaction.document}</td>
-              <td>${transaction.date}</td>
-              <td>${transaction.amount}</td>
-              <td class="${transaction.statusClass}">${transaction.status}</td>
-              <td><button class="action-btn" onclick="openModal('${transaction.id}')">Xem chi tiết</button></td>
-            </tr>
-          `;
-          tableBody.insertAdjacentHTML('beforeend', row);
-
-          // Card
-          const card = `
-            <div class="transaction-card" data-id="${transaction.id}">
-              <p><strong>Mã giao dịch:</strong> ${transaction.id}</p>
-              <p><strong>Tài liệu:</strong> ${transaction.document}</p>
-              <p><strong>Ngày:</strong> ${transaction.date}</p>
-              <p><strong>Số tiền:</strong> ${transaction.amount}</p>
-              <p><strong>Trạng thái:</strong> <span class="${transaction.statusClass}">${transaction.status}</span></p>
-              <button class="action-btn" onclick="openModal('${transaction.id}')">Xem chi tiết</button>
-            </div>
-          `;
-          cardsContainer.insertAdjacentHTML('beforeend', card);
-        });
+      // Hàm chuẩn hóa chuỗi để tìm kiếm
+      function normalizeString(str) {
+        if (!str) return '';
+        return str
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/\s+/g, ' ')
+          .trim();
       }
 
-      // Modal functionality
+      // Hàm tổng hợp dữ liệu biểu đồ
+      function aggregateChartData(transactions, mode) {
+        const grouped = {};
+        transactions.forEach(t => {
+          if (t.type === 'refund') return;
+          const date = new Date(t.date);
+          let key;
+          if (mode === 'day') {
+            key = date.toISOString().split('T')[0];
+          } else if (mode === 'week') {
+            const weekStart = new Date(date);
+            weekStart.setDate(date.getDate() - date.getDay() + 1);
+            key = `Tuần ${Math.ceil(date.getDate() / 7)}/${date.getMonth() + 1}`;
+          } else if (mode === 'month') {
+            key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+          }
+          if (!grouped[key]) grouped[key] = 0;
+          grouped[key] += t.amount;
+        });
+        const labels = Object.keys(grouped).sort();
+        return { labels, amounts: labels.map(key => grouped[key]) };
+      }
+
+      // Khởi tạo biểu đồ ApexCharts
+      function initChart(mode, transactions) {
+        const chartData = aggregateChartData(transactions, mode);
+        const chartOptions = {
+          series: [{
+            name: 'Số tiền tiêu (VNĐ)',
+            data: chartData.amounts
+          }],
+          chart: {
+            height: 300,
+            type: 'area',
+            fontFamily: 'Nunito, sans-serif',
+            toolbar: { show: false }
+          },
+          colors: ['#4361ee'],
+          dataLabels: { enabled: false },
+          stroke: { curve: 'smooth', width: 2 },
+          fill: {
+            type: 'gradient',
+            gradient: {
+              shadeIntensity: 1,
+              opacityFrom: 0.7,
+              opacityTo: 0.3,
+              stops: [0, 90, 100]
+            }
+          },
+          grid: {
+            xaxis: { lines: { show: true } },
+            yaxis: { lines: { show: true } },
+            padding: { top: 0, right: 0, bottom: 0, left: 10 }
+          },
+          xaxis: {
+            categories: chartData.labels,
+            labels: {
+              style: {
+                colors: '#6b7280',
+                fontSize: '12px',
+                fontFamily: 'Nunito, sans-serif'
+              }
+            }
+          },
+          yaxis: {
+            labels: {
+              style: {
+                colors: '#6b7280',
+                fontSize: '12px',
+                fontFamily: 'Nunito, sans-serif'
+              },
+              formatter: function(value) {
+                return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+              }
+            }
+          },
+          tooltip: {
+            x: { format: mode === 'day' ? 'dd/MM/yyyy' : mode === 'week' ? 'Tuần t/M' : 'MM/yyyy' },
+            y: {
+              formatter: function(value) {
+                return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+              }
+            }
+          },
+          legend: {
+            position: 'top',
+            horizontalAlign: 'right',
+            offsetY: -15,
+            markers: { width: 12, height: 12, radius: 12 },
+            itemMargin: { horizontal: 10 }
+          }
+        };
+
+        if (transactionChart) transactionChart.destroy();
+        transactionChart = new ApexCharts(document.getElementById('transactionChart'), chartOptions);
+        transactionChart.render();
+      }
+
+      // Xử lý bộ chọn thời gian biểu đồ
+      document.getElementById('chartTimeRange').addEventListener('change', function() {
+        currentChartMode = this.value;
+        document.getElementById('chartTitle').textContent = `Tiêu tiền theo ${this.value === 'day' ? 'ngày' : this.value === 'week' ? 'tuần' : 'tháng'}`;
+        initChart(this.value, filteredTransactions);
+      });
+
+      initChart('day', transactions);
+
+      function renderTransactions(transactionsToRender, append = false) {
+        const groupsContainer = document.getElementById('transactionGroups');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        
+        if (!append) {
+          groupsContainer.innerHTML = '';
+          currentPage = 1;
+        }
+
+        if (!transactionsToRender.length) {
+          groupsContainer.innerHTML = '<p style="text-align: center; color: var(--gray-600);">Không có giao dịch nào phù hợp.</p>';
+          loadMoreBtn.style.display = 'none';
+          return;
+        }
+
+        const startIndex = (currentPage - 1) * transactionsPerPage;
+        const endIndex = startIndex + transactionsPerPage;
+        const transactionsSlice = transactionsToRender.slice(0, endIndex);
+
+        const groupedByDate = {};
+        transactionsSlice.forEach(t => {
+          const date = t.date.split(' ')[0];
+          if (!groupedByDate[date]) groupedByDate[date] = [];
+          groupedByDate[date].push(t);
+        });
+
+        const sortedDates = Object.keys(groupedByDate).sort((a, b) => new Date(b) - new Date(a));
+        sortedDates.forEach(date => {
+          const groupTransactions = groupedByDate[date];
+          const groupHTML = `
+            <div class="transaction-group">
+              <h3>${formatDate(date)}</h3>
+              <table class="transaction-table">
+                <thead><tr><th>Mã giao dịch</th><th>Loại giao dịch</th><th>Tài liệu</th><th>Ngày giao dịch</th><th>Số tiền</th><th>Trạng thái</th><th>Hoàn tiền</th><th>Hành động</th></tr></thead>
+                <tbody>${groupTransactions.map(t => `
+                  <tr data-id="${t.id}">
+                    <td>${t.id}</td>
+                    <td>${t.type === 'recharge' ? 'Nạp xu' : t.type === 'download' ? 'Tải tài liệu' : 'Hoàn tiền'}</td>
+                    <td>${t.document}</td>
+                    <td>${formatDateTime(t.date)}</td>
+                    <td>${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(t.amount)}</td>
+                    <td class="${t.statusClass}">${t.status === 'success' ? 'Thành công' : t.status === 'pending' ? 'Đang xử lý' : t.status === 'failed' ? 'Thất bại' : 'Hoàn tiền'}</td>
+                    <td>${t.refund}</td>
+                    <td class="action-cell">
+                      <button class="action-btn" onclick="openModal('${t.id}')"><i class="fas fa-eye"></i> Xem chi tiết</button>
+                      ${canRefund(t) ? `<button class="refund-btn" onclick="confirmRefund('${t.id}')"><i class="fas fa-undo"></i> Hoàn tiền</button>` : ''}
+                    </td>
+                  </tr>`).join('')}</tbody>
+              </table>
+              <div class="transaction-cards">${groupTransactions.map(t => `
+                <div class="transaction-card" data-id="${t.id}">
+                  <p><strong>Mã giao dịch:</strong> ${t.id}</p>
+                  <p><strong>Loại giao dịch:</strong> ${t.type === 'recharge' ? 'Nạp xu' : t.type === 'download' ? 'Tải tài liệu' : 'Hoàn tiền'}</p>
+                  <p><strong>Tài liệu:</strong> ${t.document}</p>
+                  <p><strong>Ngày:</strong> ${formatDateTime(t.date)}</p>
+                  <p><strong>Số tiền:</strong> ${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(t.amount)}</p>
+                  <p><strong>Trạng thái:</strong> <span class="${t.statusClass}">${t.status === 'success' ? 'Thành công' : t.status === 'pending' ? 'Đang xử lý' : t.status === 'failed' ? 'Thất bại' : 'Hoàn tiền'}</span></p>
+                  <p><strong>Hoàn tiền:</strong> ${t.refund}</p>
+                  <button class="action-btn" onclick="openModal('${t.id}')"><i class="fas fa-eye"></i> Xem chi tiết</button>
+                  ${canRefund(t) ? `<button class="refund-btn" onclick="confirmRefund('${t.id}')"><i class="fas fa-undo"></i> Hoàn tiền</button>` : ''}
+                </div>`).join('')}</div>
+            </div>`;
+          groupsContainer.insertAdjacentHTML('beforeend', groupHTML);
+        });
+
+        loadMoreBtn.style.display = endIndex < transactionsToRender.length ? 'block' : 'none';
+      }
+
+      function canRefund(transaction) {
+        return (transaction.status === 'success' || transaction.status === 'pending') && transaction.refund === 'Không';
+      }
+
+      window.confirmRefund = function(transactionId) {
+        console.log('Confirm refund for transaction:', transactionId);
+        const transaction = transactions.find(t => t.id === transactionId);
+        if (transaction) {
+          const confirmMessage = `Bạn có chắc muốn hoàn tiền cho giao dịch ${transaction.id} (${transaction.document}) với số tiền ${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(transaction.amount)}?`;
+          if (confirm(confirmMessage)) {
+            refundTransaction(transactionId);
+          }
+        } else {
+          showNotification('Không tìm thấy giao dịch!', 'error');
+        }
+      };
+
+      function refundTransaction(transactionId) {
+        console.log('Refunding transaction:', transactionId);
+        const transaction = transactions.find(t => t.id === transactionId);
+        if (transaction) {
+          transaction.refund = 'Đã hoàn 80%';
+          transaction.status = 'refunded';
+          transaction.statusClass = 'status-refunded';
+          filteredTransactions = transactions; 
+          renderTransactions(filteredTransactions);
+          initChart(currentChartMode, filteredTransactions);
+          showNotification(`Giao dịch ${transactionId} đã được hoàn tiền thành công!`, 'success');
+        } else {
+          showNotification('Lỗi khi hoàn tiền giao dịch!', 'error');
+        }
+      }
+
+      function formatDate(dateStr) {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('vi-VN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      }
+
+      function formatDateTime(dateStr) {
+        const date = new Date(dateStr);
+        return date.toLocaleString('vi-VN', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+      }
+
       window.openModal = function(transactionId) {
         const transaction = transactions.find(t => t.id === transactionId);
         if (transaction) {
           document.getElementById('modalTransactionId').textContent = transaction.id;
+          document.getElementById('modalType').textContent = transaction.type === 'recharge' ? 'Nạp xu' : transaction.type === 'download' ? 'Tải tài liệu' : 'Hoàn tiền';
           document.getElementById('modalDocument').textContent = transaction.document;
-          document.getElementById('modalDate').textContent = transaction.date;
-          document.getElementById('modalAmount').textContent = transaction.amount;
-          document.getElementById('modalStatus').innerHTML = `<span class="${transaction.statusClass}">${transaction.status}</span>`;
+          document.getElementById('modalDate').textContent = formatDateTime(transaction.date);
+          document.getElementById('modalAmount').textContent = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(transaction.amount);
+          document.getElementById('modalStatus').innerHTML = `<span class="${transaction.statusClass}">${transaction.status === 'success' ? 'Thành công' : transaction.status === 'pending' ? 'Đang xử lý' : transaction.status === 'failed' ? 'Thất bại' : 'Hoàn tiền'}</span>`;
+          document.getElementById('modalRefund').textContent = transaction.refund;
           document.getElementById('modalMethod').textContent = transaction.method;
           document.getElementById('transactionModal').style.display = 'flex';
-          showNotification(`Đã mở chi tiết giao dịch ${transactionId}`, 'success');
+          showNotification(`Đang hiển thị chi tiết giao dịch ${transaction.id}`, 'success');
         } else {
           showNotification('Không tìm thấy giao dịch!', 'error');
         }
@@ -1359,20 +884,117 @@
         document.getElementById('transactionModal').style.display = 'none';
       };
 
-      // Notification functionality
       function showNotification(message, type) {
         const notification = document.getElementById('notification');
         const messageElement = document.getElementById('notificationMessage');
         messageElement.textContent = message;
         notification.classList.remove('error');
-        if (type === 'error') {
-          notification.classList.add('error');
-        }
+        if (type === 'error') notification.classList.add('error');
         notification.style.display = 'flex';
-        setTimeout(() => {
-          notification.style.display = 'none';
-        }, 3000);
+        setTimeout(() => { notification.style.display = 'none'; }, 3000);
       }
+
+      document.getElementById('filterBtn').addEventListener('click', function() {
+        const searchQuery = normalizeString(document.getElementById('searchInput').value);
+        const statusFilter = document.getElementById('statusFilter').value;
+        const typeFilter = document.getElementById('typeFilter').value;
+        const dateFrom = document.getElementById('dateFrom').value;
+        const dateTo = document.getElementById('dateTo').value;
+        const amountFilter = document.getElementById('amountFilter').value;
+
+        console.log('Search query:', searchQuery); // Debug tìm kiếm
+
+        if (dateFrom && dateTo && new Date(dateFrom) > new Date(dateTo)) {
+          showNotification('Ngày bắt đầu không được lớn hơn ngày kết thúc!', 'error');
+          return;
+        }
+
+        filteredTransactions = transactions.filter(t => {
+          const matchesSearch = !searchQuery ||
+            normalizeString(t.id).includes(searchQuery) ||
+            normalizeString(t.document).includes(searchQuery);
+          const matchesStatus = statusFilter === 'all' || t.status === statusFilter;
+          const matchesType = typeFilter === 'all' || t.type === typeFilter;
+          const transactionDate = new Date(t.date);
+          transactionDate.setHours(0, 0, 0, 0);
+          const fromDate = dateFrom ? new Date(dateFrom) : new Date('1900-01-01');
+          const toDate = dateTo ? new Date(dateTo) : new Date('2025-06-05');
+          fromDate.setHours(0, 0, 0, 0);
+          toDate.setHours(0, 0, 0, 0);
+          const matchesDate = transactionDate >= fromDate && transactionDate <= toDate;
+          const matchesAmount = amountFilter === 'all' ||
+            (amountFilter === '0-50000' && t.amount >= 0 && t.amount <= 50000) ||
+            (amountFilter === '50001-100000' && t.amount > 50000 && t.amount <= 100000) ||
+            (amountFilter === '100001-200000' && t.amount > 100000 && t.amount <= 200000) ||
+            (amountFilter === '200001+' && t.amount > 200000);
+
+          console.log(`Transaction ${t.id}:`, { matchesSearch, matchesStatus, matchesType, matchesDate, matchesAmount }); // Debug lọc
+
+          return matchesSearch && matchesStatus && matchesType && matchesDate && matchesAmount;
+        });
+
+        renderTransactions(filteredTransactions);
+        initChart(currentChartMode, filteredTransactions);
+
+        const filterDetails = [];
+        if (searchQuery) filterDetails.push(`Tìm kiếm: "${document.getElementById('searchInput').value}"`);
+        if (statusFilter !== 'all') filterDetails.push(`Trạng thái: ${statusFilter === 'success' ? 'Thành công' : statusFilter === 'pending' ? 'Đang xử lý' : statusFilter === 'failed' ? 'Thất bại' : 'Hoàn tiền'}`);
+        if (typeFilter !== 'all') filterDetails.push(`Loại: ${typeFilter === 'recharge' ? 'Nạp xu' : typeFilter === 'download' ? 'Tải tài liệu' : 'Hoàn tiền'}`);
+        if (dateFrom) filterDetails.push(`Từ ngày: ${dateFrom}`);
+        if (dateTo) filterDetails.push(`Đến ngày: ${dateTo}`);
+        if (amountFilter !== 'all') filterDetails.push(`Số tiền: ${amountFilter}`);
+        
+        if (filteredTransactions.length === 0) {
+          showNotification(`Không tìm thấy giao dịch nào với bộ lọc: ${filterDetails.join(', ')}`, 'error');
+        } else {
+          const message = filterDetails.length > 0 ? `Đã lọc với: ${filterDetails.join(', ')}` : 'Hiển thị tất cả giao dịch';
+          showNotification(message, 'success');
+        }
+      });
+
+      document.getElementById('loadMoreBtn').addEventListener('click', function() {
+        currentPage++;
+        renderTransactions(filteredTransactions, true);
+      });
+
+      document.getElementById('exportBtn').addEventListener('click', function() {
+        const visibleTransactions = [];
+        document.querySelectorAll('#transactionGroups .transaction-table tbody tr').forEach(row => {
+          const transaction = transactions.find(t => t.id === row.dataset.id);
+          if (transaction) visibleTransactions.push(transaction);
+        });
+
+        if (!visibleTransactions.length) {
+          showNotification('Không có giao dịch để xuất!', 'error');
+          return;
+        }
+
+        const csvContent = [
+          ['Mã giao dịch', 'Loại giao dịch', 'Tài liệu', 'Ngày giao dịch', 'Số tiền', 'Trạng thái', 'Hoàn tiền', 'Phương thức thanh toán'],
+          ...visibleTransactions.map(t => [
+            t.id,
+            t.type === 'recharge' ? 'Nạp xu' : t.type === 'download' ? 'Tải tài liệu' : 'Hoàn tiền',
+            t.document,
+            t.date,
+            t.amount,
+            t.status === 'success' ? 'Thành công' : t.status === 'pending' ? 'Đang xử lý' : t.status === 'failed' ? 'Thất bại' : 'Hoàn tiền',
+            t.refund,
+            t.method
+          ])
+        ].map(row => row.join(',')).join('\n');
+
+        const bom = '\uFEFF';
+        const blob = new Blob([bom + csvContent], { type: 'text/csv;charset=utf-8' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'transactions.csv';
+        a.click();
+        window.URL.revokeObjectURL(url);
+        showNotification('Đã xuất báo cáo thành công dưới dạng CSV!', 'success');
+      });
+
+      renderTransactions(transactions);
     });
   </script>
 </body>
