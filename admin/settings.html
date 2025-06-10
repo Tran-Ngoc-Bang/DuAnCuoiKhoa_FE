@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/toast.css">
+    <link rel="stylesheet" href="css/setting.css">
+    <script src="js/admin.js"></script>
+
 </head>
+
 <body class="admin-body">
     <!-- Admin Header -->
     <header class="admin-header">
@@ -21,25 +29,26 @@
                     <div class="logo-text">EduShare</div>
                 </a>
             </div>
-            
+
             <div class="admin-header-actions">
                 <div class="admin-search">
                     <input type="text" placeholder="Tìm kiếm...">
                     <button><i class="fas fa-search"></i></button>
                 </div>
-                
+
                 <div class="dark-mode-toggle" id="darkModeToggle"></div>
-                
+
                 <div class="admin-notifications">
                     <button class="notification-btn">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge">5</span>
                     </button>
                 </div>
-                
+
                 <div class="admin-profile">
                     <div class="admin-avatar">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Admin">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="Admin">
                     </div>
                     <div class="admin-info">
                         <span class="admin-name">Nguyễn Văn A</span>
@@ -52,7 +61,7 @@
             </div>
         </div>
     </header>
-    
+
     <!-- Admin Container -->
     <div class="admin-container">
         <!-- Sidebar -->
@@ -107,6 +116,34 @@
                             <span>Thống kê</span>
                         </a>
                     </li>
+                    <!-- Revenue Management Dropdown -->
+                    <li class="admin-menu-item has-submenu">
+                        <a href="javascript:void(0)">
+                            <i class="fas fa-coins"></i>
+                            <span>Quản lý doanh thu</span>
+                            <i class="fas fa-chevron-down submenu-icon"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="coin-packages.html">
+                                    <i class="fas fa-box"></i>
+                                    <span>Gói xu</span>
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="transactions.html">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>Giao dịch</span>
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="withdrawals.html">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <span>Yêu cầu rút tiền</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="admin-menu-item active">
                         <a href="settings.html">
                             <i class="fas fa-cog"></i>
@@ -122,7 +159,7 @@
                 </ul>
             </nav>
         </aside>
-        
+
         <!-- Main Content -->
         <main class="admin-content">
             <div class="admin-content-header">
@@ -133,7 +170,7 @@
                     <span>Cài đặt</span>
                 </div>
             </div>
-            
+
             <!-- Settings Navigation -->
             <div class="settings-nav">
                 <div class="settings-nav-item active" data-section="general">
@@ -169,7 +206,7 @@
                     <span>Nâng cao</span>
                 </div>
             </div>
-            
+
             <!-- Settings Content -->
             <div class="settings-content">
                 <!-- General Settings -->
@@ -178,7 +215,7 @@
                         <h2><i class="fas fa-cog"></i> Cài đặt chung</h2>
                         <p>Cấu hình cơ bản cho hệ thống EduShare</p>
                     </div>
-                    
+
                     <div class="settings-cards">
                         <div class="settings-card">
                             <div class="card-header">
@@ -192,7 +229,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Mô tả website</label>
-                                    <textarea class="form-input form-textarea" rows="3">Nền tảng chia sẻ tài liệu giáo dục hàng đầu Việt Nam, cung cấp hàng triệu tài liệu chất lượng cao cho học sinh, sinh viên và giảng viên.</textarea>
+                                    <textarea class="form-input form-textarea"
+                                        rows="3">Nền tảng chia sẻ tài liệu giáo dục hàng đầu Việt Nam, cung cấp hàng triệu tài liệu chất lượng cao cho học sinh, sinh viên và giảng viên.</textarea>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group">
@@ -206,11 +244,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Địa chỉ</label>
-                                    <input type="text" class="form-input" value="123 Đường ABC, Quận 1, TP. Hồ Chí Minh">
+                                    <input type="text" class="form-input"
+                                        value="123 Đường ABC, Quận 1, TP. Hồ Chí Minh">
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="settings-card">
                             <div class="card-header">
                                 <h3>Cấu hình hiển thị</h3>
@@ -271,14 +310,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- User Settings -->
                 <div class="settings-section" id="users">
                     <div class="section-header">
                         <h2><i class="fas fa-users"></i> Cài đặt người dùng</h2>
                         <p>Quản lý quyền hạn và hành vi của người dùng</p>
                     </div>
-                    
+
                     <div class="settings-cards">
                         <div class="settings-card">
                             <div class="card-header">
@@ -326,7 +365,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="settings-card">
                             <div class="card-header">
                                 <h3>Quyền hạn mặc định</h3>
@@ -382,14 +421,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Content Settings -->
                 <div class="settings-section" id="content">
                     <div class="section-header">
                         <h2><i class="fas fa-file-alt"></i> Cài đặt nội dung</h2>
                         <p>Quản lý tài liệu và nội dung trên hệ thống</p>
                     </div>
-                    
+
                     <div class="settings-cards">
                         <div class="settings-card">
                             <div class="card-header">
@@ -457,7 +496,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="settings-card">
                             <div class="card-header">
                                 <h3>Kiểm duyệt nội dung</h3>
@@ -499,14 +538,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Notification Settings -->
                 <div class="settings-section" id="notifications">
                     <div class="section-header">
                         <h2><i class="fas fa-bell"></i> Cài đặt thông báo</h2>
                         <p>Quản lý các loại thông báo và cách gửi</p>
                     </div>
-                    
+
                     <div class="settings-cards">
                         <div class="settings-card">
                             <div class="card-header">
@@ -559,7 +598,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="settings-card">
                             <div class="card-header">
                                 <h3>Push notifications</h3>
@@ -595,14 +634,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Security Settings -->
                 <div class="settings-section" id="security">
                     <div class="section-header">
                         <h2><i class="fas fa-shield-alt"></i> Cài đặt bảo mật</h2>
                         <p>Tăng cường bảo mật cho hệ thống</p>
                     </div>
-                    
+
                     <div class="settings-cards">
                         <div class="settings-card">
                             <div class="card-header">
@@ -661,7 +700,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="settings-card">
                             <div class="card-header">
                                 <h3>Whitelist & Blacklist</h3>
@@ -676,20 +715,21 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">IP Blacklist (mỗi IP một dòng)</label>
-                                    <textarea class="form-input form-textarea" rows="4" placeholder="Nhập IP cần chặn..."></textarea>
+                                    <textarea class="form-input form-textarea" rows="4"
+                                        placeholder="Nhập IP cần chặn..."></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Integration Settings -->
                 <div class="settings-section" id="integrations">
                     <div class="section-header">
                         <h2><i class="fas fa-plug"></i> Tích hợp bên thứ 3</h2>
                         <p>Kết nối với các dịch vụ và API bên ngoài</p>
                     </div>
-                    
+
                     <div class="settings-cards">
                         <div class="settings-card">
                             <div class="card-header">
@@ -750,7 +790,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="settings-card">
                             <div class="card-header">
                                 <h3>Analytics & Tracking</h3>
@@ -785,14 +825,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Backup Settings -->
                 <div class="settings-section" id="backup">
                     <div class="section-header">
                         <h2><i class="fas fa-database"></i> Sao lưu và phục hồi</h2>
                         <p>Quản lý việc sao lưu dữ liệu hệ thống</p>
                     </div>
-                    
+
                     <div class="settings-cards">
                         <div class="settings-card">
                             <div class="card-header">
@@ -847,7 +887,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="settings-card">
                             <div class="card-header">
                                 <h3>Sao lưu thủ công</h3>
@@ -883,14 +923,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Advanced Settings -->
                 <div class="settings-section" id="advanced">
                     <div class="section-header">
                         <h2><i class="fas fa-tools"></i> Cài đặt nâng cao</h2>
                         <p>Các tùy chọn nâng cao cho hệ thống</p>
                     </div>
-                    
+
                     <div class="settings-cards">
                         <div class="settings-card">
                             <div class="card-header">
@@ -933,7 +973,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="settings-card">
                             <div class="card-header">
                                 <h3>Maintenance Mode</h3>
@@ -951,7 +991,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Thông báo bảo trì</label>
-                                    <textarea class="form-input form-textarea" rows="3">Hệ thống đang trong quá trình bảo trì. Chúng tôi sẽ quay lại sớm nhất có thể!</textarea>
+                                    <textarea class="form-input form-textarea"
+                                        rows="3">Hệ thống đang trong quá trình bảo trì. Chúng tôi sẽ quay lại sớm nhất có thể!</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Thời gian dự kiến hoàn thành</label>
@@ -962,7 +1003,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Save Button -->
             <div class="settings-actions">
                 <button class="save-settings-btn" onclick="saveAllSettings()">
@@ -980,635 +1021,7 @@
 
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
-
-    <style>
-        /* Cải thiện tiêu đề và breadcrumbs */
-        .admin-page-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #4361ee 0%, #3f37c9 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-            letter-spacing: -0.5px;
-            text-shadow: 0 2px 5px rgba(67, 97, 238, 0.1);
-        }
-        
-        .admin-breadcrumbs {
-            display: flex;
-            align-items: center;
-            font-size: 0.85rem;
-            color: #6b7280;
-        }
-        
-        .admin-breadcrumbs a {
-            color: #4361ee;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-        
-        .admin-breadcrumbs a:hover {
-            color: #3f37c9;
-            text-decoration: underline;
-        }
-        
-        .admin-breadcrumbs span {
-            margin: 0 0.5rem;
-            color: #9ca3af;
-        }
-        
-        .admin-breadcrumbs span:last-child {
-            color: #4b5563;
-        }
-
-        /* Settings Navigation */
-        .settings-nav {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
-            overflow: hidden;
-            padding: 1rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-md);
-            display: flex;
-            gap: 0.5rem;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-
-        .settings-nav::-webkit-scrollbar {
-            display: none;
-        }
-
-        .settings-nav-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius-lg);
-            cursor: pointer;
-            transition: var(--transition-normal);
-            white-space: nowrap;
-            color: var(--gray-600);
-            font-weight: 500;
-        }
-
-        .settings-nav-item:hover {
-            background: var(--gray-100);
-            color: var(--gray-800);
-        }
-
-        .settings-nav-item.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .settings-nav-item i {
-            font-size: 1.125rem;
-        }
-
-        /* Settings Content */
-        .settings-content {
-            position: relative;
-        }
-
-        .settings-section {
-            display: none;
-        }
-
-        .settings-section.active {
-            display: block;
-        }
-
-        .section-header {
-            margin-bottom: 2rem;
-        }
-
-        .section-header h2 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--gray-800);
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .section-header p {
-            color: var(--gray-600);
-            font-size: 1.125rem;
-            margin: 0;
-        }
-
-        /* Settings Cards */
-        .settings-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .settings-card {
-            background: var(--admin-card-bg);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-            transition: var(--transition-normal);
-        }
-
-        .settings-card:hover {
-            box-shadow: var(--shadow-lg);
-        }
-
-        .card-header {
-            padding: 2rem;
-            border-bottom: 1px solid var(--gray-100);
-        }
-
-        .card-header h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--gray-800);
-            margin-bottom: 0.5rem;
-        }
-
-        .card-header p {
-            color: var(--gray-600);
-            margin: 0;
-        }
-
-        .card-content {
-            padding: 2rem;
-        }
-
-        /* Form Elements */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--gray-800);
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--gray-200);
-            border-radius: var(--radius-lg);
-            background: var(--gray-50);
-            color: var(--gray-800);
-            transition: var(--transition-normal);
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
-            background: var(--white);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        /* Toggle Switch */
-        .toggle-group {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .toggle-item {
-            display: flex;
-            align-items: center;
-        }
-
-        .toggle-label {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            cursor: pointer;
-            font-weight: 500;
-            color: var(--gray-700);
-        }
-
-        .toggle-input {
-            display: none;
-        }
-
-        .toggle-slider {
-            position: relative;
-            width: 50px;
-            height: 24px;
-            background: var(--gray-300);
-            border-radius: 24px;
-            transition: var(--transition-normal);
-        }
-
-        .toggle-slider::before {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            transition: var(--transition-normal);
-        }
-
-        .toggle-input:checked + .toggle-slider {
-            background: var(--primary);
-        }
-
-        .toggle-input:checked + .toggle-slider::before {
-            transform: translateX(26px);
-        }
-
-        /* Checkbox Group */
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-            cursor: pointer;
-            font-weight: 500;
-            color: var(--gray-700);
-        }
-
-        .checkbox-label input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary);
-        }
-
-        .file-types {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-
-        /* Permission Groups */
-        .permission-group {
-            margin-bottom: 2rem;
-        }
-
-        .permission-group h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--gray-800);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--gray-200);
-        }
-
-        /* Integration Items */
-        .integration-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.5rem;
-            background: var(--gray-50);
-            border-radius: var(--radius-lg);
-            margin-bottom: 1rem;
-            transition: var(--transition-normal);
-        }
-
-        .integration-item:hover {
-            background: var(--gray-100);
-        }
-
-        .integration-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .integration-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .integration-icon.google {
-            background: #4285f4;
-        }
-
-        .integration-icon.facebook {
-            background: #1877f2;
-        }
-
-        .integration-icon.github {
-            background: #333;
-        }
-
-        .integration-details h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--gray-800);
-            margin-bottom: 0.25rem;
-        }
-
-        .integration-details p {
-            font-size: 0.875rem;
-            color: var(--gray-600);
-            margin: 0;
-        }
-
-        /* Backup Info */
-        .backup-info {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .backup-stat {
-            text-align: center;
-            padding: 1rem;
-            background: var(--gray-50);
-            border-radius: var(--radius-lg);
-        }
-
-        .backup-stat .stat-label {
-            font-size: 0.875rem;
-            color: var(--gray-600);
-            margin-bottom: 0.5rem;
-        }
-
-        .backup-stat .stat-value {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--gray-800);
-        }
-
-        .backup-actions {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .backup-btn {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border: none;
-            border-radius: var(--radius-lg);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition-normal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            min-width: 150px;
-        }
-
-        .backup-btn.primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .backup-btn.primary:hover {
-            background: var(--primary-dark);
-        }
-
-        .backup-btn.secondary {
-            background: var(--gray-200);
-            color: var(--gray-700);
-        }
-
-        .backup-btn.secondary:hover {
-            background: var(--gray-300);
-        }
-
-        .backup-btn.danger {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--error);
-            border: 1px solid var(--error);
-        }
-
-        .backup-btn.danger:hover {
-            background: rgba(239, 68, 68, 0.2);
-        }
-
-        /* Settings Actions */
-        .settings-actions {
-            background: var(--admin-card-bg);
-            border-radius: var(--radius-xl);
-            padding: 2rem;
-            box-shadow: var(--shadow-md);
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .save-settings-btn,
-        .reset-settings-btn,
-        .export-settings-btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: var(--radius-lg);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition-normal);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            min-width: 200px;
-            justify-content: center;
-        }
-
-        .save-settings-btn {
-            background: var(--primary);
-            color: white;
-        }
-
-        .save-settings-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .reset-settings-btn {
-            background: var(--gray-200);
-            color: var(--gray-700);
-        }
-
-        .reset-settings-btn:hover {
-            background: var(--gray-300);
-        }
-
-        .export-settings-btn {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-            border: 1px solid var(--success);
-        }
-
-        .export-settings-btn:hover {
-            background: rgba(16, 185, 129, 0.2);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .settings-cards {
-                grid-template-columns: 1fr;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .file-types {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .backup-info {
-                grid-template-columns: 1fr;
-            }
-            
-            .backup-actions {
-                flex-direction: column;
-            }
-            
-            .settings-actions {
-                flex-direction: column;
-            }
-            
-            .card-header,
-            .card-content {
-                padding: 1.5rem;
-            }
-        }
-    </style>
-
-    <script>
-        // Initialize the application
-        document.addEventListener('DOMContentLoaded', function() {
-            setupEventListeners();
-        });
-
-        function setupEventListeners() {
-            // Settings navigation
-            document.querySelectorAll('.settings-nav-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    const section = this.dataset.section;
-                    switchSection(section);
-                });
-            });
-        }
-
-        function switchSection(sectionName) {
-            // Update navigation
-            document.querySelectorAll('.settings-nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            document.querySelector(`[data-section="${sectionName}"]`).classList.add('active');
-
-            // Update content
-            document.querySelectorAll('.settings-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionName).classList.add('active');
-        }
-
-        function saveAllSettings() {
-            showToast('Đang lưu cài đặt...', 'info');
-            
-            // Simulate save process
-            setTimeout(() => {
-                showToast('Đã lưu tất cả cài đặt thành công!', 'success');
-            }, 1500);
-        }
-
-        function resetSettings() {
-            if (confirm('Bạn có chắc chắn muốn khôi phục tất cả cài đặt về mặc định? Thao tác này không thể hoàn tác.')) {
-                showToast('Đang khôi phục cài đặt mặc định...', 'info');
-                
-                setTimeout(() => {
-                    showToast('Đã khôi phục cài đặt mặc định thành công!', 'success');
-                    // Simulate page reload
-                    setTimeout(() => {
-                        location.reload();
-                    }, 1000);
-                }, 1500);
-            }
-        }
-
-        function exportSettings() {
-            showToast('Đang xuất file cấu hình...', 'info');
-            
-            // Simulate export process
-            setTimeout(() => {
-                showToast('Đã xuất file cấu hình thành công!', 'success');
-            }, 1500);
-        }
-
-        function createBackup() {
-            showToast('Đang tạo backup...', 'info');
-            
-            // Simulate backup process
-            setTimeout(() => {
-                showToast('Đã tạo backup thành công!', 'success');
-            }, 3000);
-        }
-
-        function viewBackups() {
-            showToast('Chức năng xem danh sách backup đang được phát triển', 'info');
-        }
-
-        function restoreBackup() {
-            if (confirm('Bạn có chắc chắn muốn phục hồi từ backup? Dữ liệu hiện tại sẽ bị ghi đè.')) {
-                showToast('Chức năng phục hồi backup đang được phát triển', 'info');
-            }
-        }
-
-        function showToast(message, type = 'info') {
-            const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            
-            const iconMap = {
-                'success': 'fas fa-check-circle',
-                'error': 'fas fa-exclamation-circle',
-                'warning': 'fas fa-exclamation-triangle',
-                'info': 'fas fa-info-circle'
-            };
-
-            toast.innerHTML = `
-                <i class="${iconMap[type] || iconMap.info}"></i>
-                <span>${message}</span>
-                <button onclick="this.parentElement.remove()" style="background: none; border: none; color: inherit; cursor: pointer; margin-left: auto;">
-                    <i class="fas fa-times"></i>
-                </button>
-            `;
-
-            document.getElementById('toastContainer').appendChild(toast);
-
-            setTimeout(() => {
-                if (toast.parentElement) {
-                    toast.remove();
-                }
-            }, 5000);
-        }
-    </script>
+    <script src="js/settings.js"></script>
 </body>
+
 </html>

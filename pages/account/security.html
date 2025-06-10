@@ -794,11 +794,210 @@
   }
 
 
+  #notification-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.notification {
+  background-color: #323232;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
+  opacity: 0;
+  transform: translateX(100%);
+  animation: slideIn 0.3s forwards;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notification.success {
+  background-color: #4CAF50;
+}
+
+.notification.error {
+  background-color: #F44336;
+}
+
+.notification.info {
+  background-color: #2196F3;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+
+
+.activity-log {
+  max-height: 300px;        /* Giới hạn chiều cao */
+  overflow-y: auto;         /* Tự động có thanh cuộn dọc */
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.activity-log h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: #333;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 6px;
+}
+
+.activity-item {
+  background: white;
+  border-left: 4px solid #4CAF50;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideInFromRight 0.4s ease forwards;
+  opacity: 0;
+}
+
+.activity-item strong {
+  color: #4CAF50;
+  min-width: 140px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.activity-item .icon {
+  font-size: 1.2rem;
+  color: #4CAF50;
+  flex-shrink: 0;
+}
+
+/* Animation xuất hiện từ phải sang */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+
+/* Container */
+.sec-toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 12px;
+}
+
+/* Switch style */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+/* Hide default checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider (the track) */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+/* Circle (the knob) */
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 20px; width: 20px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* When checkbox is checked */
+.switch input:checked + .slider {
+  background-color: #4CAF50;
+}
+
+/* Move the knob when checked */
+.switch input:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+/* Optional: round edges */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round::before {
+  border-radius: 50%;
+}
+
+
+
+
+.required {
+  color: red;
+  margin-left: 2px;
+}
+
+
+
+
+
+
 
   </style>
 </head>
 
 <body>
+  
+
     <!-- Header -->
     <header class="header">
       <div class="container">
@@ -990,25 +1189,27 @@
           
             <div class="security-settings">
               <div class="sec-section">
-                <h3>Đổi mật khẩu</h3>
-                <label class="sec-label">Mật khẩu hiện tại</label>
+                <h2>Đổi mật khẩu</h2>
+                <label class="sec-label">Mật khẩu hiện tại <span class="required">*</span></label>
+
                 <input type="password" class="sec-input" placeholder="Nhập mật khẩu hiện tại">
           
-                <label class="sec-label">Mật khẩu mới</label>
+                <label class="sec-label">Mật khẩu mới <span class="required">*</span></label>
                 <input type="password" class="sec-input" id="newPassword" placeholder="Nhập mật khẩu mới">
+                
 <div id="passwordStrength" style="font-size: 0.85rem; color: #666; margin-top: 4px;"></div>
 
           
-               
-                
+      
 
 
 
 
-<label class="sec-label">Xác nhận mật khẩu mới</label>
+<label class="sec-label">Xác nhận mật khẩu mới <span class="required">*</span></label>
 <input type="password" class="sec-input" id="confirmPassword" placeholder="Xác nhận mật khẩu mới">
 
-<div id="passwordMatchStatus" style="font-size: 0.85rem; color: #666; margin-top: 4px;"></div>
+
+
 
           
 <br>
@@ -1027,14 +1228,17 @@
 
           <div class="dashboard-section">
             <div class="sec-section">
-              <h3>Đổi địa chỉ email</h3>
-              <label class="sec-label">Email hiện tại</label>
-              <input type="email" class="sec-input" value="example@email.com">
+              <h2>Đổi địa chỉ email</h2>
+              <label class="sec-label">Email hiện tại<span class="required">*</span></label>
+              <input type="email" class="sec-input" id="oldEmail" placeholder="example@email.com">
+              
         
-              <label class="sec-label">Email mới</label>
+              <label class="sec-label">Email mới <span class="required">*</span></label>
               <input type="email" class="sec-input" id="newEmail" placeholder="Nhập email mới">
-<div id="emailStatus" style="font-size: 0.85rem; color: #666; margin-top: 4px;"></div>
-<br>
+              <div id="emailStatus" style="font-size: 0.85rem; color: #666; margin-top: 4px;"></div>
+
+              <br>
+
 
         
               <button class="sec-button">Đổi email</button>
@@ -1042,57 +1246,41 @@
 
           </div>
 
-          <div class="dashboard-section">
+         
 
             <div class="dashboard-section">
               <div class="sec-section">
-                <h3>Xác thực hai bước</h3>
+                <h2>Xác thực hai bước</h2>
                 <p style="margin-bottom: 1rem; color: #555;">
                   Bật xác thực hai bước để tăng cường bảo mật tài khoản. Mỗi lần đăng nhập, bạn sẽ cần nhập mã xác minh được gửi đến email hoặc điện thoại. <br>
                   (Chức năng có thế có trong tương lai)
                 </p>
                 <div class="sec-toggle-switch">
-                  <input type="checkbox" id="twofaToggle">
+                  <label class="switch">
+                    <input type="checkbox" id="twofaToggle">
+                    <span class="slider round"></span>
+                  </label>
                   <label for="twofaToggle">Bật xác thực hai bước</label>
                 </div>
+                
                 <div id="twofaStatus" style="margin-top: 10px; font-size: 0.9rem; color: #666;"></div>
               </div>
             </div>
             
-          </div>
-
+      
           <div class="dashboard-section">
+<h4>Lịch sử hoạt động gần đây</h4>
+         <div id="activityHistory" class="activity-log">
+          
+    <!-- Các dòng lịch sử sẽ được chèn ở đây -->
+</div>
 
-            <div class="sec-section">
-              <h3>Thiết bị đã đăng nhập</h3>
-              <ul class="sec-device-list">
-                <li class="sec-device-item">
-                  <div class="sec-device-info">
-                    <i class="fas fa-desktop"></i>
-                    <div>
-                      <div class="sec-device-name">Windows - Chrome</div>
-                      <small>Đăng nhập lần cuối: 25/05/2025 - 10:30</small>
-                    </div>
-                  </div>
-                  <button class="sec-logout-btn">Đăng xuất</button>
-                </li>
-                <li class="sec-device-item">
-                  <div class="sec-device-info">
-                    <i class="fas fa-mobile-alt"></i>
-                    <div>
-                      <div class="sec-device-name">iPhone - Safari</div>
-                      <small>Đăng nhập lần cuối: 24/05/2025 - 18:12</small>
-                    </div>
-                  </div>
-                  <button class="sec-logout-btn">Đăng xuất</button>
-                </li>
-              </ul>
-            </div>
-          </div>
-
+      </div>
       </div>
 
     </div>
+
+    
   </main>
   
   <!-- Footer -->
@@ -1170,6 +1358,10 @@
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script src="../../js/main.js"></script>
   <script src="../../js/account.js"></script>
+  <script src="../js/popup.js"></script>
+  <script src="../js/Hictory.js"></script>
+
+  
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Chart initialization
@@ -1384,152 +1576,22 @@ z-index: 9999;
 
 
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const newPasswordInput = document.getElementById("newPassword");
-    const confirmPasswordInput = document.getElementById("confirmPassword");
-    const matchStatus = document.getElementById("passwordMatchStatus");
-  
-    if (newPasswordInput && confirmPasswordInput && matchStatus) {
-      confirmPasswordInput.addEventListener("input", () => {
-        if (newPasswordInput.value === confirmPasswordInput.value) {
-          matchStatus.textContent = "Mật khẩu khớp.";
-          matchStatus.style.color = "#10b981"; // xanh lá
-        } else {
-          matchStatus.textContent = "Mật khẩu không khớp!";
-          matchStatus.style.color = "#ef4444"; // đỏ
-        }
-      });
-    }
-  });
-  </script>
-  
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.getElementById("twofaToggle");
-    const status = document.getElementById("twofaStatus");
-  
-    if (toggle && status) {
-      toggle.addEventListener("change", () => {
-        if (toggle.checked) {
-          status.textContent = "Xác thực hai bước đã được bật.";
-          status.style.color = "#10b981"; // xanh lá
-        } else {
-          status.textContent = "Xác thực hai bước đã được tắt.";
-          status.style.color = "#ef4444"; // đỏ
-        }
-      });
-    }
-  });
-  </script>
+
+
+
+
+
   
 
 
-<script>
-  // Kiểm tra độ mạnh mật khẩu
-  function checkPasswordStrength(password) {
-    if (password.length < 6) return "Yếu";
-    if (password.match(/[A-Z]/) && password.match(/[0-9]/) && password.length >= 8) return "Mạnh";
-    return "Trung bình";
-  }
-  
-  const passwordInput = document.getElementById("newPassword");
-  const strengthText = document.getElementById("passwordStrength");
-  
-  if (passwordInput && strengthText) {
-    passwordInput.addEventListener("input", () => {
-      const strength = checkPasswordStrength(passwordInput.value);
-      strengthText.textContent = `Độ mạnh mật khẩu: ${strength}`;
-    });
-  }
-  
-
- // Hàm kiểm tra định dạng email
-function isValidEmail(email) {
-  const re = /[^@]{2,64}@[^.]{2,253}\.[0-9a-z-.]{2,63}/;
-  return re.test(email);
-}
-
-// Gắn sự kiện kiểm tra email khi người dùng rời khỏi ô nhập
-const emailInput = document.getElementById("newEmail");
-const emailStatus = document.getElementById("emailStatus");
-
-if (emailInput && emailStatus) {
-  emailInput.addEventListener("blur", () => {
-    const email = emailInput.value.trim();
-    if (!email) {
-      emailStatus.textContent = "";
-    } else if (!isValidEmail(email)) {
-      emailStatus.textContent = "Email không hợp lệ!";
-      emailStatus.style.color = "#ef4444"; // đỏ
-    } else {
-      emailStatus.textContent = "Email hợp lệ.";
-      emailStatus.style.color = "#10b981"; // xanh lá
-    }
-  });
-}
-
-  </script>
-  
-
-<script>
-  function showToast(message) {
-    const container = document.getElementById("toast-container");
-    const toast = document.createElement("div");
-    toast.className = "toast";
-    toast.innerText = message;
-
-    container.appendChild(toast);
-
-    // Hiển thị
-    setTimeout(() => {
-      toast.classList.add("show");
-    }, 100);
-
-    // Tự động ẩn sau 3s
-    setTimeout(() => {
-      toast.classList.remove("show");
-      setTimeout(() => toast.remove(), 500);
-    }, 3000);
-  }
-
-  document.querySelectorAll(".fa-bookmark").forEach(button => {
-    button.addEventListener("click", function () {
-      this.classList.toggle("fas"); // Đổi icon bookmark
-      this.classList.toggle("far");
-
-      if (this.classList.contains("fas")) {
-        showToast("Tài liệu đã được bỏ lưu.");
-        
-      } else {
-        showToast("Tài liệu đã được lưu thành công!");
-      }
-    });
-  });
-</script>
-
-
-<script>
-  // Lấy pathname (ví dụ: /dashboard.html)
-  const currentPath = window.location.pathname.split('/').pop();
-
-  document.querySelectorAll('.sidebar-menu-link').forEach(link => {
-    const linkPath = link.getAttribute('href');
-    if (linkPath === currentPath) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
-
-  
-</script>
-
-
-
+<div id="notification-container"></div>
 
 
 
 
 </body>
+
+
+
+
 </html>

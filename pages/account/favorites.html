@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+ 
+ 
+ 
+ <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -14,6 +17,10 @@
   <link rel="stylesheet" href="../../css/main-fixes.css">
   <link rel="stylesheet" href="../../css/account.css">
   <link rel="stylesheet" href="../../css/footer-modern.css">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
   <style>
     :root {
       --primary: #4361ee;
@@ -504,7 +511,7 @@
     /* Document Cards */
     .documents-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.75rem;
     }
     
@@ -716,10 +723,567 @@
   transform: translateX(0);
 }
 
+
+
+
+.doc-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: space-between;
+}
+
+.doc-card-item {
+  width: calc(100% - 16px); /* tăng khoảng cách và chiều rộng */
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  
+}
+/* Khi ẩn đi */
+.doc-card-item.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  
+}
+
+
+.doc-card-item.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.doc-card-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+}
+
+.doc-card-img-wrapper {
+  aspect-ratio: 16 / 9; /* Hoặc 4 / 3 nếu bạn muốn hình vuông hơn */
+  position: relative;
+  overflow: hidden;
+  object-fit: cover; 
+  border-radius: 10px;
+  flex: 0 0 180px; /* Cố định chiều rộng ảnh */
+}
+
+.doc-card-img-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.doc-card-item:hover img {
+  transform: scale(1.05);
+}
+
+.doc-card-popup {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  width: 100%;
+  padding: 14px;
+  text-align: center;
+  font-size: 1rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.doc-card-item:hover .doc-card-popup {
+  transform: translateY(0%);
+}
+
+.doc-card-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.doc-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.doc-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.doc-card-meta i {
+  margin-right: 6px;
+  color: #888;
+}
+
+.doc-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.doc-card-price {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #28a745;
+}
+
+.doc-card-btn {
+  background: #f1f1f1;
+  border: none;
+  padding: 10px;
+  margin-left: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.3s;
+}
+
+.doc-card-btn:hover {
+  background: #ddd;
+}
+
+@media (max-width: 768px) {
+  .doc-card-item {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+.doc-card-hover {
+  position: relative;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: #fff;
+  width: 320px;
+  transition: box-shadow 0.3s;
+}
+
+.doc-card-hover:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.doc-popup-tooltip {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.doc-card-hover:hover .doc-popup-tooltip {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.doc-card-image img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.doc-card-title {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  font-weight: bold;
+}
+
+.doc-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.doc-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.doc-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.doc-price {
+  font-weight: bold;
+  color: #e67e22;
+}
+
+/* Mặc định: dạng lưới */
+.doc-card-container.grid-view .doc-card-item {
+  width: calc(50% - 16px);
+}
+
+/* Dạng danh sách: 1 sản phẩm mỗi dòng */
+.doc-card-container.list-view .doc-card-item {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.doc-card-container.list-view .doc-card-img-wrapper {
+  flex: 0 0 250px; /* cố định chiều rộng ảnh */
+  max-width: 250px
+}
+
+.doc-card-container.list-view .doc-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.doc-card-container.list-view .doc-card-content {
+  padding: 16px;
+  flex: 1;
+}
+
+
+.view-toggle {
+    display: flex;
+    gap: 1rem;
+  }
+  .view-toggle button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2.5rem;
+    color: #444;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    transition: color 0.3s ease;
+  }
+  .view-toggle button:focus {
+    outline: none;
+    color: #007bff;
+  }
+  .view-toggle button.active {
+    color: #007bff;
+  }
+  /* Hiệu ứng chuyển icon nhẹ */
+  .view-toggle i {
+    transition: transform 0.3s ease;
+    display: inline-block;
+  }
+  .view-toggle button.active i {
+    transform: scale(1.2);
+  }
+
+
+  .result-badge.premium {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ffc107;
+  color: #000;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+.doc-popup-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #333;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
+}
+
+.doc-popup-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.view-toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 9999;
+}
+
+.view-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.sort-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.sort-btn {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sort-btn input[type="radio"] {
+  display: none;
+}
+
+.sort-btn span {
+  padding: 10px 16px;
+  border: 2px solid #007bff;
+  border-radius: 30px;
+  color: #007bff;
+  background-color: white;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.sort-btn input[type="radio"]:checked + span {
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
+  transform: scale(1.05);
+}
+
+
+
+.sort-toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 24px;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.5s ease;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.sort-toast.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+
+.sort-options {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.sort-card {
+  position: relative;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 100px;
+  min-width: 100px;
+}
+
+.sort-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.sort-card input {
+  display: none;
+}
+
+.sort-card i {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.sort-card input:checked + i,
+.sort-card input:checked + i + span {
+  color: #ffeb3b;
+  text-shadow: 0 0 6px #fff700;
+}
+
+
+
+/* Hiệu ứng ẩn hiện từng học liệu khi sắp xếp */
+.doc-item {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.doc-fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.doc-fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pagination-controls {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination-btn {
+  background: #f1f1f1;
+  border: none;
+  margin: 0 5px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.pagination-btn:hover {
+  background: #ddd;
+}
+
+.pagination-btn.active {
+  background: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+
+
+
+
+
+/* Toàn bộ màn hình phủ loading */
+#loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Spinner dạng tròn quay */
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Animation quay */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+.local-loading {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #eee;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
   </style>
 </head>
 
 <body>
+
+  <div id="loadingOverlay">
+    <div class="spinner"></div>
+  </div>
+  
+
     <!-- Header -->
     <header class="header">
       <div class="container">
@@ -910,194 +1474,267 @@
           
           
           <!-- Chart -->
-          <div class="dashboard-section">
+          <div class="dashboard-section" style="position: relative;">
+
+           
+
+            
+            
             <div class="section-header">
-              <h2 class="section-title">
+              <h1 class="section-title">
                 <i class="fas fa-bookmark sidebar-icon"></i>
                 Danh sách tài liệu đã lưu:
-              </h2>
+              </h1>
 
               
-              <div class="section-actions">
-                <select class="time-range-select" id="chartTimeRange">
-                  <option value="day">Hôm nay</option>
-                  <option value="week" selected>Tuần này</option>
-                  <option value="month">Tháng này</option>
-                  <option value="year">Năm nay</option>
-                </select>
+              
+
+              <div class="view-toggle">
+                <button id="gridBtn" onclick="setGridView()" title="Xem dạng lưới">
+                  <i class="fas fa-table-cells-large"></i> 
+                </button>
+                <button id="listBtn" onclick="setListView()" title="Xem dạng danh sách">
+                  <i class="fas fa-bars-progress"></i> 
+                </button>
+              </div>
+              
+              
+
+            
+            
+           
+              
+            
+            </div>
+
+        
+            
+
+            <div class="sort-options">
+              <label class="sort-card">
+                <input type="radio" name="sort" value="default" checked>
+                <i class="fas fa-random"></i>
+                <span>Mặc định</span>
+              </label>
+              <label class="sort-card">
+                <input type="radio" name="sort" value="price-asc">
+                <i class="fas fa-sort-amount-up-alt"></i>
+                <span>Giá tăng</span>
+              </label>
+              <label class="sort-card">
+                <input type="radio" name="sort" value="price-desc">
+                <i class="fas fa-sort-amount-down-alt"></i>
+                <span>Giá giảm</span>
+              </label>
+              <label class="sort-card">
+                <input type="radio" name="sort" value="rating-desc">
+                <i class="fas fa-star"></i>
+                <span>Đánh giá</span>
+              </label>
+            </div>
+            
+           
+
+            <div class="doc-card-container grid-view" id="docContainer">
+
+             
+                <!-- Các sản phẩm -->
+                <div class="doc-card-item" data-price="50000" data-rating="4.8">
+                  <div class="doc-card-img-wrapper">
+                    <div class="result-badge premium">
+                      <i class="fas fa-coins"></i> 50.000 đ
+                    </div>
+                    <img
+                      src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                      alt="Tài liệu React"
+                      class="doc-img-fixed"
+                    >
+                    <div class="doc-card-popup">
+                      <p><strong>Mẹo:</strong> Click để xem chi tiết tài liệu!</p>
+                    </div>
+                  </div>
+                
+                  <div class="doc-card-content">
+                    <h3 class="doc-card-title">Lập trình web với React và NodeJS</h3>
+                    <div class="doc-card-meta">
+                      <span><i class="fas fa-folder"></i> Công nghệ</span>
+                      <span><i class="fas fa-file-pdf"></i> PDF</span>
+                      <span><i class="fas fa-user"></i> Nguyễn Văn A</span>
+                      <span><i class="fas fa-star"></i> 4.8</span>
+                    </div>
+                    <div class="doc-card-actions">
+                      <div>
+                        <button class="doc-card-btn" onclick="handleDownload()">
+                          <i class="fas fa-download"></i>
+                        </button>
+                        <button class="doc-card-btn">
+                          <i class="fas fa-bookmark"></i>
+                        </button>
+                        <button class="doc-card-btn" onclick="handleShare()">
+                          <i class="fas fa-share-alt"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+
+
+                <div class="doc-card-item" data-price="25000" data-rating="4.8">
+                  <div class="doc-card-img-wrapper">
+                    <div class="result-badge premium">
+                      <i class="fas fa-coins"></i> 25.000 đ
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="React Performance document thumbnail">
+                    <div class="doc-card-popup">
+                      <p><strong>Mẹo:</strong> Click để xem chi tiết tài liệu!</p>
+                    </div>
+                  </div>
+                  <div class="doc-card-content">
+                    <h3 class="doc-card-title">Lập trình web với React và NodeJS</h3>
+                    <div class="doc-card-meta">
+                      <span><i class="fas fa-folder"></i> Công nghệ</span>
+                      <span><i class="fas fa-file-pdf"></i> PDF</span>
+                      <span><i class="fas fa-user"></i> Nguyễn Văn A</span>
+                      <span><i class="fas fa-star"></i> 4.8</span>
+                    </div>
+                    <div class="doc-card-actions">
+                      <div>
+                        <button class="doc-card-btn" onclick="handleDownload()">
+                          <i class="fas fa-download"></i>
+                        </button>
+                        <button class="doc-card-btn">
+                          <i class="fas fa-bookmark"></i>
+                        </button>
+                        <button class="doc-card-btn" onclick="handleShare()">
+                          <i class="fas fa-share-alt"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="doc-card-item">
+                  <div class="doc-card-img-wrapper">
+                    <!-- Giá tiền nằm góc phải trên ảnh -->
+                    <div class="result-badge premium">
+                      <i class="fas fa-coins"></i> 25.000 đ
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1579403124614-197f69d8187b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Redux document thumbnail">                    <div class="doc-card-popup">
+                      <p><strong>Mẹo:</strong> Click để xem chi tiết tài liệu!</p>
+                    </div>
+                  </div>
+                  <div class="doc-card-content">
+                    <h3 class="doc-card-title">Lập trình web với React và NodeJS</h3>
+                    <div class="doc-card-meta">
+                      <span><i class="fas fa-folder"></i> Công nghệ</span>
+                      <span><i class="fas fa-file-pdf"></i> PDF</span>
+                      <span><i class="fas fa-user"></i> Nguyễn Văn A</span>
+                      <span><i class="fas fa-star"></i> 4.8</span>
+                    </div>
+                    <div class="doc-card-actions">
+                      <div>
+                        <button class="doc-card-btn" onclick="handleDownload()">
+                          <i class="fas fa-download"></i>
+                        </button>
+                        <button class="doc-card-btn"><i class="fas fa-bookmark"></i></button>
+                        <button class="doc-card-btn" onclick="handleShare()">
+                          <i class="fas fa-share-alt"></i>
+                        </button>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+
+                <div class="doc-card-item">
+                  <div class="doc-card-img-wrapper">
+                    <!-- Giá tiền nằm góc phải trên ảnh -->
+                    <div class="result-badge premium">
+                      <i class="fas fa-coins"></i> 25.000 đ
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="React Native document thumbnail">
+                    <div class="doc-card-popup">
+                      <p><strong>Mẹo:</strong> Click để xem chi tiết tài liệu!</p>
+                    </div>
+                  </div>
+                  <div class="doc-card-content">
+                    <h3 class="doc-card-title">Lập trình web với React và NodeJS</h3>
+                    <div class="doc-card-meta">
+                      <span><i class="fas fa-folder"></i> Công nghệ</span>
+                      <span><i class="fas fa-file-pdf"></i> PDF</span>
+                      <span><i class="fas fa-user"></i> Nguyễn Văn A</span>
+                      <span><i class="fas fa-star"></i> 4.8</span>
+                    </div>
+                    <div class="doc-card-actions">
+                      <div>
+                        <button class="doc-card-btn" onclick="handleDownload()">
+                          <i class="fas fa-download"></i>
+                        </button>
+                        <button class="doc-card-btn"><i class="fas fa-bookmark"></i></button>
+                        <button class="doc-card-btn" onclick="handleShare()">
+                          <i class="fas fa-share-alt"></i>
+                        </button>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+
+
+                <div class="doc-card-item">
+                  <div class="doc-card-img-wrapper">
+                    <!-- Giá tiền nằm góc phải trên ảnh -->
+                    <div class="result-badge premium">
+                      <i class="fas fa-coins"></i> 25.000 đ
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="React Hooks document thumbnail">
+
+                    <div class="doc-card-popup">
+                      <p><strong>Mẹo:</strong> Click để xem chi tiết tài liệu!</p>
+                    </div>
+                  </div>
+                  <div class="doc-card-content">
+                    <h3 class="doc-card-title">Lập trình web với React và NodeJS</h3>
+                    <div class="doc-card-meta">
+                      <span><i class="fas fa-folder"></i> Công nghệ</span>
+                      <span><i class="fas fa-file-pdf"></i> PDF</span>
+                      <span><i class="fas fa-user"></i> Nguyễn Văn A</span>
+                      <span><i class="fas fa-star"></i> 4.8</span>
+                    </div>
+                    <div class="doc-card-actions">
+                      <div>
+                        <button class="doc-card-btn" onclick="handleDownload()">
+                          <i class="fas fa-download"></i>
+                        </button>
+                        <button class="doc-card-btn"><i class="fas fa-bookmark"></i></button>
+                        <button class="doc-card-btn" onclick="handleShare()">
+                          <i class="fas fa-share-alt"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+
+                
+                <!-- ... -->
               </div>
 
+              <div id="pagination" class="pagination-controls">
+                <!-- Nút phân trang sẽ được JS tạo ở đây -->
+              </div>
               
-            </div>
+
+             
 
             <div class="documents-grid">
-              <!-- Tài liệu 1 -->
-              <div class="document-card">
-                <div class="document-image">
-                  <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="React document thumbnail">
-
-                </div>
-                <div class="document-content">
-                  <h3 class="document-title">Lập trình ứng dụng web với React và NodeJS</h3>
-                  <div class="document-meta">
-                    <div class="document-meta-item">
-                      <i class="fas fa-folder document-meta-icon"></i> Công nghệ thông tin
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-file-pdf document-meta-icon"></i> PDF
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-user document-meta-icon"></i> Nguyễn Văn A
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-star document-meta-icon"></i> 4.8
-                    </div>
-                  </div>
-                  <div class="document-actions">
-                    <span class="document-price">25 xu</span>
-                    <div>
-                      <button class="action-button"><i class="fas fa-download"></i></button>
-                      <button class="action-button"><i class="fas fa-bookmark"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            
-              <!-- Tài liệu 2 -->
-              <div class="document-card">
-                <div class="document-image">
-                  <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="React document thumbnail">
-
-                </div>
-                <div class="document-content">
-                  <h3 class="document-title">An ninh mạng: Tổng quan và phương pháp phòng thủ</h3>
-                  <div class="document-meta">
-                    <div class="document-meta-item">
-                      <i class="fas fa-folder document-meta-icon"></i> An toàn thông tin
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-file-pdf document-meta-icon"></i> PDF
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-user document-meta-icon"></i> Trần Thị B
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-star document-meta-icon"></i> 4.5
-                    </div>
-                  </div>
-                  <div class="document-actions">
-                    <span class="document-price">18 xu</span>
-                    <div>
-                      <button class="action-button"><i class="fas fa-download"></i></button>
-                      <button class="action-button"><i class="fas fa-bookmark"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
+             
+              
               
             
-              <!-- Tài liệu 3 -->
-              <div class="document-card">
-                <div class="document-image">
-                  <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="React document thumbnail">
-                </div>
-                <div class="document-content">
-                  <h3 class="document-title">Học máy cơ bản: từ lý thuyết đến thực hành</h3>
-                  <div class="document-meta">
-                    <div class="document-meta-item">
-                      <i class="fas fa-folder document-meta-icon"></i> Trí tuệ nhân tạo
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-file-pdf document-meta-icon"></i> PDF
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-user document-meta-icon"></i> Lê Văn C
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-star document-meta-icon"></i> 4.7
-                    </div>
-                  </div>
-                  <div class="document-actions">
-                    <span class="document-price">30 xu</span>
-                    <div>
-                      <button class="action-button"><i class="fas fa-download"></i></button>
-                      <button class="action-button"><i class="fas fa-bookmark"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-
-              <!-- Tài liệu 3 -->
-              <div class="document-card">
-                <div class="document-image">
-                  <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="React document thumbnail">
-                </div>
-                <div class="document-content">
-                  <h3 class="document-title">Học máy cơ bản: từ lý thuyết đến thực hành</h3>
-                  <div class="document-meta">
-                    <div class="document-meta-item">
-                      <i class="fas fa-folder document-meta-icon"></i> Trí tuệ nhân tạo
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-file-pdf document-meta-icon"></i> PDF
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-user document-meta-icon"></i> Lê Văn C
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-star document-meta-icon"></i> 4.7
-                    </div>
-                  </div>
-                  <div class="document-actions">
-                    <span class="document-price">30 xu</span>
-                    <div>
-                      <button class="action-button"><i class="fas fa-download"></i></button>
-                      <button class="action-button"><i class="fas fa-bookmark"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <!-- Tài liệu 3 -->
-              <div class="document-card">
-                <div class="document-image">
-                  <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="React document thumbnail">
-                </div>
-                <div class="document-content">
-                  <h3 class="document-title">Học máy cơ bản: từ lý thuyết đến thực hành</h3>
-                  <div class="document-meta">
-                    <div class="document-meta-item">
-                      <i class="fas fa-folder document-meta-icon"></i> Trí tuệ nhân tạo
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-file-pdf document-meta-icon"></i> PDF
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-user document-meta-icon"></i> Lê Văn C
-                    </div>
-                    <div class="document-meta-item">
-                      <i class="fas fa-star document-meta-icon"></i> 4.7
-                    </div>
-                  </div>
-                  <div class="document-actions">
-                    <span class="document-price">30 xu</span>
-                    <div>
-                      <button class="action-button"><i class="fas fa-download"></i></button>
-                      <button class="action-button"><i class="fas fa-bookmark"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-
-            
-            
+        
             
           </div>
           
@@ -1182,6 +1819,11 @@
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script src="../../js/main.js"></script>
   <script src="../../js/account.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <script src="../js/page.js"></script>
+  <script src="../js/loading.js"></script>
+  <script src="../js/sort_document.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Chart initialization
@@ -1387,50 +2029,18 @@
   </script>
 
 
-<div id="toast-container" style="
-position: fixed;
-bottom: 20px;
-right: 20px;
-z-index: 9999;
-"></div>
 
 
 
-<script>
-  function showToast(message) {
-    const container = document.getElementById("toast-container");
-    const toast = document.createElement("div");
-    toast.className = "toast";
-    toast.innerText = message;
+<script src="../js/popup.js"></script>
 
-    container.appendChild(toast);
+<script src="../js/grid_list.js"></script>
 
-    // Hiển thị
-    setTimeout(() => {
-      toast.classList.add("show");
-    }, 100);
 
-    // Tự động ẩn sau 3s
-    setTimeout(() => {
-      toast.classList.remove("show");
-      setTimeout(() => toast.remove(), 500);
-    }, 3000);
-  }
 
-  document.querySelectorAll(".fa-bookmark").forEach(button => {
-    button.addEventListener("click", function () {
-      this.classList.toggle("fas"); // Đổi icon bookmark
-      this.classList.toggle("far");
 
-      if (this.classList.contains("far")) {
-        showToast("Tài liệu đã được bỏ lưu.");
-        
-      } else {
-        showToast("Tài liệu đã được lưu thành công!");
-      }
-    });
-  });
-</script>
+
+
 
 
 <script>
@@ -1448,4 +2058,8 @@ z-index: 9999;
 </script>
 
 </body>
+<div id="docToast" class="doc-popup-toast">Liên kết đã được sao chép!</div>
+<div id="sort-toast" class="sort-toast">Sắp xếp: Mặc định</div>
+
+
 </html>

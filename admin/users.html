@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/toast.css">
 </head>
 <body class="admin-body">
     <!-- Admin Header -->
@@ -106,6 +107,34 @@
                             <i class="fas fa-chart-bar"></i>
                             <span>Thống kê</span>
                         </a>
+                    </li>
+                    <!-- Revenue Management Dropdown -->
+                    <li class="admin-menu-item has-submenu">
+                        <a href="javascript:void(0)">
+                            <i class="fas fa-coins"></i>
+                            <span>Quản lý doanh thu</span>
+                            <i class="fas fa-chevron-down submenu-icon"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="coin-packages.html">
+                                    <i class="fas fa-box"></i>
+                                    <span>Gói xu</span>
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="transactions.html">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>Giao dịch</span>
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="withdrawals.html">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <span>Yêu cầu rút tiền</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="admin-menu-item">
                         <a href="settings.html">
@@ -490,10 +519,13 @@
     </div>
     
     <script src="../js/main.js"></script>
+    <script src="js/admin.js"></script>
     
     <!-- Admin specific scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            
+
             // Admin dropdown toggle
             const adminProfile = document.querySelector('.admin-profile');
             if(adminProfile) {
@@ -627,9 +659,115 @@
                     }
                 });
             });
+            // --- SỬA HÀM showToast (sửa cả icon và hiệu ứng) ---
+            function showToast(message, type = 'info') {
+                let container = document.querySelector('.toast-container');
+                if (!container) {
+                    container = document.createElement('div');
+                    container.className = 'toast-container';
+                    document.body.appendChild(container);
+                }
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
+                // Sửa icon + class toast-icon cho đúng màu
+                let icon = 'info-circle';
+                if (type === 'success') icon = 'check-circle';
+                if (type === 'warning') icon = 'exclamation-circle';
+                if (type === 'error') icon = 'times-circle';
+                toast.innerHTML = `
+                    <div class="toast-content">
+                        <i class="fas fa-${icon} toast-icon"></i>
+                        <div class="toast-message">${message}</div>
+                    </div>
+                    <button class="toast-close"><i class="fas fa-times"></i></button>
+                `;
+                container.appendChild(toast);
+                // Đóng toast
+                toast.querySelector('.toast-close').addEventListener('click', function() {
+                    toast.classList.add('hide');
+                    setTimeout(() => { if (toast.parentNode === container) container.removeChild(toast); }, 300);
+                });
+                // Tự ẩn sau 5s
+                setTimeout(() => {
+                    if (toast.parentNode === container) {
+                        toast.classList.add('hide');
+                        setTimeout(() => { if (toast.parentNode === container) container.removeChild(toast); }, 300);
+                    }
+                }, 5000);
+                setTimeout(() => { toast.classList.add('show'); }, 10);
+            }
         });
     </script>
-    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Chọn tất cả / bỏ chọn tất cả
+            const selectAll = document.getElementById('selectAll');
+            if (selectAll) {
+                selectAll.addEventListener('change', function() {
+                    document.querySelectorAll('.users-table tbody input[type="checkbox"]').forEach(cb => {
+                        cb.checked = selectAll.checked;
+                    });
+                });
+            }
+        });
+    </script>
+    <script>
+        // Lọc người dùng trên bảng
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.search-input');
+            const roleFilter = document.querySelectorAll('.filter-select')[0];
+            const statusFilter = document.querySelectorAll('.filter-select')[1];
+            const userRows = document.querySelectorAll('.users-table tbody tr');
+        
+            function filterTable() {
+                const search = searchInput.value.toLowerCase();
+                const role = roleFilter.value;
+                const status = statusFilter.value;
+                userRows.forEach(row => {
+                    const name = row.querySelector('.user-name')?.textContent.toLowerCase() || '';
+                    const username = row.querySelector('.user-username')?.textContent.toLowerCase() || '';
+                    const email = row.cells[2]?.textContent.toLowerCase() || '';
+                    const roleBadge = row.querySelector('.role-badge')?.classList || '';
+                    const statusBadge = row.querySelector('.status-badge')?.classList || '';
+                    let visible = true;
+                    // Search
+                    if (search && !name.includes(search) && !username.includes(search) && !email.includes(search)) visible = false;
+                    // Filter role
+                    if (role !== 'all' && !roleBadge.contains(role)) visible = false;
+                    // Filter status
+                    if (status !== 'all' && !statusBadge.contains(status)) visible = false;
+                    row.style.display = visible ? '' : 'none';
+                });
+            }
+        
+            if (searchInput) searchInput.addEventListener('input', filterTable);
+            if (roleFilter) roleFilter.addEventListener('change', filterTable);
+            if (statusFilter) statusFilter.addEventListener('change', filterTable);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Nút Thêm
+            document.querySelector('.add-new-btn')?.addEventListener('click', function() {
+                showToast('Chức năng Thêm người dùng sẽ được bổ sung sau!', 'info');
+            });
+            // Nút Export
+            document.querySelector('.export-btn')?.addEventListener('click', function() {
+                showToast('Đã xuất dữ liệu người dùng!', 'success');
+            });
+            // Action Table
+            document.querySelectorAll('.users-table .action-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const title = this.getAttribute('title') || '';
+                    if (title.includes('Xem')) showToast('Xem chi tiết người dùng!', 'info');
+                    else if (title.includes('Chỉnh sửa')) showToast('Chỉnh sửa người dùng!', 'info');
+                    else if (title.includes('Khóa')) showToast('Đã khóa tài khoản người dùng!', 'warning');
+                    else if (title.includes('Xác nhận')) showToast('Tài khoản đã được xác nhận!', 'success');
+                    else if (title.includes('Từ chối')) showToast('Đã từ chối tài khoản!', 'error');
+                });
+            });
+        });
+    </script>    
     <style>
         /* Additional styles specific to user management */
         .management-tools {
@@ -903,7 +1041,7 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
             width: 90%;
-            max-width: 600px;
+            max-width: 800px;
             max-height: 90vh;
             overflow-y: auto;
             z-index: 1;
