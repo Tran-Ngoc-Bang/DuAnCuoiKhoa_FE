@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/toast.css">
 </head>
 <body class="admin-body">
     <!-- Admin Header -->
@@ -107,11 +108,33 @@
                             <span>Thống kê</span>
                         </a>
                     </li>
-                    <li class="admin-menu-item">
-                        <a href="revenue.html">
+                    <!-- Revenue Management Dropdown -->
+                    <li class="admin-menu-item has-submenu">
+                        <a href="javascript:void(0)">
                             <i class="fas fa-coins"></i>
                             <span>Quản lý doanh thu</span>
+                            <i class="fas fa-chevron-down submenu-icon"></i>
                         </a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a href="coin-packages.html">
+                                    <i class="fas fa-box"></i>
+                                    <span>Gói xu</span>
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="transactions.html">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>Giao dịch</span>
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="withdrawals.html">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <span>Yêu cầu rút tiền</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="admin-menu-item">
                         <a href="settings.html">
@@ -699,6 +722,7 @@
     </div>
     
     <script src="../js/main.js"></script>
+    <script src="js/admin.js"></script>
     
     <!-- Admin specific scripts -->
     <script>
@@ -2021,7 +2045,7 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
             width: 90%;
-            max-width: 600px;
+            max-width: 800px;
             max-height: 90vh;
             overflow-y: auto;
             z-index: 1;

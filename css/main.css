@@ -3468,3 +3468,6 @@ body.dark-mode .footer-bottom {
   height: 100%;
   object-fit: cover;
 }
+.modal-container{
+  max-width: 800px;
+}

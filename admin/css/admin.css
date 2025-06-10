@@ -65,6 +65,10 @@
     margin: 0;
     line-height: 1.6;
 }
+.toast.success .toast-icon { color: #10b981; }
+.toast.error .toast-icon { color: #ef4444; }
+.toast.info .toast-icon { color: #4361ee; }
+.toast.warning .toast-icon { color: #f59e0b; }
 
 /* Admin Header */
 .admin-header {
@@ -422,10 +426,79 @@
     width: var(--admin-sidebar-collapsed-width);
 }
 
+/* Admin Sidebar Navigation */
+.admin-nav {
+    padding: 1.5rem 0;
+}
+
 .admin-menu {
     list-style: none;
-    padding: 10px 0;
+    padding: 0;
     margin: 0;
+}
+
+/* Submenu Styles */
+.admin-menu-item.has-submenu > a {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-menu-item.has-submenu .submenu-icon {
+    font-size: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.admin-menu-item.has-submenu.open .submenu-icon {
+    transform: rotate(180deg);
+}
+
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.submenu.visible {
+    max-height: 300px;
+    opacity: 1;
+}
+
+.submenu-item {
+    padding: 0;
+    margin: 2px 0;
+}
+
+.submenu-item a {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    color: var(--admin-text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.submenu-item a:hover {
+    background-color: var(--admin-sidebar-hover);
+}
+
+.submenu-item.active a {
+    background-color: var(--admin-sidebar-active);
+    color: #fff;
+}
+
+.submenu-item i {
+    font-size: 0.85rem;
+    margin-right: 0.75rem;
+    width: 1rem;
+    text-align: center;
 }
 
 .admin-menu-item {
@@ -633,7 +706,6 @@
 }
 
 .stat-card-content {
-    display: flex;
     justify-content: space-between;
     padding: var(--admin-card-padding);
     align-items: center;
@@ -1725,6 +1797,17 @@
     width: 3px;
     background: var(--admin-gradient-success);
     opacity: 0;
+    transition: all 0.3s ease;
+}
+.data-table thead tr::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--admin-gradient-success);
+    opacity: 1; /* Có thể để 1 hoặc giống như tbody */
     transition: all 0.3s ease;
 }
 
