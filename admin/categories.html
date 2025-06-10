@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/categories.css">
     <link rel="stylesheet" href="css/toast.css">
 </head>
+
 <body class="admin-body">
     <!-- Admin Header -->
     <header class="admin-header">
@@ -22,25 +27,26 @@
                     <div class="logo-text">EduShare</div>
                 </a>
             </div>
-            
+
             <div class="admin-header-actions">
                 <div class="admin-search">
                     <input type="text" placeholder="Tìm kiếm...">
                     <button><i class="fas fa-search"></i></button>
                 </div>
-                
+
                 <div class="dark-mode-toggle" id="darkModeToggle"></div>
-                
+
                 <div class="admin-notifications">
                     <button class="notification-btn">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge">5</span>
                     </button>
                 </div>
-                
+
                 <div class="admin-profile">
                     <div class="admin-avatar">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Admin">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="Admin">
                     </div>
                     <div class="admin-info">
                         <span class="admin-name">Nguyễn Văn Anh</span>
@@ -53,7 +59,7 @@
             </div>
         </div>
     </header>
-    
+
     <!-- Admin Container -->
     <div class="admin-container">
         <!-- Sidebar -->
@@ -136,7 +142,7 @@
                             </li>
                         </ul>
                     </li>
-                    
+
                     <li class="admin-menu-item">
                         <a href="settings.html">
                             <i class="fas fa-cog"></i>
@@ -152,7 +158,7 @@
                 </ul>
             </nav>
         </aside>
-        
+
         <!-- Main Content -->
         <main class="admin-content">
             <div class="admin-content-header">
@@ -164,7 +170,7 @@
                     <span>Quản lý danh mục</span>
                 </div>
             </div>
-            
+
             <!-- Category Management Tools -->
             <div class="management-tools">
                 <div class="search-filters">
@@ -190,7 +196,7 @@
                         </select>
                     </div>
                 </div>
-                
+
                 <div class="action-buttons">
                     <button class="add-new-btn" id="addCategoryBtn">
                         <i class="fas fa-plus"></i> Thêm danh mục
@@ -200,7 +206,7 @@
                     </button>
                 </div>
             </div>
-            
+
             <!-- Categories Grid & Table -->
             <div class="management-view-options">
                 <button class="view-option active" data-view="grid">
@@ -210,7 +216,7 @@
                     <i class="fas fa-list"></i> Dạng bảng
                 </button>
             </div>
-            
+
             <!-- Grid View -->
             <div class="categories-grid-view" id="gridView">
                 <div class="categories-grid">
@@ -227,7 +233,8 @@
                         </div>
                         <div class="category-admin-content">
                             <h3 class="category-admin-title">Công nghệ thông tin</h3>
-                            <p class="category-admin-description">Tài liệu về lập trình, khoa học máy tính, trí tuệ nhân tạo, an ninh mạng và nhiều lĩnh vực công nghệ thông tin khác.</p>
+                            <p class="category-admin-description">Tài liệu về lập trình, khoa học máy tính, trí tuệ nhân
+                                tạo, an ninh mạng và nhiều lĩnh vực công nghệ thông tin khác.</p>
                             <div class="category-stats">
                                 <div class="stat-item">
                                     <span class="stat-label">Tài liệu</span>
@@ -248,7 +255,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Category Card 2 -->
                     <div class="category-admin-card">
                         <div class="category-admin-header">
@@ -262,7 +269,8 @@
                         </div>
                         <div class="category-admin-content">
                             <h3 class="category-admin-title">Kinh tế - Quản trị</h3>
-                            <p class="category-admin-description">Tài liệu về quản trị doanh nghiệp, kinh tế học, tài chính, marketing, quản trị nhân sự và các lĩnh vực kinh doanh.</p>
+                            <p class="category-admin-description">Tài liệu về quản trị doanh nghiệp, kinh tế học, tài
+                                chính, marketing, quản trị nhân sự và các lĩnh vực kinh doanh.</p>
                             <div class="category-stats">
                                 <div class="stat-item">
                                     <span class="stat-label">Tài liệu</span>
@@ -283,7 +291,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Category Card 3 -->
                     <div class="category-admin-card">
                         <div class="category-admin-header">
@@ -297,7 +305,8 @@
                         </div>
                         <div class="category-admin-content">
                             <h3 class="category-admin-title">Ngoại ngữ</h3>
-                            <p class="category-admin-description">Tài liệu học tiếng Anh, tiếng Pháp, tiếng Đức, tiếng Nhật, tiếng Hàn, tiếng Trung và các ngoại ngữ khác.</p>
+                            <p class="category-admin-description">Tài liệu học tiếng Anh, tiếng Pháp, tiếng Đức, tiếng
+                                Nhật, tiếng Hàn, tiếng Trung và các ngoại ngữ khác.</p>
                             <div class="category-stats">
                                 <div class="stat-item">
                                     <span class="stat-label">Tài liệu</span>
@@ -318,7 +327,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Category Card 4 -->
                     <div class="category-admin-card">
                         <div class="category-admin-header">
@@ -332,7 +341,8 @@
                         </div>
                         <div class="category-admin-content">
                             <h3 class="category-admin-title">Kỹ thuật - Công nghệ</h3>
-                            <p class="category-admin-description">Tài liệu về cơ khí, điện - điện tử, xây dựng, kiến trúc, vật liệu và các lĩnh vực kỹ thuật công nghệ khác.</p>
+                            <p class="category-admin-description">Tài liệu về cơ khí, điện - điện tử, xây dựng, kiến
+                                trúc, vật liệu và các lĩnh vực kỹ thuật công nghệ khác.</p>
                             <div class="category-stats">
                                 <div class="stat-item">
                                     <span class="stat-label">Tài liệu</span>
@@ -353,7 +363,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Category Card 5 -->
                     <div class="category-admin-card">
                         <div class="category-admin-header">
@@ -367,7 +377,8 @@
                         </div>
                         <div class="category-admin-content">
                             <h3 class="category-admin-title">Khoa học xã hội</h3>
-                            <p class="category-admin-description">Tài liệu về tâm lý học, xã hội học, nhân học, triết học, lịch sử, địa lý và các ngành khoa học xã hội khác.</p>
+                            <p class="category-admin-description">Tài liệu về tâm lý học, xã hội học, nhân học, triết
+                                học, lịch sử, địa lý và các ngành khoa học xã hội khác.</p>
                             <div class="category-stats">
                                 <div class="stat-item">
                                     <span class="stat-label">Tài liệu</span>
@@ -388,7 +399,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Category Card 6 -->
                     <div class="category-admin-card">
                         <div class="category-admin-header">
@@ -402,7 +413,8 @@
                         </div>
                         <div class="category-admin-content">
                             <h3 class="category-admin-title">Khoa học tự nhiên</h3>
-                            <p class="category-admin-description">Tài liệu về toán học, vật lý, hóa học, sinh học, địa chất học và các ngành khoa học tự nhiên khác.</p>
+                            <p class="category-admin-description">Tài liệu về toán học, vật lý, hóa học, sinh học, địa
+                                chất học và các ngành khoa học tự nhiên khác.</p>
                             <div class="category-stats">
                                 <div class="stat-item">
                                     <span class="stat-label">Tài liệu</span>
@@ -425,7 +437,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Table View -->
             <div class="data-container" id="tableView" style="display: none;">
                 <table class="data-table">
@@ -457,7 +469,8 @@
                             </td>
                             <td>
                                 <div class="category-info">
-                                    <div class="category-icon it-icon" style="width: 2.5rem; height: 2.5rem; font-size: 1rem;">
+                                    <div class="category-icon it-icon"
+                                        style="width: 2.5rem; height: 2.5rem; font-size: 1rem;">
                                         <i class="fas fa-laptop-code"></i>
                                     </div>
                                     <div class="category-name">Công nghệ thông tin</div>
@@ -486,7 +499,8 @@
                             </td>
                             <td>
                                 <div class="category-info">
-                                    <div class="category-icon business-icon" style="width: 2.5rem; height: 2.5rem; font-size: 1rem;">
+                                    <div class="category-icon business-icon"
+                                        style="width: 2.5rem; height: 2.5rem; font-size: 1rem;">
                                         <i class="fas fa-chart-line"></i>
                                     </div>
                                     <div class="category-name">Kinh tế - Quản trị</div>
@@ -515,7 +529,8 @@
                             </td>
                             <td>
                                 <div class="category-info">
-                                    <div class="category-icon language-icon" style="width: 2.5rem; height: 2.5rem; font-size: 1rem;">
+                                    <div class="category-icon language-icon"
+                                        style="width: 2.5rem; height: 2.5rem; font-size: 1rem;">
                                         <i class="fas fa-language"></i>
                                     </div>
                                     <div class="category-name">Ngoại ngữ</div>
@@ -544,7 +559,8 @@
                             </td>
                             <td>
                                 <div class="category-info">
-                                    <div class="category-icon engineering-icon" style="width: 2.5rem; height: 2.5rem; font-size: 1rem;">
+                                    <div class="category-icon engineering-icon"
+                                        style="width: 2.5rem; height: 2.5rem; font-size: 1rem;">
                                         <i class="fas fa-cogs"></i>
                                     </div>
                                     <div class="category-name">Kỹ thuật - Công nghệ</div>
@@ -573,7 +589,8 @@
                             </td>
                             <td>
                                 <div class="category-info">
-                                    <div class="category-icon social-icon" style="width: 2.5rem; height: 2.5rem; font-size: 1rem;">
+                                    <div class="category-icon social-icon"
+                                        style="width: 2.5rem; height: 2.5rem; font-size: 1rem;">
                                         <i class="fas fa-users"></i>
                                     </div>
                                     <div class="category-name">Khoa học xã hội</div>
@@ -602,7 +619,8 @@
                             </td>
                             <td>
                                 <div class="category-info">
-                                    <div class="category-icon it-icon" style="width: 2.5rem; height: 2.5rem; font-size: 1rem;">
+                                    <div class="category-icon it-icon"
+                                        style="width: 2.5rem; height: 2.5rem; font-size: 1rem;">
                                         <i class="fas fa-graduation-cap"></i>
                                     </div>
                                     <div class="category-name">Khoa học tự nhiên</div>
@@ -625,7 +643,7 @@
                     </tbody>
                 </table>
             </div>
-            
+
             <!-- Pagination -->
             <div class="pagination">
                 <button class="pagination-btn prev-btn" disabled>
@@ -641,7 +659,7 @@
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
-            
+
             <!-- Add Category Modal -->
             <div class="modal" id="addCategoryModal">
                 <div class="modal-overlay"></div>
@@ -658,7 +676,8 @@
                             </div>
                             <div class="form-group full-width">
                                 <label for="categoryDescription">Mô tả</label>
-                                <textarea id="categoryDescription" rows="4" placeholder="Nhập mô tả danh mục"></textarea>
+                                <textarea id="categoryDescription" rows="4"
+                                    placeholder="Nhập mô tả danh mục"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="categoryIcon">Icon</label>
@@ -745,9 +764,10 @@
             </div>
         </main>
     </div>
-    
+
     <script src="../js/main.js"></script>
     <script src="js/admin.js"></script>
     <script src="js/categories.js"></script>
 </body>
+
 </html>

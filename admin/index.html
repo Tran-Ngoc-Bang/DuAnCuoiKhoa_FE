@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,208 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="css/toast.css">
-    <style>
-        /* Cải thiện giao diện dashboard */
-        .dashboard-stats {
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        /* Nâng cấp các card thống kê */
-        .stat-card {
-            border-radius: 15px;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            overflow: hidden;
-            background: linear-gradient(135deg, #fff 0%, #f5f8ff 100%);
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(67, 97, 238, 0.1);
-        }
-        
-        .stat-card-content {
-            padding: 1.5rem;
-        }
-        
-        .stat-card-icon {
-            width: 55px;
-            height: 55px;
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, rgba(67, 97, 238, 0.8) 0%, rgba(67, 97, 238, 0.9) 100%);
-            color: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
-        }
-        
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0.5rem 0;
-            background: linear-gradient(135deg, #4361ee 0%, #3a49c0 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-        }
-        
-        /* Cải thiện biểu đồ */
-        .chart-card {
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
-            padding: 1.2rem;
-            background: white;
-            margin-bottom: 2rem;
-        }
-        
-        .chart-header {
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            margin-bottom: 1.2rem;
-        }
-        
-        .chart-header h3 {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: #2d3748;
-        }
-        
-        .chart-mock {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            height: 250px;
-            padding: 1rem 0;
-        }
-        
-        .chart-bar {
-            width: 40px;
-            border-radius: 8px 8px 0 0;
-            background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%);
-            margin: 0 5px;
-            transition: all 0.3s ease;
-        }
-        
-        .chart-bar:hover {
-            filter: brightness(1.1);
-            transform: scaleY(1.03);
-        }
-        
-        /* Cải thiện danh sách hoạt động */
-        .recent-activity-card, .pending-tasks-card {
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            height: 100%;
-            background: white;
-        }
-        
-        .card-header {
-            padding: 1.2rem 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            background: linear-gradient(to right, #f8faff, #fff);
-        }
-        
-        .card-header h3 {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: #2d3748;
-        }
-        
-        .card-body {
-            padding: 1rem 1.5rem;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-        
-        .activity-item, .task-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .activity-item:hover, .task-item:hover {
-            background-color: rgba(245, 247, 250, 0.5);
-            transform: translateX(5px);
-        }
-        
-        .activity-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Nâng cấp bảng tài liệu */
-        .data-table-container {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
-            background: white;
-            margin-top: 1rem;
-        }
-        
-        .data-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-        }
-        
-        .data-table th {
-            background: linear-gradient(to right, #f3f6ff, #f8faff);
-            padding: 1rem 1.5rem;
-            font-weight: 600;
-            color: #4a5568;
-            text-align: left;
-            font-size: 0.9rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .data-table tr:hover {
-            background-color: rgba(245, 247, 250, 0.5);
-        }
-        
-        .data-table td {
-            padding: 1rem 1.5rem;
-            vertical-align: middle;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .document-info {
-            display: flex;
-            align-items: center;
-        }
-        
-        .document-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
-            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(67, 97, 238, 0.2) 100%);
-            color: #4361ee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            font-size: 1rem;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 992px) {
-            .dashboard-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .dashboard-activities {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>  
+    <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body class="admin-body">
     <!-- Admin Header -->
     <header class="admin-header">
@@ -219,25 +27,26 @@
                     <div class="logo-text">EduShare</div>
                 </a>
             </div>
-            
+
             <div class="admin-header-actions">
                 <div class="admin-search">
                     <input type="text" placeholder="Tìm kiếm...">
                     <button><i class="fas fa-search"></i></button>
                 </div>
-                
+
                 <div class="dark-mode-toggle" id="darkModeToggle"></div>
-                
+
                 <div class="admin-notifications">
                     <button class="notification-btn">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge">5</span>
                     </button>
                 </div>
-                
+
                 <div class="admin-profile">
                     <div class="admin-avatar">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Admin">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="Admin">
                     </div>
                     <div class="admin-info">
                         <span class="admin-name">Nguyễn Văn A</span>
@@ -250,7 +59,7 @@
             </div>
         </div>
     </header>
-    
+
     <!-- Admin Container -->
     <div class="admin-container">
         <!-- Sidebar -->
@@ -348,28 +157,34 @@
                 </ul>
             </nav>
         </aside>
-        
+
         <!-- Main Content -->
         <main class="admin-content">
-            <div class="admin-content-header" style="margin-bottom: 1.8rem; display: flex; justify-content: space-between; align-items: center;">
+            <div class="admin-content-header"
+                style="margin-bottom: 1.8rem; display: flex; justify-content: space-between; align-items: center;">
                 <div>
-                    <h1 class="admin-page-title" style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(135deg, #1f2937 0%, #374151 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Bảng điều khiển</h1>
-                    <div class="admin-breadcrumbs" style="display: flex; align-items: center; font-size: 0.85rem; color: #6b7280;">
+                    <h1 class="admin-page-title"
+                        style="font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(135deg, #1f2937 0%, #374151 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">
+                        Bảng điều khiển</h1>
+                    <div class="admin-breadcrumbs"
+                        style="display: flex; align-items: center; font-size: 0.85rem; color: #6b7280;">
                         <a href="index.html" style="color: #4361ee; text-decoration: none; font-weight: 500;">Admin</a>
                         <span style="margin: 0 0.5rem; color: #9ca3af;">/</span>
                         <span style="color: #4b5563;">Bảng điều khiển</span>
                     </div>
                 </div>
                 <div class="dashboard-actions" style="display: flex; gap: 1rem;">
-                    <button style="padding: 0.5rem 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 8px; display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #4b5563; cursor: pointer; transition: all 0.3s ease;">
+                    <button
+                        style="padding: 0.5rem 1rem; background: white; border: 1px solid #e5e7eb; border-radius: 8px; display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #4b5563; cursor: pointer; transition: all 0.3s ease;">
                         <i class="fas fa-calendar-alt" style="color: #4361ee;"></i> Hôm nay
                     </button>
-                    <button style="padding: 0.5rem 1rem; background: #4361ee; border: none; border-radius: 8px; display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: white; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(67, 97, 238, 0.3);">
+                    <button
+                        style="padding: 0.5rem 1rem; background: #4361ee; border: none; border-radius: 8px; display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: white; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(67, 97, 238, 0.3);">
                         <i class="fas fa-plus"></i> Tạo báo cáo
                     </button>
                 </div>
             </div>
-            
+
             <!-- Dashboard Stats -->
             <div class="dashboard-stats">
                 <div class="stat-card">
@@ -391,7 +206,7 @@
                         <a href="users.html">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="stat-card">
                     <div class="stat-card-content">
                         <div class="stat-card-info">
@@ -411,7 +226,7 @@
                         <a href="documents.html">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="stat-card">
                     <div class="stat-card-content">
                         <div class="stat-card-info">
@@ -431,7 +246,7 @@
                         <a href="statistics.html">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="stat-card">
                     <div class="stat-card-content">
                         <div class="stat-card-info">
@@ -452,7 +267,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Activity Charts -->
             <div class="dashboard-charts">
                 <div class="chart-card">
@@ -470,33 +285,56 @@
                     <div class="chart-body">
                         <canvas id="activityChart"></canvas>
                         <div class="chart-placeholder">
-                            <div class="chart-mock" style="display: flex; align-items: flex-end; justify-content: space-between; height: 250px; padding: 1rem 0; position: relative;">
-                                <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 100%; border-bottom: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: space-between; z-index: 0; pointer-events: none;">
+                            <div class="chart-mock"
+                                style="display: flex; align-items: flex-end; justify-content: space-between; height: 250px; padding: 1rem 0; position: relative;">
+                                <div
+                                    style="position: absolute; left: 0; top: 0; bottom: 0; width: 100%; border-bottom: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: space-between; z-index: 0; pointer-events: none;">
                                     <div style="width: 100%; height: 1px; background: rgba(229, 231, 235, 0.5);"></div>
                                     <div style="width: 100%; height: 1px; background: rgba(229, 231, 235, 0.5);"></div>
                                     <div style="width: 100%; height: 1px; background: rgba(229, 231, 235, 0.5);"></div>
                                     <div style="width: 100%; height: 1px; background: rgba(229, 231, 235, 0.5);"></div>
                                 </div>
-                                <div class="chart-bar" style="height: 30%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
-                                    <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">30%</div>
+                                <div class="chart-bar"
+                                    style="height: 30%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
+                                    <div
+                                        style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">
+                                        30%</div>
                                 </div>
-                                <div class="chart-bar" style="height: 50%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
-                                    <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">50%</div>
+                                <div class="chart-bar"
+                                    style="height: 50%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
+                                    <div
+                                        style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">
+                                        50%</div>
                                 </div>
-                                <div class="chart-bar" style="height: 70%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
-                                    <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">70%</div>
+                                <div class="chart-bar"
+                                    style="height: 70%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
+                                    <div
+                                        style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">
+                                        70%</div>
                                 </div>
-                                <div class="chart-bar" style="height: 60%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
-                                    <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">60%</div>
+                                <div class="chart-bar"
+                                    style="height: 60%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
+                                    <div
+                                        style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">
+                                        60%</div>
                                 </div>
-                                <div class="chart-bar" style="height: 75%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
-                                    <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">75%</div>
+                                <div class="chart-bar"
+                                    style="height: 75%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
+                                    <div
+                                        style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">
+                                        75%</div>
                                 </div>
-                                <div class="chart-bar" style="height: 85%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
-                                    <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">85%</div>
+                                <div class="chart-bar"
+                                    style="height: 85%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
+                                    <div
+                                        style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">
+                                        85%</div>
                                 </div>
-                                <div class="chart-bar" style="height: 60%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
-                                    <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">60%</div>
+                                <div class="chart-bar"
+                                    style="height: 60%; width: 40px; border-radius: 8px 8px 0 0; background: linear-gradient(180deg, #4361ee 0%, #3f37c9 100%); margin: 0 5px; transition: all 0.3s ease; position: relative; z-index: 1;">
+                                    <div
+                                        style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 600; color: #4b5563;">
+                                        60%</div>
                                 </div>
                             </div>
                             <div style="display: flex; justify-content: space-between; margin-top: 10px;">
@@ -511,7 +349,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="chart-card">
                     <div class="chart-header">
                         <h3>Phân loại tài liệu</h3>
@@ -531,7 +369,8 @@
                                 #f59e0b 252deg 324deg,
                                 #8b5cf6 324deg 360deg
                             ); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
-                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+                                <div
+                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
                                     <span style="font-weight: 600; color: #2d3748;">Tổng: 253</span>
                                 </div>
                             </div>
@@ -539,7 +378,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Recent Activities & Tasks -->
             <div class="dashboard-activities">
                 <div class="recent-activity-card">
@@ -555,7 +394,8 @@
                                 </div>
                                 <div class="activity-content">
                                     <div class="activity-text">
-                                        <a href="#" class="activity-user">Nguyễn Văn B</a> đã đăng tải một tài liệu mới: <a href="#" class="activity-document">Ngôn ngữ lập trình C++</a>
+                                        <a href="#" class="activity-user">Nguyễn Văn B</a> đã đăng tải một tài liệu mới:
+                                        <a href="#" class="activity-document">Ngôn ngữ lập trình C++</a>
                                     </div>
                                     <div class="activity-time">
                                         <i class="far fa-clock"></i>
@@ -583,7 +423,8 @@
                                 </div>
                                 <div class="activity-content">
                                     <div class="activity-text">
-                                        <a href="#" class="activity-user">Lê Văn D</a> đã tải xuống tài liệu: <a href="#" class="activity-document">Kỹ thuật lập trình nâng cao</a>
+                                        <a href="#" class="activity-user">Lê Văn D</a> đã tải xuống tài liệu: <a
+                                            href="#" class="activity-document">Kỹ thuật lập trình nâng cao</a>
                                     </div>
                                     <div class="activity-time">
                                         <i class="far fa-clock"></i>
@@ -597,7 +438,8 @@
                                 </div>
                                 <div class="activity-content">
                                     <div class="activity-text">
-                                        <a href="#" class="activity-user">Phạm Thị E</a> đã nạp 200,000 VNĐ vào tài khoản
+                                        <a href="#" class="activity-user">Phạm Thị E</a> đã nạp 200,000 VNĐ vào tài
+                                        khoản
                                     </div>
                                     <div class="activity-time">
                                         <i class="far fa-clock"></i>
@@ -611,7 +453,8 @@
                                 </div>
                                 <div class="activity-content">
                                     <div class="activity-text">
-                                        <a href="#" class="activity-user">Vũ Văn F</a> đã báo cáo tài liệu: <a href="#" class="activity-document">Tin học đại cương</a>
+                                        <a href="#" class="activity-user">Vũ Văn F</a> đã báo cáo tài liệu: <a href="#"
+                                            class="activity-document">Tin học đại cương</a>
                                     </div>
                                     <div class="activity-time">
                                         <i class="far fa-clock"></i>
@@ -625,7 +468,7 @@
                         <a href="activities.html">Xem tất cả hoạt động</a>
                     </div>
                 </div>
-                
+
                 <div class="pending-tasks-card">
                     <div class="card-header">
                         <h3>Công việc chờ xử lý</h3>
@@ -704,7 +547,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Recent Documents Table -->
             <div class="recent-documents-section">
                 <div class="section-header">
@@ -757,7 +600,8 @@
                                 <td>
                                     <div class="action-buttons">
                                         <button class="action-btn" title="Xem"><i class="fas fa-eye"></i></button>
-                                        <button class="action-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn" title="Chỉnh sửa"><i
+                                                class="fas fa-edit"></i></button>
                                         <button class="action-btn" title="Xóa"><i class="fas fa-trash"></i></button>
                                     </div>
                                 </td>
@@ -776,7 +620,8 @@
                                 <td>
                                     <div class="action-buttons">
                                         <button class="action-btn" title="Xem"><i class="fas fa-eye"></i></button>
-                                        <button class="action-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn" title="Chỉnh sửa"><i
+                                                class="fas fa-edit"></i></button>
                                         <button class="action-btn" title="Xóa"><i class="fas fa-trash"></i></button>
                                     </div>
                                 </td>
@@ -795,7 +640,8 @@
                                 <td>
                                     <div class="action-buttons">
                                         <button class="action-btn" title="Xem"><i class="fas fa-eye"></i></button>
-                                        <button class="action-btn" title="Lý do"><i class="fas fa-info-circle"></i></button>
+                                        <button class="action-btn" title="Lý do"><i
+                                                class="fas fa-info-circle"></i></button>
                                         <button class="action-btn" title="Xóa"><i class="fas fa-trash"></i></button>
                                     </div>
                                 </td>
@@ -814,7 +660,8 @@
                                 <td>
                                     <div class="action-buttons">
                                         <button class="action-btn" title="Xem"><i class="fas fa-eye"></i></button>
-                                        <button class="action-btn" title="Chỉnh sửa"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn" title="Chỉnh sửa"><i
+                                                class="fas fa-edit"></i></button>
                                         <button class="action-btn" title="Xóa"><i class="fas fa-trash"></i></button>
                                     </div>
                                 </td>
@@ -825,43 +672,10 @@
             </div>
         </main>
     </div>
-    
+
     <script src="../js/main.js"></script>
     <script src="js/admin.js"></script>
-    
-    <!-- Admin specific scripts -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Admin dropdown toggle
-            const adminProfile = document.querySelector('.admin-profile');
-            if(adminProfile) {
-                adminProfile.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                });
-            }
-            
-            // Task checkboxes
-            const taskCheckboxes = document.querySelectorAll('.task-checkbox input');
-            taskCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    const taskItem = this.closest('.task-item');
-                    if(this.checked) {
-                        taskItem.classList.add('completed');
-                    } else {
-                        taskItem.classList.remove('completed');
-                    }
-                });
-            });
-            
-            // Chart filter buttons
-            const chartFilterBtns = document.querySelectorAll('.chart-filter-btn');
-            chartFilterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    chartFilterBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-        });
-    </script>
+    <script src="js/index.js"></script>
 </body>
+
 </html>
