@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="../../css/main-fixes.css">
   <link rel="stylesheet" href="../../css/account.css">
   <link rel="stylesheet" href="../../css/footer-modern.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
   <style>
     :root {
       --primary: #4361ee;
@@ -259,6 +261,10 @@
     .dashboard-main {
       flex: 1;
       min-width: 0;
+      background: linear-gradient(120deg, #f5f7fb 60%, #e0e7ff 100%);
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 32px rgba(67, 97, 238, 0.08);
+      transition: box-shadow 0.3s, background 0.3s;
     }
     
     /* Stats Grid */
@@ -716,6 +722,133 @@
   transform: translateX(0);
 }
 
+/phẩn main/
+/* Toast animation */
+#toast.show {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Card hover effect */
+.doc-card {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.doc-card:hover {
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
+  transform: translateY(-5px);
+}
+
+/* Modal visible */
+#modal.show {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Scroll bar inside modal if overflow */
+#modal > div {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Hiệu ứng cho main dashboard */
+.dashboard-main {
+  background: linear-gradient(120deg, #f5f7fb 60%, #e0e7ff 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(67, 97, 238, 0.08);
+  transition: box-shadow 0.3s, background 0.3s;
+}
+
+/* Hiệu ứng hover cho card tài liệu */
+.doc-item {
+  transition: box-shadow 0.25s, transform 0.22s, border 0.2s;
+  border: 1.5px solid #e0e7ff;
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 8px rgba(67, 97, 238, 0.06);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.doc-item:hover {
+  box-shadow: 0 8px 32px rgba(67, 97, 238, 0.18), 0 1.5px 8px rgba(16, 185, 129, 0.06);
+  transform: translateY(-6px) scale(1.025);
+  border-color: #4361ee;
+  z-index: 2;
+}
+
+/* Hiệu ứng cho ảnh tài liệu */
+.doc-item img {
+  transition: transform 0.3s, filter 0.3s;
+}
+.doc-item:hover img {
+  transform: scale(1.05) rotate(-1deg);
+  filter: brightness(1.08) saturate(1.1);
+}
+
+/* Hiệu ứng cho tiêu đề tài liệu */
+.doc-item h3 {
+  transition: color 0.2s;
+}
+.doc-item:hover h3 {
+  color: #4361ee;
+}
+
+/* Hiệu ứng cho các filter và input */
+#searchInput, #filterCategory, #filterFormat, #filterSort {
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+#searchInput:focus, #filterCategory:focus, #filterFormat:focus, #filterSort:focus {
+  border-color: #4361ee;
+  box-shadow: 0 0 0 2px #a5b4fc;
+}
+
+/* Hiệu ứng hover cho tab */
+nav ul li button {
+  transition: border-color 0.2s, color 0.2s;
+}
+nav ul li button:hover, nav ul li button:focus {
+  border-color: #4361ee;
+  color: #4361ee;
+}
+
+/* Hiệu ứng modal */
+#modal.show > div {
+  animation: modalPop 0.25s cubic-bezier(.4,2,.6,1) both;
+}
+@keyframes modalPop {
+  0% { transform: scale(0.92) translateY(30px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+.stat-box {
+  transition: box-shadow 0.2s, transform 0.18s;
+}
+.stat-box:hover {
+  box-shadow: 0 6px 24px rgba(67,97,238,0.12), 0 1.5px 8px rgba(16,185,129,0.06);
+}
+.stat-icon {
+  box-shadow: 0 2px 8px rgba(67,97,238,0.10);
+}
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(90deg, #4361ee 60%, #10b981 100%);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(67,97,238,0.10);
+  transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
+  margin-top: 10px;
+}
+.download-btn:hover {
+  background: linear-gradient(90deg, #10b981 60%, #4361ee 100%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px rgba(67,97,238,0.18);
+}
   </style>
 </head>
 
@@ -899,121 +1032,101 @@
           </ul>
         </div>
         
-      <!-- Main Content -->
-<div class="dashboard-main">
-  <!-- Chart -->
-  <div class="dashboard-section">
-    <div class="section-header">
-      <h2 class="section-title">
-        <i class="fas fa-upload sidebar-icon"></i>
-        Tài liệu của tôi:
-      </h2>
-      <div class="section-actions">
-        <select class="time-range-select" id="chartTimeRange">
-          <option value="day">Hôm nay</option>
-          <option value="week" selected>Tuần này</option>
-          <option value="month">Tháng này</option>
-          <option value="year">Năm nay</option>
-        </select>
-      </div>
-    </div>
+<div class="dashboard-main px-6 py-10 bg-gray-50 min-h-screen">
+  <div id="toast" class="fixed top-5 right-5 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg opacity-0 pointer-events-none transition-opacity z-50"></div>
 
-    <div class="documents-grid">
-      <!-- Document 1 -->
-      <div class="document-card">
-        <div class="document-image">
-          <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Document thumbnail">
-        </div>
-        <div class="document-content">
-          <h3 class="document-title">Hướng dẫn lập trình ứng dụng web với React</h3>
-          <div class="document-meta">
-            <div class="document-meta-item">
-              <i class="fas fa-folder document-meta-icon"></i> Công nghệ thông tin
-            </div>
-            <div class="document-meta-item">
-              <i class="fas fa-file-pdf document-meta-icon"></i> PDF
-            </div>
-            <div class="document-meta-item">
-              <i class="fas fa-user document-meta-icon"></i> Tôi
-            </div>
-            <div class="document-meta-item">
-              <i class="fas fa-star document-meta-icon"></i> 4.8
-            </div>
+  <div class="max-w-7xl mx-auto p-6">
+    <!-- Header -->
+    <header class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+      <h1 class="text-3xl font-bold flex items-center gap-3">
+        <i class="fas fa-folder-open text-blue-600"></i>
+        Tài liệu của tôi
+      </h1>
+
+      <!-- Thống kê mới hiện đại -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-2xl">
+        <div class="stat-card">
+          <div class="stat-icon primary">
+            <i class="fas fa-file-alt"></i>
           </div>
-          <div class="document-actions">
-            <span class="document-price">25 xu</span>
-            <div>
-              <button class="action-button"><i class="fas fa-download"></i></button>
-            </div>
+          <div class="stat-info">
+            <div class="stat-value" id="statCreated">0</div>
+            <div class="stat-label">Tài liệu đã tạo</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon success">
+            <i class="fas fa-download"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="statDownloaded">0</div>
+            <div class="stat-label">Đã tải xuống</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon warning">
+            <i class="fas fa-eye"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="statViews">0</div>
+            <div class="stat-label">Lượt xem</div>
           </div>
         </div>
       </div>
+    </header>
 
-      <!-- Document 2 -->
-      <div class="document-card">
-        <div class="document-image">
-          <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Document thumbnail">
-        </div>
-        <div class="document-content">
-          <h3 class="document-title">Tài liệu về an ninh mạng</h3>
-          <div class="document-meta">
-            <div class="document-meta-item">
-              <i class="fas fa-folder document-meta-icon"></i> An toàn thông tin
-            </div>
-            <div class="document-meta-item">
-              <i class="fas fa-file-pdf document-meta-icon"></i> PDF
-            </div>
-            <div class="document-meta-item">
-              <i class="fas fa-user document-meta-icon"></i> Tôi
-            </div>
-            <div class="document-meta-item">
-              <i class="fas fa-star document-meta-icon"></i> 4.5
-            </div>
-          </div>
-          <div class="document-actions">
-            <span class="document-price">18 xu</span>
-            <div>
-              <button class="action-button"><i class="fas fa-download"></i></button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Tabs -->
+    <nav class="mb-6 border-b border-gray-300">
+      <ul class="flex space-x-6 text-gray-600 font-semibold">
+        <li><button id="tabCreated" class="pb-2 border-b-4 border-blue-600">Tài liệu đã đăng</button></li>
+        <li><button id="tabDownloaded" class="pb-2 border-b-4 border-transparent hover:border-blue-400">Tài liệu đã tải xuống</button></li>
+      </ul>
+    </nav>
 
-      <!-- Document 3 -->
-      <div class="document-card">
-        <div class="document-image">
-          <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Document thumbnail">
-        </div>
-        <div class="document-content">
-          <h3 class="document-title">Học máy cơ bản: Từ lý thuyết đến thực hành</h3>
-          <div class="document-meta">
-            <div class="document-meta-item">
-              <i class="fas fa-folder document-meta-icon"></i> Trí tuệ nhân tạo
-            </div>
-            <div class="document-meta-item">
-              <i class="fas fa-file-pdf document-meta-icon"></i> PDF
-            </div>
-            <div class="document-meta-item">
-              <i class="fas fa-user document-meta-icon"></i> Tôi
-            </div>
-            <div class="document-meta-item">
-              <i class="fas fa-star document-meta-icon"></i> 4.7
-            </div>
-          </div>
-          <div class="document-actions">
-            <span class="document-price">30 xu</span>
-            <div>
-              <button class="action-button"><i class="fas fa-download"></i></button>
-            </div>
-          </div>
-        </div>
+    <!-- Bộ lọc & tìm kiếm -->
+    <section class="flex flex-wrap gap-4 mb-8">
+      <input id="searchInput" type="text" placeholder="🔍 Tìm tiêu đề..." class="flex-1 px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400" />
+      <select id="filterCategory" class="px-4 py-2 border rounded-lg shadow-sm">
+        <option value="">Danh mục</option>
+        <option value="CNTT">Công nghệ thông tin</option>
+        <option value="An ninh">An toàn thông tin</option>
+        <option value="AI">Trí tuệ nhân tạo</option>
+      </select>
+      <select id="filterFormat" class="px-4 py-2 border rounded-lg shadow-sm">
+        <option value="">Định dạng</option>
+        <option value="PDF">PDF</option>
+        <option value="Word">Word</option>
+        <option value="PPT">PPT</option>
+      </select>
+      <select id="filterSort" class="px-4 py-2 border rounded-lg shadow-sm">
+        <option value="">Sắp xếp</option>
+        <option value="newest">Mới nhất</option>
+        <option value="popular">Phổ biến</option>
+        <option value="priceAsc">Giá tăng</option>
+        <option value="priceDesc">Giá giảm</option>
+      </select>
+    </section>
+
+    <!-- Danh sách tài liệu -->
+    <section id="docList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></section>
+
+    <!-- Modal xem chi tiết -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity z-50">
+      <div class="bg-white rounded-lg max-w-lg w-full p-6 relative shadow-lg">
+        <button id="modalClose" class="absolute top-3 right-3 text-gray-500 hover:text-gray-900 text-2xl font-bold">&times;</button>
+        <h2 id="modalTitle" class="text-2xl font-bold mb-2"></h2>
+        <img id="modalImg" class="w-full h-48 object-cover rounded mb-4" alt=""/>
+        <p id="modalCategory" class="mb-1 text-gray-600"></p>
+        <p id="modalFormat" class="mb-1 text-gray-600"></p>
+        <p id="modalPrice" class="mb-1 text-green-600 font-semibold"></p>
+        <p id="modalRating" class="mb-4 text-yellow-500 font-semibold"></p>
+        <p id="modalDesc" class="text-gray-700"></p>
       </div>
     </div>
   </div>
 </div>
-
-  </main>
-  
+      </div>
+    </div>
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -1326,21 +1439,271 @@ z-index: 9999;
 
  
 </script>
-
-
 <script>
-  // Lấy pathname (ví dụ: /dashboard.html)
-  const currentPath = window.location.pathname.split('/').pop();
+  // Dữ liệu mẫu tài liệu đã tạo và đã tải xuống
+  const docsCreated = [
+  {
+    id: 1,
+    title: "Lập trình web với React",
+    category: "CNTT",
+    format: "PDF",
+    price: 25,
+    rating: 4.8,
+    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80",
+    description: "Tài liệu hướng dẫn lập trình web hiện đại bằng React.js.",
+    createdAt: "2023-06-01",
+    downloads: 123,
+    views: 450
+  },
+  {
+    id: 2,
+    title: "Bảo mật mạng cơ bản",
+    category: "An ninh",
+    format: "Word",
+    price: 15,
+    rating: 4.3,
+    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
+    description: "Giới thiệu các khái niệm và kỹ thuật bảo mật mạng cơ bản.",
+    createdAt: "2023-05-15",
+    downloads: 90,
+    views: 380
+  },
+  {
+    id: 3,
+    title: "Giới thiệu AI cho người mới",
+    category: "AI",
+    format: "PPT",
+    price: 30,
+    rating: 4.7,
+    img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+    description: "Tài liệu trình bày các khái niệm cơ bản về trí tuệ nhân tạo.",
+    createdAt: "2023-07-10",
+    downloads: 200,
+    views: 700
+  }
+];
 
-  document.querySelectorAll('.sidebar-menu-link').forEach(link => {
-    const linkPath = link.getAttribute('href');
-    if (linkPath === currentPath) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
+const docsDownloaded = [
+  {
+    id: 4,
+    title: "Cơ sở dữ liệu MySQL",
+    category: "CNTT",
+    format: "PDF",
+    price: 20,
+    rating: 4.5,
+    img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+    description: "Hướng dẫn chi tiết về MySQL từ cơ bản đến nâng cao.",
+    createdAt: "2023-04-12",
+    downloads: 110,
+    views: 400
+  },
+  {
+    id: 5,
+    title: "Phân tích dữ liệu với Python",
+    category: "CNTT",
+    format: "Word",
+    price: 22,
+    rating: 4.6,
+    img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80",
+    description: "Phân tích và xử lý dữ liệu sử dụng thư viện Python phổ biến.",
+    createdAt: "2023-03-18",
+    downloads: 130,
+    views: 500
+  }
+  ];
+
+  // Các phần tử DOM
+  const tabCreated = document.getElementById('tabCreated');
+  const tabDownloaded = document.getElementById('tabDownloaded');
+  const docList = document.getElementById('docList');
+  const searchInput = document.getElementById('searchInput');
+  const filterCategory = document.getElementById('filterCategory');
+  const filterFormat = document.getElementById('filterFormat');
+  const filterSort = document.getElementById('filterSort');
+  
+  const statCreated = document.getElementById('statCreated');
+  const statDownloaded = document.getElementById('statDownloaded');
+  const statViews = document.getElementById('statViews');
+
+  // Modal Elements
+  const modal = document.getElementById('modal');
+  const modalClose = document.getElementById('modalClose');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalImg = document.getElementById('modalImg');
+  const modalCategory = document.getElementById('modalCategory');
+  const modalFormat = document.getElementById('modalFormat');
+  const modalPrice = document.getElementById('modalPrice');
+  const modalRating = document.getElementById('modalRating');
+  const modalDesc = document.getElementById('modalDesc');
+
+  // Trạng thái tab
+  let activeTab = 'created'; // hoặc 'downloaded'
+
+  // Hàm hiển thị tài liệu theo tab và bộ lọc
+  function renderDocs() {
+    let docs = activeTab === 'created' ? docsCreated : docsDownloaded;
+
+    // Lọc theo tìm kiếm
+    const searchText = searchInput.value.trim().toLowerCase();
+    if (searchText) {
+      docs = docs.filter(doc => doc.title.toLowerCase().includes(searchText));
+    }
+
+    // Lọc theo danh mục
+    const category = filterCategory.value;
+    if (category) {
+      docs = docs.filter(doc => doc.category === category);
+    }
+
+    // Lọc theo định dạng
+    const format = filterFormat.value;
+    if (format) {
+      docs = docs.filter(doc => doc.format === format);
+    }
+
+    // Sắp xếp
+    switch(filterSort.value) {
+      case 'newest':
+        docs.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+        break;
+      case 'popular':
+        docs.sort((a,b) => b.views - a.views);
+        break;
+      case 'priceAsc':
+        docs.sort((a,b) => a.price - b.price);
+        break;
+      case 'priceDesc':
+        docs.sort((a,b) => b.price - a.price);
+        break;
+    }
+
+    // Render
+    docList.innerHTML = docs.length > 0 ? docs.map(doc => `
+      <article class="doc-item p-4 bg-white rounded-lg shadow hover:shadow-lg cursor-pointer transition" data-id="${doc.id}">
+        <img src="${doc.img}" alt="${doc.title}" class="w-full h-40 object-cover rounded mb-3" />
+        <h3 class="text-lg font-semibold mb-1">${doc.title}</h3>
+        <p class="text-gray-500 text-sm mb-2">${doc.category} - ${doc.format}</p>
+        <p class="text-green-600 font-semibold mb-2">${doc.price}k VNĐ</p>
+        <div class="flex items-center text-yellow-400 mb-1">
+          ${'★'.repeat(Math.floor(doc.rating))}${doc.rating % 1 ? '½' : ''}
+          <span class="ml-2 text-gray-600 text-sm">${doc.rating.toFixed(1)}</span>
+        </div>
+        <p class="text-gray-400 text-xs">Đã tải: ${doc.downloads} | Lượt xem: ${doc.views}</p>
+        <button class="download-btn" title="Tải xuống" onclick="event.stopPropagation(); showToast('Đã tải xuống: ${doc.title}');">
+          <i class="fas fa-download"></i> Tải xuống
+        </button>
+      </article>
+    `).join('') : '<p class="col-span-full text-center text-gray-500">Không có tài liệu phù hợp.</p>';
+
+    updateStats();
+    attachDocClickEvents();
+  }
+
+  // Cập nhật thống kê tổng quan
+  function updateStats() {
+    const totalCreated = docsCreated.length;
+    const totalDownloaded = docsDownloaded.length;
+    // Lượt xem chỉ tính tài liệu đã tạo
+    const totalViews = docsCreated.reduce((sum, d) => sum + d.views, 0);
+
+    statCreated.textContent = totalCreated;
+    statDownloaded.textContent = totalDownloaded;
+    statViews.textContent = totalViews;
+  }
+
+  // Xử lý click vào từng tài liệu để mở modal
+  function attachDocClickEvents() {
+    const items = document.querySelectorAll('.doc-item');
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const docId = Number(item.dataset.id);
+        const doc = [...docsCreated, ...docsDownloaded].find(d => d.id === docId);
+        if (doc) {
+          showModal(doc);
+        }
+      });
+    });
+  }
+
+  // Hiển thị modal chi tiết tài liệu
+  function showModal(doc) {
+    modalTitle.textContent = doc.title;
+    modalImg.src = doc.img;
+    modalImg.alt = doc.title;
+    modalCategory.textContent = `Danh mục: ${doc.category}`;
+    modalFormat.textContent = `Định dạng: ${doc.format}`;
+    modalPrice.textContent = `Giá: ${doc.price}k VNĐ`;
+    modalRating.textContent = `Đánh giá: ${doc.rating.toFixed(1)} ★`;
+    modalDesc.textContent = doc.description;
+
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    showToast(`Đang xem chi tiết tài liệu: "${doc.title}"`);
+  }
+
+  // Đóng modal
+  modalClose.addEventListener('click', () => {
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    showToast("Đã đóng chi tiết tài liệu");
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      showToast("Đã đóng chi tiết tài liệu");
     }
   });
-</script>
 
+  // Chuyển tab
+  tabCreated.addEventListener('click', () => {
+    if (activeTab !== 'created') {
+      activeTab = 'created';
+      tabCreated.classList.add('border-blue-600');
+      tabCreated.classList.remove('border-transparent');
+      tabDownloaded.classList.remove('border-blue-600');
+      tabDownloaded.classList.add('border-transparent');
+      renderDocs();
+      showToast("Đã chuyển sang tab: Tài liệu đã đăng");
+    }
+  });
+
+
+  
+
+  tabDownloaded.addEventListener('click', () => {
+    if (activeTab !== 'downloaded') {
+      activeTab = 'downloaded';
+      tabDownloaded.classList.add('border-blue-600');
+      tabDownloaded.classList.remove('border-transparent');
+      tabCreated.classList.remove('border-blue-600');
+      tabCreated.classList.add('border-transparent');
+      renderDocs();
+      showToast("Đã chuyển sang tab: Tài liệu đã tải xuống");
+    }
+  });
+
+  // Thông báo khi lọc/tìm kiếm
+  [searchInput, filterCategory, filterFormat, filterSort].forEach(el => {
+    el.addEventListener('input', () => {
+      renderDocs();
+      showToast("Đã áp dụng bộ lọc/tìm kiếm mới");
+    });
+  });
+
+  // Khởi tạo hiển thị
+  renderDocs();
+
+  // Back to top button
+  const backToTopBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 200) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+</script>
 </body>
 </html>
