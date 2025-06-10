@@ -19,54 +19,170 @@
       --primary: #4361ee;
       --primary-dark: #3a56d4;
       --primary-light: rgba(67, 97, 238, 0.1);
+      --primary-gradient: linear-gradient(135deg, #4361ee, #3a56d4);
       --success: #10b981;
       --success-light: rgba(16, 185, 129, 0.1);
+      --success-gradient: linear-gradient(135deg, #10b981, #0d9668);
       --warning: #f59e0b;
       --warning-light: rgba(245, 158, 11, 0.1);
+      --warning-gradient: linear-gradient(135deg, #f59e0b, #d58809);
       --danger: #ef4444;
       --danger-light: rgba(239, 68, 68, 0.1);
+      --danger-gradient: linear-gradient(135deg, #ef4444, #d63939);
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --radius: 0.375rem;
+      --radius-lg: 0.5rem;
+      --radius-xl: 0.75rem;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      background-color: var(--gray-50);
+      min-height: 100vh;
+    }
+
+    .dashboard-page {
+      padding-top: 2rem;
+      padding-bottom: 3rem;
+    }
+
+    .dashboard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .dashboard-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .date-display {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      background-color: white;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
     }
 
     .dashboard-content {
       display: flex;
       flex-wrap: wrap;
-      gap: 2rem;
-      margin-top: 2rem;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
     }
-        
 
-
-    
     .dashboard-sidebar {
-      width: 240px;
-      background-color: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      box-shadow: var(--shadow-sm);
+      width: 280px;
+      background-color: white;
+      border-radius: var(--radius-xl);
+      padding: 0;
+      box-shadow: var(--shadow-md);
       position: sticky;
       top: 2rem;
       height: fit-content;
+      overflow: hidden;
     }
-    
+
     .sidebar-header {
+      padding: 1.5rem;
       padding-bottom: 1rem;
       border-bottom: 1px solid var(--gray-200);
+      margin-bottom: 0;
+      position: relative;
+      background-color: var(--primary-light);
+    }
+
+    .user-profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 0.5rem;
+      
+    }
+
+    .user-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      box-shadow: var(--shadow-md);
       margin-bottom: 1rem;
+      width: 32px;
+  height: 32px;
+  border-radius: 70%;
+  object-fit: cover;
+    }
+
+    .user-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 0.25rem;
+      font-size: 10px; /* nhỏ lại */
+ 
     }
     
+
+    .user-email {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      margin-bottom: 1rem;
+    }
+
+    .user-status {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      background-color: var(--primary-light);
+      color: var(--primary);
+      border-radius: 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .user-status-icon {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      margin-right: 0.5rem;
+    }
+
     .sidebar-title {
       font-size: 1rem;
       font-weight: 600;
       color: var(--gray-800);
       margin-bottom: 0.5rem;
     }
-    
+
     .sidebar-menu {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-    
+
     .sidebar-menu-title {
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -76,37 +192,49 @@
       font-weight: 600;
       padding-left: 0.5rem;
     }
-    
+
     .sidebar-menu-item {
       margin-bottom: 0.25rem;
     }
-    
+
     .sidebar-menu-link {
       display: flex;
       align-items: center;
-      padding: 0.5rem;
+      padding: 0.75rem 1.5rem;
       color: var(--gray-700);
       text-decoration: none;
-      border-radius: var(--radius);
-      transition: all 0.2s;
+      transition: var(--transition);
+      position: relative;
+      font-size: 0.95rem;
     }
-    
+
     .sidebar-menu-link:hover {
-      background-color: var(--gray-100);
-    }
-    
-    .sidebar-menu-link.active {
-      background-color: var(--primary-light);
       color: var(--primary);
-      font-weight: 500;
+      background-color: var(--primary-light);
     }
-    
+
+    .sidebar-menu-link.active {
+      color: var(--primary);
+      font-weight: 600;
+      background-color: var(--primary-light);
+    }
+
+    .sidebar-menu-link.active::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: var(--primary);
+    }
+
     .sidebar-icon {
       width: 1.25rem;
       margin-right: 0.75rem;
       text-align: center;
     }
-    
+
     .sidebar-badge {
       margin-left: auto;
       background-color: var(--primary);
@@ -115,12 +243,12 @@
       padding: 0.125rem 0.5rem;
       border-radius: 1rem;
     }
-    
+
     .dashboard-main {
       flex: 1;
       min-width: 0;
     }
-    
+
     /* Stats Grid */
     .stats-grid {
       display: grid;
@@ -128,7 +256,7 @@
       gap: 1rem;
       margin-bottom: 2rem;
     }
-    
+
     .stat-card {
       background-color: var(--white);
       border-radius: var(--radius-lg);
@@ -136,12 +264,12 @@
       box-shadow: var(--shadow-sm);
       transition: all 0.3s;
     }
-    
+
     .stat-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-md);
     }
-    
+
     .stat-icon {
       width: 3rem;
       height: 3rem;
@@ -152,63 +280,63 @@
       margin-bottom: 1rem;
       font-size: 1.25rem;
     }
-    
+
     .stat-icon.primary {
       background-color: var(--primary-light);
       color: var(--primary);
     }
-    
+
     .stat-icon.success {
       background-color: var(--success-light);
       color: var(--success);
     }
-    
+
     .stat-icon.warning {
       background-color: var(--warning-light);
       color: var(--warning);
     }
-    
+
     .stat-icon.danger {
       background-color: var(--danger-light);
       color: var(--danger);
     }
-    
+
     .stat-value {
       font-size: 1.75rem;
       font-weight: 700;
       color: var(--gray-900);
       margin-bottom: 0.25rem;
     }
-    
+
     .stat-label {
       font-size: 0.875rem;
       color: var(--gray-600);
       margin-bottom: 0.5rem;
     }
-    
+
     .stat-trend {
       font-size: 0.75rem;
       display: flex;
       align-items: center;
     }
-    
+
     .trend-positive {
       color: var(--success);
     }
-    
+
     .trend-negative {
       color: var(--danger);
     }
-    
+
     .trend-icon {
       margin-right: 0.25rem;
     }
-    
+
     .trend-period {
       color: var(--gray-500);
       margin-left: 0.25rem;
     }
-    
+
     /* Dashboard Sections */
     .dashboard-section {
       background-color: var(--white);
@@ -217,14 +345,14 @@
       box-shadow: var(--shadow-sm);
       margin-bottom: 2rem;
     }
-    
+
     .section-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1.25rem;
     }
-    
+
     .section-title {
       font-size: 1.125rem;
       font-weight: 600;
@@ -232,17 +360,17 @@
       display: flex;
       align-items: center;
     }
-    
+
     .section-title-icon {
       margin-right: 0.5rem;
       color: var(--primary);
     }
-    
+
     .section-actions {
       display: flex;
       align-items: center;
     }
-    
+
     .time-range-select {
       padding: 0.375rem 0.75rem;
       border-radius: var(--radius);
@@ -252,20 +380,20 @@
       color: var(--gray-700);
       cursor: pointer;
     }
-    
+
     /* Activity Chart */
     .chart-container {
       width: 100%;
       height: 300px;
     }
-    
+
     /* Activity List */
     .activity-list {
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
-    
+
     .activity-item {
       display: flex;
       align-items: flex-start;
@@ -274,11 +402,11 @@
       border-radius: var(--radius);
       transition: all 0.2s;
     }
-    
+
     .activity-item:hover {
       background-color: var(--gray-50);
     }
-    
+
     .activity-icon {
       width: 2.5rem;
       height: 2.5rem;
@@ -289,52 +417,47 @@
       font-size: 1rem;
       flex-shrink: 0;
     }
-    
+
     .activity-content {
       flex: 1;
       min-width: 0;
     }
-    
+
     .activity-title {
       font-weight: 600;
       color: var(--gray-900);
       margin-bottom: 0.25rem;
     }
-    
+
     .activity-description {
       font-size: 0.875rem;
       color: var(--gray-600);
       margin-bottom: 0.5rem;
     }
-    
+
     .activity-meta {
-      background: white;
-  border-left: 5px solid var(--main-color);
-  padding: 12px 16px;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  transition: transform 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      display: flex;
+      gap: 1rem;
     }
-    
+
     .activity-meta-item {
       display: flex;
       align-items: center;
     }
-    
+
     .activity-meta-icon {
       margin-right: 0.25rem;
     }
-    
+
     /* Document Cards */
     .documents-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
-    
+
     .document-card {
       border-radius: var(--radius-lg);
       overflow: hidden;
@@ -345,31 +468,31 @@
       flex-direction: column;
       background-color: var(--white);
     }
-    
+
     .document-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-md);
     }
-    
+
     .document-image {
       height: 160px;
       overflow: hidden;
       position: relative;
     }
-    
+
     .document-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    
+
     .document-content {
       padding: 1rem;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
-    
+
     .document-title {
       font-weight: 600;
       margin-bottom: 0.5rem;
@@ -379,7 +502,7 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    
+
     .document-meta {
       display: flex;
       flex-wrap: wrap;
@@ -388,16 +511,16 @@
       color: var(--gray-600);
       margin-bottom: 0.75rem;
     }
-    
+
     .document-meta-item {
       display: flex;
       align-items: center;
     }
-    
+
     .document-meta-icon {
       margin-right: 0.25rem;
     }
-    
+
     .document-actions {
       display: flex;
       justify-content: space-between;
@@ -405,7 +528,7 @@
       padding-top: 0.75rem;
       border-top: 1px solid var(--gray-200);
     }
-    
+
     .action-button {
       width: 2rem;
       height: 2rem;
@@ -419,12 +542,12 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-    
+
     .action-button:hover {
       background-color: var(--primary-light);
       color: var(--primary);
     }
-    
+
     .view-all-link {
       display: flex;
       align-items: center;
@@ -437,74 +560,69 @@
       border-radius: var(--radius);
       transition: all 0.2s;
     }
-    
+
     .view-all-link:hover {
       background-color: var(--primary-light);
     }
-    
+
     .view-all-icon {
       margin-left: 0.5rem;
       transition: all 0.2s;
     }
-    
+
     .view-all-link:hover .view-all-icon {
       transform: translateX(3px);
     }
-    
+
     /* Responsive */
     @media (max-width: 1200px) {
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      
+
       .documents-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    
+
     @media (max-width: 992px) {
       .dashboard-content {
         flex-direction: column;
       }
-      
+
       .dashboard-sidebar {
         width: 100%;
         position: static;
       }
-      
+
       .sidebar-menu {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
       }
-      
+
       .sidebar-menu-title {
         width: 100%;
       }
     }
-    
+
     @media (max-width: 768px) {
       .documents-grid {
         grid-template-columns: 1fr;
       }
-      
+
       .activity-item {
         flex-direction: column;
       }
-      
+
       .activity-icon {
         margin-bottom: 0.5rem;
       }
-    }
-    
-    .dashboard-page {
-      margin-top: 2rem;
     }
   </style>
 </head>
 
 <body>
-  <!-- Navigation -->
   <header class="header">
     <div class="container">
       <div class="header-content">
@@ -528,34 +646,15 @@
               <i class="fas fa-search"></i>
             </button>
           </div>
-                    <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode">
+          <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode">
             <span class="dark-mode-handle" id="darkModeHandle"></span>
           </button>
-          
-          <!-- User menu for logged in user -->
           <div class="user-menu">
             <div class="user-menu-trigger">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Avatar" class="user-avatar">
-              <span class="user-name">Nguyễn Thị Hương</span>
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80 alt="Avatar" class="user-avatar" >
+              <span class="user-name">Nguyễn Văn Anh</span>
               <i class="fas fa-chevron-down"></i>
             </div>
-            <!-- <div class="user-dropdown">
-              <a href="dashboard.html" class="user-dropdown-item">
-                <i class="fas fa-tachometer-alt"></i> Trang tổng quan
-              </a>
-              <a href="profile.html" class="user-dropdown-item">
-                <i class="fas fa-user"></i> Thông tin cá nhân
-              </a>
-              <a href="documents.html" class="user-dropdown-item">
-                <i class="fas fa-file-alt"></i> Tài liệu của tôi
-              </a>
-              <a href="transactions.html" class="user-dropdown-item">
-                <i class="fas fa-history"></i> Lịch sử giao dịch
-              </a>
-              <a href="../login.html" class="user-dropdown-item">
-                <i class="fas fa-sign-out-alt"></i> Đăng xuất
-              </a>
-            </div> -->
           </div>
         </div>
         <div class="mobile-menu-toggle" id="mobileMenuBtn">
@@ -563,7 +662,6 @@
         </div>
       </div>
     </div>
-    <!-- Mobile menu -->
     <div id="mobileMenu" class="mobile-menu">
       <div class="mobile-search">
         <input type="text" placeholder="Tìm kiếm tài liệu...">
@@ -602,26 +700,35 @@
         <i class="fas fa-chevron-right"></i>
         <span>Trang tổng quan</span>
       </div>
+
       
-      
-      
+
       <div class="dashboard-content">
         <!-- Sidebar -->
         <div class="dashboard-sidebar">
           <div class="sidebar-header">
+            <div class="user-profile">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User avatar" class="user-avatar">
+              <div class="user-name">Nguyễn Văn Anh</div>
+              <div class="user-email">nguyenvananh@gmail.com</div>
+              <div class="user-status">
+                <span class="user-status-icon"></span>
+                Tài khoản Premium
+              </div>
+            </div>
             <div class="sidebar-title">Quản lý tài khoản</div>
           </div>
-          
+
           <ul class="sidebar-menu">
             <li class="sidebar-menu-title">Tài liệu</li>
-            
+
             <li class="sidebar-menu-item">
               <a href="dashboard.html" class="sidebar-menu-link ">
                 <i class="fas fa-tachometer-alt sidebar-icon"></i>
                 Tổng quan
               </a>
             </li>
-            
+
             <li class="sidebar-menu-item">
               <a href="documents.html" class="sidebar-menu-link">
                 <i class="fas fa-file-alt sidebar-icon"></i>
@@ -629,44 +736,44 @@
                 <span class="sidebar-badge">15</span>
               </a>
             </li>
-            
+
             <li class="sidebar-menu-item">
               <a href="../search.html" class="sidebar-menu-link">
                 <i class="fas fa-search sidebar-icon"></i>
                 Khám phá tài liệu
               </a>
             </li>
-            
+
             <li class="sidebar-menu-item">
               <a href="../upload.html" class="sidebar-menu-link">
                 <i class="fas fa-cloud-upload-alt sidebar-icon"></i>
                 Tải lên tài liệu
               </a>
             </li>
-            
+
             <li class="sidebar-menu-item">
               <a href="favorites.html" class="sidebar-menu-link">
                 <i class="fas fa-bookmark sidebar-icon"></i>
                 Tài liệu đã lưu
               </a>
             </li>
-            
+
             <li class="sidebar-menu-title">Tài khoản</li>
-            
+
             <li class="sidebar-menu-item">
-              <a href="profile.html" class="sidebar-menu-link active   ">
+              <a href="profile.html" class="sidebar-menu-link active ">
                 <i class="fas fa-user sidebar-icon"></i>
                 Thông tin cá nhân
               </a>
             </li>
-            
+
             <li class="sidebar-menu-item">
               <a href="transactions.html" class="sidebar-menu-link">
                 <i class="fas fa-history sidebar-icon"></i>
                 Lịch sử giao dịch
               </a>
             </li>
-            
+
             <li class="sidebar-menu-item">
               <a href="recharge.html" class="sidebar-menu-link">
                 <i class="fas fa-coins sidebar-icon"></i>
@@ -674,47 +781,62 @@
                 <span class="sidebar-badge">250</span>
               </a>
             </li>
-            
+
             <li class="sidebar-menu-title">Cài đặt</li>
-            
+
             <li class="sidebar-menu-item">
               <a href="security.html" class="sidebar-menu-link">
                 <i class="fas fa-shield-alt sidebar-icon"></i>
                 Bảo mật
               </a>
             </li>
-            
+
             <li class="sidebar-menu-item">
               <a href="notifications.html" class="sidebar-menu-link">
                 <i class="fas fa-bell sidebar-icon"></i>
                 Thông báo
               </a>
             </li>
+            <li class="sidebar-menu-item">
+              <a href="notifications.html" class="sidebar-menu-link">
+                <i class="fas fa-cog sidebar-icon"></i>
+                Tùy chọn
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="notifications.html" class="sidebar-menu-link">
+                <i class="fas fa-question-circle sidebar-icon"></i>
+                Trợ giúp
+              </a>
+            </li>
           </ul>
         </div>
-        
+
         <!-- Main Content -->
         <div class="dashboard-main">
           <!-- Stats Cards -->
           <div class="stats-grid">
-            
-        
+            <!-- Thêm stats cards nếu cần -->
           </div>
+          <div class="page-layout">
+            <aside class="sidebar">
+              <!-- Menu trái -->
+            </aside>
+
           
           <!-- Chart -->
-          <div class="dashboard-section">
-            <div class="section-header">
-              <h2 class="section-title">
-                <i class="fas fa-chart-line section-title-icon"></i>
-                Thông tin cá nhân 
-
-              </h2>
-              <div class="section-actions">
-                
-              </div>
+          <div class="container">
+            <h1>Thông Tin Cá Nhân</h1>
+        
+            <!-- Ảnh đại diện -->
+            <div class="section avatar-wrapper">
+              <img src="https://via.placeholder.com/90" class="avatar" id="avatarPreview">
+              <input type="file" id="avatarInput">
+              <label for="avatarInput" class="btn-upload">Thay ảnh</label>
             </div>
-            
+
             <style>
+
               :root {
                 --main-color: #472fe0; /* xanh chủ đạo */
                 --accent-color: #fca311; /* cam vàng nhấn */
@@ -733,13 +855,9 @@
                 margin: 0;
                 background: var(--bg-light);
                 color: var(--text-color);
+                align-items: flex-start;
               }
-              .container {
-                width: 100%;
-                padding: 30px 20px;
-                max-width: 1000px;
-                margin: auto;
-              }
+              
               h1 {
                 text-align: center;
                 color: var(--main-color);
@@ -894,6 +1012,7 @@
                 }
                 .container {
                   padding: 20px;
+                  
                 }
               }
               .activity-list {
@@ -951,207 +1070,203 @@
                 cursor: pointer;
                 display: inline-block;
               }
+
+
+
+
+
             </style>
-          
-            <!-- FontAwesome CDN để hiển thị icon nếu bạn muốn -->
-            <link
-              rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-            />
-          </head>
-          <body>
-            <div class="container">
-              <h1>Thông Tin Cá Nhân</h1>
-          
-              <div class="section avatar-wrapper">
-                <img src="https://via.placeholder.com/90" class="avatar" id="avatarPreview" alt="Ảnh đại diện" />
-                <input type="file" id="avatarInput" />
-                <label for="avatarInput" class="btn-upload">Thay ảnh</label>
-              </div>
-          <!-- Thông tin cá nhân -->
-              <div class="section">
-                <form id="personalInfoForm" class="vertical-form">
-                  <div class="form-group">
-                    <label for="fullname">Họ và tên</label>
-                    <input type="text" id="fullname" value="Nguyễn Thanh Đức" />
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" value="Coppyrightemomo@email.com" />
-                  </div>
-                  <div class="form-group">
-                    <label for="phone">SĐT</label>
-                    <input type="tel" id="phone" value="0123456789" />
-                  </div>
-                  <div class=".form-group.center-button">
-                    <button type="submit" class="btn">Cập nhật</button>
-                  </div>
-                </form>
-              </div>
-          <!-- Đổi mật khẩu  -->
-              <div class="section">
-                <form id="passwordForm" class="password-form">
-                  <label>Mật khẩu hiện tại</label>
-                  <input type="password" />
-                  <label>Mật khẩu mới</label>
-                  <input type="password" />
-                  <label>Nhập lại mật khẩu mới</label>
-                  <input type="password" />
-                  <button type="submit" class="btn">Đổi mật khẩu</button>
-                </form>
-              </div>
-          <!-- Thiết bị bảo mật -->
-              <div class="section">
-              <h2 style="font-size: 16px; margin-bottom: 10px;">Thiết bị bảo mật</h2>
-              <ul class="device-list">
-              <section">
-                  <li>
-                    <span>Window - 06/06/2025</span>
-                    <button class="remove">Gỡ</button>
-                  </li>
-                  <li>
-                    <span>MacBook Air - 06/06/2025</span>
-                    <button class="remove">Gỡ</button>
-                  </li>
-                </ul>
-              </div>
-          
-              <div class="section">
-                <div class="privacy-toggle">
-                  <label class="switch">
-                    <input type="checkbox" id="privacySetting" checked />
-                    <span class="slider round"></span>
-                  </label>
-                  <span class="privacy-label">Hiển thị thông tin công khai</span>
+        <!-- Thông tin cá nhân -->
+            <div class="section">
+              <form id="personalInfoForm" class="vertical-form">
+                <div class="form-group">
+                  <label for="fullname">Họ và tên</label>
+                  <input type="text" id="fullname" value="Nguyễn Thanh Đức" />
                 </div>
-              </div>
-          
-              <div class="section">
-                <div class="horizontal-form">
-                  <div class="form-group">
-                    <label for="facebook">Facebook</label>
-                    <input
-                      type="url"
-                      id="facebook"
-                      value="https://facebook.com/nguoi-dung"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="linkedin">LinkedIn</label>
-                    <input
-                      type="url"
-                      id="linkedin"
-                      value="https://linkedin.com/in/nguoi-dung"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="github">GitHub</label>
-                    <input type="url" id="github" value="https://github.com/nguoi-dung" />
-                  </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" value="Coppyrightemomo@email.com" />
                 </div>
-                <button id="saveSocial" class="btn" style="margin-top: 10px;">
-                  Lưu liên kết
-                </button>
-              </div>
-          
-              <div class="section">
-                <div class="horizontal-form">
-                  <div class="form-group">
-                    <label for="position">Chức danh</label>
-                    <input type="text" id="position" value="Giảng viên" />
-                  </div>
-                  <div class="form-group">
-                    <label for="field">Lĩnh vực</label>
-                    <input type="text" id="field" value="Công nghệ thông tin" />
-                  </div>
+                <div class="form-group">
+                  <label for="phone">SĐT</label>
+                  <input type="tel" id="phone" value="0123456789" />
                 </div>
-              </div>
-          
-              <div class="section">
-                <div class="form-group" style="max-width: 270px;">
-                  <label for="userLevel">Cấp</label>
-                  <select id="userLevel">
-                    <option value="member" selected>Thành viên</option>
-                    <option value="moderator">Kiểm duyệt viên</option>
-                    <option value="admin">Quản trị viên</option>
-                  </select>
+                <div class=".form-group.center-button">
+                  <button type="submit" class="btn">Cập nhật</button>
                 </div>
-              </div>
-          
-              <!-- Hoạt động gần đây -->
-              <div class="section">
-                <h2 style="font-size: 16px; margin-bottom: 10px;">
-                  <i class="fas fa-history"></i> Hoạt động gần đây
-                </h2>
-                <div class="activity-list" id="activityList"></div>
+              </form>
+            </div>
+        <!-- Đổi mật khẩu  -->
+            <div class="section">
+              <form id="passwordForm" class="password-form">
+                <label>Mật khẩu hiện tại</label>
+                <input type="password" />
+                <label>Mật khẩu mới</label>
+                <input type="password" />
+                <label>Nhập lại mật khẩu mới</label>
+                <input type="password" />
+                <button type="submit" class="btn">Đổi mật khẩu</button>
+              </form>
+            </div>
+        <!-- Thiết bị bảo mật -->
+            <div class="section">
+            <h2 style="font-size: 16px; margin-bottom: 10px;">Thiết bị bảo mật</h2>
+            <ul class="device-list">
+            <section">
+                <li>
+                  <span>Window - 06/06/2025</span>
+                  <button class="remove">Gỡ</button>
+                </li>
+                <li>
+                  <span>MacBook Air - 06/06/2025</span>
+                  <button class="remove">Gỡ</button>
+                </li>
+              </ul>
+            </div>
+        
+            <div class="section">
+              <div class="privacy-toggle">
+                <label class="switch">
+                  <input type="checkbox" id="privacySetting" checked />
+                  <span class="slider round"></span>
+                </label>
+                <span class="privacy-label">Hiển thị thông tin công khai</span>
               </div>
             </div>
-          
-            <script>
-              document.addEventListener("DOMContentLoaded", function () {
-                const avatarInput = document.getElementById("avatarInput");
-                const avatarPreview = document.getElementById("avatarPreview");
-                const activityList = document.getElementById("activityList");
-          
-                function addActivity(iconClass, title, description) {
-                  const activityHTML = `
-                    <div class="activity-item">
-                      <div class="activity-title"><i class="${iconClass}"></i> ${title}</div>
-                      <div class="activity-description">${description}</div>
-                      <div class="activity-meta"><i class="far fa-clock"></i> Vừa xong</div>
-                    </div>
-                  `;
-                  activityList.insertAdjacentHTML("afterbegin", activityHTML);
-                }
-          
-                document
-                  .getElementById("personalInfoForm")
-                  .addEventListener("submit", function (e) {
-                    e.preventDefault();
-                    addActivity(
-                      "fas fa-user-edit",
-                      "Cập nhật thông tin cá nhân",
-                      "Họ tên, email hoặc số điện thoại đã được thay đổi"
-                    );
-                  });
-          
-                document
-                  .getElementById("passwordForm")
-                  .addEventListener("submit", function (e) {
-                    e.preventDefault();
-                    addActivity("fas fa-key", "Đổi mật khẩu", "Mật khẩu đã được cập nhật thành công");
-                  });
-          
-                document.querySelectorAll(".remove").forEach((button) => {
-                  button.addEventListener("click", function () {
-                    const device = this.closest("li");
-                    const deviceName = device.querySelector("span").textContent;
-                    device.remove();
-                    addActivity("fas fa-trash", "Gỡ thiết bị bảo mật", `${deviceName} đã được gỡ bỏ`);
-                  });
+        
+            <div class="section">
+              <div class="horizontal-form">
+                <div class="form-group">
+                  <label for="facebook">Facebook</label>
+                  <input
+                    type="url"
+                    id="facebook"
+                    value="https://facebook.com/nguoi-dung"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="linkedin">LinkedIn</label>
+                  <input
+                    type="url"
+                    id="linkedin"
+                    value="https://linkedin.com/in/nguoi-dung"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="github">GitHub</label>
+                  <input type="url" id="github" value="https://github.com/nguoi-dung" />
+                </div>
+              </div>
+              <button id="saveSocial" class="btn" style="margin-top: 10px;">
+                Lưu liên kết
+              </button>
+            </div>
+        
+            <div class="section">
+              <div class="horizontal-form">
+                <div class="form-group">
+                  <label for="position">Chức danh</label>
+                  <input type="text" id="position" value="Giảng viên" />
+                </div>
+                <div class="form-group">
+                  <label for="field">Lĩnh vực</label>
+                  <input type="text" id="field" value="Công nghệ thông tin" />
+                </div>
+              </div>
+            </div>
+        
+            <div class="section">
+              <div class="form-group" style="max-width: 270px;">
+                <label for="userLevel">Cấp</label>
+                <select id="userLevel">
+                  <option value="member" selected>Thành viên</option>
+                  <option value="moderator">Kiểm duyệt viên</option>
+                  <option value="admin">Quản trị viên</option>
+                </select>
+              </div>
+            </div>
+        
+            <!-- Hoạt động gần đây -->
+            <div class="section">
+              <h2 style="font-size: 16px; margin-bottom: 10px;">
+                <i class="fas fa-history"></i> Hoạt động gần đây
+              </h2>
+              <div class="activity-list" id="activityList"></div>
+            </div>
+          </div>
+        
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const avatarInput = document.getElementById("avatarInput");
+              const avatarPreview = document.getElementById("avatarPreview");
+              const activityList = document.getElementById("activityList");
+        
+              function addActivity(iconClass, title, description) {
+                const activityHTML = `
+                <div class="activity-item">
+                        <div class="activity-icon info">
+                          <i class="${iconClass}"></i>
+                        </div>
+                        <div class="activity-content">
+                          <div class="activity-title">${title}</div>
+                          <div class="activity-description">${description}</div>
+                          <div class="activity-meta">
+                            <div class="activity-meta-item">
+                              <i class="far fa-clock activity-meta-icon"></i>
+                              Vừa xong
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                `;
+                activityList.insertAdjacentHTML("afterbegin", activityHTML);
+              }
+        
+              document
+                .getElementById("personalInfoForm")
+                .addEventListener("submit", function (e) {
+                  e.preventDefault();
+                  addActivity(
+                    "fas fa-user-edit",
+                    "Cập nhật thông tin cá nhân",
+                    "Họ tên, email hoặc số điện thoại đã được thay đổi"
+                  );
                 });
-          
-                avatarInput.addEventListener("change", function () {
-                  const file = this.files[0];
-                  if (file) {
-                    avatarPreview.src = URL.createObjectURL(file);
-                    addActivity("fas fa-image", "Thay đổi ảnh đại diện", "Ảnh đại diện mới đã được cập nhật");
-                  }
+        
+              document
+                .getElementById("passwordForm")
+                .addEventListener("submit", function (e) {
+                  e.preventDefault();
+                  addActivity("fas fa-key", "Đổi mật khẩu", "Mật khẩu đã được cập nhật thành công");
                 });
-          
-                document.getElementById("privacySetting").addEventListener("change", function () {
-                  const status = this.checked ? "bật" : "tắt";
-                  addActivity("fas fa-user-shield", "Cập nhật quyền riêng tư", `Thông tin cá nhân đã được ${status}`);
-                });
-          
-                document.getElementById("saveSocial").addEventListener("click", function () {
-                  addActivity("fas fa-share-alt", "Cập nhật mạng xã hội", "Liên kết đã được lưu");
+        
+              document.querySelectorAll(".remove").forEach((button) => {
+                button.addEventListener("click", function () {
+                  const device = this.closest("li");
+                  const deviceName = device.querySelector("span").textContent;
+                  device.remove();
+                  addActivity("fas fa-trash", "Gỡ thiết bị bảo mật", `${deviceName} đã được gỡ bỏ`);
                 });
               });
-            </script>      
-          <!-- My Documents -->   
-         
-          
+        
+              avatarInput.addEventListener("change", function () {
+                const file = this.files[0];
+                if (file) {
+                  avatarPreview.src = URL.createObjectURL(file);
+                  addActivity("fas fa-image", "Thay đổi ảnh đại diện", "Ảnh đại diện mới đã được cập nhật");
+                }
+              });
+        
+              document.getElementById("privacySetting").addEventListener("change", function () {
+                const status = this.checked ? "bật" : "tắt";
+                addActivity("fas fa-user-shield", "Cập nhật quyền riêng tư", `Thông tin cá nhân đã được ${status}`);
+              });
+        
+              document.getElementById("saveSocial").addEventListener("click", function () {
+                addActivity("fas fa-share-alt", "Cập nhật mạng xã hội", "Liên kết đã được lưu");
+              });
+            });
+          </script>    
           <!-- Notifications -->
           <div class="dashboard-section">
             <div class="section-header">
@@ -1160,7 +1275,7 @@
                 Thông báo mới
               </h2>
             </div>
-            
+
             <div class="activity-list">
               <div class="activity-item">
                 <div class="activity-icon primary">
@@ -1177,7 +1292,7 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="activity-item">
                 <div class="activity-icon success">
                   <i class="fas fa-coins"></i>
@@ -1193,7 +1308,7 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="activity-item">
                 <div class="activity-icon warning">
                   <i class="fas fa-star"></i>
@@ -1210,7 +1325,7 @@
                 </div>
               </div>
             </div>
-            
+
             <a href="notifications.html" class="view-all-link">
               Xem tất cả thông báo
               <i class="fas fa-arrow-right view-all-icon"></i>
@@ -1220,6 +1335,16 @@
       </div>
     </div>
   </main>
+
+            <!-- FontAwesome CDN để hiển thị icon nếu bạn muốn -->
+            <link
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+            />
+          </head>
+          <body>
+              
+        
   
   <!-- Footer -->
   <footer class="footer">
