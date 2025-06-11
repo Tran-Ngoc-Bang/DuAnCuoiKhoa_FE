@@ -49,28 +49,28 @@
     }
 
     body {
-      background-color: var(--gray-50);
+      background-color: #f5f7fb;
       min-height: 100vh;
     }
-
+    
     .dashboard-page {
       padding-top: 2rem;
       padding-bottom: 3rem;
     }
-
+    
     .dashboard-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1.5rem;
     }
-
+    
     .dashboard-header-actions {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 1.5rem;
     }
-
+    
     .date-display {
       display: flex;
       align-items: center;
@@ -83,14 +83,34 @@
       box-shadow: var(--shadow-sm);
       border: 1px solid var(--gray-200);
     }
-
+    
+    .refresh-button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--primary);
+      background-color: var(--primary-light);
+      border: none;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .refresh-button:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+    
     .dashboard-content {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
+      gap: 2rem;
+      margin-top: 2rem;
     }
-
+    
     .dashboard-sidebar {
       width: 280px;
       background-color: white;
@@ -102,25 +122,24 @@
       height: fit-content;
       overflow: hidden;
     }
-
+    
     .sidebar-header {
       padding: 1.5rem;
-      padding-bottom: 1rem;
+      padding-bottom: 1.5rem;
       border-bottom: 1px solid var(--gray-200);
       margin-bottom: 0;
       position: relative;
       background-color: var(--primary-light);
     }
-
+    
     .user-profile {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       padding-bottom: 0.5rem;
-      
     }
-
+    
     .user-avatar {
       width: 80px;
       height: 80px;
@@ -129,28 +148,21 @@
       border: 3px solid white;
       box-shadow: var(--shadow-md);
       margin-bottom: 1rem;
-      width: 32px;
-  height: 32px;
-  border-radius: 70%;
-  object-fit: cover;
     }
-
+    
     .user-name {
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--gray-900);
       margin-bottom: 0.25rem;
-      font-size: 10px; /* nhỏ lại */
- 
     }
     
-
     .user-email {
       font-size: 0.875rem;
       color: var(--gray-600);
       margin-bottom: 1rem;
     }
-
+    
     .user-status {
       display: inline-flex;
       align-items: center;
@@ -161,7 +173,7 @@
       font-size: 0.75rem;
       font-weight: 600;
     }
-
+    
     .user-status-icon {
       width: 8px;
       height: 8px;
@@ -169,20 +181,20 @@
       background-color: var(--primary);
       margin-right: 0.5rem;
     }
-
+    
     .sidebar-title {
       font-size: 1rem;
       font-weight: 600;
       color: var(--gray-800);
       margin-bottom: 0.5rem;
     }
-
+    
     .sidebar-menu {
       list-style: none;
-      padding: 0;
+      padding: 0.75rem 0;
       margin: 0;
     }
-
+    
     .sidebar-menu-title {
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -192,11 +204,11 @@
       font-weight: 600;
       padding-left: 0.5rem;
     }
-
+    
     .sidebar-menu-item {
       margin-bottom: 0.25rem;
     }
-
+    
     .sidebar-menu-link {
       display: flex;
       align-items: center;
@@ -207,18 +219,18 @@
       position: relative;
       font-size: 0.95rem;
     }
-
+    
     .sidebar-menu-link:hover {
       color: var(--primary);
       background-color: var(--primary-light);
     }
-
+    
     .sidebar-menu-link.active {
       color: var(--primary);
       font-weight: 600;
       background-color: var(--primary-light);
     }
-
+    
     .sidebar-menu-link.active::before {
       content: "";
       position: absolute;
@@ -228,13 +240,13 @@
       width: 4px;
       background-color: var(--primary);
     }
-
+    
     .sidebar-icon {
       width: 1.25rem;
       margin-right: 0.75rem;
       text-align: center;
     }
-
+    
     .sidebar-badge {
       margin-left: auto;
       background-color: var(--primary);
@@ -243,134 +255,167 @@
       padding: 0.125rem 0.5rem;
       border-radius: 1rem;
     }
-
+    
     .dashboard-main {
       flex: 1;
       min-width: 0;
     }
-
+    
     /* Stats Grid */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      gap: 1.5rem;
       margin-bottom: 2rem;
     }
-
+    
     .stat-card {
-      background-color: var(--white);
-      border-radius: var(--radius-lg);
+      background-color: white;
+      border-radius: var(--radius-xl);
       padding: 1.5rem;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.3s;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid var(--gray-100);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
     }
-
+    
     .stat-card:hover {
       transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-lg);
     }
-
+    
     .stat-icon {
       width: 3rem;
       height: 3rem;
-      border-radius: var(--radius);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1rem;
       font-size: 1.25rem;
+      position: relative;
+      margin-bottom: 0.75rem;
+      margin-top: 0.5rem;
     }
-
+    
     .stat-icon.primary {
-      background-color: var(--primary-light);
-      color: var(--primary);
+      background: var(--primary-gradient);
+      color: white;
     }
-
+    
     .stat-icon.success {
-      background-color: var(--success-light);
-      color: var(--success);
+      background: var(--success-gradient);
+      color: white;
     }
-
+    
     .stat-icon.warning {
-      background-color: var(--warning-light);
-      color: var(--warning);
+      background: var(--warning-gradient);
+      color: white;
     }
-
+    
     .stat-icon.danger {
-      background-color: var(--danger-light);
-      color: var(--danger);
+      background: var(--danger-gradient);
+      color: white;
+    }
+    
+    .stat-info {
+      width: 100%;
     }
 
     .stat-value {
       font-size: 1.75rem;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--gray-900);
       margin-bottom: 0.25rem;
+      line-height: 1.2;
     }
-
+    
     .stat-label {
-      font-size: 0.875rem;
+      font-size: 0.8rem;
       color: var(--gray-600);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
+      max-width: 100%;
+      display: block;
+      line-height: 1.2;
+      white-space: normal;
     }
-
+    
     .stat-trend {
       font-size: 0.75rem;
       display: flex;
       align-items: center;
     }
-
+    
     .trend-positive {
       color: var(--success);
     }
-
+    
     .trend-negative {
       color: var(--danger);
     }
-
+    
     .trend-icon {
       margin-right: 0.25rem;
     }
-
+    
     .trend-period {
       color: var(--gray-500);
       margin-left: 0.25rem;
     }
-
+    
     /* Dashboard Sections */
     .dashboard-section {
-      background-color: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 2rem;
+      background-color: white;
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 2.5rem;
+      border: 1px solid var(--gray-100);
     }
-
+    
     .section-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1.25rem;
     }
-
+    
     .section-title {
-      font-size: 1.125rem;
-      font-weight: 600;
+      font-size: 1.25rem;
+      font-weight: 700;
       color: var(--gray-900);
       display: flex;
       align-items: center;
     }
-
+    
     .section-title-icon {
-      margin-right: 0.5rem;
+      margin-right: 0.75rem;
       color: var(--primary);
+      font-size: 1.125rem;
     }
-
+    
     .section-actions {
       display: flex;
       align-items: center;
     }
-
+    
+    .action-button {
+      padding: 0.5rem 0.875rem;
+      border-radius: var(--radius);
+      background-color: var(--gray-100);
+      color: var(--gray-800);
+      border: none;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+    
     .time-range-select {
       padding: 0.375rem 0.75rem;
       border-radius: var(--radius);
@@ -380,129 +425,149 @@
       color: var(--gray-700);
       cursor: pointer;
     }
-
+    
     /* Activity Chart */
     .chart-container {
       width: 100%;
       height: 300px;
     }
-
+    
     /* Activity List */
     .activity-list {
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
-
+    
     .activity-item {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
-      padding: 1rem;
-      border-radius: var(--radius);
-      transition: all 0.2s;
+      gap: 1.25rem;
+      padding: 1.25rem;
+      border-radius: var(--radius-lg);
+      transition: var(--transition);
+      border: 1px solid transparent;
     }
-
+    
     .activity-item:hover {
       background-color: var(--gray-50);
+      border-color: var(--gray-200);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
     }
-
+    
     .activity-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: var(--radius);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 1.125rem;
       flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
     }
-
+    
     .activity-content {
       flex: 1;
       min-width: 0;
     }
-
+    
     .activity-title {
       font-weight: 600;
       color: var(--gray-900);
       margin-bottom: 0.25rem;
     }
-
+    
     .activity-description {
       font-size: 0.875rem;
       color: var(--gray-600);
       margin-bottom: 0.5rem;
     }
-
+    
     .activity-meta {
+      display: flex;
       font-size: 0.75rem;
       color: var(--gray-500);
-      display: flex;
       gap: 1rem;
     }
-
+    
     .activity-meta-item {
       display: flex;
       align-items: center;
     }
-
+    
     .activity-meta-icon {
       margin-right: 0.25rem;
     }
-
+    
     /* Document Cards */
     .documents-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      gap: 1.75rem;
     }
-
+    
     .document-card {
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-xl);
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.3s;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
       height: 100%;
       display: flex;
       flex-direction: column;
-      background-color: var(--white);
+      background-color: white;
+      border: 1px solid var(--gray-100);
     }
-
+    
     .document-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-light);
     }
-
+    
     .document-image {
-      height: 160px;
+      height: 180px;
       overflow: hidden;
       position: relative;
     }
-
+    
+    .document-image::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 50%);
+      z-index: 1;
+    }
+    
     .document-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
+    
     .document-content {
-      padding: 1rem;
+      padding: 1.5rem;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
-
+    
     .document-title {
-      font-weight: 600;
-      margin-bottom: 0.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
       color: var(--gray-900);
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      font-size: 1.1rem;
+      line-height: 1.4;
     }
-
+    
     .document-meta {
       display: flex;
       flex-wrap: wrap;
@@ -511,16 +576,16 @@
       color: var(--gray-600);
       margin-bottom: 0.75rem;
     }
-
+    
     .document-meta-item {
       display: flex;
       align-items: center;
     }
-
+    
     .document-meta-icon {
       margin-right: 0.25rem;
     }
-
+    
     .document-actions {
       display: flex;
       justify-content: space-between;
@@ -528,7 +593,7 @@
       padding-top: 0.75rem;
       border-top: 1px solid var(--gray-200);
     }
-
+    
     .action-button {
       width: 2rem;
       height: 2rem;
@@ -542,167 +607,168 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-
+    
     .action-button:hover {
       background-color: var(--primary-light);
       color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
     }
-
+    
     .view-all-link {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.75rem;
-      margin-top: 1rem;
+      padding: 0.875rem;
+      margin-top: 1.25rem;
       text-decoration: none;
-      color: var(--primary);
+      color: white;
       font-weight: 600;
-      border-radius: var(--radius);
-      transition: all 0.2s;
+      border-radius: var(--radius-lg);
+      transition: var(--transition);
+      background: var(--primary-gradient);
+      box-shadow: var(--shadow-sm);
     }
-
+    
     .view-all-link:hover {
-      background-color: var(--primary-light);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      filter: brightness(1.05);
     }
-
+    
     .view-all-icon {
       margin-left: 0.5rem;
       transition: all 0.2s;
     }
-
+    
     .view-all-link:hover .view-all-icon {
       transform: translateX(3px);
     }
-
+    
     /* Responsive */
     @media (max-width: 1200px) {
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
+      
       .documents-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-
+    
     @media (max-width: 992px) {
       .dashboard-content {
         flex-direction: column;
       }
-
+      
       .dashboard-sidebar {
         width: 100%;
         position: static;
+        margin-bottom: 2rem;
       }
-
+      
       .sidebar-menu {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
       }
-
+      
       .sidebar-menu-title {
         width: 100%;
       }
     }
-
+    
     @media (max-width: 768px) {
       .documents-grid {
         grid-template-columns: 1fr;
       }
-
+      
       .activity-item {
         flex-direction: column;
       }
-
+      
       .activity-icon {
         margin-bottom: 0.5rem;
       }
+    }
+    
+    .dashboard-page {
+      margin-top: 2rem;
     }
   </style>
 </head>
 
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="header-content">
-        <div class="logo">
-          <a href="../../index.html">
-            <div class="logo-icon">E</div>
-            <span class="logo-text">EduShare</span>
-          </a>
-        </div>
-        <nav class="main-nav">
-          <a href="../../index.html" class="nav-link">Trang chủ</a>
-          <a href="../categories.html" class="nav-link">Danh mục</a>
-          <a href="../search.html?sort=newest" class="nav-link">Tài liệu mới</a>
-          <a href="../search.html?filter=premium" class="nav-link">Cao cấp</a>
-          <a href="about.html" class="nav-link">Giới thiệu</a>
-        </nav>
-        <div class="header-actions">
-          <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Tìm kiếm tài liệu...">
-            <button id="searchBtn">
-              <i class="fas fa-search"></i>
-            </button>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+          <div class="header-content">
+              <div class="logo">
+                  <a href="../index.html">
+                      <div class="logo-icon">E</div>
+                      <span class="logo-text">EduShare</span>
+                  </a>
+              </div>
+              <nav class="main-nav">
+                  <a href="../index.html" class="nav-link">Trang chủ</a>
+                  <a href="categories.html" class="nav-link">Danh mục</a>
+                  <a href="search.html?sort=newest" class="nav-link">Tài liệu mới</a>
+                  <a href="search.html?filter=premium" class="nav-link">Cao cấp</a>
+                  <a href="about.html" class="nav-link">Giới thiệu</a>
+              </nav>
+              <div class="header-actions">
+                  <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode">
+                      <span class="dark-mode-handle" id="darkModeHandle"></span>
+                  </button>
+                  <a href="login.html" class="login-btn">
+                      <i class="fas fa-sign-in-alt"></i> Đăng nhập
+                  </a>
+                  <a href="register.html" class="register-btn active">
+                      <i class="fas fa-user-plus"></i> Đăng ký
+                  </a>
+              </div>
+              <div class="mobile-menu-toggle" id="mobileMenuBtn">
+                  <i class="fas fa-bars"></i>
+              </div>
           </div>
-          <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode">
-            <span class="dark-mode-handle" id="darkModeHandle"></span>
-          </button>
-          <div class="user-menu">
-            <div class="user-menu-trigger">
-              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80 alt="Avatar" class="user-avatar" >
-              <span class="user-name">Nguyễn Văn Anh</span>
-              <i class="fas fa-chevron-down"></i>
-            </div>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="mobile-menu">
+          <div class="mobile-search">
+              <input type="text" placeholder="Tìm kiếm tài liệu...">
+              <button>
+                  <i class="fas fa-search"></i>
+              </button>
           </div>
-        </div>
-        <div class="mobile-menu-toggle" id="mobileMenuBtn">
-          <i class="fas fa-bars"></i>
-        </div>
+          <nav class="mobile-nav">
+              <a href="../index.html" class="mobile-nav-link">Trang chủ</a>
+              <a href="categories.html" class="mobile-nav-link">Danh mục</a>
+              <a href="search.html?sort=newest" class="mobile-nav-link">Tài liệu mới</a>
+              <a href="search.html?filter=premium" class="mobile-nav-link">Cao cấp</a>
+              <a href="#" class="mobile-nav-link">Hướng dẫn</a>
+          </nav>
+          <div class="mobile-auth">
+              <a href="login.html" class="mobile-login-btn">Đăng nhập</a>
+              <a href="register.html" class="mobile-register-btn">Đăng ký</a>
+          </div>
       </div>
-    </div>
-    <div id="mobileMenu" class="mobile-menu">
-      <div class="mobile-search">
-        <input type="text" placeholder="Tìm kiếm tài liệu...">
-        <button>
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
-      <nav class="mobile-nav">
-        <a href="../../index.html" class="mobile-nav-link">Trang chủ</a>
-        <a href="../categories.html" class="mobile-nav-link">Danh mục</a>
-        <a href="../search.html?sort=newest" class="mobile-nav-link">Tài liệu mới</a>
-        <a href="../search.html?filter=premium" class="mobile-nav-link">Cao cấp</a>
-        <a href="#" class="mobile-nav-link">Hướng dẫn</a>
-      </nav>
-      <div class="mobile-user-menu">
-        <a href="dashboard.html" class="mobile-user-link active">
-          <i class="fas fa-tachometer-alt"></i> Trang tổng quan
-        </a>
-        <a href="profile.html" class="mobile-user-link">
-          <i class="fas fa-user"></i> Thông tin cá nhân
-        </a>
-        <a href="documents.html" class="mobile-user-link">
-          <i class="fas fa-file-alt"></i> Tài liệu của tôi
-        </a>
-        <a href="../login.html" class="mobile-user-link">
-          <i class="fas fa-sign-out-alt"></i> Đăng xuất
-        </a>
-      </div>
-    </div>
   </header>
 
   <main>
     <div class="container dashboard-page">
-      <div class="breadcrumb">
-        <a href="../../index.html">Trang chủ</a>
-        <i class="fas fa-chevron-right"></i>
-        <span>Trang tổng quan</span>
-      </div>
-
       
-
+      <div class="dashboard-header">
+        <div class="dashboard-header-actions">
+          <div class="date-display">
+            <i class="far fa-calendar-alt"></i>
+            <span id="currentDate">Ngày 22 tháng 5, 2025</span>
+          </div>
+          <button class="refresh-button">
+            <i class="fas fa-sync-alt"></i> Làm mới
+          </button>
+        </div>
+      </div>
+      
       <div class="dashboard-content">
         <!-- Sidebar -->
         <div class="dashboard-sidebar">
@@ -718,17 +784,17 @@
             </div>
             <div class="sidebar-title">Quản lý tài khoản</div>
           </div>
-
+          
           <ul class="sidebar-menu">
             <li class="sidebar-menu-title">Tài liệu</li>
-
+            
             <li class="sidebar-menu-item">
               <a href="dashboard.html" class="sidebar-menu-link ">
                 <i class="fas fa-tachometer-alt sidebar-icon"></i>
                 Tổng quan
               </a>
             </li>
-
+            
             <li class="sidebar-menu-item">
               <a href="documents.html" class="sidebar-menu-link">
                 <i class="fas fa-file-alt sidebar-icon"></i>
@@ -736,44 +802,44 @@
                 <span class="sidebar-badge">15</span>
               </a>
             </li>
-
+            
             <li class="sidebar-menu-item">
               <a href="../search.html" class="sidebar-menu-link">
                 <i class="fas fa-search sidebar-icon"></i>
                 Khám phá tài liệu
               </a>
             </li>
-
+            
             <li class="sidebar-menu-item">
               <a href="../upload.html" class="sidebar-menu-link">
                 <i class="fas fa-cloud-upload-alt sidebar-icon"></i>
                 Tải lên tài liệu
               </a>
             </li>
-
+            
             <li class="sidebar-menu-item">
               <a href="favorites.html" class="sidebar-menu-link">
                 <i class="fas fa-bookmark sidebar-icon"></i>
                 Tài liệu đã lưu
               </a>
             </li>
-
+            
             <li class="sidebar-menu-title">Tài khoản</li>
-
+            
             <li class="sidebar-menu-item">
-              <a href="profile.html" class="sidebar-menu-link active ">
+              <a href="profile.html" class="sidebar-menu-link active">
                 <i class="fas fa-user sidebar-icon"></i>
                 Thông tin cá nhân
               </a>
             </li>
-
+            
             <li class="sidebar-menu-item">
               <a href="transactions.html" class="sidebar-menu-link">
                 <i class="fas fa-history sidebar-icon"></i>
                 Lịch sử giao dịch
               </a>
             </li>
-
+            
             <li class="sidebar-menu-item">
               <a href="recharge.html" class="sidebar-menu-link">
                 <i class="fas fa-coins sidebar-icon"></i>
@@ -781,16 +847,16 @@
                 <span class="sidebar-badge">250</span>
               </a>
             </li>
-
+            
             <li class="sidebar-menu-title">Cài đặt</li>
-
+            
             <li class="sidebar-menu-item">
               <a href="security.html" class="sidebar-menu-link">
                 <i class="fas fa-shield-alt sidebar-icon"></i>
                 Bảo mật
               </a>
             </li>
-
+            
             <li class="sidebar-menu-item">
               <a href="notifications.html" class="sidebar-menu-link">
                 <i class="fas fa-bell sidebar-icon"></i>
@@ -811,32 +877,20 @@
             </li>
           </ul>
         </div>
-
+        
         <!-- Main Content -->
         <div class="dashboard-main">
           <!-- Stats Cards -->
-          <div class="stats-grid">
-            <!-- Thêm stats cards nếu cần -->
-          </div>
-          <div class="page-layout">
-            <aside class="sidebar">
-              <!-- Menu trái -->
-            </aside>
-
-          
-          <!-- Chart -->
-          <div class="container">
-            <h1>Thông Tin Cá Nhân</h1>
-        
-            <!-- Ảnh đại diện -->
-            <div class="section avatar-wrapper">
-              <img src="https://via.placeholder.com/90" class="avatar" id="avatarPreview">
-              <input type="file" id="avatarInput">
-              <label for="avatarInput" class="btn-upload">Thay ảnh</label>
+          <div class="dashboard-section">
+            <div class="section-header">
+              <h2 class="section-title">
+                
+              </h2>
+              <div class="section-actions">
+                
+              </div>
             </div>
-
             <style>
-
               :root {
                 --main-color: #472fe0; /* xanh chủ đạo */
                 --accent-color: #fca311; /* cam vàng nhấn */
@@ -848,14 +902,13 @@
               }
               * {
                 box-sizing: border-box;
-                font-family: "Segoe UI", sans-serif;
+                
               }
               html, body {
                 height: 100%;
                 margin: 0;
                 background: var(--bg-light);
                 color: var(--text-color);
-                align-items: flex-start;
               }
               
               h1 {
@@ -1012,7 +1065,6 @@
                 }
                 .container {
                   padding: 20px;
-                  
                 }
               }
               .activity-list {
@@ -1070,203 +1122,226 @@
                 cursor: pointer;
                 display: inline-block;
               }
-
-
-
-
-
             </style>
-        <!-- Thông tin cá nhân -->
-            <div class="section">
-              <form id="personalInfoForm" class="vertical-form">
-                <div class="form-group">
-                  <label for="fullname">Họ và tên</label>
-                  <input type="text" id="fullname" value="Nguyễn Thanh Đức" />
-                </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" id="email" value="Coppyrightemomo@email.com" />
-                </div>
-                <div class="form-group">
-                  <label for="phone">SĐT</label>
-                  <input type="tel" id="phone" value="0123456789" />
-                </div>
-                <div class=".form-group.center-button">
-                  <button type="submit" class="btn">Cập nhật</button>
-                </div>
-              </form>
-            </div>
-        <!-- Đổi mật khẩu  -->
-            <div class="section">
-              <form id="passwordForm" class="password-form">
-                <label>Mật khẩu hiện tại</label>
-                <input type="password" />
-                <label>Mật khẩu mới</label>
-                <input type="password" />
-                <label>Nhập lại mật khẩu mới</label>
-                <input type="password" />
-                <button type="submit" class="btn">Đổi mật khẩu</button>
-              </form>
-            </div>
-        <!-- Thiết bị bảo mật -->
-            <div class="section">
-            <h2 style="font-size: 16px; margin-bottom: 10px;">Thiết bị bảo mật</h2>
-            <ul class="device-list">
-            <section">
-                <li>
-                  <span>Window - 06/06/2025</span>
-                  <button class="remove">Gỡ</button>
-                </li>
-                <li>
-                  <span>MacBook Air - 06/06/2025</span>
-                  <button class="remove">Gỡ</button>
-                </li>
-              </ul>
-            </div>
-        
-            <div class="section">
-              <div class="privacy-toggle">
-                <label class="switch">
-                  <input type="checkbox" id="privacySetting" checked />
-                  <span class="slider round"></span>
-                </label>
-                <span class="privacy-label">Hiển thị thông tin công khai</span>
+          
+            <!-- FontAwesome CDN để hiển thị icon nếu bạn muốn -->
+            <link
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+            />
+          </head>
+          <body>
+            <div class="container">
+              <h1>Thông Tin Cá Nhân</h1>
+          
+              <div class="section avatar-wrapper">
+                <img src="https://via.placeholder.com/90" class="avatar" id="avatarPreview">
+                <input type="file" id="avatarInput">
+                <label for="avatarInput" class="btn-upload">Thay ảnh</label>
               </div>
-            </div>
-        
-            <div class="section">
-              <div class="horizontal-form">
-                <div class="form-group">
-                  <label for="facebook">Facebook</label>
-                  <input
-                    type="url"
-                    id="facebook"
-                    value="https://facebook.com/nguoi-dung"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="linkedin">LinkedIn</label>
-                  <input
-                    type="url"
-                    id="linkedin"
-                    value="https://linkedin.com/in/nguoi-dung"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="github">GitHub</label>
-                  <input type="url" id="github" value="https://github.com/nguoi-dung" />
+          <!-- Thông tin cá nhân -->
+              <div class="section">
+                <form id="personalInfoForm" class="vertical-form">
+                  <div class="form-group">
+                    <label for="fullname">Họ và tên</label>
+                    <input type="text" id="fullname" value="Nguyễn Thanh Đức" />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" value="Coppyrightemomo@email.com" />
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">SĐT</label>
+                    <input type="tel" id="phone" value="0123456789" />
+                  </div>
+                  <div class=".form-group.center-button">
+                    <button type="submit" class="btn">Cập nhật</button>
+                  </div>
+                </form>
+              </div>
+          <!-- Đổi mật khẩu  -->
+              <div class="section">
+                <form id="passwordForm" class="password-form">
+                  <label>Mật khẩu hiện tại</label>
+                  <input type="password" />
+                  <label>Mật khẩu mới</label>
+                  <input type="password" />
+                  <label>Nhập lại mật khẩu mới</label>
+                  <input type="password" />
+                  <button type="submit" class="btn">Đổi mật khẩu</button>
+                </form>
+              </div>
+          <!-- Thiết bị bảo mật -->
+              <div class="section">
+              <h2 style="font-size: 16px; margin-bottom: 10px;">Thiết bị bảo mật</h2>
+              <ul class="device-list">
+              <section">
+                  <li>
+                    <span>Window - 06/06/2025</span>
+                    <button class="remove">Gỡ</button>
+                  </li>
+                  <li>
+                    <span>MacBook Air - 06/06/2025</span>
+                    <button class="remove">Gỡ</button>
+                  </li>
+                </ul>
+              </div>
+          
+              <div class="section">
+                <div class="privacy-toggle">
+                  <label class="switch">
+                    <input type="checkbox" id="privacySetting" checked />
+                    <span class="slider round"></span>
+                  </label>
+                  <span class="privacy-label">Hiển thị thông tin công khai</span>
                 </div>
               </div>
-              <button id="saveSocial" class="btn" style="margin-top: 10px;">
-                Lưu liên kết
-              </button>
-            </div>
-        
-            <div class="section">
-              <div class="horizontal-form">
-                <div class="form-group">
-                  <label for="position">Chức danh</label>
-                  <input type="text" id="position" value="Giảng viên" />
+          
+              <div class="section">
+                <div class="horizontal-form">
+                  <div class="form-group">
+                    <label for="facebook">Facebook</label>
+                    <input
+                      type="url"
+                      id="facebook"
+                      value="https://facebook.com/nguoi-dung"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="linkedin">LinkedIn</label>
+                    <input
+                      type="url"
+                      id="linkedin"
+                      value="https://linkedin.com/in/nguoi-dung"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="github">GitHub</label>
+                    <input type="url" id="github" value="https://github.com/nguoi-dung" />
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="field">Lĩnh vực</label>
-                  <input type="text" id="field" value="Công nghệ thông tin" />
+                <button id="saveSocial" class="btn" style="margin-top: 10px;">
+                  Lưu liên kết
+                </button>
+              </div>
+          
+              <div class="section">
+                <div class="horizontal-form">
+                  <div class="form-group">
+                    <label for="position">Chức danh</label>
+                    <input type="text" id="position" value="Giảng viên" />
+                  </div>
+                  <div class="form-group">
+                    <label for="field">Lĩnh vực</label>
+                    <input type="text" id="field" value="Công nghệ thông tin" />
+                  </div>
                 </div>
               </div>
-            </div>
-        
-            <div class="section">
-              <div class="form-group" style="max-width: 270px;">
-                <label for="userLevel">Cấp</label>
-                <select id="userLevel">
-                  <option value="member" selected>Thành viên</option>
-                  <option value="moderator">Kiểm duyệt viên</option>
-                  <option value="admin">Quản trị viên</option>
-                </select>
+          
+              <div class="section">
+                <div class="form-group" style="max-width: 270px;">
+                  <label for="userLevel">Cấp</label>
+                  <select id="userLevel">
+                    <option value="member" selected>Thành viên</option>
+                    <option value="moderator">Kiểm duyệt viên</option>
+                    <option value="admin">Quản trị viên</option>
+                  </select>
+                </div>
+              </div>
+          
+              <!-- Hoạt động gần đây -->
+              <div class="section">
+                <h2 style="font-size: 16px; margin-bottom: 10px;">
+                  <i class="fas fa-history"></i> Hoạt động gần đây
+                </h2>
+                <div class="activity-list" id="activityList"></div>
               </div>
             </div>
-        
-            <!-- Hoạt động gần đây -->
-            <div class="section">
-              <h2 style="font-size: 16px; margin-bottom: 10px;">
-                <i class="fas fa-history"></i> Hoạt động gần đây
-              </h2>
-              <div class="activity-list" id="activityList"></div>
+          
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                const avatarInput = document.getElementById("avatarInput");
+                const avatarPreview = document.getElementById("avatarPreview");
+                const activityList = document.getElementById("activityList");
+          
+                function addActivity(iconClass, title, description) {
+      const activityList = document.getElementById('activityList');
+      const activityHTML = `
+        <div class="activity-item">
+          <div class="activity-icon info">
+            <i class="${iconClass}"></i>
+          </div>
+          <div class="activity-content">
+            <div class="activity-title">${title}</div>
+            <div class="activity-description">${description}</div>
+            <div class="activity-meta">
+              <div class="activity-meta-item">
+                <i class="far fa-clock activity-meta-icon"></i>
+                Vừa xong
+              </div>
             </div>
           </div>
-        
-          <script>
-            document.addEventListener("DOMContentLoaded", function () {
-              const avatarInput = document.getElementById("avatarInput");
-              const avatarPreview = document.getElementById("avatarPreview");
-              const activityList = document.getElementById("activityList");
-        
-              function addActivity(iconClass, title, description) {
-                const activityHTML = `
-                <div class="activity-item">
-                        <div class="activity-icon info">
-                          <i class="${iconClass}"></i>
-                        </div>
-                        <div class="activity-content">
-                          <div class="activity-title">${title}</div>
-                          <div class="activity-description">${description}</div>
-                          <div class="activity-meta">
-                            <div class="activity-meta-item">
-                              <i class="far fa-clock activity-meta-icon"></i>
-                              Vừa xong
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                `;
-                activityList.insertAdjacentHTML("afterbegin", activityHTML);
-              }
-        
-              document
-                .getElementById("personalInfoForm")
-                .addEventListener("submit", function (e) {
-                  e.preventDefault();
-                  addActivity(
-                    "fas fa-user-edit",
-                    "Cập nhật thông tin cá nhân",
-                    "Họ tên, email hoặc số điện thoại đã được thay đổi"
-                  );
+        </div>
+      `;
+      activityList.insertAdjacentHTML('afterbegin', activityHTML);
+    }
+          
+                document
+                  .getElementById("personalInfoForm")
+                  .addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    addActivity(
+                      "fas fa-user-edit",
+                      "Cập nhật thông tin cá nhân",
+                      "Họ tên, email hoặc số điện thoại đã được thay đổi"
+                    );
+                  });
+          
+                document
+                  .getElementById("passwordForm")
+                  .addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    addActivity("fas fa-key", "Đổi mật khẩu", "Mật khẩu đã được cập nhật thành công");
+                  });
+          
+                document.querySelectorAll(".remove").forEach((button) => {
+                  button.addEventListener("click", function () {
+                    const device = this.closest("li");
+                    const deviceName = device.querySelector("span").textContent;
+                    device.remove();
+                    addActivity("fas fa-trash", "Gỡ thiết bị bảo mật", `${deviceName} đã được gỡ bỏ`);
+                  });
                 });
-        
-              document
-                .getElementById("passwordForm")
-                .addEventListener("submit", function (e) {
-                  e.preventDefault();
-                  addActivity("fas fa-key", "Đổi mật khẩu", "Mật khẩu đã được cập nhật thành công");
+          
+                avatarInput.addEventListener("change", function () {
+                  const file = this.files[0];
+                  if (file) {
+                    avatarPreview.src = URL.createObjectURL(file);
+                    addActivity("fas fa-image", "Thay đổi ảnh đại diện", "Ảnh đại diện mới đã được cập nhật");
+                  }
                 });
-        
-              document.querySelectorAll(".remove").forEach((button) => {
-                button.addEventListener("click", function () {
-                  const device = this.closest("li");
-                  const deviceName = device.querySelector("span").textContent;
-                  device.remove();
-                  addActivity("fas fa-trash", "Gỡ thiết bị bảo mật", `${deviceName} đã được gỡ bỏ`);
+          
+                document.getElementById("privacySetting").addEventListener("change", function () {
+                  const status = this.checked ? "bật" : "tắt";
+                  addActivity("fas fa-user-shield", "Cập nhật quyền riêng tư", `Thông tin cá nhân đã được ${status}`);
+                });
+          
+                document.getElementById("saveSocial").addEventListener("click", function () {
+                  addActivity("fas fa-share-alt", "Cập nhật mạng xã hội", "Liên kết đã được lưu");
                 });
               });
-        
-              avatarInput.addEventListener("change", function () {
-                const file = this.files[0];
-                if (file) {
-                  avatarPreview.src = URL.createObjectURL(file);
-                  addActivity("fas fa-image", "Thay đổi ảnh đại diện", "Ảnh đại diện mới đã được cập nhật");
-                }
-              });
-        
-              document.getElementById("privacySetting").addEventListener("change", function () {
-                const status = this.checked ? "bật" : "tắt";
-                addActivity("fas fa-user-shield", "Cập nhật quyền riêng tư", `Thông tin cá nhân đã được ${status}`);
-              });
-        
-              document.getElementById("saveSocial").addEventListener("click", function () {
-                addActivity("fas fa-share-alt", "Cập nhật mạng xã hội", "Liên kết đã được lưu");
-              });
-            });
-          </script>    
+            </script>      
+          
+          
+          
+          <!-- Recent Activity -->
+          
+              
+             
+            
+          
+          <!-- My Documents -->
+          
           <!-- Notifications -->
           <div class="dashboard-section">
             <div class="section-header">
@@ -1275,7 +1350,7 @@
                 Thông báo mới
               </h2>
             </div>
-
+            
             <div class="activity-list">
               <div class="activity-item">
                 <div class="activity-icon primary">
@@ -1292,7 +1367,7 @@
                   </div>
                 </div>
               </div>
-
+              
               <div class="activity-item">
                 <div class="activity-icon success">
                   <i class="fas fa-coins"></i>
@@ -1308,7 +1383,7 @@
                   </div>
                 </div>
               </div>
-
+              
               <div class="activity-item">
                 <div class="activity-icon warning">
                   <i class="fas fa-star"></i>
@@ -1325,7 +1400,7 @@
                 </div>
               </div>
             </div>
-
+            
             <a href="notifications.html" class="view-all-link">
               Xem tất cả thông báo
               <i class="fas fa-arrow-right view-all-icon"></i>
@@ -1335,16 +1410,6 @@
       </div>
     </div>
   </main>
-
-            <!-- FontAwesome CDN để hiển thị icon nếu bạn muốn -->
-            <link
-              rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-            />
-          </head>
-          <body>
-              
-        
   
   <!-- Footer -->
   <footer class="footer">
