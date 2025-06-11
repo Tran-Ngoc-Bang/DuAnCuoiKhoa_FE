@@ -70,6 +70,23 @@ function handleBookmark() {
 
 
 
+const menuItems = document.querySelectorAll('sidebar-menu-item');
+const sections = document.querySelectorAll('.content-section');
+
+menuItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        // Cập nhật active class
+        menuItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        // Hiển thị nội dung tương ứng
+        sections.forEach(s => s.style.display = 'none');
+        sections[index].style.display = 'block';
+    });
+});
+
+
+
 
 
 
