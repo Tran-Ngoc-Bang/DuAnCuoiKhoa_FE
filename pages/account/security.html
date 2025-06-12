@@ -1596,6 +1596,26 @@ z-index: 9999;
 </body>
 
 
+<script>
+  // Lấy pathname hiện tại (VD: "/admin/documents.html")
+  const currentPath = window.location.pathname.split('/').pop();
+
+  // Lấy tất cả menu links
+  const menuLinks = document.querySelectorAll('.sidebar-menu-link');
+
+  menuLinks.forEach(link => {
+    const linkPath = link.getAttribute('href');
+    if (linkPath === currentPath) {
+      // Thêm class active vào link hiện tại
+      link.classList.add('active');
+    } else {
+      // Xóa active ở những mục khác
+      link.classList.remove('active');
+    }
+  });
+</script>
+
+
 
 
 </html>
