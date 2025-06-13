@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../../css/account.css">
   <link rel="stylesheet" href="../../css/footer-modern.css">
 
-  <style>
+ <style>
     :root {
       --primary: #4361ee;
       --primary-dark: #3a56d4;
@@ -41,28 +41,25 @@
       --gray-800: #1f2937;
       --gray-900: #111827;
       --radius: 0.375rem;
-       --radius-lg: 0.5rem;
+      --radius-lg: 0.5rem;
       --radius-xl: 0.75rem;
       --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
       --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       --transition: all 0.3s ease;
     }
+
     body {
       background-color: #f5f7fb;
       min-height: 100vh;
     }
-    body.dark-mode {
-     background-color: #18191a;
-     color: #f5f6fa;
-}
     
     .dashboard-page {
       padding-top: 2rem;
       padding-bottom: 3rem;
     }
     
-   .dashboard-header {
+    .dashboard-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -263,10 +260,6 @@
     .dashboard-main {
       flex: 1;
       min-width: 0;
-      background: linear-gradient(120deg, #f5f7fb 60%, #e0e7ff 100%);
-      border-radius: 1.5rem;
-      box-shadow: 0 8px 32px rgba(67, 97, 238, 0.08);
-      transition: box-shadow 0.3s, background 0.3s;
     }
     
     /* Stats Grid */
@@ -703,101 +696,52 @@
     .dashboard-page {
       margin-top: 2rem;
     }
-
-
-    .toast {
-  min-width: 250px;
-  margin-top: 10px;
-  background-color: #323232;
-  color: #fff;
-  padding: 15px 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  font-size: 14px;
-  opacity: 0;
-  transform: translateX(100%);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.toast.show {
-  opacity: 1;
-  transform: translateX(0);
-}
-/*phần main*/
-/* ===== Bố cục chính ===== */
-.dashboard-page {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
+/* Main content area */
 .dashboard-main {
-  padding: 2.5rem 2rem;
+  padding: 40px 24px;
   min-height: 100vh;
-  background: transparent;
+  background: #f7f9fc;
+  color: #1e293b;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-/* ===== Header ===== */
-.header {
+/* Tiêu đề và thống kê */
+.dashboard-header1 {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 22px;
   margin-bottom: 32px;
-  box-shadow: none;
-  padding: 0;
-}
-
-.dashboard-header {
-  display: flex;
-  flex-direction: column; /* Đổi từ row sang column */
-  align-items: flex-start; /* Căn trái */
-  gap: 18px;
-  margin-bottom: 32px;
-  background: none;
-  box-shadow: none;
-  padding: 0;
 }
 
 .header-title {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #1e40af;
-  margin-bottom: 0;
-  white-space: nowrap;
+  color: #4361ee;
 }
 
-/* ===== Thống kê ===== */
 .stats {
   display: flex;
-  gap: 1.5rem;
-  flex: 1;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .stat-card {
   flex: 1;
-  min-width: 180px;
+  min-width: 200px;
   background: #fff;
-  padding: 18px;
+  padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(67, 97, 238, 0.07);
+  box-shadow: 0 4px 8px rgba(67, 97, 238, 0.07);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
 }
 
 .stat-icon {
-  font-size: 22px;
-  padding: 10px;
+  font-size: 24px;
+  padding: 12px;
   border-radius: 50%;
   color: #fff;
   display: flex;
@@ -809,109 +753,203 @@
 .stat-icon.success { background-color: #10b981; }
 .stat-icon.warning { background-color: #f59e0b; }
 
-.stat-info {
-  flex: 1;
-}
+.stat-info { flex: 1; }
 .stat-value {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
 }
 .stat-label {
-  font-size: 13px;
+  font-size: 14px;
   color: #555;
 }
 
-/* ===== Tabs ===== */
+/* Tabs */
 .tabs {
   display: flex;
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: 16px;
+  margin-bottom: 20px;
   border-bottom: 2px solid #e5e7eb;
 }
 
 .tab {
   background: none;
   border: none;
-  padding: 10px 0;
-  font-weight: 700;
+  padding: 12px 0;
+  font-weight: 600;
   color: #6b7280;
   cursor: pointer;
-  border-bottom: 3px solid transparent;
+  border-bottom: 4px solid transparent;
   transition: color 0.2s, border-color 0.2s;
-  outline: none;
 }
 
 .tab:hover,
-.tab:focus {
-  color: #4361ee;
-}
-
 .tab.active {
   color: #4361ee;
   border-color: #4361ee;
 }
 
-/* ===== Bộ lọc ===== */
+/* Bộ lọc */
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 30px;
 }
 
 .filters input,
 .filters select {
-  padding: 7px 12px;
+  padding: 8px 12px;
   border-radius: 8px;
   border: 1px solid #d1d5db;
   font-size: 14px;
   background: #fff;
-  color: #111827;
-  min-width: 120px;
+  color: #1e293b;
 }
 
-.filters input {
-  flex: 1 1 180px;
-  min-width: 180px;
-}
-
-/* ===== Danh sách tài liệu ===== */
+/* Danh sách tài liệu */
 .doc-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
 .doc-card {
   background: #fff;
-  border-radius: 10px;
-  padding: 14px;
-  box-shadow: 0 2px 6px rgba(67, 97, 238, 0.08);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(67, 97, 238, 0.08);
   cursor: pointer;
-  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
-  border: 1px solid #e5e7eb;
+  transition: 
+    transform 0.22s cubic-bezier(.4,1.3,.6,1),
+    box-shadow 0.22s cubic-bezier(.4,1.3,.6,1),
+    border-color 0.18s,
+    background 0.18s;
+  border: 1.5px solid #e5e7eb;
+  position: relative;
+  overflow: hidden;
+}
+
+.doc-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #e0e7ff 0%, #f1f6fe 100%);
+  opacity: 0;
+  transition: opacity 0.22s;
+  z-index: 0;
+  border-radius: 18px;
 }
 
 .doc-card:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 8px 24px rgba(67, 97, 238, 0.18);
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 0 16px 36px rgba(67,97,238,0.18), 0 2px 10px rgba(67,97,238,0.10);
   border-color: #4361ee;
   background: #f5f8ff;
 }
 
-/* Hiệu ứng cho tiêu đề khi hover card */
+.doc-card:hover::before {
+  opacity: 1;
+}
+
+.doc-card .doc-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 14px 0 8px 0;
+  color: #1e293b;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.5px;
+  transition: 
+    color 0.22s cubic-bezier(.4,1.3,.6,1),
+    text-shadow 0.22s cubic-bezier(.4,1.3,.6,1);
+}
+
 .doc-card:hover .doc-title {
   color: #4361ee;
-  text-decoration: underline;
+  text-shadow: 0 2px 16px #e0e7ff, 0 1px 0 #fff;
+  letter-spacing: 1px;
 }
 
-/* Hiệu ứng cho meta khi hover card */
+.doc-card .doc-meta {
+  font-size: 15px;
+  color: #6b7280;
+  position: relative;
+  z-index: 1;
+  transition: color 0.18s;
+}
+
 .doc-card:hover .doc-meta {
   color: #2563eb;
-  transition: color 0.2s;
 }
 
-/* ===== Modal chi tiết ===== */
+.doc-card .doc-price {
+  font-weight: 700;
+  color: #4361ee;
+  position: relative;
+  z-index: 1;
+}
+
+.doc-card .download-btn {
+  transition: background 0.2s, color 0.2s, box-shadow 0.18s;
+  background: #f1f6fe;
+  color: #4361ee;
+  border: none;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 9px 18px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(67,97,238,0.07);
+  position: relative;
+  z-index: 1;
+}
+
+.doc-card .download-btn:hover {
+  background: linear-gradient(90deg, #4361ee 60%, #5f7cff 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(67,97,238,0.13);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.doc-card img.doc-img {
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(67,97,238,0.09);
+  transition: box-shadow 0.18s, transform 0.18s;
+  position: relative;
+  z-index: 1;
+}
+
+.doc-card:hover img.doc-img {
+  box-shadow: 0 8px 32px rgba(67,97,238,0.15);
+  transform: scale(1.025) rotate(-1deg);
+}
+
+.doc-card .doc-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 18px 20px 16px 20px;
+  background: #fff;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  border-top: 1px solid #f1f1f1;
+  z-index: 2;
+}
+
+.doc-card {
+  position: relative;
+  min-height: 340px; /* điều chỉnh cho phù hợp nội dung card */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 70px; /* chừa chỗ cho footer */
+}
+
+/* Modal chi tiết */
 .modal {
   position: fixed;
   inset: 0;
@@ -932,9 +970,9 @@
 
 .modal-content {
   background: #fff;
-  padding: 22px;
+  padding: 24px;
   border-radius: 12px;
-  max-width: 520px;
+  max-width: 600px;
   width: 100%;
   position: relative;
   max-height: 90vh;
@@ -944,9 +982,9 @@
 
 .modal-close {
   position: absolute;
-  top: 10px;
-  right: 14px;
-  font-size: 22px;
+  top: 12px;
+  right: 16px;
+  font-size: 24px;
   background: none;
   border: none;
   color: #888;
@@ -955,17 +993,19 @@
 
 .modal-img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-/* ===== Toast thông báo ===== */
+/* Toast thông báo */
 .toast-container {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  bottom: 32px;
+  right: 32px;
+  left: auto;
+  top: auto;
   background: #16a34a;
   color: #fff;
   padding: 12px 20px;
@@ -975,7 +1015,6 @@
   transition: opacity 0.4s ease;
   pointer-events: none;
   z-index: 1000;
-  font-size: 15px;
 }
 
 .toast-container.show {
@@ -1001,7 +1040,7 @@
   background-color: #3a56d4;
 }
 
-/* ===== Phân trang ===== */
+/* Phân trang */
 .pagination {
   display: flex;
   gap: 8px;
@@ -1048,7 +1087,7 @@
   user-select: none;
 }
 
-/* ===== Responsive ===== */
+/* Responsive */
 @media (max-width: 900px) {
   .stats {
     flex-direction: column;
@@ -1060,8 +1099,8 @@
 }
 
 @media (max-width: 600px) {
-  .container {
-    padding: 0 6px;
+  .dashboard-main {
+    padding: 12px 2px;
   }
   .header-title {
     font-size: 20px;
@@ -1075,20 +1114,19 @@
   }
 }
 
-/* Đặt font mặc định cho toàn bộ trang */
-body, .header, .main-nav, .sidebar-menu, .dashboard-main, .footer, .footer-content, .footer-links, .footer-bottom {
-  font-family: 'Nunito', 'Open Sans', Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  color: #222;
+.card-content { 
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-/* Nếu muốn đồng bộ font cho các tiêu đề */
-h1, h2, h3, .header-title, .sidebar-title, .footer-heading {
-  font-family: 'Nunito', 'Open Sans', Arial, sans-serif;
-  font-weight: 700;
+.card-bottom {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
 }
-
 
   </style>
 </head>
@@ -1137,23 +1175,36 @@ h1, h2, h3, .header-title, .sidebar-title, .footer-heading {
           </div>
           <nav class="mobile-nav">
               <a href="../index.html" class="mobile-nav-link">Trang chủ</a>
-              <a href="../categories.html" class="mobile-nav-link">Danh mục</a>
-              <a href="../search.html?sort=newest" class="mobile-nav-link">Tài liệu mới</a>
-              <a href="../search.html?filter=premium" class="mobile-nav-link">Cao cấp</a>
+              <a href="categories.html" class="mobile-nav-link">Danh mục</a>
+              <a href="search.html?sort=newest" class="mobile-nav-link">Tài liệu mới</a>
+              <a href="search.html?filter=premium" class="mobile-nav-link">Cao cấp</a>
               <a href="#" class="mobile-nav-link">Hướng dẫn</a>
           </nav>
           <div class="mobile-auth">
-              <a href="../login.html" class="mobile-login-btn">Đăng nhập</a>
-              <a href="../register.html" class="mobile-register-btn">Đăng ký</a>
+              <a href="login.html" class="mobile-login-btn">Đăng nhập</a>
+              <a href="register.html" class="mobile-register-btn">Đăng ký</a>
           </div>
       </div>
   </header>
 
   <main>
-  <div class="container dashboard-page">
-    <div class="dashboard-content">
-      <!-- Sidebar -->
-      <div class="dashboard-sidebar">
+    <div class="container dashboard-page">
+      
+      <div class="dashboard-header">
+        <div class="dashboard-header-actions">
+          <div class="date-display">
+            <i class="far fa-calendar-alt"></i>
+            <span id="currentDate">Ngày 22 tháng 5, 2025</span>
+          </div>
+          <button class="refresh-button">
+            <i class="fas fa-sync-alt"></i> Làm mới
+          </button>
+        </div>
+      </div>
+      
+      <div class="dashboard-content">
+        <!-- Sidebar -->
+        <div class="dashboard-sidebar">
           <div class="sidebar-header">
             <div class="user-profile">
               <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User avatar" class="user-avatar">
@@ -1166,15 +1217,17 @@ h1, h2, h3, .header-title, .sidebar-title, .footer-heading {
             </div>
             <div class="sidebar-title">Quản lý tài khoản</div>
           </div>
+          
           <ul class="sidebar-menu">
-            <!-- Tài liệu -->
             <li class="sidebar-menu-title">Tài liệu</li>
+            
             <li class="sidebar-menu-item">
               <a href="dashboard.html" class="sidebar-menu-link active">
                 <i class="fas fa-tachometer-alt sidebar-icon"></i>
                 Tổng quan
               </a>
             </li>
+            
             <li class="sidebar-menu-item">
               <a href="documents.html" class="sidebar-menu-link">
                 <i class="fas fa-file-alt sidebar-icon"></i>
@@ -1182,38 +1235,44 @@ h1, h2, h3, .header-title, .sidebar-title, .footer-heading {
                 <span class="sidebar-badge">15</span>
               </a>
             </li>
+            
             <li class="sidebar-menu-item">
               <a href="../search.html" class="sidebar-menu-link">
                 <i class="fas fa-search sidebar-icon"></i>
                 Khám phá tài liệu
               </a>
             </li>
+            
             <li class="sidebar-menu-item">
               <a href="../upload.html" class="sidebar-menu-link">
                 <i class="fas fa-cloud-upload-alt sidebar-icon"></i>
                 Tải lên tài liệu
               </a>
             </li>
+            
             <li class="sidebar-menu-item">
               <a href="favorites.html" class="sidebar-menu-link">
                 <i class="fas fa-bookmark sidebar-icon"></i>
                 Tài liệu đã lưu
               </a>
             </li>
-            <!-- Tài khoản -->
+            
             <li class="sidebar-menu-title">Tài khoản</li>
+            
             <li class="sidebar-menu-item">
               <a href="profile.html" class="sidebar-menu-link">
                 <i class="fas fa-user sidebar-icon"></i>
                 Thông tin cá nhân
               </a>
             </li>
+            
             <li class="sidebar-menu-item">
               <a href="transactions.html" class="sidebar-menu-link">
                 <i class="fas fa-history sidebar-icon"></i>
                 Lịch sử giao dịch
               </a>
             </li>
+            
             <li class="sidebar-menu-item">
               <a href="recharge.html" class="sidebar-menu-link">
                 <i class="fas fa-coins sidebar-icon"></i>
@@ -1221,14 +1280,16 @@ h1, h2, h3, .header-title, .sidebar-title, .footer-heading {
                 <span class="sidebar-badge">250</span>
               </a>
             </li>
-            <!-- Cài đặt -->
+            
             <li class="sidebar-menu-title">Cài đặt</li>
+            
             <li class="sidebar-menu-item">
               <a href="security.html" class="sidebar-menu-link">
                 <i class="fas fa-shield-alt sidebar-icon"></i>
                 Bảo mật
               </a>
             </li>
+            
             <li class="sidebar-menu-item">
               <a href="notifications.html" class="sidebar-menu-link">
                 <i class="fas fa-bell sidebar-icon"></i>
@@ -1249,106 +1310,112 @@ h1, h2, h3, .header-title, .sidebar-title, .footer-heading {
             </li>
           </ul>
         </div>
-  
-    
-      <!-- Main Content -->
-      <div class="dashboard-main">
-        <div id="toast" class="toast-container"></div>
+        <div class="dashboard-main">
+          <!-- Tiêu đề và thống kê -->
+          <header class="dashboard-header1">
+            <h1 class="header-title">
+              <i class="fas fa-folder-open"></i>
+              Tài liệu của tôi
+            </h1>
+            <div class="stats">
+              <div class="stat-card">
+                <div class="stat-icon primary">
+                  <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="stat-info">
+                  <div class="stat-value" id="statCreated">0</div>
+                  <div class="stat-label">Tài liệu đã đăng</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon success">
+                  <i class="fas fa-download"></i>
+                </div>
+                <div class="stat-info">
+                  <div class="stat-value" id="statDownloaded">0</div>
+                  <div class="stat-label">Đã tải xuống</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon warning">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <div class="stat-info">
+                  <div class="stat-value" id="statViews">0</div>
+                  <div class="stat-label">Lượt xem</div>
+                </div>
+              </div>
+            </div>
+          </header>
 
-        <!-- Đổi tên class header thành dashboard-header -->
-        <header class="dashboard-header" style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-          <h1 class="header-title" style="margin-bottom: 0;">
-            <i class="fas fa-folder-open"></i>
-            Tài liệu của tôi
-          </h1>
-          <div class="stats" style="display: flex; gap: 1.5rem; flex: 1;">
-            <div class="stat-card">
-              <div class="stat-icon primary">
-                <i class="fas fa-file-alt"></i>
-              </div>
-              <div class="stat-info">
-                <div class="stat-value" id="statCreated">0</div>
-                <div class="stat-label">Tài liệu đã tạo</div>
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon success">
-                <i class="fas fa-download"></i>
-              </div>
-              <div class="stat-info">
-                <div class="stat-value" id="statDownloaded">0</div>
-                <div class="stat-label">Đã tải xuống</div>
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon warning">
-                <i class="fas fa-eye"></i>
-              </div>
-              <div class="stat-info">
-                <div class="stat-value" id="statViews">0</div>
-                <div class="stat-label">Lượt xem</div>
+          <!-- Tabs -->
+          <nav class="tabs">
+            <button id="tabCreated" class="tab active">Tài liệu đã đăng</button>
+            <button id="tabDownloaded" class="tab">Tài liệu đã tải xuống</button>
+          </nav>
+
+          <!-- Bộ lọc -->
+          <section class="filters">
+            <input id="searchInput" type="text" placeholder="🔍 Tìm tiêu đề..." />
+            <select id="filterCategory">
+              <option value="">Danh mục</option>
+              <option value="CNTT">Công nghệ thông tin</option>
+              <option value="An ninh">An toàn thông tin</option>
+              <option value="AI">Trí tuệ nhân tạo</option>
+            </select>
+            <select id="filterFormat">
+              <option value="">Định dạng</option>
+              <option value="PDF">PDF</option>
+              <option value="Word">Word</option>
+              <option value="PPT">PPT</option>
+              <option value="Excel">Excel</option>
+            </select>
+            <select id="filterSort">
+              <option value="">Sắp xếp</option>
+              <option value="newest">Mới nhất</option>
+              <option value="popular">Phổ biến</option>
+              <option value="priceAsc">Giá tăng</option>
+              <option value="priceDesc">Giá giảm</option>
+            </select>
+          </section>
+
+          <!-- Danh sách tài liệu -->
+          <section id="docList" class="doc-list">
+            <!-- Các doc-card sẽ được render bằng JavaScript -->
+          </section>
+
+          <!-- Phân trang -->
+          <div id="pagination" class="pagination"></div>
+
+          <!-- Modal chi tiết tài liệu -->
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <button id="modalClose" class="modal-close">&times;</button>
+              <h2 id="modalTitle" class="modal-title"></h2>
+              <img id="modalImg" alt="Ảnh tài liệu" class="modal-img" />
+              <p id="modalCategory"></p>
+              <p id="modalFormat"></p>
+              <p id="modalPrice"></p>
+              <p id="modalRating"></p>
+              <p id="modalDesc"></p>
+              <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
+                <button id="downloadBtn" class="download-btn">
+                  <i class="fas fa-download"></i> Tải xuống
+                </button>
               </div>
             </div>
           </div>
-        </header>
 
-        <!-- Tabs -->
-        <nav class="tabs">
-          <button id="tabCreated" class="tab active">Tài liệu đã đăng</button>
-          <button id="tabDownloaded" class="tab">Tài liệu đã tải xuống</button>
-        </nav>
-
-        <!-- Bộ lọc -->
-        <section class="filters">
-          <input id="searchInput" type="text" placeholder="🔍 Tìm tiêu đề..." />
-          <select id="filterCategory">
-            <option value="">Danh mục</option>
-            <option value="CNTT">Công nghệ thông tin</option>
-            <option value="An ninh">An toàn thông tin</option>
-            <option value="AI">Trí tuệ nhân tạo</option>
-          </select>
-          <select id="filterFormat">
-            <option value="">Định dạng</option>
-            <option value="PDF">PDF</option>
-            <option value="Word">Word</option>
-            <option value="PPT">PPT</option>
-          </select>
-          <select id="filterSort">
-            <option value="">Sắp xếp</option>
-            <option value="newest">Mới nhất</option>
-            <option value="popular">Phổ biến</option>
-            <option value="priceAsc">Giá tăng</option>
-            <option value="priceDesc">Giá giảm</option>
-          </select>
-        </section>
-
-        <!-- Danh sách tài liệu -->
-        <section id="docList" class="doc-list">
-          <!-- Các doc-card sẽ được thêm bằng JavaScript -->
-        </section>
-
-        <!-- Modal hiển thị chi tiết -->
-        <div id="modal" class="modal">
-          <div class="modal-content">
-            <button id="modalClose" class="modal-close">&times;</button>
-            <h2 id="modalTitle" class="modal-title"></h2>
-            <img id="modalImg" alt="Ảnh tài liệu" class="modal-img" />
-            <p id="modalCategory"></p>
-            <p id="modalFormat"></p>
-            <p id="modalPrice"></p>
-            <p id="modalRating"></p>
-            <p id="modalDesc"></p>
-
-            <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
-              <button id="downloadBtn" class="download-btn">
-                <i class="fas fa-download"></i> Tải xuống
-              </button>
-            </div>
-          </div>
+          <!-- Toast thông báo -->
+          <div id="toast" class="toast-container"></div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
+    
+      <!-- Main Content -->
+      
+ 
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -1414,12 +1481,8 @@ h1, h2, h3, .header-title, .sidebar-title, .footer-heading {
       </div>
     </div>
   </footer>
-
-
-
-
-  <script>
-    // Dữ liệu mẫu
+<script>
+  // ==== Dữ liệu mẫu ====
 const documents = [
   {
     id: 1,
@@ -1432,7 +1495,7 @@ const documents = [
     downloads: 38,
     image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
     description: "Tài liệu tổng quan về trí tuệ nhân tạo, lịch sử phát triển và các ứng dụng thực tế.",
-    isMine: true // Tài liệu do bạn đăng
+    isMine: true
   },
   {
     id: 2,
@@ -1512,7 +1575,19 @@ const documents = [
     description: "Hướng dẫn chi tiết các thao tác cơ bản và nâng cao trong Excel.",
     isMine: true
   },
-  
+  {
+    id: 8,
+    title: "Quản trị mạng căn bản",
+    category: "CNTT",
+    format: "PDF",
+    price: 8000,
+    rating: 4.1,
+    views: 70,
+    downloads: 18,
+    image: "https://images.unsplash.com/photo-1465101178521-c1a9136a3c5a?auto=format&fit=crop&w=400&q=80",
+    description: "Tài liệu nhập môn về quản trị mạng máy tính.",
+    isMine: false
+  },
   {
     id: 9,
     title: "Phân tích dữ liệu với Excel",
@@ -1541,34 +1616,32 @@ const documents = [
   }
 ];
 
-// Danh sách id tài liệu bạn đã mua/tải xuống
-const myDownloads = [2, 3, 5, 6, 10];
+// Danh sách id tài liệu đã tải xuống (đã mua)
+const myDownloads = [2, 3, 5, 6, 8, 10];
 
-// Toast
+// ==== Toast ====
 function showToast(message) {
   const toast = document.getElementById("toast");
   toast.textContent = message;
   toast.classList.add("show");
-  setTimeout(() => {
+  clearTimeout(showToast.timeout);
+  showToast.timeout = setTimeout(() => {
     toast.classList.remove("show");
-  }, 2500);
+  }, 2000);
 }
 
-// Hiển thị thống kê
+// ==== Thống kê ====
 function updateStats() {
-  // Số tài liệu đã đăng
   document.getElementById("statCreated").textContent = documents.filter(d => d.isMine).length;
-  // Số tài liệu đã tải xuống (đã mua)
   document.getElementById("statDownloaded").textContent = myDownloads.length;
-  // Tổng lượt xem của tài liệu đã đăng
   document.getElementById("statViews").textContent = documents.filter(d => d.isMine).reduce((sum, d) => sum + d.views, 0);
 }
 
-// Thêm biến phân trang
+// ==== Phân trang ====
 let currentPage = 1;
-const pageSize = 4; // Số tài liệu mỗi trang
+const pageSize = 4;
 
-// Hiển thị danh sách tài liệu
+// ==== Hiển thị danh sách tài liệu ====
 function renderDocuments(tab = "created", page = 1) {
   const list = document.getElementById("docList");
   list.innerHTML = "";
@@ -1613,17 +1686,35 @@ function renderDocuments(tab = "created", page = 1) {
       const card = document.createElement("div");
       card.className = "doc-card";
       card.innerHTML = `
-        <img src="${doc.image}" alt="${doc.title}" class="doc-img" style="width:100%; height:150px; object-fit:cover; border-radius:8px;" />
+        <img src="${doc.image}" alt="${doc.title}" class="doc-img" style="width:100%; height:150px; object-fit:cover; border-radius:14px;" />
         <h3 class="doc-title">${doc.title}</h3>
         <p class="doc-meta">
           <span>Định dạng: ${doc.format}</span> | 
           <span>Danh mục: ${doc.category}</span> | 
           <span>Tác giả: ${doc.isMine ? "Bạn" : "Tác giả khác"}</span>
         </p>
+        <div class="card-content" style="display: flex; flex-direction: column; height: 100%;">
+          <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+            <span class="price" style="font-weight: 600; color: #4361ee;">
+              ${doc.price === 0 ? "Miễn phí" : doc.price + "đ"}
+            </span>
+            <button class="download-btn" style="margin-left: 10px;">
+              <i class="fas fa-download"></i> Tải xuống
+            </button>
+          </div>
+        </div>
       `;
-      card.addEventListener("click", () => {
-        openModal(doc.id);
-        showToast("Đã mở: " + doc.title);
+      // Nút tải xuống bên ngoài (không giới hạn, luôn cho tải)
+      card.querySelector('.download-btn').onclick = (e) => {
+        e.stopPropagation();
+        showToast("Tải xuống thành công: " + doc.title);
+      };
+      // Click vào card vẫn mở modal chi tiết
+      card.addEventListener("click", (e) => {
+        if (!e.target.classList.contains('download-btn')) {
+          openModal(doc.id);
+          showToast("Đã mở: " + doc.title);
+        }
       });
       list.appendChild(card);
     });
@@ -1632,6 +1723,7 @@ function renderDocuments(tab = "created", page = 1) {
   renderPagination(totalPages);
 }
 
+// ==== Phân trang ====
 function renderPagination(totalPages) {
   let pag = document.getElementById("pagination");
   if (!pag) {
@@ -1681,7 +1773,7 @@ function renderPagination(totalPages) {
   pag.appendChild(next);
 }
 
-// Mở modal chi tiết
+// ==== Modal chi tiết ====
 function openModal(id) {
   const doc = documents.find(d => d.id === id);
   if (!doc) return;
@@ -1699,51 +1791,18 @@ function openModal(id) {
 
   const downloadBtn = document.getElementById("downloadBtn");
   if (downloadBtn) {
+    downloadBtn.disabled = false;
     downloadBtn.onclick = () => {
-      // Nếu chưa mua thì thêm vào myDownloads
-      if (!myDownloads.includes(doc.id)) {
-        myDownloads.push(doc.id);
-        showToast("Tải xuống thành công: " + doc.title);
-        updateStats();
-        renderDocuments(currentTab);
-      } else {
-        showToast("Bạn đã tải tài liệu này rồi!");
-      }
+      showToast("Tải xuống thành công: " + doc.title);
     };
   }
 }
-
-// Đóng modal
+// ==== Đóng modal ====
 document.getElementById("modalClose").addEventListener("click", () => {
   document.getElementById("modal").classList.remove("show");
-  showToast("Đã đóng chi tiết tài liệu");
 });
 
-// Các sự kiện tương tác
-document.getElementById("tabCreated").addEventListener("click", () => {
-  setActiveTab("created");
-  showToast("Đang xem: Tài liệu đã đăng");
-});
-document.getElementById("tabDownloaded").addEventListener("click", () => {
-  setActiveTab("downloaded");
-  showToast("Đang xem: Tài liệu đã tải xuống");
-});
-document.getElementById("searchInput").addEventListener("input", () => {
-  renderDocuments(currentTab, 1);
-});
-document.getElementById("filterCategory").addEventListener("change", () => {
-  renderDocuments(currentTab, 1);
-});
-document.getElementById("filterFormat").addEventListener("change", () => {
-  renderDocuments(currentTab, 1);
-});
-if (document.getElementById("filterSort")) {
-  document.getElementById("filterSort").addEventListener("change", () => {
-    renderDocuments(currentTab, 1);
-  });
-}
-
-// Tab hiện tại
+// ==== Tab hiện tại ====
 let currentTab = "created";
 function setActiveTab(tab) {
   currentTab = tab;
@@ -1752,30 +1811,41 @@ function setActiveTab(tab) {
   renderDocuments(tab, 1);
 }
 
-
-const darkModeToggle = document.getElementById('darkModeToggle');
-  const body = document.body;
-
-  // Kiểm tra trạng thái dark mode từ localStorage
-  if (localStorage.getItem('darkMode') === 'on') {
-    body.classList.add('dark-mode');
-  }
-
-  darkModeToggle.addEventListener('click', function() {
-    body.classList.toggle('dark-mode');
-    // Lưu trạng thái vào localStorage
-    if (body.classList.contains('dark-mode')) {
-      localStorage.setItem('darkMode', 'on');
-    } else {
-      localStorage.setItem('darkMode', 'off');
-    }
+// ==== Sự kiện ====
+document.getElementById("tabCreated").addEventListener("click", () => {
+  setActiveTab("created");
+  showToast("Đã chuyển sang tab Tài liệu đã đăng");
+});
+document.getElementById("tabDownloaded").addEventListener("click", () => {
+  setActiveTab("downloaded");
+  showToast("Đã chuyển sang tab Tài liệu đã tải");
+});
+document.getElementById("searchInput").addEventListener("input", () => {
+  renderDocuments(currentTab, 1);
+});
+document.getElementById("filterCategory").addEventListener("change", function() {
+  renderDocuments(currentTab, 1);
+  const val = this.value;
+  if (val) showToast('Đã chọn danh mục: "' + val + '"');
+});
+document.getElementById("filterFormat").addEventListener("change", function() {
+  renderDocuments(currentTab, 1);
+  const val = this.value;
+  if (val) showToast('Đã chọn định dạng: "' + val + '"');
+});
+if (document.getElementById("filterSort")) {
+  document.getElementById("filterSort").addEventListener("change", () => {
+    renderDocuments(currentTab, 1);
   });
+}
 
-  
-// Khởi tạo ban đầu
+// ==== Khởi tạo ====
 updateStats();
 renderDocuments();
+</script>
 
-  </script>
+
+
+
 </body>
 </html>
