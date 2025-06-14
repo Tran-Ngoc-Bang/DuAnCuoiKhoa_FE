@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="../../css/main-fixes.css">
   <link rel="stylesheet" href="../../css/account.css">
   <link rel="stylesheet" href="../../css/footer-modern.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-vuCMEg1a6z5iIYHhq6J2wB1Q1lm9Efdv7p5TgDcN8IkKqzDnKbcZH3yHhAqT1Mn9sk9ms5mW9Z+dSbRUz7F+jQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
     :root {
       --primary: #4361ee;
@@ -992,8 +994,188 @@
 
 
 
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.sec-input {
+  width: 100%;
+  padding: 10px 42px 10px 12px; /* padding right để chừa icon */
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.sec-input:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* Icon con mắt */
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #888;
+  transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+  color: #333;
+}
+
+/* Label */
+.sec-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: #333;
+}
+
+/* Required dấu sao đỏ */
+.required {
+  color: red;
+}
+
+
+.sec-button:hover {
+  background: #45a049;
+}
+
+
+
+
+input:disabled {
+  background-color: #f5f5f5;
+  opacity: 0.8;
+}
+
+
+
+
+
+#otpOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+#otpModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 350px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  padding: 25px;
+  font-family: Arial, sans-serif;
+}
+
+.otp-content h3 {
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.otp-content p {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.otp-content input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.otp-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.otp-actions button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#btnVerifyOtp {
+  background-color: #007bff;
+  color: white;
+}
+
+.resend {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.otp-help {
+  font-size: 0.75rem;
+  text-align: center;
+  margin-top: 15px;
+  color: #666;
+}
+
+.otp-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+
+
   </style>
 </head>
+
+
+<div id="notification-popup" style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: #333;
+    color: #fff;
+    font-size: 0.95rem;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: fadeInOut 3s ease-in-out;
+"></div>
+
+<style>
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+</style>
+
 
 <body>
   
@@ -1193,33 +1375,57 @@
           
             <div class="security-settings">
               <div class="sec-section">
+                
                 <h2>Đổi mật khẩu</h2>
-                <label class="sec-label">Mật khẩu hiện tại <span class="required">*</span></label>
 
-                <input type="password" class="sec-input" placeholder="Nhập mật khẩu hiện tại">
-          
-                <label class="sec-label">Mật khẩu mới <span class="required">*</span></label>
-                <input type="password" class="sec-input" id="newPassword" placeholder="Nhập mật khẩu mới">
-                
-<div id="passwordStrength" style="font-size: 0.85rem; color: #666; margin-top: 4px;"></div>
+ <!-- Mật khẩu hiện tại -->
+ <label class="sec-label">Mật khẩu hiện tại <span class="required">*</span></label>
+ <div class="input-wrapper">
+   <input type="password" class="sec-input" id="currentPassword" placeholder="Nhập mật khẩu hiện tại">
+   <i class="fa-solid fa-eye toggle-password" onclick="togglePassword(this, 'currentPassword')"></i>
+ </div>
 
-          
-      
-
-
-
-
-<label class="sec-label">Xác nhận mật khẩu mới <span class="required">*</span></label>
-<input type="password" class="sec-input" id="confirmPassword" placeholder="Xác nhận mật khẩu mới">
+ <!-- Mật khẩu mới -->
+ <label class="sec-label">Mật khẩu mới <span class="required">*</span></label>
+ <div class="input-wrapper">
+   <input type="password" class="sec-input" id="newPassword" placeholder="Nhập mật khẩu mới" maxlength="20">
+   <i class="fa-solid fa-eye toggle-password" onclick="togglePassword(this, 'newPassword')"></i>
+   <small id="lengthWarning" style="color: red; display: none;">⚠️ Tối đa 20 ký tự</small>
 
 
+ </div>
 
+ <!-- Xác nhận mật khẩu mới -->
+ <label class="sec-label">Xác nhận mật khẩu mới <span class="required">*</span></label>
+ <div class="input-wrapper">
+   <input type="password" class="sec-input" id="confirmPassword" placeholder="Xác nhận mật khẩu mới" maxlength="20">
+   <i class="fa-solid fa-eye toggle-password" onclick="togglePassword(this, 'confirmPassword')"></i>
 
-          
+ </div>
+
+ 
+
+<!-- Nút xác nhận mật khẩu -->
+<button id="btnConfirmPassword" class="sec-button" type="button">Xác nhận mật khẩu</button>
+
+<!-- Nút đổi mật khẩu - giữ lại 1 nút này thôi -->
+
+<button id="btnChangePassword" class="sec-button" disabled style="opacity: 0.6; cursor: not-allowed;">Đổi mật khẩu</button>
+
 <br>
-                <button class="sec-button">Đổi mật khẩu</button>
 
-                
+<br>
+
+ <!-- Thanh đo độ mạnh và trạng thái -->
+ <div id="passwordStrength" style="margin-top: 4px;"></div>
+ <br>
+ <div id="passwordMatchStatus"></div>
+
+ <!-- Nút -->
+
+ <br>
+
+ <!-- <button id="btnChangePassword" class="sec-button" disabled style="opacity: 0.6; cursor: not-allowed;" >Đổi mật khẩu</button> -->
               </div>
           
              
@@ -1245,7 +1451,12 @@
 
 
         
-              <button class="sec-button">Đổi email</button>
+              <!-- Trong phần Đổi Email -->
+
+              <button id="btnChangeEmail" class="sec-button">Đổi email</button>
+
+
+
             </div>
 
           </div>
@@ -1364,6 +1575,7 @@
   <script src="../../js/account.js"></script>
   <script src="../account/js/popup.js"></script>
   <script src="../account/js/Hictory.js"></script>
+  <script src="../account/js/show_password.js"></script>
 
   
   <script>
@@ -1594,6 +1806,51 @@ z-index: 9999;
 
 
 </body>
+
+
+<script>
+  // Lấy pathname hiện tại (VD: "/admin/documents.html")
+  const currentPath = window.location.pathname.split('/').pop();
+
+  // Lấy tất cả menu links
+  const menuLinks = document.querySelectorAll('.sidebar-menu-link');
+
+  menuLinks.forEach(link => {
+    const linkPath = link.getAttribute('href');
+    if (linkPath === currentPath) {
+      // Thêm class active vào link hiện tại
+      link.classList.add('active');
+    } else {
+      // Xóa active ở những mục khác
+      link.classList.remove('active');
+    }
+  });
+</script>
+
+
+
+
+
+<!-- Overlay mờ nền -->
+<div id="otpOverlay" style="display: none;"></div>
+
+<!-- Popup OTP -->
+<div id="otpModal" style="display: none;">
+  <div class="otp-content">
+    <button class="otp-close" id="btnCloseOtp">&times;</button>
+    <h3>Xác thực OTP</h3>
+    <p>Vui lòng xác thực mã OTP qua Email/SMS</p>
+    <input type="text" id="otpCodeInput" placeholder="Nhập mã OTP">
+    
+    <div class="otp-actions">
+      <button id="btnVerifyOtp">Xác minh</button>
+      <button id="btnResendOtp" class="resend">Gửi lại mã</button>
+    </div>
+
+    <p class="otp-help">Bạn không nhận được mã? <a href="#">Cần trợ giúp?</a></p>
+  </div>
+</div>
+
 
 
 <script>
