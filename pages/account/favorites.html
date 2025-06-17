@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="../../css/main-fixes.css">
   <link rel="stylesheet" href="../../css/account.css">
   <link rel="stylesheet" href="../../css/footer-modern.css">
+  <link rel="stylesheet" href="../../css/search-modern.css">
   <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -196,11 +197,7 @@
       margin-bottom: 0.5rem;
     }
     
-    .sidebar-menu {
-      list-style: none;
-      padding: 0.75rem 0;
-      margin: 0;
-    }
+   
     
     .sidebar-menu-title {
       font-size: 0.75rem;
@@ -400,11 +397,6 @@
       align-items: center;
     }
     
-    .section-title-icon {
-      margin-right: 0.75rem;
-      color: var(--primary);
-      font-size: 1.125rem;
-    }
     
     .section-actions {
       display: flex;
@@ -1272,6 +1264,69 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+.section-title-icon {
+      margin-right: 0.75rem;
+      color: var(--primary);
+      font-size: 1.125rem;
+    }
+.search-layout-options {
+  display: flex;
+  gap: 0;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 2px;
+  background: rgba(249, 250, 251, 0.8);
+  position: relative;
+}
+
+/* Highlight glow cho layout options */
+.search-layout-options::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), transparent, rgba(67, 97, 238, 0.1));
+  border-radius: var(--radius-lg);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.search-layout-options:hover::after {
+  opacity: 1;
+}
+.layout-option {
+  border: none;
+  background: transparent;
+  padding: var(--spacing-3) var(--spacing-5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 2;
+  border-radius: var(--radius-md);
+}
+
+.layout-option:hover {
+  background-color: rgba(242, 242, 247, 0.8);
+  color: #4361EE;
+}
+
+.layout-option.active {
+  background: linear-gradient(135deg, #4361EE, #3A0CA3);
+  color: var(--white);
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(67, 97, 238, 0.3);
+}
+
+.layout-option i {
+  transition: transform 0.3s ease;
+}
+
+.layout-option:hover i {
+  transform: scale(1.1);
+}
 
 
   </style>
@@ -1279,17 +1334,14 @@
 
 <body>
 
-  <div id="loadingOverlay">
-    <div class="spinner"></div>
-  </div>
-  
+ 
 
     <!-- Header -->
     <header class="header">
       <div class="container">
           <div class="header-content">
               <div class="logo">
-                  <a href="../index.html">
+                  <a href="../../index.html">
                       <div class="logo-icon">E</div>
                       <span class="logo-text">EduShare</span>
                   </a>
@@ -1299,20 +1351,20 @@
 
               
               <nav class="main-nav">
-                  <a href="../index.html" class="nav-link">Trang chủ</a>
-                  <a href="categories.html" class="nav-link">Danh mục</a>
-                  <a href="search.html?sort=newest" class="nav-link">Tài liệu mới</a>
-                  <a href="search.html?filter=premium" class="nav-link">Cao cấp</a>
-                  <a href="about.html" class="nav-link">Giới thiệu</a>
+                  <a href="../../index.html" class="nav-link">Trang chủ</a>
+                  <a href="../categories.html" class="nav-link">Danh mục</a>
+                  <a href="../search.html?sort=newest" class="nav-link">Tài liệu mới</a>
+                  <a href="../search.html?filter=premium" class="nav-link">Cao cấp</a>
+                  <a href="../about.html" class="nav-link">Giới thiệu</a>
               </nav>
               <div class="header-actions">
                   <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode">
                       <span class="dark-mode-handle" id="darkModeHandle"></span>
                   </button>
-                  <a href="login.html" class="login-btn">
+                  <a href="../login.html" class="login-btn">
                       <i class="fas fa-sign-in-alt"></i> Đăng nhập
                   </a>
-                  <a href="register.html" class="register-btn active">
+                  <a href="../register.html" class="register-btn active">
                       <i class="fas fa-user-plus"></i> Đăng ký
                   </a>
               </div>
@@ -1330,15 +1382,15 @@
               </button>
           </div>
           <nav class="mobile-nav">
-              <a href="../index.html" class="mobile-nav-link">Trang chủ</a>
-              <a href="categories.html" class="mobile-nav-link">Danh mục</a>
-              <a href="search.html?sort=newest" class="mobile-nav-link">Tài liệu mới</a>
-              <a href="search.html?filter=premium" class="mobile-nav-link">Cao cấp</a>
+            <a href="../../index.html" class="nav-link">Trang chủ</a>
+            <a href="../categories.html" class="nav-link">Danh mục</a>
+            <a href="../search.html?sort=newest" class="nav-link">Tài liệu mới</a>
+            <a href="../search.html?filter=premium" class="nav-link">Cao cấp</a>
               <a href="#" class="mobile-nav-link">Hướng dẫn</a>
           </nav>
           <div class="mobile-auth">
-              <a href="login.html" class="mobile-login-btn">Đăng nhập</a>
-              <a href="register.html" class="mobile-register-btn">Đăng ký</a>
+              <a href="../login.html" class="mobile-login-btn">Đăng nhập</a>
+              <a href="../register.html" class="mobile-register-btn">Đăng ký</a>
           </div>
       </div>
   </header>
@@ -1346,18 +1398,7 @@
   <main>
     <div class="container dashboard-page">
       
-      <div class="dashboard-header">
-        <div class="dashboard-header-actions">
-          <div class="date-display">
-            <i class="far fa-calendar-alt"></i>
-            <span id="currentDate">Ngày 22 tháng 5, 2025</span>
-          </div>
-          <button class="refresh-button">
-            <i class="fas fa-sync-alt"></i> Làm mới
-          </button>
-        </div>
-      </div>
-      
+  
       <div class="dashboard-content">
         <!-- Sidebar -->
         <div class="dashboard-sidebar">
@@ -1453,15 +1494,15 @@
               </a>
             </li>
             <li class="sidebar-menu-item">
-              <a href="notifications.html" class="sidebar-menu-link">
+              <a href="options.html" class="sidebar-menu-link">
                 <i class="fas fa-cog sidebar-icon"></i>
                 Tùy chọn
               </a>
             </li>
             <li class="sidebar-menu-item">
-              <a href="notifications.html" class="sidebar-menu-link">
-                <i class="fas fa-question-circle sidebar-icon"></i>
-                Trợ giúp
+              <a href="support.html" class="sidebar-menu-link">
+                <i class="fas fa-headset sidebar-icon"></i>
+                Hỗ trợ
               </a>
             </li>
           </ul>
@@ -1482,22 +1523,32 @@
             
             <div class="section-header">
               <h1 class="section-title">
-                <i class="fas fa-bookmark sidebar-icon"></i>
+                <i class="fas fa-bookmark section-title-icon"></i>
                 Danh sách tài liệu đã lưu:
               </h1>
+              <!-- Search Stats Bar -->
 
-              
-              
+          
+          <div class="search-options">
+            <div class="search-layout-options">
+              <button class="layout-option active" data-layout="grid" id="gridBtn" onclick="setGridView()" title="Xem dạng lưới">
+                <i class="fas fa-th-large"></i>
+              </button>
+              <button class="layout-option" data-layout="list" id="listBtn" onclick="setListView()" title="Xem dạng danh sách">
+                <i class="fas fa-list"></i>
+              </button>
+            </div>
+                        <div class="search-sort-options">
+              <span class="sort-label">Sắp xếp:</span>
+              <select id="sortSelect" class="sort-select">
+                <option value="default" selected>Mặc định</option>
+                <option value="price-asc">Giá tăng</option>
+                <option value="price-desc">Giá giảm</option>
+                <option value="rating-desc">Đánh giá cao nhất</option>
+              </select>
+            </div> 
+          </div>
 
-              <div class="view-toggle">
-                <button id="gridBtn" onclick="setGridView()" title="Xem dạng lưới">
-                  <i class="fas fa-table-cells-large"></i> 
-                </button>
-                <button id="listBtn" onclick="setListView()" title="Xem dạng danh sách">
-                  <i class="fas fa-bars-progress"></i> 
-                </button>
-              </div>
-              
               
 
             
@@ -1506,35 +1557,6 @@
               
             
             </div>
-
-        
-            
-
-            <div class="sort-options">
-              <label class="sort-card">
-                <input type="radio" name="sort" value="default" checked>
-                <i class="fas fa-random"></i>
-                <span>Mặc định</span>
-              </label>
-              <label class="sort-card">
-                <input type="radio" name="sort" value="price-asc">
-                <i class="fas fa-sort-amount-up-alt"></i>
-                <span>Giá tăng</span>
-              </label>
-              <label class="sort-card">
-                <input type="radio" name="sort" value="price-desc">
-                <i class="fas fa-sort-amount-down-alt"></i>
-                <span>Giá giảm</span>
-              </label>
-              <label class="sort-card">
-                <input type="radio" name="sort" value="rating-desc">
-                <i class="fas fa-star"></i>
-                <span>Đánh giá</span>
-              </label>
-            </div>
-            
-           
-
             <div class="doc-card-container grid-view" id="docContainer">
 
              
@@ -1821,9 +1843,9 @@
   <script src="../../js/account.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-  <script src="../js/page.js"></script>
+  <script src="../account/js/page.js"></script>
   <script src="../js/loading.js"></script>
-  <script src="../js/sort_document.js"></script>
+  <script src="../account/js/sort_document.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Chart initialization
@@ -2032,9 +2054,9 @@
 
 
 
-<script src="../js/popup.js"></script>
+<script src="../account/js/popup.js"></script>
 
-<script src="../js/grid_list.js"></script>
+<script src="../account/js/grid_list.js"></script>
 
 
 

@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Trang Tổng Quan - EduShare</title>
+  <title>Tài liệu - EduShare</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts"></link>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../css/responsive.css">
   <link rel="stylesheet" href="../../css/main-fixes.css">
   <link rel="stylesheet" href="../../css/account.css">
   <link rel="stylesheet" href="../../css/footer-modern.css">
 
- <style>
+  <style>
     :root {
       --primary: #4361ee;
       --primary-dark: #3a56d4;
@@ -270,26 +270,6 @@
       margin-bottom: 2rem;
     }
     
-    .stat-card {
-      background-color: white;
-      border-radius: var(--radius-xl);
-      padding: 1.5rem;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      border: 1px solid var(--gray-100);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      justify-content: center;
-    }
-    
-    .stat-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
     
     .stat-icon {
       width: 3rem;
@@ -510,21 +490,21 @@
     }
     
     .document-card {
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      height: 100%;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(67,97,238,0.08);
+      padding: 14px 14px 16px 14px;
       display: flex;
       flex-direction: column;
-      background-color: white;
-      border: 1px solid var(--gray-100);
+      min-width: 210px;
+      max-width: 240px;
+      margin: 0 10px 20px 10px;
+      transition: box-shadow 0.2s, transform 0.2s;
     }
     
     .document-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary-light);
+      box-shadow: 0 8px 32px rgba(67,97,238,0.13);
+      transform: translateY(-3px) scale(1.01);
     }
     
     .document-image {
@@ -546,8 +526,9 @@
     
     .document-image img {
       width: 100%;
-      height: 100%;
+      height: 90px;
       object-fit: cover;
+      border-radius: 12px 12px 0 0;
     }
     
     .document-content {
@@ -558,24 +539,20 @@
     }
     
     .document-title {
+      font-size: 1.05rem;
       font-weight: 700;
-      margin-bottom: 0.75rem;
-      color: var(--gray-900);
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      font-size: 1.1rem;
-      line-height: 1.4;
+      margin: 12px 0 4px 0;
+      color: #222;
+      line-height: 1.25;
     }
     
     .document-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
-      font-size: 0.75rem;
-      color: var(--gray-600);
-      margin-bottom: 0.75rem;
+      font-size: 0.92rem;
+      color: #666;
+      margin-bottom: 10px;
     }
     
     .document-meta-item {
@@ -696,13 +673,6 @@
     .dashboard-page {
       margin-top: 2rem;
     }
-    /* Main content area */
-.dashboard-main {
-  padding: 40px 24px;
-  min-height: 100vh;
-  background: #f7f9fc;
-  color: #1e293b;
-}
 
 /* Tiêu đề và thống kê */
 .dashboard-header1 {
@@ -728,64 +698,73 @@
 }
 
 .stat-card {
-  flex: 1;
-  min-width: 200px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(67, 97, 238, 0.07);
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
+      background-color: white;
+      border-radius: var(--radius-xl);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid var(--gray-100);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
 
-.stat-icon {
-  font-size: 24px;
-  padding: 12px;
-  border-radius: 50%;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .stat-icon.primary { background-color: #4361ee; }
 .stat-icon.success { background-color: #10b981; }
 .stat-icon.warning { background-color: #f59e0b; }
 
 .stat-info { flex: 1; }
-.stat-value {
-  font-size: 24px;
-  font-weight: bold;
-}
-.stat-label {
-  font-size: 14px;
-  color: #555;
-}
+
 
 /* Tabs */
 .tabs {
   display: flex;
-  gap: 16px;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #e5e7eb;
+  gap: 12px;
+  background: #f4f7fe;
+  padding: 6px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(67,97,238,0.06);
+  margin-bottom: 18px;
 }
 
 .tab {
-  background: none;
+   background: transparent;
   border: none;
-  padding: 12px 0;
+  color: #4361ee;
+  padding: 10px 32px;
+  border-radius: 8px;
   font-weight: 600;
-  color: #6b7280;
+  font-size: 16px;
   cursor: pointer;
-  border-bottom: 4px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
+  transition: 
+    background 0.25s cubic-bezier(.4,0,.2,1),
+    color 0.25s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.25s cubic-bezier(.4,0,.2,1);
+  outline: none;
+  position: relative;
 }
 
 .tab:hover,
 .tab.active {
-  color: #4361ee;
-  border-color: #4361ee;
+  background: linear-gradient(90deg, #4361ee 60%, #5f7cff 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(67,97,238,0.10);
+  z-index: 2;
+}
+
+.tab:not(.active):hover {
+  background: #e9edfb;
+  color: #274bc8;
 }
 
 /* Bộ lọc */
@@ -806,148 +785,6 @@
   color: #1e293b;
 }
 
-/* Danh sách tài liệu */
-.doc-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
-}
-
-.doc-card {
-  background: #fff;
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(67,97,238,0.08);
-  cursor: pointer;
-  transition: 
-    transform 0.22s cubic-bezier(.4,1.3,.6,1),
-    box-shadow 0.22s cubic-bezier(.4,1.3,.6,1),
-    border-color 0.18s,
-    background 0.18s;
-  border: 1.5px solid #e5e7eb;
-  position: relative;
-  overflow: hidden;
-}
-
-.doc-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, #e0e7ff 0%, #f1f6fe 100%);
-  opacity: 0;
-  transition: opacity 0.22s;
-  z-index: 0;
-  border-radius: 18px;
-}
-
-.doc-card:hover {
-  transform: translateY(-10px) scale(1.04);
-  box-shadow: 0 16px 36px rgba(67,97,238,0.18), 0 2px 10px rgba(67,97,238,0.10);
-  border-color: #4361ee;
-  background: #f5f8ff;
-}
-
-.doc-card:hover::before {
-  opacity: 1;
-}
-
-.doc-card .doc-title {
-  font-size: 20px;
-  font-weight: 800;
-  margin: 14px 0 8px 0;
-  color: #1e293b;
-  position: relative;
-  z-index: 1;
-  letter-spacing: 0.5px;
-  transition: 
-    color 0.22s cubic-bezier(.4,1.3,.6,1),
-    text-shadow 0.22s cubic-bezier(.4,1.3,.6,1);
-}
-
-.doc-card:hover .doc-title {
-  color: #4361ee;
-  text-shadow: 0 2px 16px #e0e7ff, 0 1px 0 #fff;
-  letter-spacing: 1px;
-}
-
-.doc-card .doc-meta {
-  font-size: 15px;
-  color: #6b7280;
-  position: relative;
-  z-index: 1;
-  transition: color 0.18s;
-}
-
-.doc-card:hover .doc-meta {
-  color: #2563eb;
-}
-
-.doc-card .doc-price {
-  font-weight: 700;
-  color: #4361ee;
-  position: relative;
-  z-index: 1;
-}
-
-.doc-card .download-btn {
-  transition: background 0.2s, color 0.2s, box-shadow 0.18s;
-  background: #f1f6fe;
-  color: #4361ee;
-  border: none;
-  font-weight: 600;
-  border-radius: 10px;
-  padding: 9px 18px;
-  cursor: pointer;
-  box-shadow: 0 1px 4px rgba(67,97,238,0.07);
-  position: relative;
-  z-index: 1;
-}
-
-.doc-card .download-btn:hover {
-  background: linear-gradient(90deg, #4361ee 60%, #5f7cff 100%);
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(67,97,238,0.13);
-  transform: translateY(-2px) scale(1.04);
-}
-
-.doc-card img.doc-img {
-  border-radius: 14px;
-  box-shadow: 0 2px 10px rgba(67,97,238,0.09);
-  transition: box-shadow 0.18s, transform 0.18s;
-  position: relative;
-  z-index: 1;
-}
-
-.doc-card:hover img.doc-img {
-  box-shadow: 0 8px 32px rgba(67,97,238,0.15);
-  transform: scale(1.025) rotate(-1deg);
-}
-
-.doc-card .doc-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 18px 20px 16px 20px;
-  background: #fff;
-  border-bottom-left-radius: 18px;
-  border-bottom-right-radius: 18px;
-  border-top: 1px solid #f1f1f1;
-  z-index: 2;
-}
-
-.doc-card {
-  position: relative;
-  min-height: 340px; /* điều chỉnh cho phù hợp nội dung card */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-bottom: 70px; /* chừa chỗ cho footer */
-}
 
 /* Modal chi tiết */
 .modal {
@@ -1023,21 +860,32 @@
 }
 
 .download-btn {
-  background-color: #4361ee;
+  background: #4361ee;
   color: #fff;
-  padding: 10px 18px;
   border: none;
   border-radius: 8px;
-  font-size: 14px;
-  font-weight: bold;
+  padding: 6px 16px;
+  font-weight: 600;
+  font-size: 0.97rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
+  height: 34px;
+  min-width: 0;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(67,97,238,0.08);
+  transition: background 0.18s;
 }
-.download-btn:hover {
-  background-color: #3a56d4;
+
+.download-btn i {
+  font-size: 1.1rem;
+  margin-right: 2px;
+  display: inline-block;
+}
+
+.download-btn:active {
+  background: #274bc8;
 }
 
 /* Phân trang */
@@ -1126,32 +974,108 @@
 }
 .doc-card {
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(67,97,238,0.06);
-  padding: 18px;
-  transition: box-shadow 0.2s;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(67,97,238,0.10);
+  padding: 20px 20px 24px 20px;
   display: flex;
   flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-width: 260px;
+  max-width: 340px;
+  margin: 0 12px 24px 12px;
 }
-.list-view .doc-card {
-  flex-direction: row;
+
+.doc-card:hover {
+  box-shadow: 0 8px 32px rgba(67,97,238,0.16);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.doc-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+}
+
+.doc-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 10px 0 4px 0;
+  color: #222;
+  line-height: 1.2;
+}
+
+.doc-meta {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.card-content {
+  margin-top: auto;
+}
+
+.card-content > div {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  min-height: 120px;
+  gap: 6px;
 }
-.list-view .doc-img {
-  width: 120px !important;
-  height: 90px !important;
-  margin-right: 20px;
-  border-radius: 10px;
+
+.price {
+  font-weight: 600;
+  color: #4361ee;
+  font-size: 0.98rem;
+  white-space: nowrap;
 }
-.list-view .doc-title,
-.list-view .doc-meta,
-.list-view .card-content {
-  margin-left: 20px;
-}
-button.active {
+
+.download-btn {
   background: #4361ee;
   color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 0.97rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 32px;
+  min-width: 0;
+  box-shadow: 0 2px 8px rgba(67,97,238,0.08);
+  transition: background 0.18s;
+}
+.download-btn i {
+  font-size: 1rem;
+
+}
+.download-btn:hover {
+  background: #274bc8;
+}
+
+#toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  left: auto;
+  transform: none;
+  background: #4361ee;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  box-shadow: 0 4px 24px rgba(67,97,238,0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, bottom 0.3s;
+  z-index: 9999;
+}
+#toast.show {
+  opacity: 1;
+  bottom: 48px;
+  pointer-events: auto;
 }
   </style>
 </head>
@@ -1215,18 +1139,6 @@ button.active {
   <main>
     <div class="container dashboard-page">
       
-      <div class="dashboard-header">
-        <div class="dashboard-header-actions">
-          <div class="date-display">
-            <i class="far fa-calendar-alt"></i>
-            <span id="currentDate">Ngày 22 tháng 5, 2025</span>
-          </div>
-          <button class="refresh-button">
-            <i class="fas fa-sync-alt"></i> Làm mới
-          </button>
-        </div>
-      </div>
-      
       <div class="dashboard-content">
         <!-- Sidebar -->
         <div class="dashboard-sidebar">
@@ -1247,14 +1159,14 @@ button.active {
             <li class="sidebar-menu-title">Tài liệu</li>
             
             <li class="sidebar-menu-item">
-              <a href="dashboard.html" class="sidebar-menu-link active">
+              <a href="dashboard.html" class="sidebar-menu-link">
                 <i class="fas fa-tachometer-alt sidebar-icon"></i>
                 Tổng quan
               </a>
             </li>
             
             <li class="sidebar-menu-item">
-              <a href="documents.html" class="sidebar-menu-link">
+              <a href="documents.html" class="sidebar-menu-link active">
                 <i class="fas fa-file-alt sidebar-icon"></i>
                 Tài liệu của tôi
                 <span class="sidebar-badge">15</span>
@@ -1322,119 +1234,122 @@ button.active {
               </a>
             </li>
             <li class="sidebar-menu-item">
-              <a href="notifications.html" class="sidebar-menu-link">
+              <a href="options.html" class="sidebar-menu-link">
                 <i class="fas fa-cog sidebar-icon"></i>
                 Tùy chọn
               </a>
             </li>
             <li class="sidebar-menu-item">
-              <a href="notifications.html" class="sidebar-menu-link">
-                <i class="fas fa-question-circle sidebar-icon"></i>
-                Trợ giúp
+              <a href="support.html" class="sidebar-menu-link">
+                <i class="fas fa-headset sidebar-icon"></i>
+                Hỗ trợ
               </a>
             </li>
           </ul>
         </div>
         <div class="dashboard-main">
-          <!-- Tiêu đề và thống kê -->
-          <header class="dashboard-header1">
-            <h1 class="header-title">
-              <i class="fas fa-folder-open"></i>
-              Tài liệu của tôi
-            </h1>
-            <div class="stats">
-              <div class="stat-card">
-                <div class="stat-icon primary">
-                  <i class="fas fa-file-alt"></i>
-                </div>
-                <div class="stat-info">
-                  <div class="stat-value" id="statCreated">0</div>
-                  <div class="stat-label">Tài liệu đã đăng</div>
-                </div>
+          <!-- Stats Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon primary">
+                <i class="fas fa-file-alt"></i>
               </div>
-              <div class="stat-card">
-                <div class="stat-icon success">
-                  <i class="fas fa-download"></i>
-                </div>
-                <div class="stat-info">
-                  <div class="stat-value" id="statDownloaded">0</div>
-                  <div class="stat-label">Đã tải xuống</div>
-                </div>
+              <div class="stat-info">
+                <div class="stat-value" id="statCreated">0</div>
+                <div class="stat-label">Tài liệu đã đăng</div>
               </div>
-              <div class="stat-card">
-                <div class="stat-icon warning">
-                  <i class="fas fa-eye"></i>
-                </div>
-                <div class="stat-info">
-                  <div class="stat-value" id="statViews">0</div>
-                  <div class="stat-label">Lượt xem</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon success">
+                <i class="fas fa-download"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value" id="statDownloaded">0</div>
+                <div class="stat-label">Đã tải xuống</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon warning">
+                <i class="fas fa-eye"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value" id="statViews">0</div>
+                <div class="stat-label">Lượt xem</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Documents Section -->
+          <div class="dashboard-section">
+            <div class="section-header">
+              <h2 class="section-title">
+                <i class="fas fa-file-alt section-title-icon"></i>
+                Tài liệu của tôi
+              </h2>
+              <div class="section-actions">
+                <div class="tabs">
+                  <button id="tabCreated" class="tab active">Tài liệu đã đăng</button>
+                  <button id="tabDownloaded" class="tab">Tài liệu đã tải xuống</button>
                 </div>
               </div>
             </div>
-          </header>
 
-          <!-- Tabs -->
-          <nav class="tabs">
-            <button id="tabCreated" class="tab active">Tài liệu đã đăng</button>
-            <button id="tabDownloaded" class="tab">Tài liệu đã tải xuống</button>
-          </nav>
+            <div class="filters">
+              <input id="searchInput" type="text" placeholder="🔍 Tìm tiêu đề..." />
+              <select id="filterCategory">
+                <option value="">Danh mục</option>
+                <option value="CNTT">Công nghệ thông tin</option>
+                <option value="An ninh">An toàn thông tin</option>
+                <option value="AI">Trí tuệ nhân tạo</option>
+              </select>
+              <select id="filterFormat">
+                <option value="">Định dạng</option>
+                <option value="PDF">PDF</option>
+                <option value="Word">Word</option>
+                <option value="PPT">PPT</option>
+                <option value="Excel">Excel</option>
+              </select>
+              <select id="filterSort">
+                <option value="">Sắp xếp</option>
+                <option value="newest">Mới nhất</option>
+                <option value="popular">Phổ biến</option>
+                <option value="priceAsc">Giá tăng</option>
+                <option value="priceDesc">Giá giảm</option>
+              </select>
+            </div>
 
-          <!-- Bộ lọc -->
-          <section class="filters">
-            <input id="searchInput" type="text" placeholder="🔍 Tìm tiêu đề..." />
-            <select id="filterCategory">
-              <option value="">Danh mục</option>
-              <option value="CNTT">Công nghệ thông tin</option>
-              <option value="An ninh">An toàn thông tin</option>
-              <option value="AI">Trí tuệ nhân tạo</option>
-            </select>
-            <select id="filterFormat">
-              <option value="">Định dạng</option>
-              <option value="PDF">PDF</option>
-              <option value="Word">Word</option>
-              <option value="PPT">PPT</option>
-              <option value="Excel">Excel</option>
-            </select>
-            <select id="filterSort">
-              <option value="">Sắp xếp</option>
-              <option value="newest">Mới nhất</option>
-              <option value="popular">Phổ biến</option>
-              <option value="priceAsc">Giá tăng</option>
-              <option value="priceDesc">Giá giảm</option>
-            </select>
-          </section>
+            <div id="docList" class="documents-grid">
+              <!-- Các document cards sẽ được render bằng JavaScript -->
+            </div>
 
-          <!-- Danh sách tài liệu -->
-          <div style="margin-bottom: 16px;">
-            <button id="btnGrid" class="active">Lưới</button>
-            <button id="btnList">Danh sách</button>
+            <div id="pagination" class="pagination"></div>
           </div>
-          <div id="docList"></div>
-
-          <!-- Phân trang -->
-          <div id="pagination" class="pagination"></div>
 
           <!-- Modal chi tiết tài liệu -->
           <div id="modal" class="modal">
             <div class="modal-content">
-              <button id="modalClose" class="modal-close">&times;</button>
-              <h2 id="modalTitle" class="modal-title"></h2>
-              <img id="modalImg" alt="Ảnh tài liệu" class="modal-img" />
-              <p id="modalCategory"></p>
-              <p id="modalFormat"></p>
-              <p id="modalPrice"></p>
-              <p id="modalRating"></p>
-              <p id="modalDesc"></p>
-              <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
-                <button id="downloadBtn" class="download-btn">
-                  <i class="fas fa-download"></i> Tải xuống
-                </button>
+              <div class="modal-header">
+                <h2 id="modalTitle" class="modal-title"></h2>
+                <button id="modalClose" class="modal-close">&times;</button>
+              </div>
+              <div class="modal-body">
+                <img id="modalImg" alt="Ảnh tài liệu" class="modal-img" />
+                <p id="modalCategory"></p>
+                <p id="modalFormat"></p>
+                <p id="modalPrice"></p>
+                <p id="modalRating"></p>
+                <p id="modalDesc"></p>
+                <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
+                  <button id="downloadBtn" class="download-button primary">
+                    <i class="fas fa-download"></i> Tải xuống
+                  </button>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Toast thông báo -->
-          <div id="toast" class="toast-container"></div>
+          <div id="toast"></div>
         </div>
       </div>
     </div>
@@ -1711,9 +1626,11 @@ function renderDocuments(tab = "created", page = 1) {
   } else {
     docsToShow.forEach(doc => {
       const card = document.createElement("div");
-      card.className = "doc-card";
+      card.className = "document-card";
       card.innerHTML = `
-        <img src="${doc.image}" alt="${doc.title}" class="doc-img" style="width:100%; height:150px; object-fit:cover; border-radius:14px;" />
+        <div class="document-image">
+          <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Document thumbnail">
+        </div>
         <h3 class="doc-title">${doc.title}</h3>
         <p class="doc-meta">
           <span>Định dạng: ${doc.format}</span> | 
@@ -1726,7 +1643,8 @@ function renderDocuments(tab = "created", page = 1) {
               ${doc.price === 0 ? "Miễn phí" : doc.price + "đ"}
             </span>
             <button class="download-btn" style="margin-left: 10px;">
-              <i class="fas fa-download"></i> Tải xuống
+              <i class="fas fa-download"></i>
+              Tải xuống
             </button>
           </div>
         </div>
@@ -1735,7 +1653,7 @@ function renderDocuments(tab = "created", page = 1) {
       // Nút tải xuống bên ngoài (không giới hạn, luôn cho tải)
       card.querySelector('.download-btn').onclick = (e) => {
         e.stopPropagation();
-        showToast("Tải xuống thành công: " + doc.title);
+        showToast("Tải xuống thành công!", "success");
       };
       // Click vào card vẫn mở modal chi tiết
       card.addEventListener("click", (e) => {
@@ -1812,6 +1730,9 @@ function openModal(id) {
   document.getElementById("modalFormat").textContent = "Định dạng: " + doc.format;
   document.getElementById("modalPrice").textContent = "Giá: " + (doc.price === 0 ? "Miễn phí" : doc.price + "đ");
   document.getElementById("modalRating").textContent = "Đánh giá: " + doc.rating + " ★";
+  document.getElementById("modalFormat").textContent = "Định dạng: " + doc.format;
+  document.getElementById("modalPrice").textContent = "Giá: " + (doc.price === 0 ? "Miễn phí" : doc.price + "đ");
+  document.getElementById("modalRating").textContent = "Đánh giá: " + doc.rating + " ★";
   document.getElementById("modalDesc").textContent = doc.description;
 
   const modal = document.getElementById("modal");
@@ -1866,17 +1787,18 @@ if (document.getElementById("filterSort")) {
     renderDocuments(currentTab, 1);
   });
 }
-
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(showToast.timeout);
+  showToast.timeout = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
 // ==== Khởi tạo ====
 updateStats();
 renderDocuments();
-
-
-
 </script>
-
-
-
-
 </body>
 </html>

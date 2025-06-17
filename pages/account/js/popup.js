@@ -70,6 +70,23 @@ function handleBookmark() {
 
 
 
+const menuItems = document.querySelectorAll('sidebar-menu-item');
+const sections = document.querySelectorAll('.content-section');
+
+menuItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        // Cập nhật active class
+        menuItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        // Hiển thị nội dung tương ứng
+        sections.forEach(s => s.style.display = 'none');
+        sections[index].style.display = 'block';
+    });
+});
+
+
+
 
 
 
@@ -210,6 +227,7 @@ style.textContent = `
         #passwordStrengthWrapper {
             width: 250px;
         margin-top: 6px;
+        display : none
   }
 
         #passwordStrengthBar {
@@ -230,61 +248,97 @@ document.head.appendChild(style);
 
 // ---- Mã xử lý độ mạnh mật khẩu với thanh ngang ----
 
-const newPasswordInput = document.getElementById('newPassword');
-const passwordStrengthFill = document.createElement('div');
-passwordStrengthFill.id = 'passwordStrengthFill';
 
-// Tạo wrapper và thanh đo độ mạnh để chèn vào DOM thay cho passwordStrength hiện tại
+const newPasswordInput = document.getElementById('newPassword');
+const confirmPasswordInput = document.getElementById('confirmPassword');
 const passwordStrengthDiv = document.getElementById('passwordStrength');
+const passwordMatchStatusDiv = document.getElementById('passwordMatchStatus');
+
+// Tạo các phần hiển thị độ mạnh
+const passwordHint = document.createElement('div');
+passwordHint.id = 'passwordHint';
+passwordHint.style.fontSize = '0.8rem';
+passwordHint.style.color = '#777';
+passwordHint.textContent = 'Mật khẩu cần tối thiểu 8 ký tự, gồm chữ hoa, thường, số và ký tự đặc biệt.';
+
 const passwordStrengthWrapper = document.createElement('div');
 passwordStrengthWrapper.id = 'passwordStrengthWrapper';
+passwordStrengthWrapper.style.marginTop = '6px';
 
 const passwordStrengthBar = document.createElement('div');
 passwordStrengthBar.id = 'passwordStrengthBar';
+passwordStrengthBar.style.height = '8px';
+passwordStrengthBar.style.backgroundColor = '#ddd';
+passwordStrengthBar.style.borderRadius = '4px';
+passwordStrengthBar.style.overflow = 'hidden';
+
+const passwordStrengthFill = document.createElement('div');
+passwordStrengthFill.id = 'passwordStrengthFill';
+passwordStrengthFill.style.height = '100%';
+passwordStrengthFill.style.width = '0%';
+passwordStrengthFill.style.transition = 'width 0.3s ease';
+
 passwordStrengthBar.appendChild(passwordStrengthFill);
 
 const passwordStrengthText = document.createElement('div');
 passwordStrengthText.id = 'passwordStrengthText';
-passwordStrengthText.style.marginTop = '4px';
 passwordStrengthText.style.fontSize = '0.85rem';
 passwordStrengthText.style.color = '#666';
-passwordStrengthText.textContent = '';
+passwordStrengthText.style.marginTop = '4px';
 
 passwordStrengthWrapper.appendChild(passwordStrengthBar);
 passwordStrengthWrapper.appendChild(passwordStrengthText);
 
-// Thay thế div passwordStrength cũ bằng wrapper mới
-passwordStrengthDiv.replaceWith(passwordStrengthWrapper);
+// Gắn vào HTML
+passwordStrengthDiv.appendChild(passwordHint);
+passwordStrengthDiv.appendChild(passwordStrengthWrapper);
 
+// Xử lý input mật khẩu
 newPasswordInput.addEventListener('input', () => {
     const val = newPasswordInput.value;
-    let strengthPercent = 0;
-    let strengthText = '';
-    let strengthColor = 'red';
+
+
+
+    if (val.length > 20) {
+        passwordHint.textContent = "❌ Mật khẩu không được vượt quá 20 ký tự.";
+        passwordHint.style.color = '#F44336';
+        passwordStrengthWrapper.style.display = 'none';
+        passwordStrengthText.textContent = '';
+        passwordStrengthFill.style.width = '0%';
+        return;
+    }
+
 
     if (val.length === 0) {
-        strengthPercent = 0;
-        strengthText = '';
-    } else if (val.length < 6) {
-        strengthPercent = 30;
-        strengthText = 'Yếu';
-        strengthColor = '#F44336'; // đỏ
-    } else if (val.length >= 6 && (/[A-Z]/.test(val) || /[0-9]/.test(val))) {
-        strengthPercent = 60;
-        strengthText = 'Trung bình';
-        strengthColor = '#FF9800'; // cam
+        passwordStrengthWrapper.style.display = 'none';
+        passwordStrengthText.textContent = '';
+        passwordStrengthFill.style.width = '0%';
+        passwordMatchStatusDiv.textContent = '';
+        return;
     }
 
-    if (
-        val.length >= 8 &&
-        /[A-Z]/.test(val) &&
-        /[0-9]/.test(val) &&
-        /[\W]/.test(val)
-    ) {
-        strengthPercent = 100;
-        strengthText = 'Mạnh';
-        strengthColor = '#4CAF50'; // xanh lá
+    passwordStrengthWrapper.style.display = 'block';
+
+    let score = 0;
+    const rules = [];
+
+    if (val.length >= 8) score++; else rules.push("Ít nhất 8 ký tự");
+    if (/[a-z]/.test(val)) score++; else rules.push("Chữ thường");
+    if (/[A-Z]/.test(val)) score++; else rules.push("Chữ hoa");
+    if (/[0-9]/.test(val)) score++; else rules.push("Số");
+    if (/[\W]/.test(val)) score++; else rules.push("Ký tự đặc biệt");
+
+    if (rules.length === 0) {
+        passwordHint.textContent = "✅ Mật khẩu đã đáp ứng tất cả yêu cầu.";
+        passwordHint.style.color = '#4CAF50';
+    } else {
+        passwordHint.textContent = "Thiếu: " + rules.join(", ");
+        passwordHint.style.color = '#F44336';
     }
+
+    const strengthPercent = [0, 25, 50, 75, 90, 100][score];
+    const strengthText = ["Rất yếu", "Yếu", "Trung bình", "Khá", "Tốt", "Mạnh"][score];
+    const strengthColor = ['#ccc', '#F44336', '#FF5722', '#FF9800', '#8BC34A', '#4CAF50'][score];
 
     passwordStrengthFill.style.width = strengthPercent + '%';
     passwordStrengthFill.style.backgroundColor = strengthColor;
@@ -292,22 +346,30 @@ newPasswordInput.addEventListener('input', () => {
     passwordStrengthText.style.color = strengthColor;
 });
 
-// ---- Kiểm tra xác nhận mật khẩu ----
-const confirmPasswordInput = document.getElementById('confirmPassword');
-const passwordMatchStatusDiv = document.getElementById('passwordMatchStatus');
-
+// Kiểm tra khớp mật khẩu
 function checkPasswordMatch() {
     const newPass = newPasswordInput.value;
     const confirmPass = confirmPasswordInput.value;
+
+
+
+    if (confirmPass.length > 20) {
+        passwordMatchStatusDiv.textContent = '❌ Mật khẩu xác nhận không được quá 20 ký tự';
+        passwordMatchStatusDiv.style.color = 'red';
+        return;
+    }
+
+
     if (!confirmPass) {
         passwordMatchStatusDiv.textContent = '';
         return;
     }
+
     if (newPass === confirmPass) {
-        passwordMatchStatusDiv.textContent = 'Mật khẩu khớp';
+        passwordMatchStatusDiv.textContent = '✅ Mật khẩu khớp';
         passwordMatchStatusDiv.style.color = 'green';
     } else {
-        passwordMatchStatusDiv.textContent = 'Mật khẩu không khớp';
+        passwordMatchStatusDiv.textContent = '❌ Mật khẩu không khớp';
         passwordMatchStatusDiv.style.color = 'red';
     }
 }
@@ -315,10 +377,17 @@ function checkPasswordMatch() {
 confirmPasswordInput.addEventListener('input', checkPasswordMatch);
 newPasswordInput.addEventListener('input', checkPasswordMatch);
 
+
+
+
+
+
+
 // ---- Đổi mật khẩu ----
-const changePasswordBtn = document.querySelector('.sec-section button.sec-button');
+const changePasswordBtn = document.getElementById('btnChangePassword');
+
 changePasswordBtn.addEventListener('click', () => {
-    const oldPassInput = document.querySelector('.sec-section input[type="password"]:first-of-type');
+    const oldPassInput = document.getElementById('currentPassword');
     const oldPass = oldPassInput.value;
     const newPass = newPasswordInput.value;
     const confirmPass = confirmPasswordInput.value;
@@ -337,10 +406,10 @@ changePasswordBtn.addEventListener('click', () => {
     }
 
     // Giả lập thành công
-    showNotification('Đổi mật khẩu thành công!', 'success');
-    addActivityLog('Bạn đã đổi mật khẩu.');
-    // Có thể reset form hoặc làm gì đó thêm
+    // showNotification('Đổi mật khẩu thành công!', 'success');
+    // addActivityLog('Bạn đã đổi mật khẩu.');
 });
+
 
 // ---- Kiểm tra định dạng email ----
 const newEmailInput = document.getElementById('newEmail');
@@ -365,13 +434,13 @@ newEmailInput.addEventListener('input', () => {
 
 // ---- Đổi email ----
 // Lưu ý bạn có 2 phần dashboard-section, button thứ 2 là đổi email
-const changeEmailBtn = document.querySelectorAll('.dashboard-section .sec-section button.sec-button')[1];
+const changeEmailBtn = document.getElementById('btnChangeEmail'); // Dùng đúng ID
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 changeEmailBtn.addEventListener('click', () => {
-    const oldEmailInput = document.querySelector('.dashboard-section input[type="email"]:first-of-type');
-    const newEmailInput = document.getElementById('newEmail'); // đảm bảo bạn có id này trong HTML
-    const emailStatusDiv = document.getElementById('emailStatus'); // đảm bảo bạn có id này trong HTML
+    const oldEmailInput = document.getElementById('oldEmail');
+    const newEmailInput = document.getElementById('newEmail');
+    const emailStatusDiv = document.getElementById('emailStatus');
 
     const oldEmail = oldEmailInput.value.trim();
     const newEmail = newEmailInput.value.trim();
@@ -386,13 +455,11 @@ changeEmailBtn.addEventListener('click', () => {
         return;
     }
 
-    // ✅ Kiểm tra định dạng email cũ
     if (!emailRegex.test(oldEmail)) {
         showNotification('Email hiện tại không hợp lệ.', 'error');
         return;
     }
 
-    // Đã có validate email mới bằng emailStatusDiv
     if (emailStatusDiv.textContent !== 'Email hợp lệ') {
         showNotification('Email mới không hợp lệ.', 'error');
         return;
@@ -403,7 +470,7 @@ changeEmailBtn.addEventListener('click', () => {
         return;
     }
 
-    showNotification('Đổi email thành công!', 'success');
+    showNotification('✅ Đổi email thành công!', 'success');
     addActivityLog('Bạn đã đổi địa chỉ email.');
 });
 
