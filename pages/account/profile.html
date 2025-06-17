@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Trang Tổng Quan - EduShare</title>
+  <title>Hồ sơ cá nhân - EduShare</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -386,15 +386,12 @@
     }
     
     .section-title {
-  font-size: 1.75rem;          /* chữ bự hơn */
-  font-weight: normal;         /* bỏ in đậm */
-  color: var(--gray-900);
-  display: flex;
-  align-items: center;         /* căn giữa theo chiều dọc */
-  justify-content: center;     /* căn giữa theo chiều ngang */
-  text-align: center;
-  margin: 0 auto;
-}
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      display: flex;
+      align-items: center;
+    }
     
     .section-title-icon {
       margin-right: 0.75rem;
@@ -552,21 +549,232 @@
       object-fit: cover;
     }
     
-    
-    
-    
-    
-   
-    
-    
-    
-   
+    /* Profile Info Grid */
+    .dashboard-main #profile-preview .profile-info-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+      gap: 20px !important;
+      margin-bottom: 30px !important;
+    }
+
+    .dashboard-main #profile-preview .info-card {
+      background: white !important;
+      border-radius: var(--radius-lg) !important;
+      box-shadow: var(--shadow-md) !important;
+      overflow: hidden !important;
+      transition: all 0.3s ease !important;
+      border: 1px solid var(--gray-200) !important;
+    }
+
+    .dashboard-main #profile-preview .info-card:hover {
+      box-shadow: var(--shadow-lg) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    .dashboard-main #profile-preview .info-header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+      color: white !important;
+      padding: 15px 20px !important;
+      border-bottom: 1px solid var(--gray-200) !important;
+    }
+
+    .dashboard-main #profile-preview .info-title {
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      margin: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      color: white !important;
+    }
+
+    .dashboard-main #profile-preview .info-icon {
+      font-size: 18px !important;
+      opacity: 0.9 !important;
+    }
+
+    .dashboard-main #profile-preview .info-content {
+      padding: 20px !important;
+    }
+
+    .dashboard-main #profile-preview .info-item {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      padding: 12px 0 !important;
+      border-bottom: 1px solid var(--gray-100) !important;
+    }
+
+    .dashboard-main #profile-preview .info-item:last-child {
+      border-bottom: none !important;
+      padding-bottom: 0 !important;
+    }
+
+    .dashboard-main #profile-preview .info-label {
+      font-weight: 500 !important;
+      color: var(--gray-600) !important;
+      font-size: 14px !important;
+    }
+
+    .dashboard-main #profile-preview .info-value {
+      font-weight: 600 !important;
+      color: var(--gray-900) !important;
+      font-size: 14px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .dashboard-main #profile-preview .btn-copy {
+      background: var(--primary) !important;
+      color: white !important;
+      border: none !important;
+      padding: 4px 8px !important;
+      border-radius: var(--radius-sm) !important;
+      font-size: 12px !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .dashboard-main #profile-preview .btn-copy:hover {
+      background: var(--primary-dark) !important;
+      transform: scale(1.05) !important;
+    }
+
+    .dashboard-main #profile-preview .social-link-profile {
+      color: var(--primary) !important;
+      text-decoration: none !important;
+      font-weight: 500 !important;
+      transition: color 0.3s ease !important;
+    }
+
+    .dashboard-main #profile-preview .social-link-profile:hover {
+      color: var(--primary-dark) !important;
+    }
+
+    .dashboard-main #profile-preview .social-link-profile i {
+      margin-right: 5px !important;
+    }
+
+    /* Account Section */
+    .dashboard-main #profile-preview .account-section {
+      margin-top: 30px !important;
+    }
+
+    .dashboard-main #profile-preview .account-stats {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+      gap: 15px !important;
+      margin-bottom: 20px !important;
+    }
+
+    .dashboard-main #profile-preview .account-stat {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      padding: 15px !important;
+      background: var(--gray-50) !important;
+      border-radius: var(--radius-md) !important;
+      border: 1px solid var(--gray-200) !important;
+    }
+
+    .dashboard-main #profile-preview .stat-icon-wrapper {
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: var(--radius-md) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 18px !important;
+      color: white !important;
+    }
+
+    .dashboard-main #profile-preview .stat-icon-wrapper.success {
+      background: var(--success-gradient) !important;
+    }
+
+    .dashboard-main #profile-preview .stat-icon-wrapper.primary {
+      background: var(--primary-gradient) !important;
+    }
+
+    .dashboard-main #profile-preview .stat-details {
+      flex: 1 !important;
+    }
+
+    .dashboard-main #profile-preview .stat-value {
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      color: var(--gray-900) !important;
+      margin-bottom: 2px !important;
+    }
+
+    .dashboard-main #profile-preview .stat-label {
+      font-size: 12px !important;
+      color: var(--gray-600) !important;
+      font-weight: 500 !important;
+    }
+
+    .dashboard-main #profile-preview .payment-info {
+      background: var(--gray-50) !important;
+      padding: 15px !important;
+      border-radius: var(--radius-md) !important;
+      margin-bottom: 20px !important;
+    }
+
+    .dashboard-main #profile-preview .upgrade-section {
+      text-align: center !important;
+    }
+
+    .dashboard-main #profile-preview .btn-upgrade {
+      background: var(--success-gradient) !important;
+      color: white !important;
+      padding: 12px 24px !important;
+      border-radius: var(--radius-md) !important;
+      text-decoration: none !important;
+      font-weight: 600 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .dashboard-main #profile-preview .btn-upgrade:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: var(--shadow-lg) !important;
+    }
+
+    .dashboard-main #profile-preview .btn-upgrade i {
+      font-size: 16px !important;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .profile-info-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+      }
+      
+      .account-stats {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+      
+      .info-item {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 5px !important;
+      }
+      
+      .info-value {
+        width: 100% !important;
+      }
+    }
 
     /* Enhanced Styles */
     .btn-account {
       background-color: #472fe0;
       color: white;
-      padding: 10px 20px;
+      padding: 12.9px 20px;
       border: none;
       border-radius: 10px;
       font-size: 15px;
@@ -1029,7 +1237,18 @@
       visibility: visible;
       opacity: 1;
     }
-
+    .stat-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      position: relative;
+      margin-bottom: 0.75rem;
+      margin-top: 0.5rem;
+    }
     /* Responsive */
     @media (max-width: 1200px) {
       .stats-grid {
@@ -1090,176 +1309,246 @@
       transform: translateY(20px);
       pointer-events: none;
     }
+    .view-all-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem;
+      margin-top: 1.25rem;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      border-radius: var(--radius-lg);
+      transition: var(--transition);
+      background: var(--primary-gradient);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .view-all-link:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      filter: brightness(1.05);
+    }
+    
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <div class="header-content">
-        <div class="logo">
-          <a href="../index.html">
-            <div class="logo-icon">E</div>
-            <span class="logo-text">EduShare</span>
-          </a>
-        </div>
-        <nav class="main-nav">
-          <a href="../index.html" class="nav-link">Trang chủ</a>
-          <a href="categories.html" class="nav-link">Danh mục</a>
-          <a href="search.html?sort=newest" class="nav-link">Tài liệu mới</a>
-          <a href="search.html?filter=premium" class="nav-link">Cao cấp</a>
-          <a href="about.html" class="nav-link">Giới thiệu</a>
-        </nav>
-        <div class="header-actions">
-          <button class="dark-mode-toggle ripple" id="darkModeToggle" type="button" aria-label="Toggle dark mode">
-            <span class="dark-mode-handle" id="darkModeHandle"></span>
-          </button>
-          <a href="login.html" class="login-btn ripple">
-            <i class="fas fa-sign-in-alt"></i> Đăng nhập
-          </a>
-          <a href="register.html" class="register-btn active ripple">
-            <i class="fas fa-user-plus"></i> Đăng ký
-          </a>
-        </div>
-        <div class="mobile-menu-toggle" id="mobileMenuBtn">
-          <i class="fas fa-bars"></i>
-        </div>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+          <div class="header-content">
+              <div class="logo">
+                  <a href="../../index.html">
+                      <div class="logo-icon">E</div>
+                      <span class="logo-text">EduShare</span>
+                  </a>
+              </div>
+
+
+
+              
+              <nav class="main-nav">
+                  <a href="../../index.html" class="nav-link">Trang chủ</a>
+                  <a href="../categories.html" class="nav-link">Danh mục</a>
+                  <a href="../search.html?sort=newest" class="nav-link">Tài liệu mới</a>
+                  <a href="../search.html?filter=premium" class="nav-link">Cao cấp</a>
+                  <a href="../about.html" class="nav-link">Giới thiệu</a>
+              </nav>
+              <div class="header-actions">
+                  <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode">
+                      <span class="dark-mode-handle" id="darkModeHandle"></span>
+                  </button>
+                  <a href="../login.html" class="login-btn">
+                      <i class="fas fa-sign-in-alt"></i> Đăng nhập
+                  </a>
+                  <a href="../register.html" class="register-btn active">
+                      <i class="fas fa-user-plus"></i> Đăng ký
+                  </a>
+              </div>
+              <div class="mobile-menu-toggle" id="mobileMenuBtn">
+                  <i class="fas fa-bars"></i>
+              </div>
+          </div>
       </div>
       <!-- Mobile menu -->
       <div id="mobileMenu" class="mobile-menu">
-        <div class="mobile-search">
-          <input type="text" placeholder="Tìm kiếm tài liệu...">
-          <button class="ripple">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-        <nav class="mobile-nav">
-          <a href="../index.html" class="mobile-nav-link">Trang chủ</a>
-          <a href="categories.html" class="mobile-nav-link">Danh mục</a>
-          <a href="search.html?sort=newest" class="mobile-nav-link">Tài liệu mới</a>
-          <a href="search.html?filter=premium" class="mobile-nav-link">Cao cấp</a>
-          <a href="#" class="mobile-nav-link">Hướng dẫn</a>
-        </nav>
-        <div class="mobile-auth">
-          <a href="login.html" class="mobile-login-btn ripple">Đăng nhập</a>
-          <a href="register.html" class="mobile-register-btn ripple">Đăng ký</a>
-        </div>
+          <div class="mobile-search">
+              <input type="text" placeholder="Tìm kiếm tài liệu...">
+              <button>
+                  <i class="fas fa-search"></i>
+              </button>
+          </div>
+          <nav class="mobile-nav">
+            <a href="../../index.html" class="nav-link">Trang chủ</a>
+            <a href="../categories.html" class="nav-link">Danh mục</a>
+            <a href="../search.html?sort=newest" class="nav-link">Tài liệu mới</a>
+            <a href="../search.html?filter=premium" class="nav-link">Cao cấp</a>
+              <a href="#" class="mobile-nav-link">Hướng dẫn</a>
+          </nav>
+          <div class="mobile-auth">
+              <a href="../login.html" class="mobile-login-btn">Đăng nhập</a>
+              <a href="../register.html" class="mobile-register-btn">Đăng ký</a>
+          </div>
       </div>
-    </div>
   </header>
 
   <main>
     <div class="container dashboard-page">
-      <div class="dashboard-header">
-        <div class="dashboard-header-actions">
-          <div class="date-display">
-            <i class="far fa-calendar-alt"></i>
-            <span id="currentDate">Ngày 13 tháng 6, 2025</span>
-          </div>
-          <button class="refresh-button ripple">
-            <i class="fas fa-sync-alt"></i> Làm mới
-          </button>
-        </div>
-      </div>
 
       <div class="dashboard-content">
-        <!-- Sidebar -->
-        <div class="dashboard-sidebar">
-          <div class="sidebar-header">
-            <div class="user-profile">
-              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User avatar" class="user-avatar">
-              <div class="user-name">Nguyễn Văn Anh</div>
-              <div class="user-email">nguyenvananh@gmail.com</div>
-              <div class="user-status">
-                <span class="user-status-icon"></span>
-                Tài khoản Premium
+            <!-- Sidebar -->
+            <div class="dashboard-sidebar">
+              <div class="sidebar-header">
+                <div class="user-profile">
+                  <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="User avatar" class="user-avatar">
+                  <div class="user-name">Nguyễn Văn Anh</div>
+                  <div class="user-email">nguyenvananh@gmail.com</div>
+                  <div class="user-status">
+                    <span class="user-status-icon"></span>
+                    Tài khoản Premium
+                  </div>
+                </div>
+                <div class="sidebar-title">Quản lý tài khoản</div>
               </div>
+              
+              <ul class="sidebar-menu">
+                <li class="sidebar-menu-title">Tài liệu</li>
+                
+                <li class="sidebar-menu-item">
+                  <a href="dashboard.html" class="sidebar-menu-link ">
+                    <i class="fas fa-tachometer-alt sidebar-icon"></i>
+                    Tổng quan
+                  </a>
+                </li>
+                
+                <li class="sidebar-menu-item">
+                  <a href="documents.html" class="sidebar-menu-link">
+                    <i class="fas fa-file-alt sidebar-icon"></i>
+                    Tài liệu của tôi
+                    <span class="sidebar-badge">15</span>
+                  </a>
+                </li>
+                
+                <li class="sidebar-menu-item">
+                  <a href="../search.html" class="sidebar-menu-link">
+                    <i class="fas fa-search sidebar-icon"></i>
+                    Khám phá tài liệu
+                  </a>
+                </li>
+                
+                <li class="sidebar-menu-item">
+                  <a href="../upload.html" class="sidebar-menu-link">
+                    <i class="fas fa-cloud-upload-alt sidebar-icon"></i>
+                    Tải lên tài liệu
+                  </a>
+                </li>
+                
+                <li class="sidebar-menu-item">
+                  <a href="favorites.html" class="sidebar-menu-link">
+                    <i class="fas fa-bookmark sidebar-icon"></i>
+                    Tài liệu đã lưu
+                  </a>
+                </li>
+                
+                <li class="sidebar-menu-title">Tài khoản</li>
+                
+                <li class="sidebar-menu-item">
+                  <a href="profile.html" class="sidebar-menu-link active">
+                    <i class="fas fa-user sidebar-icon"></i>
+                    Thông tin cá nhân
+                  </a>
+                </li>
+                
+                <li class="sidebar-menu-item">
+                  <a href="transactions.html" class="sidebar-menu-link ">
+                    <i class="fas fa-history sidebar-icon"></i>
+                    Lịch sử giao dịch
+                  </a>
+                </li>
+                
+                <li class="sidebar-menu-item">
+                  <a href="recharge.html" class="sidebar-menu-link">
+                    <i class="fas fa-coins sidebar-icon"></i>
+                    Nạp xu
+                    <span class="sidebar-badge">250</span>
+                  </a>
+                </li>
+                
+                <li class="sidebar-menu-title">Cài đặt</li>
+                
+                <li class="sidebar-menu-item">
+                  <a href="security.html" class="sidebar-menu-link">
+                    <i class="fas fa-shield-alt sidebar-icon"></i>
+                    Bảo mật
+                  </a>
+                </li>
+                
+                <li class="sidebar-menu-item">
+                  <a href="notifications.html" class="sidebar-menu-link">
+                    <i class="fas fa-bell sidebar-icon"></i>
+                    Thông báo
+                  </a>
+                </li>
+                <li class="sidebar-menu-item">
+                  <a href="options.html" class="sidebar-menu-link">
+                    <i class="fas fa-cog sidebar-icon"></i>
+                    Tùy chọn
+                  </a>
+                </li>
+                <li class="sidebar-menu-item">
+                  <a href="notifications.html" class="sidebar-menu-link">
+                    <i class="fas fa-question-circle sidebar-icon"></i>
+                    Trợ giúp
+                  </a>
+                </li>
+              </ul>
             </div>
-            <div class="sidebar-title">Quản lý tài khoản</div>
-          </div>
-
-          <ul class="sidebar-menu">
-            <li class="sidebar-menu-title">Tài liệu</li>
-            <li class="sidebar-menu-item">
-              <a href="dashboard.html" class="sidebar-menu-link">
-                <i class="fas fa-tachometer-alt sidebar-icon"></i>
-                Tổng quan
-              </a>
-            </li>
-            <li class="sidebar-menu-item">
-              <a href="documents.html" class="sidebar-menu-link">
-                <i class="fas fa-file-alt sidebar-icon"></i>
-                Tài liệu của tôi
-                <span class="sidebar-badge">15</span>
-              </a>
-            </li>
-            <li class="sidebar-menu-item">
-              <a href="../search.html" class="sidebar-menu-link">
-                <i class="fas fa-search sidebar-icon"></i>
-                Khám phá tài liệu
-              </a>
-            </li>
-            <li class="sidebar-menu-item">
-              <a href="../upload.html" class="sidebar-menu-link">
-                <i class="fas fa-cloud-upload-alt sidebar-icon"></i>
-                Tải lên tài liệu
-              </a>
-            </li>
-            <li class="sidebar-menu-item">
-              <a href="favorites.html" class="sidebar-menu-link">
-                <i class="fas fa-bookmark sidebar-icon"></i>
-                Tài liệu đã lưu
-              </a>
-            </li>
-            <li class="sidebar-menu-title">Tài khoản</li>
-            <li class="sidebar-menu-item">
-              <a href="profile.html" class="sidebar-menu-link active">
-                <i class="fas fa-user sidebar-icon"></i>
-                Thông tin cá nhân
-              </a>
-            </li>
-            <li class="sidebar-menu-item">
-              <a href="transactions.html" class="sidebar-menu-link">
-                <i class="fas fa-history sidebar-icon"></i>
-                Lịch sử giao dịch
-              </a>
-            </li>
-            <li class="sidebar-menu-item">
-              <a href="recharge.html" class="sidebar-menu-link">
-                <i class="fas fa-coins sidebar-icon"></i>
-                Nạp xu
-                <span class="sidebar-badge">250</span>
-              </a>
-            </li>
-            <li class="sidebar-menu-title">Cài đặt</li>
-            <li class="sidebar-menu-item">
-              <a href="security.html" class="sidebar-menu-link">
-                <i class="fas fa-shield-alt sidebar-icon"></i>
-                Bảo mật
-              </a>
-            </li>
-            <li class="sidebar-menu-item">
-              <a href="notifications.html" class="sidebar-menu-link">
-                <i class="fas fa-bell sidebar-icon"></i>
-                Thông báo
-                <span class="sidebar-badge">3</span>
-              </a>
-            </li>
-            <li class="sidebar-menu-item">
-              <a href="#" class="sidebar-menu-link" onclick="showSupportPopup(); return false;">
-                <i class="fas fa-headset sidebar-icon"></i>
-                Hỗ trợ
-              </a>
-            </li>
-          </ul>
-        </div>
 
         <!-- Main Content -->
         <div class="dashboard-main">
+          <!-- Stats Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon primary">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">Cơ bản</div>
+                <div class="stat-label">Loại tài khoản</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon success">
+                <i class="fas fa-coins"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">320</div>
+                <div class="stat-label">Số dư (xu)</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon warning">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">15/01/2023</div>
+                <div class="stat-label">Ngày tham gia</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Information Section -->
           <div class="dashboard-section">
             <div class="section-header">
-              <h2 class="section-title">Thông tin cá nhân</h2>
-              <div class="section-actions"></div>
+              <h2 class="section-title">
+                <i class="fas fa-user section-title-icon"></i>
+                Thông tin cá nhân
+              </h2>
+              <div class="section-actions">
+                <button class="btn-account ripple" onclick="showProfileEdit()">
+                  <i class="fas fa-edit"></i> Chỉnh sửa hồ sơ
+                </button>
+              </div>
             </div>
 
             <div class="section avatar-wrapper" ondragover="event.preventDefault(); this.style.border='2px dashed var(--primary)';" ondragleave="this.style.border='none';" ondrop="handleAvatarDrop(event);">
@@ -1268,32 +1557,157 @@
               <label for="avatarInput" class="btn-upload ripple">Thay ảnh</label>
             </div>
 
-            <button class="btn-account ripple" onclick="showProfileEdit()">Chỉnh sửa hồ sơ</button>
-            <a href="security.html" class="btn-toggle ripple">Đổi mật khẩu</a>
-            <a href="recharge.html" class="btn-toggle ripple">Liên kết tài khoản</a>
-            <button class="btn-account ripple" onclick="showAccountEdit()">Chỉnh sửa tài khoản</button>
+            <div class="section-actions" style="margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap;">
+              <a href="security.html" class="btn-toggle ripple">
+                <i class="fas fa-key"></i> Đổi mật khẩu
+              </a>
+              <a href="recharge.html" class="btn-toggle ripple">
+                <i class="fas fa-link"></i> Liên kết tài khoản
+              </a>
+              <button class="btn-account ripple" onclick="showAccountEdit()">
+                <i class="fas fa-cog"></i> Chỉnh sửa tài khoản
+              </button>
+            </div>
 
             <!-- Profile Preview -->
             <div id="profile-preview" class="section">
-              <br>
-              <h3>Thông tin cá nhân</h3>
-              <p><strong>Mã định danh:</strong> USR-20240611-001 <button class="btn-secondary ripple" onclick="copyToClipboard('USR-20240611-001')">Sao chép</button></p>
-              <p><strong>Họ và tên:</strong> Nguyễn Thanh Đức</p>
-              <p><strong>Biệt danh:</strong> Đức Momo</p>
-              <p><strong>Email:</strong> Coppyrightemomo@email.com</p>
-              <p><strong>SĐT:</strong> 0123456789</p>
-              <p><strong>Facebook:</strong> <a href="#">https://facebook.com/nguoi-dung</a></p>
-              <p><strong>Github:</strong> <a href="#">https://github.com/nguoi-dung</a></p>
-              <p><strong>Ngày tham gia:</strong> 15/01/2023</p>
-              <p><strong>Địa chỉ:</strong> 123 Lê Lợi, Quận 1, TP.HCM</p>
+              <div class="profile-info-grid">
+                <div class="info-card">
+                  <div class="info-header">
+                    <h3 class="info-title">
+                      <i class="fas fa-id-card info-icon"></i>
+                      Thông tin cơ bản
+                    </h3>
+                  </div>
+                  <div class="info-content">
+                    <div class="info-item">
+                      <span class="info-label">Mã định danh:</span>
+                      <span class="info-value">
+                        USR-20240611-001 
+                        <button class="btn-copy ripple" onclick="copyToClipboard('USR-20240611-001')" title="Sao chép">
+                          <i class="fas fa-copy"></i>
+                        </button>
+                      </span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Họ và tên:</span>
+                      <span class="info-value">Nguyễn Thanh Đức</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Biệt danh:</span>
+                      <span class="info-value">Đức Momo</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Ngày tham gia:</span>
+                      <span class="info-value">15/01/2023</span>
+                    </div>
+                  </div>
+                </div>
 
-              <div id="account-preview">
-                <h3>Tài khoản & Gói dịch vụ</h3>
-                <p><strong>Số dư:</strong> 💰 320 xu</p>
-                <p><strong>Phương thức thanh toán:</strong> 💳 Visa **** 5321</p>
-                <p><strong>Tài khoản rút tiền:</strong> 🏦 MB Bank - 9704********3210</p>
-                <p><strong>Gói tài khoản:</strong> 🎖️ Cơ bản (Miễn phí)</p>
-                <a href="recharge.html" class="btn-upgrade ripple" id="upgradeBtn">Nâng cấp tài khoản</a>
+                <div class="info-card">
+                  <div class="info-header">
+                    <h3 class="info-title">
+                      <i class="fas fa-envelope info-icon"></i>
+                      Thông tin liên hệ
+                    </h3>
+                  </div>
+                  <div class="info-content">
+                    <div class="info-item">
+                      <span class="info-label">Email:</span>
+                      <span class="info-value">Coppyrightemomo@email.com</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Số điện thoại:</span>
+                      <span class="info-value">0123456789</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Địa chỉ:</span>
+                      <span class="info-value">123 Lê Lợi, Quận 1, TP.HCM</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="info-card">
+                  <div class="info-header">
+                    <h3 class="info-title">
+                      <i class="fas fa-share-alt info-icon"></i>
+                      Mạng xã hội
+                    </h3>
+                  </div>
+                  <div class="info-content">
+                    <div class="info-item">
+                      <span class="info-label">Facebook:</span>
+                      <span class="info-value">
+                        <a href="#" class="social-link-profile" target="_blank">
+                          <i class="fab fa-facebook"></i> facebook.com/nguoi-dung
+                        </a>
+                      </span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">GitHub:</span>
+                      <span class="info-value">
+                        <a href="#" class="social-link-profile" target="_blank">
+                          <i class="fab fa-github"></i> github.com/nguoi-dung
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="account-preview" class="account-section">
+                <div class="info-card">
+                  <div class="info-header">
+                    <h3 class="info-title">
+                      <i class="fas fa-credit-card info-icon"></i>
+                      Tài khoản & Gói dịch vụ
+                    </h3>
+                  </div>
+                  <div class="info-content">
+                    <div class="account-stats">
+                      <div class="account-stat">
+                        <div class="stat-icon-wrapper success">
+                          <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-details">
+                          <div class="stat-value">320 xu</div>
+                          <div class="stat-label">Số dư hiện tại</div>
+                        </div>
+                      </div>
+                      <div class="account-stat">
+                        <div class="stat-icon-wrapper primary">
+                          <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="stat-details">
+                          <div class="stat-value">Cơ bản</div>
+                          <div class="stat-label">Gói tài khoản</div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="payment-info">
+                      <div class="info-item">
+                        <span class="info-label">Phương thức thanh toán:</span>
+                        <span class="info-value">
+                          <i class="fab fa-cc-visa"></i> Visa **** 5321
+                        </span>
+                      </div>
+                      <div class="info-item">
+                        <span class="info-label">Tài khoản rút tiền:</span>
+                        <span class="info-value">
+                          <i class="fas fa-university"></i> MB Bank - 9704********3210
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <div class="upgrade-section">
+                      <a href="recharge.html" class="btn-upgrade ripple" id="upgradeBtn">
+                        <i class="fas fa-arrow-up"></i>
+                        Nâng cấp tài khoản
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1417,8 +1831,14 @@
 
           <!-- User Role -->
           <div class="dashboard-section">
+            <div class="section-header">
+              <h2 class="section-title">
+                <i class="fas fa-user-tag section-title-icon"></i>
+                Vai trò người dùng
+              </h2>
+            </div>
+            
             <div class="account-info-section">
-              <h3>Vai trò người dùng</h3>
               <div class="form-group role-select-wrapper">
                 <label for="userRole"><strong>Chọn vai trò:</strong></label>
                 <div class="role-select-box">
@@ -1438,68 +1858,55 @@
 
           <!-- Recent Activity -->
           <div class="dashboard-section">
-            <div class="section">
-              <h2 style="font-size: 20px; margin-bottom: 10px;">
-                <i class="fas fa-history"></i> Hoạt động gần đây
+            <div class="section-header">
+              <h2 class="section-title">
+                <i class="fas fa-history section-title-icon"></i>
+                Hoạt động gần đây
               </h2>
-              <div class="activity-list">
-                <div class="activity-item">
-                  <div class="activity-icon primary">
-                    <i class="fas fa-user-edit"></i>
-                  </div>
-                  <div class="activity-content">
-                    <div class="activity-title">Đã cập nhật thông tin cá nhân</div>
-                    <div class="activity-description">Thay đổi họ tên, email, SĐT hoặc địa chỉ</div>
-                    <div class="activity-meta">
-                      <div class="activity-meta-item">
-                        <i class="far fa-clock activity-meta-icon"></i>
-                        2 ngày trước
-                      </div>
+            </div>
+            
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="activity-icon primary">
+                  <i class="fas fa-user-edit"></i>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-title">Đã cập nhật thông tin cá nhân</div>
+                  <div class="activity-description">Thay đổi họ tên, email, SĐT hoặc địa chỉ</div>
+                  <div class="activity-meta">
+                    <div class="activity-meta-item">
+                      <i class="far fa-clock activity-meta-icon"></i>
+                      2 ngày trước
                     </div>
                   </div>
                 </div>
-                <div class="activity-item">
-                  <div class="activity-icon warning">
-                    <i class="fas fa-key"></i>
-                  </div>
-                  <div class="activity-content">
-                    <div class="activity-title">Đã thay đổi mật khẩu</div>
-                    <div class="activity-description">Bảo mật tài khoản đã được cập nhật</div>
-                    <div class="activity-meta">
-                      <div class="activity-meta-item">
-                        <i class="far fa-clock activity-meta-icon"></i>
-                        5 ngày trước
-                      </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon warning">
+                  <i class="fas fa-key"></i>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-title">Đã thay đổi mật khẩu</div>
+                  <div class="activity-description">Bảo mật tài khoản đã được cập nhật</div>
+                  <div class="activity-meta">
+                    <div class="activity-meta-item">
+                      <i class="far fa-clock activity-meta-icon"></i>
+                      5 ngày trước
                     </div>
                   </div>
                 </div>
-                <div class="activity-item">
-                  <div class="activity-icon success">
-                    <i class="fas fa-camera"></i>
-                  </div>
-                  <div class="activity-content">
-                    <div class="activity-title">Đã thay đổi ảnh đại diện</div>
-                    <div class="activity-description">Ảnh mới đã được cập nhật thành công</div>
-                    <div class="activity-meta">
-                      <div class="activity-meta-item">
-                        <i class="far fa-clock activity-meta-icon"></i>
-                        1 tuần trước
-                      </div>
-                    </div>
-                  </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon success">
+                  <i class="fas fa-camera"></i>
                 </div>
-                <div class="activity-item">
-                  <div class="activity-icon info">
-                    <i class="fas fa-link"></i>
-                  </div>
-                  <div class="activity-content">
-                    <div class="activity-title">Đã cập nhật liên kết mạng xã hội</div>
-                    <div class="activity-description">Đã thay đổi Facebook, GitHub hoặc LinkedIn</div>
-                    <div class="activity-meta">
-                      <div class="activity-meta-item">
-                        <i class="far fa-clock activity-meta-icon"></i>
-                        10 ngày trước
-                      </div>
+                <div class="activity-content">
+                  <div class="activity-title">Đã thay đổi ảnh đại diện</div>
+                  <div class="activity-description">Ảnh mới đã được cập nhật thành công</div>
+                  <div class="activity-meta">
+                    <div class="activity-meta-item">
+                      <i class="far fa-clock activity-meta-icon"></i>
+                      1 tuần trước
                     </div>
                   </div>
                 </div>
@@ -1514,7 +1921,7 @@
                 <i class="fas fa-bell section-title-icon"></i>
                 Thông báo mới
               </h2>
-              <button class="action-button ripple" onclick="markNotificationsAsRead()">Đánh dấu đã đọc</button>
+              <!-- <button class="action-button ripple" onclick="markNotificationsAsRead()">Đánh dấu đã đọc</button> -->
             </div>
             <div class="activity-list">
               <div class="activity-item">
@@ -1586,10 +1993,10 @@
             Nền tảng chia sẻ tài liệu học tập hàng đầu Việt Nam với hơn 500,000 thành viên và 200,000+ tài liệu chất lượng cao.
           </p>
           <div class="social-links">
-            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link-profile"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link-profile"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link-profile"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link-profile"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
         <div class="footer-links-section">
@@ -1623,7 +2030,7 @@
       </div>
       <div class="footer-bottom">
         <div class="copyright">
-          © 2023 EduShare. Tất cả quyền được bảo lưu.
+          2023 EduShare. Tất cả quyền được bảo lưu.
         </div>
         <div class="footer-bottom-links">
           <a href="#">Chính sách bảo mật</a>

@@ -630,52 +630,137 @@
     .filters {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
       align-items: end;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
     }
 
     .filters label {
       display: block;
       font-size: 0.875rem;
+      font-weight: 600;
       color: var(--gray-700);
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.5rem;
     }
 
     .filters input,
     .filters select {
       width: 100%;
-      padding: 0.75rem 1rem;
+      padding: 0.875rem 1rem;
       border: 1px solid var(--gray-300);
-      border-radius: var(--radius);
+      border-radius: var(--radius-lg);
       font-family: 'Nunito', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--gray-700);
+      background-color: var(--white);
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
     }
 
     .filters input:focus,
     .filters select:focus {
       border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+      outline: none;
+    }
+
+    .filters button,
+    .action-button {
+      padding: 0.875rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .filters button:hover,
+    .action-button:hover {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .section-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .time-range-select {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius);
+      background-color: var(--white);
+      color: var(--gray-700);
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .time-range-select:focus {
+      border-color: var(--primary);
       box-shadow: 0 0 0 2px var(--primary-light);
       outline: none;
     }
 
-    .filters button {
-      padding: 0.75rem 1rem;
-      background: var(--primary);
-      color: var(--white);
-      border: none;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: background 0.3s;
-      font-size: 0.9rem;
+    .transaction-count {
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      margin-bottom: 1.5rem;
+      padding: 0.75rem 1rem;
+      background-color: var(--gray-50);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-200);
     }
 
-    .filters button:hover {
-      background: var(--primary-dark);
+    .documents-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .document-card {
+      background-color: var(--white);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      overflow: hidden;
+    }
+
+    .document-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .document-content {
+      padding: 1.5rem;
+    }
+
+    .document-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
     }
 
     .pagination {
@@ -957,7 +1042,8 @@
   </style>
 </head>
 <body>
-   <header class="header">
+    <!-- Header -->
+    <header class="header">
       <div class="container">
           <div class="header-content">
               <div class="logo">
@@ -966,12 +1052,16 @@
                       <span class="logo-text">EduShare</span>
                   </a>
               </div>
+
+
+
+              
               <nav class="main-nav">
-                  <a href="../index.html" class="nav-link">Trang chủ</a>
-                  <a href="categories.html" class="nav-link">Danh mục</a>
-                  <a href="search.html?sort=newest" class="nav-link">Tài liệu mới</a>
-                  <a href="search.html?filter=premium" class="nav-link">Cao cấp</a>
-                  <a href="about.html" class="nav-link">Giới thiệu</a>
+                  <a href="../../index.html" class="nav-link">Trang chủ</a>
+                  <a href="../categories.html" class="nav-link">Danh mục</a>
+                  <a href="../search.html?sort=newest" class="nav-link">Tài liệu mới</a>
+                  <a href="../search.html?filter=premium" class="nav-link">Cao cấp</a>
+                  <a href="../about.html" class="nav-link">Giới thiệu</a>
               </nav>
               <div class="header-actions">
                   <button class="dark-mode-toggle" id="darkModeToggle" type="button" aria-label="Toggle dark mode">
@@ -998,15 +1088,15 @@
               </button>
           </div>
           <nav class="mobile-nav">
-              <a href="../index.html" class="mobile-nav-link">Trang chủ</a>
-              <a href="categories.html" class="mobile-nav-link">Danh mục</a>
-              <a href="search.html?sort=newest" class="mobile-nav-link">Tài liệu mới</a>
-              <a href="search.html?filter=premium" class="mobile-nav-link">Cao cấp</a>
+            <a href="../../index.html" class="nav-link">Trang chủ</a>
+            <a href="../categories.html" class="nav-link">Danh mục</a>
+            <a href="../search.html?sort=newest" class="nav-link">Tài liệu mới</a>
+            <a href="../search.html?filter=premium" class="nav-link">Cao cấp</a>
               <a href="#" class="mobile-nav-link">Hướng dẫn</a>
           </nav>
           <div class="mobile-auth">
-              <a href="login.html" class="mobile-login-btn">Đăng nhập</a>
-              <a href="register.html" class="mobile-register-btn">Đăng ký</a>
+              <a href="../login.html" class="mobile-login-btn">Đăng nhập</a>
+              <a href="../register.html" class="mobile-register-btn">Đăng ký</a>
           </div>
       </div>
   </header>
@@ -1126,105 +1216,170 @@
               </a>
             </li>
             <li class="sidebar-menu-item">
-              <a href="notifications.html" class="sidebar-menu-link">
+              <a href="options.html" class="sidebar-menu-link">
                 <i class="fas fa-cog sidebar-icon"></i>
                 Tùy chọn
               </a>
             </li>
             <li class="sidebar-menu-item">
-              <a href="notifications.html" class="sidebar-menu-link">
-                <i class="fas fa-question-circle sidebar-icon"></i>
-                Trợ giúp
+              <a href="support.html" class="sidebar-menu-link">
+                <i class="fas fa-headset sidebar-icon"></i>
+                Hỗ trợ
               </a>
             </li>
           </ul>
         </div>
 
         <div class="dashboard-main">
+          <!-- Stats Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon primary">
+                <i class="fas fa-credit-card"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">24</div>
+                <div class="stat-label">Tổng giao dịch</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon success">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">18</div>
+                <div class="stat-label">Thành công</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon warning">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">4</div>
+                <div class="stat-label">Đang xử lý</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon danger">
+                <i class="fas fa-coins"></i>
+              </div>
+              <div class="stat-info">
+                <div class="stat-value">890,000đ</div>
+                <div class="stat-label">Tổng chi tiêu</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transaction Statistics Section -->
           <div class="dashboard-section">
             <div class="section-header">
               <h2 class="section-title">
                 <i class="fas fa-chart-line section-title-icon"></i>
-                Thống kê
+                Thống kê giao dịch
               </h2>
+              <div class="section-actions">
+                <select class="time-range-select" id="chartTimeRange">
+                  <option value="day">Theo ngày</option>
+                  <option value="week" selected>Theo tuần</option>
+                  <option value="month">Theo tháng</option>
+                </select>
+              </div>
             </div>
+            
             <div class="tab-buttons">
               <button class="tab-button active" data-tab="dayChart">Tiêu tiền theo ngày</button>
               <button class="tab-button" data-tab="typeChart">Tổng số tiền theo loại</button>
             </div>
+            
             <div id="dayChart" class="chart-container" style="display: block;">
-              <div class="section-actions">
-                <select class="time-range-select" id="chartTimeRange">
-                  <option value="day">Theo ngày</option>
-                  <option value="week">Theo tuần</option>
-                  <option value="month">Theo tháng</option>
-                </select>
-              </div>
-              <h3 id="chartTitle">Tiêu tiền theo ngày</h3>
               <div id="transactionChart"></div>
             </div>
             <div id="typeChart" class="chart-container" style="display: none;">
-              <h3>Thống kê số tiền theo loại</h3>
               <div id="typeChartContainer"></div>
             </div>
           </div>
 
+          <!-- Transaction List Section -->
           <div class="dashboard-section">
             <div class="section-header">
               <h2 class="section-title">
                 <i class="fas fa-history section-title-icon"></i>
-                Danh sách giao dịch
+                Lịch sử giao dịch
               </h2>
-              <div class="transaction-count" id="totalTransactions">
-                <i class="fas fa-list"></i> Tổng: <span>0</span> giao dịch
+              <div class="section-actions">
+                <button class="action-button" id="exportBtn">
+                  <i class="fas fa-download"></i>
+                  Xuất CSV
+                </button>
               </div>
             </div>
-            <p class="filter-note">Lọc dựa trên các tiêu chí bên dưới để tìm kiếm giao dịch phù hợp.</p>
-            <div class="filters">
-              <div class="form-group">
-                <label>Tìm kiếm</label>
-                <input type="text" id="searchInput" placeholder="Mã giao dịch hoặc tài liệu">
-              </div>
-              <div class="form-group">
-                <label>Trạng thái</label>
-                <select id="statusFilter">
-                  <option value="all">Tất cả trạng thái</option>
-                  <option value="success">Thành công</option>
-                  <option value="pending">Đang xử lý</option>
-                  <option value="failed">Thất bại</option>
-                  <option value="refunded">Hoàn tiền</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>Loại giao dịch</label>
-                <select id="typeFilter">
-                  <option value="all">Tất cả loại</option>
-                  <option value="recharge">Nạp tiền</option>
-                  <option value="download">Tải tài liệu</option>
-                  <option value="refund">Hoàn tiền</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>Từ ngày</label>
-                <input type="date" id="dateFrom" max="2025-06-12">
-              </div>
-              <div class="form-group">
-                <label>Đến ngày</label>
-                <input type="date" id="dateTo" max="2025-06-12">
-              </div>
-              <div class="form-group">
-                <label>Số tiền</label>
-                <select id="amountFilter">
-                  <option value="all">Tất cả</option>
-                  <option value="0-50000">0 - 50.000 VNĐ</option>
-                  <option value="50001-100000">50.001 - 100.000 VNĐ</option>
-                  <option value="100001-200000">100.001 - 200.000 VNĐ</option>
-                  <option value="200001+">Trên 200.000 VNĐ</option>
-                </select>
-              </div>
-              <button id="filterBtn"><i class="fas fa-filter"></i> Lọc</button>
-              <button id="exportBtn" class="export-btn"><i class="fas fa-download"></i> Xuất CSV</button>
+            
+            <div class="transaction-count" id="totalTransactions">
+              <i class="fas fa-list"></i> Tổng: <span>0</span> giao dịch
             </div>
+            
+            <div class="documents-grid" style="grid-template-columns: 1fr;">
+              <div class="document-card">
+                <div class="document-content" style="padding: 1.25rem;">
+                  <h3 class="document-title" style="margin-bottom: 1rem;">
+                    <i class="fas fa-filter" style="margin-right: 0.5rem;"></i>
+                    Bộ lọc tìm kiếm
+                  </h3>
+                  <div class="filters">
+                    <div class="form-group">
+                      <label>Tìm kiếm</label>
+                      <input type="text" id="searchInput" placeholder="Mã giao dịch hoặc tài liệu">
+                    </div>
+                    <div class="form-group">
+                      <label>Trạng thái</label>
+                      <select id="statusFilter">
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="success">Thành công</option>
+                        <option value="pending">Đang xử lý</option>
+                        <option value="failed">Thất bại</option>
+                        <option value="refunded">Hoàn tiền</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Loại giao dịch</label>
+                      <select id="typeFilter">
+                        <option value="all">Tất cả loại</option>
+                        <option value="recharge">Nạp tiền</option>
+                        <option value="download">Tải tài liệu</option>
+                        <option value="refund">Hoàn tiền</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Từ ngày</label>
+                      <input type="date" id="dateFrom" max="2025-06-12">
+                    </div>
+                    <div class="form-group">
+                      <label>Đến ngày</label>
+                      <input type="date" id="dateTo" max="2025-06-12">
+                    </div>
+                    <div class="form-group">
+                      <label>Số tiền</label>
+                      <select id="amountFilter">
+                        <option value="all">Tất cả</option>
+                        <option value="0-50000">0 - 50.000 VNĐ</option>
+                        <option value="50001-100000">50.001 - 100.000 VNĐ</option>
+                        <option value="100001-200000">100.001 - 200.000 VNĐ</option>
+                        <option value="200001+">Trên 200.000 VNĐ</option>
+                      </select>
+                    </div>
+                    <button id="filterBtn" class="action-button">
+                      <i class="fas fa-filter"></i> 
+                      Lọc
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
             <div id="transactionGroups"></div>
             <div class="pagination" id="pagination"></div>
           </div>
@@ -1338,7 +1493,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <div class="copyright">© 2023 EduShare. Tất cả quyền được bảo lưu.</div>
+        <div class="copyright"> 2023 EduShare. Tất cả quyền được bảo lưu.</div>
         <div class="footer-bottom-links">
           <a href="#">Chính sách bảo mật</a>
           <a href="#">Điều khoản sử dụng</a>
