@@ -490,21 +490,21 @@
     }
     
     .document-card {
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      height: 100%;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(67,97,238,0.08);
+      padding: 14px 14px 16px 14px;
       display: flex;
       flex-direction: column;
-      background-color: white;
-      border: 1px solid var(--gray-100);
+      min-width: 210px;
+      max-width: 240px;
+      margin: 0 10px 20px 10px;
+      transition: box-shadow 0.2s, transform 0.2s;
     }
     
     .document-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary-light);
+      box-shadow: 0 8px 32px rgba(67,97,238,0.13);
+      transform: translateY(-3px) scale(1.01);
     }
     
     .document-image {
@@ -526,8 +526,9 @@
     
     .document-image img {
       width: 100%;
-      height: 100%;
+      height: 90px;
       object-fit: cover;
+      border-radius: 12px 12px 0 0;
     }
     
     .document-content {
@@ -538,25 +539,20 @@
     }
     
     .document-title {
+      font-size: 1.05rem;
       font-weight: 700;
-      margin-bottom: 0.75rem;
-      color: var(--gray-900);
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      font-size: 1.1rem;
-      line-height: 1.4;
+      margin: 12px 0 4px 0;
+      color: #222;
+      line-height: 1.25;
     }
     
     .document-meta {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
-      font-size: 0.75rem;
-      color: var(--gray-600);
-      margin-bottom: 0.75rem;
+      font-size: 0.92rem;
+      color: #666;
+      margin-bottom: 10px;
     }
     
     .document-meta-item {
@@ -733,26 +729,42 @@
 /* Tabs */
 .tabs {
   display: flex;
-  gap: 16px;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #e5e7eb;
+  gap: 12px;
+  background: #f4f7fe;
+  padding: 6px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(67,97,238,0.06);
+  margin-bottom: 18px;
 }
 
 .tab {
-  background: none;
+   background: transparent;
   border: none;
-  padding: 12px 0;
+  color: #4361ee;
+  padding: 10px 32px;
+  border-radius: 8px;
   font-weight: 600;
-  color: #6b7280;
+  font-size: 16px;
   cursor: pointer;
-  border-bottom: 4px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
+  transition: 
+    background 0.25s cubic-bezier(.4,0,.2,1),
+    color 0.25s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.25s cubic-bezier(.4,0,.2,1);
+  outline: none;
+  position: relative;
 }
 
 .tab:hover,
 .tab.active {
-  color: #4361ee;
-  border-color: #4361ee;
+  background: linear-gradient(90deg, #4361ee 60%, #5f7cff 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(67,97,238,0.10);
+  z-index: 2;
+}
+
+.tab:not(.active):hover {
+  background: #e9edfb;
+  color: #274bc8;
 }
 
 /* Bộ lọc */
@@ -848,21 +860,32 @@
 }
 
 .download-btn {
-  background-color: #4361ee;
+  background: #4361ee;
   color: #fff;
-  padding: 10px 18px;
   border: none;
   border-radius: 8px;
-  font-size: 14px;
-  font-weight: bold;
+  padding: 6px 16px;
+  font-weight: 600;
+  font-size: 0.97rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
+  height: 34px;
+  min-width: 0;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(67,97,238,0.08);
+  transition: background 0.18s;
 }
-.download-btn:hover {
-  background-color: #3a56d4;
+
+.download-btn i {
+  font-size: 1.1rem;
+  margin-right: 2px;
+  display: inline-block;
+}
+
+.download-btn:active {
+  background: #274bc8;
 }
 
 /* Phân trang */
@@ -939,20 +962,121 @@
   }
 }
 
-.card-content { 
+#docList.grid-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+#docList.list-view {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  gap: 16px;
+}
+.doc-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(67,97,238,0.10);
+  padding: 20px 20px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-width: 260px;
+  max-width: 340px;
+  margin: 0 12px 24px 12px;
 }
 
-.card-bottom {
+.doc-card:hover {
+  box-shadow: 0 8px 32px rgba(67,97,238,0.16);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.doc-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+}
+
+.doc-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 10px 0 4px 0;
+  color: #222;
+  line-height: 1.2;
+}
+
+.doc-meta {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.card-content {
   margin-top: auto;
+}
+
+.card-content > div {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  gap: 8px;
+  align-items: center;
+  gap: 6px;
 }
 
+.price {
+  font-weight: 600;
+  color: #4361ee;
+  font-size: 0.98rem;
+  white-space: nowrap;
+}
+
+.download-btn {
+  background: #4361ee;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 0.97rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 32px;
+  min-width: 0;
+  box-shadow: 0 2px 8px rgba(67,97,238,0.08);
+  transition: background 0.18s;
+}
+.download-btn i {
+  font-size: 1rem;
+
+}
+.download-btn:hover {
+  background: #274bc8;
+}
+
+#toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  left: auto;
+  transform: none;
+  background: #4361ee;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  box-shadow: 0 4px 24px rgba(67,97,238,0.18);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, bottom 0.3s;
+  z-index: 9999;
+}
+#toast.show {
+  opacity: 1;
+  bottom: 48px;
+  pointer-events: auto;
+}
   </style>
 </head>
 
@@ -1225,7 +1349,7 @@
           </div>
 
           <!-- Toast thông báo -->
-          <div id="toast" class="toast"></div>
+          <div id="toast"></div>
         </div>
       </div>
     </div>
@@ -1300,7 +1424,7 @@
     </div>
   </footer>
 <script>
-  // ==== Dữ liệu mẫu ====
+   // ==== Dữ liệu mẫu ====
 const documents = [
   {
     id: 1,
@@ -1497,7 +1621,7 @@ function renderDocuments(tab = "created", page = 1) {
   const end = start + pageSize;
   const docsToShow = filtered.slice(start, end);
 
-  if (docsToShow.length === 0) {
+ if (docsToShow.length === 0) {
     list.innerHTML = "<p>Không có tài liệu nào phù hợp.</p>";
   } else {
     docsToShow.forEach(doc => {
@@ -1519,15 +1643,17 @@ function renderDocuments(tab = "created", page = 1) {
               ${doc.price === 0 ? "Miễn phí" : doc.price + "đ"}
             </span>
             <button class="download-btn" style="margin-left: 10px;">
-              <i class="fas fa-download"></i> Tải xuống
+              <i class="fas fa-download"></i>
+              Tải xuống
             </button>
           </div>
         </div>
       `;
+
       // Nút tải xuống bên ngoài (không giới hạn, luôn cho tải)
       card.querySelector('.download-btn').onclick = (e) => {
         e.stopPropagation();
-        showToast("Tải xuống thành công: " + doc.title);
+        showToast("Tải xuống thành công!", "success");
       };
       // Click vào card vẫn mở modal chi tiết
       card.addEventListener("click", (e) => {
@@ -1604,6 +1730,9 @@ function openModal(id) {
   document.getElementById("modalFormat").textContent = "Định dạng: " + doc.format;
   document.getElementById("modalPrice").textContent = "Giá: " + (doc.price === 0 ? "Miễn phí" : doc.price + "đ");
   document.getElementById("modalRating").textContent = "Đánh giá: " + doc.rating + " ★";
+  document.getElementById("modalFormat").textContent = "Định dạng: " + doc.format;
+  document.getElementById("modalPrice").textContent = "Giá: " + (doc.price === 0 ? "Miễn phí" : doc.price + "đ");
+  document.getElementById("modalRating").textContent = "Đánh giá: " + doc.rating + " ★";
   document.getElementById("modalDesc").textContent = doc.description;
 
   const modal = document.getElementById("modal");
@@ -1658,7 +1787,15 @@ if (document.getElementById("filterSort")) {
     renderDocuments(currentTab, 1);
   });
 }
-
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(showToast.timeout);
+  showToast.timeout = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
 // ==== Khởi tạo ====
 updateStats();
 renderDocuments();
